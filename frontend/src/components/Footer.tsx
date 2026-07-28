@@ -9,9 +9,9 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
               <img
-                src="/unesco-icaire-logo.jpeg"
+                src="/unesco-icaire-logo.png"
                 alt="UNESCO Centre / ICAIRE logo"
-                className="h-10 w-auto rounded-md ring-1 ring-zinc-200 dark:ring-zinc-700/70"
+                className="h-10 w-auto"
               />
               <div className="leading-tight">
                 <p className="font-semibold text-zinc-900 dark:text-zinc-50">Ethical AI Journal</p>
