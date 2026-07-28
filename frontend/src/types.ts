@@ -32,6 +32,10 @@ export interface Paper {
   year: number | null;
   source: string;
   link: string | null;
+  abstract: string | null;
+  ai_summary: string | null;
+  rationale: string | null;
   confidence: number;
+  domains: string[];
   subdomains: string[];
 }

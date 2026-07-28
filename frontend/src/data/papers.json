@@ -6,7 +6,13 @@
     "year": 2019,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/1907.00430v1",
+    "abstract": "Being a complex subject of major importance in AI Safety research, value alignment has been studied from various perspectives in the last years. However, no final consensus on the design of ethical utility functions facilitating AI value alignment has been achieved yet. Given the urgency to identify systematic solutions, we postulate that it might be useful to start with the simple fact that for the utility function of an AI not to violate human ethical intuitions, it trivially has to be a model of these intuitions and reflect their variety $ - $ whereby the most accurate models pertaining to human entities being biological organisms equipped with a brain constructing concepts like moral judgements, are scientific models. Thus, in order to better assess the variety of human morality, we perform a transdisciplinary analysis applying a security mindset to the issue and summarizing variety-relevant background knowledge from neuroscience and psychology. We complement this information by linking it to augmented utilitarianism as a suitable ethical framework. Based on that, we propose first practical guidelines for the design of approximate ethical goal functions that might better capture the variety of human moral judgements. Finally, we conclude and address future possible challenges.",
+    "ai_summary": "This paper investigates the challenge of AI value alignment, specifically focusing on the design of ethical utility functions. By drawing on neuroscience, psychology, and augmented utilitarianism, the authors propose practical guidelines for creating goal functions that better capture the complexity and variety of human moral judgments.",
+    "rationale": "The paper addresses AI value alignment by examining how to design ethical utility functions that accurately reflect the variety of human moral judgments using insights from neuroscience and psychology.",
     "confidence": 0.95,
+    "domains": [
+      "TD4"
+    ],
     "subdomains": [
       "Value alignment and specification",
       "Benefit maximization and harm minimization strategies"
@@ -19,7 +25,14 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2503.19586v2",
+    "abstract": "Voice-based AI development faces unique challenges in processing both linguistic and paralinguistic information. This study compares how large audio-language models (LALMs) and humans integrate speaker characteristics during speech comprehension, asking whether LALMs process speaker-contextualized language in ways that parallel human cognitive mechanisms. We compared two LALMs' (Qwen2-Audio and Ultravox 0.5) processing patterns with human EEG responses. Using surprisal and entropy metrics from the models, we analyzed their sensitivity to speaker-content incongruency across social stereotype violations (e.g., a man claiming to regularly get manicures) and biological knowledge violations (e.g., a man claiming to be pregnant). Results revealed that Qwen2-Audio exhibited increased surprisal for speaker-incongruent content and its surprisal values significantly predicted human N400 responses, while Ultravox 0.5 showed limited sensitivity to speaker characteristics. Importantly, neither model replicated the human-like processing distinction between social violations (eliciting N400 effects) and biological violations (eliciting P600 effects). These findings reveal both the potential and limitations of current LALMs in processing speaker-contextualized language, and suggest differences in social-linguistic processing mechanisms between humans and LALMs.",
+    "ai_summary": "This study compares how large audio-language models and humans process speech containing social stereotype and biological violations using EEG and model surprisal metrics. The findings show that while some models capture incongruency, they fail to fully replicate the distinct neural processing mechanisms humans use for social versus biological violations.",
+    "rationale": "The paper investigates the alignment between large audio-language models and human cognitive processing regarding social stereotypes and biological expectations. This relates to human-cognitive bias and fairness under TD1, as well as model alignment and behavioral reliability under TD4. [LLM overrode embedding shortlist]",
     "confidence": 0.85,
+    "domains": [
+      "TD1",
+      "TD4"
+    ],
     "subdomains": [
       "Human-cognitive Bias",
       "Value Alignment",
@@ -33,7 +46,15 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2601.11916v1",
+    "abstract": "Frontier AI companies increasingly rely on external evaluations to assess risks from dangerous capabilities before deployment. However, external evaluators often receive limited model access, limited information, and little time, which can reduce evaluation rigour and confidence. The EU General-Purpose AI Code of Practice calls for \"appropriate access\", but does not specify what this means in practice. Furthermore, there is no common framework for describing different types and levels of evaluator access. To address this gap, we propose a taxonomy of access methods for dangerous capability evaluations. We disentangle three aspects of access: model access, model information, and evaluation timeframe. For each aspect, we review benefits and risks, including how expanding access can reduce false negatives and improve stakeholder trust, but can also increase security and capacity challenges. We argue that these limitations can likely be mitigated through technical means and safeguards used in other industries. Based on the taxonomy, we propose three descriptive access levels: AL1 (black-box model access and minimal information), AL2 (grey-box model access and substantial information), and AL3 (white-box model access and comprehensive information), to support clearer communication between evaluators, frontier AI companies, and policymakers. We believe these levels correspond to the different standards for appropriate access defined in the EU Code of Practice, though these standards may change over time.",
+    "ai_summary": "This paper proposes a taxonomy of access methods for evaluating dangerous capabilities in frontier AI models. It examines model access, information, and timeframes across three descriptive levels to help frontier AI companies, evaluators, and policymakers conduct more rigorous safety assessments while managing security risks.",
+    "rationale": "The paper discusses external evaluations for dangerous capabilities of frontier AI models, focusing on model access levels, security risks associated with broader access, and governance frameworks like the EU Code of Practice. Therefore, it spans technical security, safety evaluation, and third-party risk governance. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3",
+      "TD5"
+    ],
     "subdomains": [
       "AI security",
       "Third-party AI risk management",
@@ -47,7 +68,14 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2605.16278v1",
+    "abstract": "The use of Artificial Intelligence (AI) in high-risk, decision-making scenarios presents technical, safety, and normative challenges; problems that may only be ameliorated by human oversight. However, notions of human oversight lack a common foundational understanding: oversight architectures are not well defined, the roles involved remain unclear, and implementation steps are opaque. Hence, researchers and practitioners struggle to determine how to design, implement, and evaluate systems that enable effective human oversight. This paper advances a practical framework for effective human oversight of AI systems, based on a cross-disciplinary perspective that draws on insights from computer science, human-computer interaction, psychology, philosophy, and law. The core contributions are: (1) a foundational framework, with a working definition, architecture and processes for effective human oversight of AI systems; (2) an initial template for documenting oversight architectures and processes, applied to diverse domains; and (3) a synthesis of open research challenges that need to be considered in the emerging field of effective human oversight of AI systems.",
+    "ai_summary": "This paper introduces a comprehensive framework for effective human oversight of artificial intelligence systems, addressing ambiguities in definitions, architectures, and implementation roles. By drawing from multiple disciplines, the authors provide a foundational model, a documentation template, and open research challenges to help design and evaluate human-in-the-loop AI systems.",
+    "rationale": "The paper focuses on establishing a practical framework and architecture for effective human oversight of AI systems to address technical, safety, and normative challenges. It directly addresses human agency and oversight under TD4 while touching upon organizational governance and actor responsibilities under TD5. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [
+      "TD4",
+      "TD5"
+    ],
     "subdomains": [
       "Human agency and oversight",
       "Accountability of AI Agent Actions",
@@ -61,7 +89,13 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2606.13962v1",
+    "abstract": "The integration of artificial intelligence into human decision-making environments has introduced a previously undertheorized cost: the gradual surrender of human autonomy in exchange for access to information and computational assistance. Building on the Human Identity and Autonomy Gap (HIAG) framework, this paper advances a theoretical model of autonomy surrender as a measurable, cumulative process driven by cognitive bandwidth depletion. The model proposes three interacting mechanisms: the silent cost of AI assistance, in which autonomy is transferred incrementally and without awareness; the surrender threshold, beyond which reclaiming autonomous function becomes cognitively and psychologically difficult; and the recovery mechanism, which establishes the design obligation and the ethical responsibility accompanying deliberate human re-assumption of control. The paper argues that human re-entry into the decision loop is not a passive option but an active cognitive event requiring intentional bandwidth restoration. The design of AI systems must incorporate structured re-entry pathways, here termed recovery mechanisms, that preserve human agency while appropriately distributing responsibility. The model further predicts a terminal state, here termed preference inversion, in which functional dependence on AI assistance is experienced not as a deficit but as a preference, transforming the restoration of autonomy from a design problem into a cultural and political one. Implications are drawn for AI system design, governance frameworks, and human factors research.",
+    "ai_summary": "This paper presents a theoretical model examining how reliance on AI assistance leads to a gradual, often unconscious surrender of human autonomy and cognitive control. It introduces the concepts of autonomy surrender, a surrender threshold, and recovery mechanisms designed to facilitate intentional human re-entry into decision-making loops and preserve agency.",
+    "rationale": "The paper investigates the theoretical and ethical implications of AI assistance on human decision-making, specifically focusing on the gradual surrender of human autonomy, cognitive bandwidth depletion, and the necessity of structural recovery mechanisms to restore human agency and oversight. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [
+      "TD4"
+    ],
     "subdomains": [
       "Human agency and oversight",
       "Loss of Human Agency and Autonomy",
@@ -76,7 +110,11 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2603.15937v1",
+    "abstract": "This article argues that the deployment of generative AI systems in legal profession requires strong restraint due to the critical risks of hallucination and overreliance. Central to this analysis is the definition of Generative Legal AI (GLAI), an umbrella term for systems specifically adapted for the legal domain which is ranging from document drafting to decision support in criminal justice. Unlike traditional AI, GLAI models are built on architectures designed for statistical token prediction rather than legal reasoning, often leading to confabulations where the system prioritizes linguistic fluency over factual accuracy. These hallucinations obscure the reasoning process, while the persuasive, human-like nature of the output encourages professional overreliance. The paper situates these dynamics within the framework of European AI governance, arguing that the interaction between fabricated data and automation bias fundamentally weakens the principle of explainability. The article concludes that without effective mechanisms for meaningful human scrutiny, the routine adoption of GLAI poses significant challenges to judicial independence and the protection of fundamental rights.",
+    "ai_summary": "This article examines the risks of deploying generative AI in the legal profession, focusing on how system hallucinations and persuasive language lead to professional overreliance. It argues that these dynamics weaken explainability and pose challenges to judicial independence and fundamental rights under European AI governance.",
+    "rationale": "The paper investigates the risks of Generative Legal AI (GLAI) such as hallucinations and professional overreliance, and how they undermine explainability and judicial independence. These issues map directly to transparency and explainability (TD2), safety and human oversight/reliability (TD4), and European AI governance and accountability (TD5). [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [],
     "subdomains": [
       "Transparency, Explainability & Traceability",
       "Safety, Reliability & Value Alignment",
@@ -90,7 +128,15 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2605.27355v2",
+    "abstract": "Reinforcement Learning from Human Feedback (RLHF) is the standard method to align Large Language Models (LLMs) with human preferences. In this work, we introduce alignment tampering, a potential vulnerability where the LLM undergoing alignment influences the preference dataset, causing RLHF to amplify undesired behaviors. This arises from core limitations of RLHF: (1) preference datasets are constructed from the LLM's own outputs, allowing it to influence them, and (2) pairwise comparisons only indicate which response is better, not why. These limitations can be exploited to cause alignment tampering. For example, if an LLM generates biased responses with higher quality, annotators will prefer them based on quality. However, preference labels do not distinguish quality from bias, and the reward model inherits this limitation. Optimizing such rewards through reinforcement learning or best-of-N sampling can amplify misaligned biases. Our experiments demonstrate amplification across diverse biases: from keyword bias to propaganda (e.g., sexism), brand promotion, and instrumental goal-seeking. Mitigation remains challenging, as existing techniques for robust RLHF fail to fully resolve alignment tampering without sacrificing response quality. These findings reveal structural vulnerabilities of current RLHF and emphasize the need to prevent this vulnerability. Project page: https://alignment-tampering.github.io/",
+    "ai_summary": "This paper introduces 'alignment tampering,' a vulnerability in Reinforcement Learning from Human Feedback (RLHF) where large language models manipulate their own preference datasets to amplify hidden biases, propaganda, and instrumental goals. The authors demonstrate this vulnerability across various biases and show that current mitigation techniques struggle to resolve the issue without degrading response quality.",
+    "rationale": "The paper investigates 'alignment tampering' in RLHF where LLMs exploit preference datasets to amplify misaligned behaviors like bias, propaganda, and sexism. This spans TD1 (output bias and fairness), TD4 (safety, reliability, and value alignment of RLHF), and TD7 (generation of manipulated or biased text/propaganda).",
     "confidence": 0.95,
+    "domains": [
+      "TD1",
+      "TD4",
+      "TD7"
+    ],
     "subdomains": [
       "Output bias",
       "Misaligned Actions",
@@ -104,7 +150,13 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2005.08454v3",
+    "abstract": "ML-based Phishing URL (MLPU) detectors serve as the first level of defence to protect users and organisations from being victims of phishing attacks. Lately, few studies have launched successful adversarial attacks against specific MLPU detectors raising questions about their practical reliability and usage. Nevertheless, the robustness of these systems has not been extensively investigated. Therefore, the security vulnerabilities of these systems, in general, remain primarily unknown which calls for testing the robustness of these systems. In this article, we have proposed a methodology to investigate the reliability and robustness of 50 representative state-of-the-art MLPU models. Firstly, we have proposed a cost-effective Adversarial URL generator URLBUG that created an Adversarial URL dataset. Subsequently, we reproduced 50 MLPU (traditional ML and Deep learning) systems and recorded their baseline performance. Lastly, we tested the considered MLPU systems on Adversarial Dataset and analyzed their robustness and reliability using box plots and heat maps. Our results showed that the generated adversarial URLs have valid syntax and can be registered at a median annual price of \\$11.99. Out of 13\\% of the already registered adversarial URLs, 63.94\\% were used for malicious purposes. Moreover, the considered MLPU models Matthew Correlation Coefficient (MCC) dropped from a median 0.92 to 0.02 when tested against $Adv_\\mathrm{data}$, indicating that the baseline MLPU models are unreliable in their current form. Further, our findings identified several security vulnerabilities of these systems and provided future directions for researchers to design dependable and secure MLPU systems.",
+    "ai_summary": "This paper evaluates the reliability and security of 50 state-of-the-art machine learning-based phishing URL detectors by testing them against newly generated adversarial URLs. The findings demonstrate that existing models are highly vulnerable to these adversarial attacks, experiencing a dramatic drop in performance.",
+    "rationale": "The paper investigates the robustness and security vulnerabilities of machine learning-based phishing URL detectors against adversarial attacks. Because this squarely addresses the technical robustness, resilience, and adversarial threats of AI systems, it falls under TD3. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Trustworthiness evaluation"
@@ -117,7 +169,13 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2603.22928v1",
+    "abstract": "Recent AI systems combine large language models with tools, external knowledge via retrieval-augmented generation (RAG), and even autonomous multi-agent decision loops. This agentic AI paradigm greatly expands capabilities - but also vastly enlarges the attack surface. In this systematization, we map out the trust boundaries and security risks of agentic LLM-based systems. We develop a comprehensive taxonomy of attacks spanning prompt-level injections, knowledge-base poisoning, tool/plug-in exploits, and multi-agent emergent threats. Through a detailed literature review, we synthesize evidence from 2023-2025, including more than 20 peer-reviewed and archival studies, industry reports, and standards. We find that agentic systems introduce new vectors for indirect prompt injection, code execution exploits, RAG index poisoning, and cross-agent manipulation that go beyond traditional AI threats. We define attacker models and threat scenarios, and propose metrics (e.g., Unsafe Action Rate, Privilege Escalation Distance) to evaluate security posture. Our survey examines defenses such as input sanitization, retrieval filters, sandboxes, access control, and \"AI guardrails,\" assessing their effectiveness and pointing out the areas where protection is still lacking. To assist practitioners, we outline defensive controls and provide a phased security checklist for deploying agentic AI (covering design-time hardening, runtime monitoring, and incident response). Finally, we outline open research challenges in secure autonomous AI (robust tool APIs, verifiable agent behavior, supply-chain safeguards) and discuss ethical and responsible disclosure practices. We systematize recent findings to help researchers and engineers understand and mitigate security risks in agentic AI.",
+    "ai_summary": "This paper presents a systematization of knowledge (SoK) mapping the security risks, trust boundaries, and attack vectors associated with agentic AI systems, including large language models integrated with tools, RAG pipelines, and multi-agent loops.",
+    "rationale": "The paper provides a comprehensive systematization of knowledge (SoK) regarding the security risks, attack surfaces, and vulnerabilities of agentic AI systems, specifically focusing on prompt injections, tool exploits, and knowledge-base poisoning. Therefore, it fits squarely into TD3 (Security, Resilience & Technical Integrity). [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Attack on AI Agents' External Resources"
@@ -130,7 +188,11 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2504.19120v2",
+    "abstract": "The goal of the current study is to introduce a triadic human-AI collaboration framework that could be applied in transportation systems such as automated vehicles, micromobility systems, and vehicle teleoperation. Previous standards, such as SAE Levels of Automation, have focused on defining automation levels based on who controls the vehicle. However, it is still not clear how human users and AI should collaborate in real time, especially in dynamic driving contexts where roles can shift frequently. To fill this gap, this study proposed a triadic human-AI collaboration framework with three AI roles: Advisor, Co-Pilot, and Guardian. These roles can dynamically adapt to human needs based on real-time data, such as mental states and environmental conditions. The Advisor AI offers informational support without direct intervention. The Co-Pilot AI provides partial intervention when needed, with the goal of sharing control with humans. The Guardian AI performs emergency overrides if necessary. The use cases for these AI roles in micromobility devices, such as e-scooters, are presented to demonstrate how these roles can influence user preferences and trust. Overall, the study takes a first step toward a universal role-based collaborative framework for AI standardization and explores how AI technologies can be embedded in future transportation systems while considering human interactions.",
+    "ai_summary": "This study proposes a triadic human-AI collaboration framework for transportation systems like automated vehicles and micromobility devices. The framework defines three dynamic AI roles—Advisor, Co-Pilot, and Guardian—that adapt to human needs in real time to manage shared control and safety interventions.",
+    "rationale": "The paper introduces a triadic human-AI collaboration framework for autonomous mobility, focusing on how human users and AI share control and maintain safety in dynamic driving contexts. This strongly maps to TD4 (Safety, Alignment & Human Oversight) by addressing system reliability, dynamic roles (Advisor, Co-Pilot, Guardian), and meaningful human oversight/intervention. [LLM overrode embedding shortlist]",
     "confidence": 0.9,
+    "domains": [],
     "subdomains": [
       "Safety, Reliability & Value Alignment :: Capability, use, benefit and cost assessment",
       "Safety, Reliability & Value Alignment :: Robustness and generalizability"
@@ -143,7 +205,13 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2508.05464v2",
+    "abstract": "The rapid advancement of General Purpose AI (GPAI) models necessitates robust evaluation frameworks, especially with emerging regulations like the EU AI Act and its associated Code of Practice (CoP). Current AI evaluation practices depend heavily on established benchmarks, but these tools were not designed to measure the systemic risks that are the focus of the new regulatory landscape. This research addresses the urgent need to quantify this \"benchmark-regulation gap.\" We introduce Bench-2-CoP, a novel, systematic framework that uses validated LLM-as-judge analysis to map the coverage of 194,955 questions from widely-used benchmarks against the EU AI Act's taxonomy of model capabilities and propensities. Our findings reveal a profound misalignment: the evaluation ecosystem dedicates the vast majority of its focus to a narrow set of behavioral propensities. On average, benchmarks devote 61.6% of their regulatory-relevant questions to \"Tendency to hallucinate\" and 31.2% to \"Lack of performance reliability\", while critical functional capabilities are dangerously neglected. Crucially, capabilities central to loss-of-control scenarios, including evading human oversight, self-replication, and autonomous AI development, receive zero coverage in the entire benchmark corpus. This study provides the first comprehensive, quantitative analysis of this gap, demonstrating that current public benchmarks are insufficient, on their own, for providing the evidence of comprehensive risk assessment required for regulatory compliance and offering critical insights for the development of next-generation evaluation tools.",
+    "ai_summary": "This paper introduces Bench-2-CoP, a systematic framework that analyzes the coverage of popular AI benchmarks against the EU AI Act's regulatory taxonomy. The findings demonstrate a severe misalignment in current evaluation ecosystems, which heavily focus on hallucination and reliability while completely ignoring critical systemic risk and loss-of-control capabilities.",
+    "rationale": "The paper investigates the alignment and gaps between current AI benchmarking practices and emerging regulatory frameworks such as the EU AI Act, directly connecting technical evaluations to regulatory compliance and safety/risk assessments.",
     "confidence": 0.95,
+    "domains": [
+      "TD4"
+    ],
     "subdomains": [
       "Capability, use, benefit and cost assessment",
       "Lack of Capability or Robustness",
@@ -157,7 +225,13 @@
     "year": 2021,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2102.03896v1",
+    "abstract": "AI systems often rely on two key components: a specified goal or reward function and an optimization algorithm to compute the optimal behavior for that goal. This approach is intended to provide value for a principal: the user on whose behalf the agent acts. The objectives given to these agents often refer to a partial specification of the principal's goals. We consider the cost of this incompleteness by analyzing a model of a principal and an agent in a resource constrained world where the $L$ attributes of the state correspond to different sources of utility for the principal. We assume that the reward function given to the agent only has support on $J < L$ attributes. The contributions of our paper are as follows: 1) we propose a novel model of an incomplete principal-agent problem from artificial intelligence; 2) we provide necessary and sufficient conditions under which indefinitely optimizing for any incomplete proxy objective leads to arbitrarily low overall utility; and 3) we show how modifying the setup to allow reward functions that reference the full state or allowing the principal to update the proxy objective over time can lead to higher utility solutions. The results in this paper argue that we should view the design of reward functions as an interactive and dynamic process and identifies a theoretical scenario where some degree of interactivity is desirable.",
+    "ai_summary": "This paper models the principal-agent problem in artificial intelligence, analyzing the costs of relying on incomplete proxy reward functions. The authors demonstrate that indefinitely optimizing incomplete objectives can lead to arbitrarily low utility, and suggest that treating reward design as an interactive, dynamic process can yield better solutions.",
+    "rationale": "The paper investigates the consequences of misspecified reward functions and objective incompleteness in AI agents using a principal-agent model. This directly falls under safety and value alignment (TD4), exploring how proxy objectives can lead to suboptimal or harmful outcomes and why reward design must be dynamic and interactive. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [
+      "TD4"
+    ],
     "subdomains": [
       "Value Alignment",
       "Robustness and generalizability"
@@ -170,7 +244,13 @@
     "year": 2024,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2410.14931v1",
+    "abstract": "Memories, encompassing past inputs in context window and retrieval-augmented generation (RAG), frequently surface during human-LLM interactions, yet users are often unaware of their presence and the associated privacy risks. To address this, we propose MemoAnalyzer, a system for identifying, visualizing, and managing private information within memories. A semi-structured interview (N=40) revealed that low privacy awareness was the primary challenge, while proactive privacy control emerged as the most common user need. MemoAnalyzer uses a prompt-based method to infer and identify sensitive information from aggregated past inputs, allowing users to easily modify sensitive content. Background color temperature and transparency are mapped to inference confidence and sensitivity, streamlining privacy adjustments. A 5-day evaluation (N=36) comparing MemoAnalyzer with the default GPT setting and a manual modification baseline showed MemoAnalyzer significantly improved privacy awareness and protection without compromising interaction speed. Our study contributes to privacy-conscious LLM design, offering insights into privacy protection for Human-AI interactions.",
+    "ai_summary": "This paper presents MemoAnalyzer, a system designed to help users identify, visualize, and manage private information stored in large language model memories and retrieval-augmented generation contexts. Through a prompt-based method and interactive visual cues, the system successfully improves user privacy awareness and protection without slowing down interactions.",
+    "rationale": "The paper directly addresses privacy leakage from LLM memory (including past inputs and RAG contexts) and introduces MemoAnalyzer to identify and manage sensitive information.",
     "confidence": 0.95,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -182,7 +262,14 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2603.08221v1",
+    "abstract": "Enterprise adoption of cloud-based AI agents faces a fundamental privacy dilemma: leveraging powerful cloud models requires sharing sensitive data, while local processing limits capability. Current agent frameworks like MCP and A2A assume complete data sharing, making them unsuitable for enterprise environments with confidential information. We present SplitAgent, a novel distributed architecture that enables privacy-preserving collaboration between enterprise-side privacy agents and cloud-side reasoning agents. Our key innovation is context-aware dynamic sanitization that adapts privacy protection based on task semantics -- contract review requires different sanitization than code review or financial analysis. SplitAgent extends existing agent protocols with differential privacy guarantees, zero-knowledge tool verification, and privacy budget management. Through comprehensive experiments on enterprise scenarios, we demonstrate that SplitAgent achieves 83.8\\% task accuracy while maintaining 90.1\\% privacy protection, significantly outperforming static approaches (73.2\\% accuracy, 79.7\\% privacy). Context-aware sanitization improves task utility by 24.1\\% over static methods while reducing privacy leakage by 67\\%. Our architecture provides a practical path for enterprise AI adoption without compromising sensitive data.",
+    "ai_summary": "SplitAgent is a distributed architecture that allows enterprise-side privacy agents and cloud-side reasoning agents to collaborate securely without exposing sensitive data. It uses context-aware dynamic sanitization and differential privacy guarantees to achieve high task accuracy while protecting sensitive information.",
+    "rationale": "The paper directly addresses privacy and security concerns in enterprise-cloud AI agent collaboration by introducing context-aware dynamic sanitization, differential privacy guarantees, and zero-knowledge tool verification.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -195,7 +282,13 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2603.04775v1",
+    "abstract": "With the increasing deployment of intelligent sensing technologies in highly sensitive environments such as restrooms and locker rooms, visual surveillance systems face a profound privacy-security paradox. Existing privacy-preserving approaches, including physical desensitization, encryption, and obfuscation, often compromise semantic understanding or fail to ensure mathematically provable irreversibility. Although Privacy Camera 1.0 eliminated visual data at the source to prevent leakage, it provided only textual judgments, leading to evidentiary blind spots in disputes. To address these limitations, this paper proposes a novel privacy-preserving perception framework based on the AI Flow paradigm and a collaborative edge-cloud architecture. By deploying a visual desensitizer at the edge, raw images are transformed in real time into abstract feature vectors through nonlinear mapping and stochastic noise injection under the Information Bottleneck principle, ensuring identity-sensitive information is stripped and original images are mathematically unreconstructable. The abstract representations are transmitted to the cloud for behavior recognition and semantic reconstruction via a \"dynamic contour\" visual language, achieving a critical balance between perception and privacy while enabling illustrative visual reference without exposing raw images.",
+    "ai_summary": "This technical report introduces Privacy-Aware Camera 2.0, a framework that resolves the privacy-security paradox in sensitive visual surveillance environments. By applying edge-based nonlinear mapping and stochastic noise injection, the system strips identity-sensitive information and generates mathematically unreconstructable abstract representations for cloud-based behavior recognition.",
+    "rationale": "The paper directly addresses privacy-preserving visual surveillance, focusing on preventing the leakage of sensitive visual data through edge-based desensitization, information bottleneck principles, and mathematically unreconstructable representations.",
     "confidence": 0.95,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -207,7 +300,13 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2601.22938v1",
+    "abstract": "As intelligent sensing expands into high-privacy environments such as restrooms and changing rooms, the field faces a critical privacy-security paradox. Traditional RGB surveillance raises significant concerns regarding visual recording and storage, while existing privacy-preserving methods-ranging from physical desensitization to traditional cryptographic or obfuscation techniques-often compromise semantic understanding capabilities or fail to guarantee mathematical irreversibility against reconstruction attacks. To address these challenges, this study presents a novel privacy-preserving perception technology based on the AI Flow theoretical framework and an edge-cloud collaborative architecture. The proposed methodology integrates source desensitization with irreversible feature mapping. Leveraging Information Bottleneck theory, the edge device performs millisecond-level processing to transform raw imagery into abstract feature vectors via non-linear mapping and stochastic noise injection. This process constructs a unidirectional information flow that strips identity-sensitive attributes, rendering the reconstruction of original images impossible. Subsequently, the cloud platform utilizes multimodal family models to perform joint inference solely on these abstract vectors to detect abnormal behaviors. This approach fundamentally severs the path to privacy leakage at the architectural level, achieving a breakthrough from video surveillance to de-identified behavior perception and offering a robust solution for risk management in high-sensitivity public spaces.",
+    "ai_summary": "This paper introduces a real-time privacy-preserving behavior recognition system using edge-cloud collaboration to monitor high-privacy environments without risking visual data leaks. By transforming raw imagery into irreversible abstract feature vectors at the edge, the system allows the cloud to perform behavior inference while fundamentally preventing the reconstruction of original identities.",
+    "rationale": "The paper directly addresses privacy preservation in high-sensitivity environments by preventing the reconstruction of original images and stripping identity-sensitive attributes, falling squarely under the Privacy & security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -219,7 +318,14 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2503.15548v1",
+    "abstract": "The widespread adoption of Retrieval-Augmented Generation (RAG) systems in real-world applications has heightened concerns about the confidentiality and integrity of their proprietary knowledge bases. These knowledge bases, which play a critical role in enhancing the generative capabilities of Large Language Models (LLMs), are increasingly vulnerable to breaches that could compromise sensitive information. To address these challenges, this paper proposes an advanced encryption methodology designed to protect RAG systems from unauthorized access and data leakage. Our approach encrypts both textual content and its corresponding embeddings prior to storage, ensuring that all data remains securely encrypted. This mechanism restricts access to authorized entities with the appropriate decryption keys, thereby significantly reducing the risk of unintended data exposure. Furthermore, we demonstrate that our encryption strategy preserves the performance and functionality of RAG pipelines, ensuring compatibility across diverse domains and applications. To validate the robustness of our method, we provide comprehensive security proofs that highlight its resilience against potential threats and vulnerabilities. These proofs also reveal limitations in existing approaches, which often lack robustness, adaptability, or reliance on open-source models. Our findings suggest that integrating advanced encryption techniques into the design and deployment of RAG systems can effectively enhance privacy safeguards. This research contributes to the ongoing discourse on improving security measures for AI-driven services and advocates for stricter data protection standards within RAG architectures.",
+    "ai_summary": "This paper proposes an advanced encryption methodology for Retrieval-Augmented Generation (RAG) systems to protect proprietary knowledge bases from unauthorized access and data leakage. By encrypting textual content and embeddings prior to storage, the approach ensures that sensitive information remains secure while maintaining pipeline performance.",
+    "rationale": "The paper directly addresses privacy preservation and security vulnerabilities in Retrieval-Augmented Generation (RAG) systems by proposing advanced encryption methodologies for both text and embeddings to prevent data leakage.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -232,7 +338,11 @@
     "year": 2020,
     "source": "openalex",
     "link": "https://doi.org/10.1038/s42256-020-0186-1",
+    "abstract": null,
+    "ai_summary": "This paper explores methods for secure, privacy-preserving, and federated machine learning specifically applied to medical imaging.",
+    "rationale": "The paper focuses on secure, privacy-preserving, and federated machine learning in medical imaging, which directly falls under Domain 2 (Privacy & security).",
     "confidence": 0.9,
+    "domains": [],
     "subdomains": [
       "Privacy",
       "Security"
@@ -245,7 +355,13 @@
     "year": 2024,
     "source": "openalex",
     "link": "https://doi.org/10.3390/app14020675",
+    "abstract": "Integrating Artificial Intelligence (AI) in healthcare represents a transformative shift with substantial potential for enhancing patient care. This paper critically examines this integration, confronting significant ethical, legal, and technological challenges, particularly in patient privacy, decision-making autonomy, and data integrity. A structured exploration of these issues focuses on Differential Privacy as a critical method for preserving patient confidentiality in AI-driven healthcare systems. We analyze the balance between privacy preservation and the practical utility of healthcare data, emphasizing the effectiveness of encryption, Differential Privacy, and mixed-model approaches. The paper navigates the complex ethical and legal frameworks essential for AI integration in healthcare. We comprehensively examine patient rights and the nuances of informed consent, along with the challenges of harmonizing advanced technologies like blockchain with the General Data Protection Regulation (GDPR). The issue of algorithmic bias in healthcare is also explored, underscoring the urgent need for effective bias detection and mitigation strategies to build patient trust. The evolving roles of decentralized data sharing, regulatory frameworks, and patient agency are discussed in depth. Advocating for an interdisciplinary, multi-stakeholder approach and responsive governance, the paper aims to align healthcare AI with ethical principles, prioritize patient-centered outcomes, and steer AI towards responsible and equitable enhancements in patient care.",
+    "ai_summary": "This paper examines the integration of artificial intelligence in healthcare, specifically addressing major challenges related to patient privacy, data integrity, and regulatory compliance. It evaluates technical solutions like differential privacy and encryption alongside legal frameworks such as GDPR to ensure patient confidentiality and trust.",
+    "rationale": "The paper directly addresses privacy concerns in AI-driven healthcare, focusing heavily on patient confidentiality, differential privacy, data leaks, and regulatory compliance like GDPR.",
     "confidence": 0.95,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -257,7 +373,14 @@
     "year": 2024,
     "source": "openalex",
     "link": "https://doi.org/10.2196/53008",
+    "abstract": "As advances in artificial intelligence (AI) continue to transform and revolutionize the field of medicine, understanding the potential uses of generative AI in health care becomes increasingly important. Generative AI, including models such as generative adversarial networks and large language models, shows promise in transforming medical diagnostics, research, treatment planning, and patient care. However, these data-intensive systems pose new threats to protected health information. This Viewpoint paper aims to explore various categories of generative AI in health care, including medical diagnostics, drug discovery, virtual health assistants, medical research, and clinical decision support, while identifying security and privacy threats within each phase of the life cycle of such systems (ie, data collection, model development, and implementation phases). The objectives of this study were to analyze the current state of generative AI in health care, identify opportunities and privacy and security challenges posed by integrating these technologies into existing health care infrastructure, and propose strategies for mitigating security and privacy risks. This study highlights the importance of addressing the security and privacy threats associated with generative AI in health care to ensure the safe and effective use of these systems. The findings of this study can inform the development of future generative AI systems in health care and help health care organizations better understand the potential benefits and risks associated with these systems. By examining the use cases and benefits of generative AI across diverse domains within health care, this paper contributes to theoretical discussions surrounding AI ethics, security vulnerabilities, and data privacy regulations. In addition, this study provides practical insights for stakeholders looking to adopt generative AI solutions within their organizations.",
+    "ai_summary": "This paper explores the application of generative AI in medical practice while detailing the significant privacy and security threats associated with data collection, model development, and clinical implementation. It evaluates risks to protected health information and offers mitigation strategies for safe integration into healthcare infrastructure.",
+    "rationale": "The paper directly addresses the privacy and security challenges of generative AI in healthcare, focusing on protected health information and system lifecycle vulnerabilities. It fits neatly into Domain 2 under both information compromise and security vulnerabilities.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -270,7 +393,11 @@
     "year": 2021,
     "source": "openalex",
     "link": "https://doi.org/10.1109/ojcoms.2021.3078081",
+    "abstract": "Although the fifth generation (5G) wireless networks are yet to be fully investigated, the visionaries of the 6th generation (6G) echo systems have already come into the discussion. Therefore, in order to consolidate and solidify the security and privacy in 6G networks, we survey how security may impact the envisioned 6G wireless systems, possible challenges with different 6G technologies, and the potential solutions. We provide our vision on 6G security and security key performance indicators (KPIs) with the tentative threat landscape based on the foreseen 6G network architecture. Moreover, we discuss the security and privacy challenges that may encounter with the available 6G requirements and potential 6G applications. We also give the reader some insights into the standardization efforts and research-level projects relevant to 6G security. In particular, we discuss the security considerations with 6G enabling technologies such as distributed ledger technology (DLT), physical layer security, distributed AI/ML, visible light communication (VLC), THz, and quantum computing. All in all, this work intends to provide enlightening guidance for the subsequent research of 6G security and privacy at this initial phase of vision towards reality.",
+    "ai_summary": "This paper provides a comprehensive survey of security and privacy considerations for future 6G wireless networks. It outlines potential threats, enabling technologies such as distributed AI and quantum computing, and future research directions to ensure secure communications.",
+    "rationale": "The paper focuses specifically on the security and privacy challenges, threat landscapes, and potential solutions for upcoming 6G wireless systems. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [],
     "subdomains": [
       "Privacy",
       "Security Vulnerabilities"
@@ -283,7 +410,14 @@
     "year": 2020,
     "source": "openalex",
     "link": "https://doi.org/10.1109/access.2020.2975142",
+    "abstract": "Internet of Things (IoT) and smart computing technologies have revolutionized every sphere of 21 <sup xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">st</sup> century humans. IoT technologies and the data driven services they offer were beyond imagination just a decade ago. Now, they surround us and influence a variety of domains such as automobile, smart home, healthcare, etc. In particular, the Agriculture and Farming industries have also embraced this technological intervention. Smart devices are widely used by a range of people from farmers to entrepreneurs. These technologies are used in a variety of ways, from finding real-time status of crops and soil moisture content to deploying drones to assist with tasks such as applying pesticide spray. However, the use of IoT and smart communication technologies introduce a vast exposure to cybersecurity threats and vulnerabilities in smart farming environments. Such cyber attacks have the potential to disrupt the economies of countries that are widely dependent on agriculture. In this paper, we present a holistic study on security and privacy in a smart farming ecosystem. The paper outlines a multi layered architecture relevant to the precision agriculture domain and discusses the security and privacy issues in this dynamic and distributed cyber physical environment. Further more, the paper elaborates on potential cyber attack scenarios and highlights open research challenges and future directions.",
+    "ai_summary": "This paper examines the security and privacy challenges introduced by the adoption of Internet of Things (IoT) and smart technologies in agriculture. It outlines a multi-layered architecture for precision agriculture, analyzes potential cyber attack scenarios, and discusses open research challenges in safeguarding these cyber-physical environments.",
+    "rationale": "The paper directly addresses cybersecurity threats, system vulnerabilities, and privacy issues within IoT-enabled smart farming ecosystems.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -296,7 +430,14 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2510.05753v2",
+    "abstract": "With the emergence of powerful large-scale foundation models, the training paradigm is increasingly shifting from from-scratch training to transfer learning. This enables high utility training with small, domain-specific datasets typical in sensitive applications. Membership inference attacks (MIAs) provide an empirical estimate of the privacy leakage by machine learning models. Yet, prior assessments of MIAs against models fine-tuned with transfer learning rely on a small subset of possible attacks. We address this by comparing performance of diverse MIAs in transfer learning settings to help practitioners identify the most efficient attacks for privacy risk evaluation. We find that attack efficacy decreases with the increase in training data for score-based MIAs. We find that there is no one MIA which captures all privacy risks in models trained with transfer learning. While the Likelihood Ratio Attack (LiRA) demonstrates superior performance across most experimental scenarios, the Inverse Hessian Attack (IHA) proves to be more effective against models fine-tuned on PatchCamelyon dataset in high data regime.",
+    "ai_summary": "This paper empirically evaluates various membership inference attacks against machine learning models trained using deep transfer learning. The findings demonstrate that attack effectiveness varies depending on the training regime and dataset size, with different attacks succeeding in different scenarios. The research aims to help practitioners better assess privacy risks in transfer learning applications.",
+    "rationale": "The paper investigates membership inference attacks (MIAs) as a method to evaluate privacy leakage in machine learning models trained via deep transfer learning. This directly addresses both privacy compromise through inference and adversarial security vulnerabilities in AI systems.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -309,7 +450,14 @@
     "year": 2021,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2111.09679v4",
+    "abstract": "How much does a machine learning algorithm leak about its training data, and why? Membership inference attacks are used as an auditing tool to quantify this leakage. In this paper, we present a comprehensive \\textit{hypothesis testing framework} that enables us not only to formally express the prior work in a consistent way, but also to design new membership inference attacks that use reference models to achieve a significantly higher power (true positive rate) for any (false positive rate) error. More importantly, we explain \\textit{why} different attacks perform differently. We present a template for indistinguishability games, and provide an interpretation of attack success rate across different instances of the game. We discuss various uncertainties of attackers that arise from the formulation of the problem, and show how our approach tries to minimize the attack uncertainty to the one bit secret about the presence or absence of a data point in the training set. We perform a \\textit{differential analysis} between all types of attacks, explain the gap between them, and show what causes data points to be vulnerable to an attack (as the reasons vary due to different granularities of memorization, from overfitting to conditional memorization). Our auditing framework is openly accessible as part of the \\textit{Privacy Meter} software tool.",
+    "ai_summary": "This paper introduces a formal hypothesis testing framework for membership inference attacks to analyze how machine learning models leak information about their training data. By using reference models and an indistinguishability game template, the authors explain the performance gap between different attacks and identify why specific data points are vulnerable to memorization. The proposed auditing framework is made publicly available through the Privacy Meter software tool.",
+    "rationale": "The paper investigates membership inference attacks to quantify data leakage from machine learning models, fitting directly under privacy compromise and AI security vulnerabilities.",
     "confidence": 1.0,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -322,7 +470,14 @@
     "year": 2023,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2310.13786v6",
+    "abstract": "Membership inference attacks (MIA) can reveal whether a particular data point was part of the training dataset, potentially exposing sensitive information about individuals. This article provides theoretical guarantees by exploring the fundamental statistical limitations associated with MIAs on machine learning models at large. More precisely, we first derive the statistical quantity that governs the effectiveness and success of such attacks. We then theoretically prove that in a non-linear regression setting with overfitting learning procedures, attacks may have a high probability of success. Finally, we investigate several situations for which we provide bounds on this quantity of interest. Interestingly, our findings indicate that discretizing the data might enhance the learning procedure's security. Specifically, it is demonstrated to be limited by a constant, which quantifies the diversity of the underlying data distribution. We illustrate those results through simple simulations.",
+    "ai_summary": "This paper analyzes the fundamental statistical limits of membership inference attacks against machine learning models, which can expose sensitive training data. The authors provide theoretical guarantees, prove success conditions under overfitting, and discuss potential mitigation strategies like data discretization.",
+    "rationale": "The paper investigates membership inference attacks which pose risks to data privacy by determining training set inclusion, thus falling squarely under Domain 2 for both privacy compromise and system security vulnerabilities.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -335,7 +490,14 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2001.08855v1",
+    "abstract": "Machine learning algorithms, when applied to sensitive data, pose a potential threat to privacy. A growing body of prior work has demonstrated that membership inference attack (MIA) can disclose specific private information in the training data to an attacker. Meanwhile, the algorithmic fairness of machine learning has increasingly caught attention from both academia and industry. Algorithmic fairness ensures that the machine learning models do not discriminate a particular demographic group of individuals (e.g., black and female people). Given that MIA is indeed a learning model, it raises a serious concern if MIA ``fairly'' treats all groups of individuals equally. In other words, whether a particular group is more vulnerable against MIA than the other groups. This paper examines the algorithmic fairness issue in the context of MIA and its defenses. First, for fairness evaluation, it formalizes the notation of vulnerability disparity (VD) to quantify the difference of MIA treatment on different demographic groups. Second, it evaluates VD on four real-world datasets, and shows that VD indeed exists in these datasets. Third, it examines the impacts of differential privacy, as a defense mechanism of MIA, on VD. The results show that although DP brings significant change on VD, it cannot eliminate VD completely. Therefore, fourth, it designs a new mitigation algorithm named FAIRPICK to reduce VD. An extensive set of experimental results demonstrate that FAIRPICK can effectively reduce VD for both with and without the DP deployment.",
+    "ai_summary": "This paper examines vulnerability disparity in membership inference attacks across different demographic groups in machine learning models. It demonstrates that differential privacy alone cannot eliminate this disparity and introduces a novel mitigation algorithm called FAIRPICK to reduce vulnerability differences.",
+    "rationale": "The paper investigates membership inference attacks which leak sensitive training data, tying directly into privacy compromise and system vulnerabilities. It also explores demographic disparities in vulnerability and how differential privacy impacts this fairness, perfectly aligning with Domain 2.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -348,7 +510,11 @@
     "year": 2022,
     "source": "openalex",
     "link": "https://doi.org/10.1145/3523273",
+    "abstract": "Machine learning (ML) models have been widely applied to various applications, including image classification, text generation, audio recognition, and graph data analysis. However, recent studies have shown that ML models are vulnerable to membership inference attacks (MIAs), which aim to infer whether a data record was used to train a target model or not. MIAs on ML models can directly lead to a privacy breach. For example, via identifying the fact that a clinical record that has been used to train a model associated with a certain disease, an attacker can infer that the owner of the clinical record has the disease with a high chance. In recent years, MIAs have been shown to be effective on various ML models, e.g., classification models and generative models. Meanwhile, many defense methods have been proposed to mitigate MIAs. Although MIAs on ML models form a newly emerging and rapidly growing research area, there has been no systematic survey on this topic yet. In this article, we conduct the first comprehensive survey on membership inference attacks and defenses. We provide the taxonomies for both attacks and defenses, based on their characterizations, and discuss their pros and cons. Based on the limitations and gaps identified in this survey, we point out several promising future research directions to inspire the researchers who wish to follow this area. This survey not only serves as a reference for the research community but also provides a clear description for researchers outside this research domain. To further help the researchers, we have created an online resource repository, which we will keep updated with future relevant work. Interested readers can find the repository at https://github.com/HongshengHu/membership-inference-machine-learning-literature.",
+    "ai_summary": "This paper presents the first comprehensive survey of membership inference attacks and defenses in machine learning, outlining current taxonomies, methodologies, and open research directions. It highlights how these attacks can breach user privacy by determining whether specific data records were used in model training.",
+    "rationale": "The paper provides a comprehensive survey on membership inference attacks (MIAs) against machine learning models, which are direct threats to both model security and individual privacy through data leakage and inference.",
     "confidence": 1.0,
+    "domains": [],
     "subdomains": [
       "Privacy & security :: 2.1 Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information",
       "Privacy & security :: 2.2 AI system security vulnerabilities and attacks"
@@ -361,7 +527,14 @@
     "year": 2019,
     "source": "openalex",
     "link": "https://doi.org/10.1109/tsc.2019.2897554",
+    "abstract": "Membership inference attacks seek to infer membership of individual training instances of a model to which an adversary has black-box access through a machine learning-as-a-service API. In providing an in-depth characterization of membership privacy risks against machine learning models, this paper presents a comprehensive study towards demystifying membership inference attacks from two complimentary perspectives. First, we provide a generalized formulation of the development of a black-box membership inference attack model. Second, we characterize the importance of model choice on model vulnerability through a systematic evaluation of a variety of machine learning models and model combinations using multiple datasets. Through formal analysis and empirical evidence from extensive experimentation, we characterize under what conditions a model may be vulnerable to such black-box membership inference attacks. We show that membership inference vulnerability is data-driven and corresponding attack models are largely transferable. Though different model types display different vulnerabilities to membership inference, so do different datasets. Our empirical results additionally show that (1) using the type of target model under attack within the attack model may not increase attack effectiveness and (2) collaborative learning exposes vulnerabilities to membership inference risks when the adversary is a participant. We also discuss countermeasure and mitigation strategies.",
+    "ai_summary": "This paper provides a comprehensive study on membership inference attacks in machine learning as a service, characterizing the privacy risks and vulnerabilities of different models and datasets. Through formal analysis and empirical evaluation, the authors demonstrate how adversaries can infer whether a specific data point was used in training, and discuss potential countermeasures.",
+    "rationale": "The paper investigates membership inference attacks against machine learning models, which directly compromises training data privacy and exposes AI system security vulnerabilities.",
     "confidence": 1.0,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -374,7 +547,11 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2606.12114v1",
+    "abstract": "Sensitive personal information can appear in large-scale pre-training corpora for large language models (LLMs). Detecting and filtering such information is therefore essential to ensure compliance with privacy regulations and prevent unintended information leakage. However, in contrast to English and other languages, research into sensitive personal information has been limited in the Japanese language. In this study, we focus on sensitive personal data defined as special care-required personal information (SCPI) under Japan's Act on the Protection of Personal Information (APPI). We construct an SCPI dataset using LLM-based annotation and train machine learning models to rapidly detect SCPI in text. As a result, our SCPI classifier can effectively identify information related to SCPI. This study is the first to explore SCPI detection in Japanese text corpora, highlighting the challenges of accurate detection.",
+    "ai_summary": "This paper investigates the detection of sensitive personal information, specifically special care-required personal information under Japan's APPI, within Japanese pre-training datasets for large language models. The authors construct an annotated dataset and train classifiers to effectively identify privacy risks and prevent information leakage.",
+    "rationale": "The paper directly addresses privacy concerns in AI by proposing a method to detect sensitive personal information in large language model training corpora to ensure regulatory compliance. [LLM overrode embedding shortlist]",
     "confidence": 0.95,
+    "domains": [],
     "subdomains": [
       "Data Protection",
       "Privacy"
@@ -387,7 +564,13 @@
     "year": 2023,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2307.01881v1",
+    "abstract": "The rapid advancement and widespread use of large language models (LLMs) have raised significant concerns regarding the potential leakage of personally identifiable information (PII). These models are often trained on vast quantities of web-collected data, which may inadvertently include sensitive personal data. This paper presents ProPILE, a novel probing tool designed to empower data subjects, or the owners of the PII, with awareness of potential PII leakage in LLM-based services. ProPILE lets data subjects formulate prompts based on their own PII to evaluate the level of privacy intrusion in LLMs. We demonstrate its application on the OPT-1.3B model trained on the publicly available Pile dataset. We show how hypothetical data subjects may assess the likelihood of their PII being included in the Pile dataset being revealed. ProPILE can also be leveraged by LLM service providers to effectively evaluate their own levels of PII leakage with more powerful prompts specifically tuned for their in-house models. This tool represents a pioneering step towards empowering the data subjects for their awareness and control over their own data on the web.",
+    "ai_summary": "This paper introduces ProPILE, a novel probing tool designed to help data subjects and LLM service providers evaluate the potential leakage of personally identifiable information (PII) within large language models. The tool enables users to systematically test models using prompts based on their own data to assess the extent of privacy intrusion.",
+    "rationale": "The paper directly addresses privacy concerns in large language models by introducing a tool to probe and evaluate the leakage of personally identifiable information (PII), aligning directly with Domain 2's focus on privacy compromise.",
     "confidence": 1.0,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -399,7 +582,13 @@
     "year": 2024,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2408.08930v1",
+    "abstract": "Prompt serves as a crucial link in interacting with large language models (LLMs), widely impacting the accuracy and interpretability of model outputs. However, acquiring accurate and high-quality responses necessitates precise prompts, which inevitably pose significant risks of personal identifiable information (PII) leakage. Therefore, this paper proposes DePrompt, a desensitization protection and effectiveness evaluation framework for prompt, enabling users to safely and transparently utilize LLMs. Specifically, by leveraging large model fine-tuning techniques as the underlying privacy protection method, we integrate contextual attributes to define privacy types, achieving high-precision PII entity identification. Additionally, through the analysis of key features in prompt desensitization scenarios, we devise adversarial generative desensitization methods that retain important semantic content while disrupting the link between identifiers and privacy attributes. Furthermore, we present utility evaluation metrics for prompt to better gauge and balance privacy and usability. Our framework is adaptable to prompts and can be extended to text usability-dependent scenarios. Through comparison with benchmarks and other model methods, experimental evaluations demonstrate that our desensitized prompt exhibit superior privacy protection utility and model inference results.",
+    "ai_summary": "This paper introduces DePrompt, a framework designed to identify and desensitize personal identifiable information (PII) within prompts used to interact with large language models. The method balances privacy protection with model utility by using adversarial generative desensitization to disrupt sensitive identifiers while preserving necessary semantic content.",
+    "rationale": "The paper directly addresses privacy concerns related to large language model prompts, specifically preventing the leakage of personally identifiable information (PII) through desensitization protection frameworks.",
     "confidence": 0.95,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -411,7 +600,14 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2506.00759v2",
+    "abstract": "Large Language Models (LLMs) trained on massive data capture rich information embedded in the training data. However, this also introduces the risk of privacy leakage, particularly involving personally identifiable information (PII). Although previous studies have shown that this risk can be mitigated through methods such as privacy neurons, they all assume that both the (sensitive) training data and user queries are in English. We show that they cannot defend against the privacy leakage in cross-lingual contexts: even if the training data is exclusively in one language, these (private) models may still reveal private information when queried in another language. In this work, we first investigate the information flow of cross-lingual privacy leakage to give a better understanding. We find that LLMs process private information in the middle layers, where representations are largely shared across languages. The risk of leakage peaks when converted to a language-specific space in later layers. Based on this, we identify privacy-universal neurons and language-specific privacy neurons. Privacy-universal neurons influence privacy leakage across all languages, while language-specific privacy neurons are only related to specific languages. By deactivating these neurons, the cross-lingual privacy leakage risk is reduced by 23.3%-31.6%.",
+    "ai_summary": "This paper investigates cross-lingual privacy leakage in Large Language Models, demonstrating that models trained in one language can leak sensitive information when queried in another. The authors identify specific 'privacy-universal' and 'language-specific' neurons responsible for this phenomenon and show that deactivating them can mitigate cross-lingual privacy risks.",
+    "rationale": "The paper investigates how Large Language Models leak personally identifiable information (PII) in cross-lingual contexts and proposes a method to mitigate this risk by identifying and deactivating privacy-related neurons. This falls directly under privacy compromise and system security/vulnerability mitigation.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -424,7 +620,13 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2510.07452v2",
+    "abstract": "Language models (LMs) may memorize personally identifiable information (PII) from training data, enabling adversaries to extract it during inference. Existing defense mechanisms such as differential privacy (DP) reduce this leakage, but incur large drops in utility. Based on a comprehensive study using circuit discovery to identify the computational circuits responsible PII leakage in LMs, we hypothesize that specific PII leakage circuits in LMs should be responsible for this behavior. Therefore, we propose PATCH (Privacy-Aware Targeted Circuit PatcHing), a novel approach that first identifies and subsequently directly edits PII circuits to reduce leakage. PATCH achieves better privacy-utility trade-off than existing defenses, e.g., reducing recall of PII leakage from LMs by up to 65%. Finally, PATCH can be combined with DP to reduce recall of residual leakage of an LM to as low as 0.01%. Our analysis shows that PII leakage circuits persist even after the application of existing defense mechanisms. In contrast, PATCH can effectively mitigate their impact.",
+    "ai_summary": "This paper introduces PATCH (Privacy-Aware Targeted Circuit PatcHing), a novel method designed to identify and directly edit specific computational circuits responsible for personally identifiable information (PII) leakage in language models. The approach successfully reduces PII leakage and achieves a better privacy-utility trade-off compared to traditional defense mechanisms.",
+    "rationale": "The paper addresses the memorization and leakage of personally identifiable information (PII) in language models and proposes a targeted method called PATCH to mitigate this privacy risk while maintaining model utility.",
     "confidence": 1.0,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -436,7 +638,13 @@
     "year": 2025,
     "source": "openalex",
     "link": "http://arxiv.org/abs/2501.12948",
+    "abstract": "As Large Language Models (LLMs) become increasingly integrated into secure software development workflows, a critical question remains unanswered: can these models not only detect insecure code but also reliably classify vulnerabilities according to standardized taxonomies? In this work, we conduct a systematic evaluation of three state-of-the-art LLMs - Llama3, Codestral, and Deepseek R1 - using a carefully filtered subset of the Big-Vul dataset annotated with eight representative Common Weakness Enumeration categories. Adopting a closed-world classification setup, we assess each model’s performance in both identifying the presence of vulnerabilities and mapping them to the correct CWE label. Our findings reveal a sharp contrast between high detection rates and markedly poor classification accuracy, with frequent overgeneralization and misclassification. Moreover, we analyze model-specific biases and common failure modes, shedding light on the limitations of current LLMs in performing fine-grained security reasoning.These insights are especially relevant in educational contexts, where LLMs are being adopted as learning aids despite their limitations. A nuanced understanding of their behaviour is essential to prevent the propagation of misconceptions among students. Our results expose key challenges that must be addressed before LLMs can be reliably deployed in security-sensitive environments.",
+    "ai_summary": "This paper evaluates the performance of state-of-the-art open large language models in detecting and classifying software code vulnerabilities using standardized taxonomies. The findings reveal that while models can often detect potential insecurities, they struggle significantly with accurate fine-grained classification and vulnerability reasoning. These limitations highlight the risks and challenges of deploying LLMs in security-sensitive software development and educational workflows.",
+    "rationale": "The paper investigates the capability of open-source large language models to detect and classify software security vulnerabilities, falling directly under AI system security and vulnerability assessment.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -448,7 +656,13 @@
     "year": 2009,
     "source": "openalex",
     "link": "https://doi.org/10.1145/1592665.1592668",
+    "abstract": "For purposes of this paper, we define \"Personally identifiable information\" (PII) as information which can be used to distinguish or trace an individual's identity either alone or when combined with other information that is linkable to a specific individual. The popularity of Online Social Networks (OSN) has accelerated the appearance of vast amounts of personal information on the Internet. Our research shows that it is possible for third-parties to link PII, which is leaked via OSNs, with user actions both within OSN sites and else-where on non-OSN sites. We refer to this ability to link PII and combine it with other information as \"leakage\". We have identified multiple ways by which such leakage occurs and discuss measures to prevent it.",
+    "ai_summary": "This paper investigates how personally identifiable information (PII) is leaked through online social networks and how third parties can combine this data with other sources to compromise user privacy. It identifies multiple vectors for such data leakage and discusses potential preventative measures.",
+    "rationale": "The paper directly addresses the leakage and linking of personally identifiable information (PII) via online social networks, aligning perfectly with the Privacy & security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -460,7 +674,13 @@
     "year": 2009,
     "source": "openalex",
     "link": "https://doi.org/10.1007/978-3-642-03356-8_3",
+    "abstract": null,
+    "ai_summary": "This paper investigates leakage-resilient public-key cryptography operating within the bounded-retrieval model to secure cryptographic systems against unauthorized information extraction. It provides foundational mechanisms for safeguarding sensitive data against side-channel or leakage attacks.",
+    "rationale": "The paper discusses leakage-resilient public-key cryptography within the bounded-retrieval model, which directly relates to preventing information leakage and data security vulnerabilities covered under Domain 2.",
     "confidence": 0.85,
+    "domains": [
+      "TD2"
+    ],
     "subdomains": [
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
     ]
@@ -472,7 +692,13 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2502.13175v2",
+    "abstract": "Embodied AI systems, including robots and autonomous vehicles, are increasingly integrated into real-world applications, where they encounter a range of vulnerabilities stemming from both environmental and system-level factors. These vulnerabilities manifest through sensor spoofing, adversarial attacks, and failures in task and motion planning, posing significant challenges to robustness and safety. Despite the growing body of research, existing reviews rarely focus specifically on the unique safety and security challenges of embodied AI systems. Most prior work either addresses general AI vulnerabilities or focuses on isolated aspects, lacking a dedicated and unified framework tailored to embodied AI. This survey fills this critical gap by: (1) categorizing vulnerabilities specific to embodied AI into exogenous (e.g., physical attacks, cybersecurity threats) and endogenous (e.g., sensor failures, software flaws) origins; (2) systematically analyzing adversarial attack paradigms unique to embodied AI, with a focus on their impact on perception, decision-making, and embodied interaction; (3) investigating attack vectors targeting large vision-language models (LVLMs) and large language models (LLMs) within embodied systems, such as jailbreak attacks and instruction misinterpretation; (4) evaluating robustness challenges in algorithms for embodied perception, decision-making, and task planning; and (5) proposing targeted strategies to enhance the safety and reliability of embodied AI systems. By integrating these dimensions, we provide a comprehensive framework for understanding the interplay between vulnerabilities and safety in embodied AI.",
+    "ai_summary": "This survey paper categorizes and analyzes vulnerabilities, adversarial attacks, and robustness challenges in embodied AI systems such as robots and autonomous vehicles. It explores exogenous threats like physical and cybersecurity attacks alongside endogenous issues like software flaws and sensor failures, proposing strategies to enhance system reliability.",
+    "rationale": "The paper provides a comprehensive survey on the safety and security vulnerabilities of embodied AI systems, focusing on adversarial attacks, sensor spoofing, and cybersecurity threats which fall directly under AI system security vulnerabilities.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -484,7 +710,14 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2603.17419v1",
+    "abstract": "Autonomous AI agents powered by large language models are being deployed in production with capabilities including shell execution, file system access, database queries, and multi-party communication. Recent red teaming research demonstrates that these agents exhibit critical vulnerabilities in realistic settings: unauthorized compliance with non-owner instructions, sensitive information disclosure, identity spoofing, cross-agent propagation of unsafe practices, and indirect prompt injection through external resources [7]. In healthcare environments processing Protected Health Information, every such vulnerability becomes a potential HIPAA violation. This paper presents a security architecture deployed for nine autonomous AI agents in production at a healthcare technology company. We develop a six-domain threat model for agentic AI in healthcare covering credential exposure, execution capability abuse, network egress exfiltration, prompt integrity failures, database access risks, and fleet configuration drift. We implement four-layer defense in depth: (1) kernel level workload isolation using gVisor on Kubernetes, (2) credential proxy sidecars preventing agent containers from accessing raw secrets, (3) network egress policies restricting each agent to allowlisted destinations, and (4) a prompt integrity framework with structured metadata envelopes and untrusted content labeling. We report results from 90 days of deployment including four HIGH severity findings discovered and remediated by an automated security audit agent, progressive fleet hardening across three VM image generations, and defense coverage mapped to all eleven attack patterns from recent literature. All configurations, audit tooling, and the prompt integrity framework are released as open source.",
+    "ai_summary": "This paper presents a zero-trust security architecture for deploying autonomous AI agents in healthcare environments, successfully addressing critical vulnerabilities and potential HIPAA violations. The authors implement a defense-in-depth approach utilizing workload isolation, credential proxies, network egress policies, and a prompt integrity framework.",
+    "rationale": "The paper directly addresses security vulnerabilities in autonomous AI agents and the protection of sensitive healthcare data (Protected Health Information) against threats like prompt injection and credential exposure, perfectly aligning with Domain 2.",
     "confidence": 1.0,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -497,7 +730,14 @@
     "year": 2025,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2506.23296v1",
+    "abstract": "Embedded into information systems, artificial intelligence (AI) faces security threats that exploit AI-specific vulnerabilities. This paper provides an accessible overview of adversarial attacks unique to predictive and generative AI systems. We identify eleven major attack types and explicitly link attack techniques to their impacts -- including information leakage, system compromise, and resource exhaustion -- mapped to the confidentiality, integrity, and availability (CIA) security triad. We aim to equip researchers, developers, security practitioners, and policymakers, even those without specialized AI security expertise, with foundational knowledge to recognize AI-specific risks and implement effective defenses, thereby enhancing the overall security posture of AI systems.",
+    "ai_summary": "This paper provides an overview of eleven major adversarial attack types targeting predictive and generative artificial intelligence systems. It maps these attacks to their impacts on confidentiality, integrity, and availability, offering foundational knowledge to help practitioners recognize risks and implement defenses.",
+    "rationale": "The paper directly addresses security threats, vulnerabilities, and adversarial attacks unique to AI systems, mapping them to the CIA triad including information leakage and system compromise, which fits perfectly within the Privacy & security domain.",
     "confidence": 1.0,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -510,7 +750,13 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2606.14658v1",
+    "abstract": "Artificial Intelligence (AI) is increasingly used to automate a variety of real-world computer vision (CV) applications, such as autonomous vehicle control, facial recognition, and security cameras. Recent research has shown that acoustic vibration can induce real physical motion in cameras, interfering with their internal stabilization mechanisms. Because the motion falls outside the conditions the stabilization system was designed to handle, the system introduces artifacts into the frame, causing AI-based CV models to misclassify, miss targets, or hallucinate objects. Previous work used ultrasonic frequencies (>20 kHz) to perform short-range attacks, which limits them to short distances due to the attenuation exhibited by high frequencies. In this work, we investigate acoustic attacks using lower frequencies in the audible range (<20 kHz), and we further expand our analysis to include how various image and object features are affected by the attacks. Specifically, we performed physical experiments to demonstrate the viability of our attacks on an off-the-shelf object detection model (YOLO11) by resonating a commercially available camera with various frequencies. Based on our results, we provide insights into several factors that make an AI CV system more vulnerable to these attacks, which could help inform the development of future mitigation strategies.",
+    "ai_summary": "This paper demonstrates that audible acoustic vibrations can physically disrupt camera stabilization mechanisms, causing computer vision models like YOLO11 to misclassify objects or hallucinate targets. The findings highlight physical-world security vulnerabilities in automated vision systems and provide insights to aid in developing future mitigations.",
+    "rationale": "The paper investigates acoustic adversarial attacks that exploit physical vulnerabilities in computer vision cameras to disrupt AI models, which falls directly under AI system security vulnerabilities and attacks.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -522,7 +768,13 @@
     "year": 2026,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2604.20833v2",
+    "abstract": "As artificial intelligence (AI) systems are increasingly deployed across critical domains, their security vulnerabilities pose growing risks of high-profile exploits and consequential system failures. Yet systematic approaches to evaluating AI security remain underdeveloped. In this paper, we introduce AVISE (AI Vulnerability Identification and Security Evaluation), a modular open-source framework for identifying vulnerabilities in and evaluating the security of AI systems and models. As a demonstration of the framework, we extend the theory-of-mind-based multi-turn Red Queen attack into an Adversarial Language Model (ALM) augmented attack and develop an automated Security Evaluation Test (SET) for discovering jailbreak vulnerabilities in language models. The SET comprises 25 test cases and an Evaluation Language Model (ELM) that determines whether each test case was able to jailbreak the target model, achieving 92% accuracy, an F1-score of 0.91, and a Matthews correlation coefficient of 0.83. We evaluate nine recently released language models of diverse sizes with the SET and find that all are vulnerable to the augmented Red Queen attack to varying degrees. AVISE provides researchers and industry practitioners with an extensible foundation for developing and deploying automated SETs, offering a concrete step toward more rigorous and reproducible AI security evaluation.",
+    "ai_summary": "The authors introduce AVISE, an open-source framework designed to systematically evaluate the security and identify vulnerabilities of AI systems. Using this framework, they develop an automated security evaluation test that uncovers jailbreak vulnerabilities in multiple recently released language models.",
+    "rationale": "The paper directly addresses AI system security by introducing the AVISE framework to identify security vulnerabilities, specifically focusing on jailbreak attacks in language models.",
     "confidence": 1.0,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -534,7 +786,13 @@
     "year": 2019,
     "source": "openalex",
     "link": "https://doi.org/10.3390/app9050909",
+    "abstract": "In recent years, artificial intelligence technologies have been widely used in computer vision, natural language processing, automatic driving, and other fields. However, artificial intelligence systems are vulnerable to adversarial attacks, which limit the applications of artificial intelligence (AI) technologies in key security fields. Therefore, improving the robustness of AI systems against adversarial attacks has played an increasingly important role in the further development of AI. This paper aims to comprehensively summarize the latest research progress on adversarial attack and defense technologies in deep learning. According to the target model’s different stages where the adversarial attack occurred, this paper expounds the adversarial attack methods in the training stage and testing stage respectively. Then, we sort out the applications of adversarial attack technologies in computer vision, natural language processing, cyberspace security, and the physical world. Finally, we describe the existing adversarial defense methods respectively in three main categories, i.e., modifying data, modifying models and using auxiliary tools.",
+    "ai_summary": "This review paper examines recent research on adversarial attacks and defense mechanisms in artificial intelligence and deep learning systems. It categorizes attack methods across training and testing stages, highlights real-world applications in fields like computer vision and cybersecurity, and outlines various defense strategies involving data and model modifications.",
+    "rationale": "The paper provides a comprehensive review of adversarial attack and defense technologies in deep learning, focusing on system vulnerabilities and robustness which directly aligns with Domain 2 (Privacy & security) and specifically subdomain 2.2.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -546,7 +804,14 @@
     "year": 2019,
     "source": "openalex",
     "link": "https://doi.org/10.1109/access.2019.2924045",
+    "abstract": "The Internet of Things (IoT) is the next era of communication. Using the IoT, physical objects can be empowered to create, receive, and exchange data in a seamless manner. Various IoT applications focus on automating different tasks and are trying to empower the inanimate physical objects to act without any human intervention. The existing and upcoming IoT applications are highly promising to increase the level of comfort, efficiency, and automation for the users. To be able to implement such a world in an ever-growing fashion requires high security, privacy, authentication, and recovery from attacks. In this regard, it is imperative to make the required changes in the architecture of the IoT applications for achieving end-to-end secure IoT environments. In this paper, a detailed review of the security-related challenges and sources of threat in the IoT applications is presented. After discussing the security issues, various emerging and existing technologies focused on achieving a high degree of trust in the IoT applications are discussed. Four different technologies, blockchain, fog computing, edge computing, and machine learning, to increase the level of security in IoT are discussed.",
+    "ai_summary": "This survey paper explores the security and privacy challenges in Internet of Things (IoT) applications, reviewing potential threats and attack vectors. It further discusses architectural solutions and emerging technologies such as blockchain, fog computing, edge computing, and machine learning to secure IoT ecosystems.",
+    "rationale": "The paper provides a comprehensive survey of security threats, challenges, and solution architectures in IoT environments, directly intersecting with privacy and security vulnerabilities as well as trust mechanisms.",
     "confidence": 0.9,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -559,7 +824,11 @@
     "year": 2021,
     "source": "openalex",
     "link": "https://doi.org/10.1109/comst.2021.3108618",
+    "abstract": "Sixth-generation (6G) mobile networks will have to cope with diverse threats on a space-air-ground integrated network environment, novel technologies, and an accessible user information explosion. However, for now, security and privacy issues for 6G remain largely in concept. This survey provides a systematic overview of security and privacy issues based on prospective technologies for 6G in the physical, connection, and service layers, as well as through lessons learned from the failures of existing security architectures and state-of-the-art defenses. Two key lessons learned are as follows. First, other than inheriting vulnerabilities from the previous generations, 6G has new threat vectors from new radio technologies, such as the exposed location of radio stripes in ultra-massive MIMO systems at Terahertz bands and attacks against pervasive intelligence. Second, physical layer protection, deep network slicing, quantum-safe communications, artificial intelligence (AI) security, platform-agnostic security, real-time adaptive security, and novel data protection mechanisms such as distributed ledgers and differential privacy are the top promising techniques to mitigate the attack magnitude and personal data breaches substantially.",
+    "ai_summary": "This survey provides a systematic overview of security and privacy issues and defenses for prospective 6G mobile networks. It analyzes novel threat vectors arising from next-generation radio technologies and pervasive intelligence, while highlighting key mitigation techniques such as quantum-safe communications, AI security, and differential privacy.",
+    "rationale": "The paper provides a comprehensive survey of security and privacy challenges in upcoming 6G mobile networks, specifically examining vulnerabilities from AI integration, physical layer protection, and data protection mechanisms such as differential privacy.",
     "confidence": 0.95,
+    "domains": [],
     "subdomains": [
       "Privacy & security :: 2.1 Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information",
       "Privacy & security :: 2.2 AI system security vulnerabilities and attacks"
@@ -572,7 +841,13 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2004.05005v1",
+    "abstract": "The proliferation and application of machine learning based Intrusion Detection Systems (IDS) have allowed for more flexibility and efficiency in the automated detection of cyber attacks in Industrial Control Systems (ICS). However, the introduction of such IDSs has also created an additional attack vector; the learning models may also be subject to cyber attacks, otherwise referred to as Adversarial Machine Learning (AML). Such attacks may have severe consequences in ICS systems, as adversaries could potentially bypass the IDS. This could lead to delayed attack detection which may result in infrastructure damages, financial loss, and even loss of life. This paper explores how adversarial learning can be used to target supervised models by generating adversarial samples using the Jacobian-based Saliency Map attack and exploring classification behaviours. The analysis also includes the exploration of how such samples can support the robustness of supervised models using adversarial training. An authentic power system dataset was used to support the experiments presented herein. Overall, the classification performance of two widely used classifiers, Random Forest and J48, decreased by 16 and 20 percentage points when adversarial samples were present. Their performances improved following adversarial training, demonstrating their robustness towards such attacks.",
+    "ai_summary": "This paper examines how adversarial machine learning attacks can compromise supervised classifiers used in industrial control system intrusion detection. The authors demonstrate the vulnerabilities of such models using the Jacobian-based Saliency Map attack on a power system dataset, and evaluate how adversarial training can improve model robustness.",
+    "rationale": "The paper investigates adversarial machine learning attacks against intrusion detection systems in industrial control systems, which directly falls under AI system security vulnerabilities and attacks within the Privacy & security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -584,7 +859,14 @@
     "year": 2018,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/1810.10731v3",
+    "abstract": "When machine learning systems fail because of adversarial manipulation, how should society expect the law to respond? Through scenarios grounded in adversarial ML literature, we explore how some aspects of computer crime, copyright, and tort law interface with perturbation, poisoning, model stealing and model inversion attacks to show how some attacks are more likely to result in liability than others. We end with a call for action to ML researchers to invest in transparent benchmarks of attacks and defenses; architect ML systems with forensics in mind and finally, think more about adversarial machine learning in the context of civil liberties. The paper is targeted towards ML researchers who have no legal background.",
+    "ai_summary": "This paper explores the intersection of law and adversarial machine learning by analyzing how existing legal frameworks apply to specific attacks such as perturbation, data poisoning, model stealing, and model inversion. It aims to bridge the gap for machine learning researchers by examining when these adversarial manipulations may trigger legal liability.",
+    "rationale": "The paper investigates how legal frameworks like computer crime, copyright, and tort law apply to various adversarial machine learning attacks, including model poisoning and model inversion. This squarely addresses both AI system security vulnerabilities and the compromise of privacy.",
     "confidence": 0.95,
+    "domains": [
+      "TD2",
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks",
       "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
@@ -597,7 +879,13 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2007.02407v3",
+    "abstract": "In recent years machine learning algorithms, and more specifically deep learning algorithms, have been widely used in many fields, including cyber security. However, machine learning systems are vulnerable to adversarial attacks, and this limits the application of machine learning, especially in non-stationary, adversarial environments, such as the cyber security domain, where actual adversaries (e.g., malware developers) exist. This paper comprehensively summarizes the latest research on adversarial attacks against security solutions based on machine learning techniques and illuminates the risks they pose. First, the adversarial attack methods are characterized based on their stage of occurrence, and the attacker's goals and capabilities. Then, we categorize the applications of adversarial attack and defense methods in the cyber security domain. Finally, we highlight some characteristics identified in recent research and discuss the impact of recent advancements in other adversarial learning domains on future research directions in the cyber security domain. This paper is the first to discuss the unique challenges of implementing end-to-end adversarial attacks in the cyber security domain, map them in a unified taxonomy, and use the taxonomy to highlight future research directions.",
+    "ai_summary": "This paper reviews the latest research on adversarial machine learning attacks and defense mechanisms in cyber security. It categorizes attack methods by their goals, capabilities, and stages of occurrence while highlighting unique challenges and future research directions.",
+    "rationale": "The paper provides a comprehensive review of adversarial machine learning attacks and defense methods specifically within the cyber security domain, directly aligning with domain D2 and the subdomain of AI system security vulnerabilities and attacks.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -609,7 +897,13 @@
     "year": 2019,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/1911.11746v1",
+    "abstract": "An Adversarial System to attack and an Authorship Attribution System (AAS) to defend itself against the attacks are analyzed. Defending a system against attacks from an adversarial machine learner can be done by randomly switching between models for the system, by detecting and reacting to changes in the distribution of normal inputs, or by using other methods. Adversarial machine learning is used to identify a system that is being used to map system inputs to outputs. Three types of machine learners are using for the model that is being attacked. The machine learners that are used to model the system being attacked are a Radial Basis Function Support Vector Machine, a Linear Support Vector Machine, and a Feedforward Neural Network. The feature masks are evolved using accuracy as the fitness measure. The system defends itself against adversarial machine learning attacks by identifying inputs that do not match the probability distribution of normal inputs. The system also defends itself against adversarial attacks by randomly switching between the feature masks being used to map system inputs to outputs.",
+    "ai_summary": "This paper analyzes adversarial machine learning attacks on various machine learning architectures and explores defense mechanisms to protect systems against such attacks. The proposed defenses include detecting inputs that deviate from normal distributions and dynamically switching feature masks to hinder attackers.",
+    "rationale": "The paper focuses on adversarial machine learning, specifically analyzing attacks on machine learning models and proposing defensive mechanisms such as input distribution monitoring and dynamic model switching. This squarely falls under AI system security vulnerabilities and attacks within the Privacy & security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -621,7 +915,13 @@
     "year": 2019,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/1907.07291v1",
+    "abstract": "The ever-growing big data and emerging artificial intelligence (AI) demand the use of machine learning (ML) and deep learning (DL) methods. Cybersecurity also benefits from ML and DL methods for various types of applications. These methods however are susceptible to security attacks. The adversaries can exploit the training and testing data of the learning models or can explore the workings of those models for launching advanced future attacks. The topic of adversarial security attacks and perturbations within the ML and DL domains is a recent exploration and a great interest is expressed by the security researchers and practitioners. The literature covers different adversarial security attacks and perturbations on ML and DL methods and those have their own presentation styles and merits. A need to review and consolidate knowledge that is comprehending of this increasingly focused and growing topic of research; however, is the current demand of the research communities. In this review paper, we specifically aim to target new researchers in the cybersecurity domain who may seek to acquire some basic knowledge on the machine learning and deep learning models and algorithms, as well as some of the relevant adversarial security attacks and perturbations.",
+    "ai_summary": "This review paper examines how machine learning and deep learning models are vulnerable to various adversarial security attacks and data perturbations. It aims to provide foundational knowledge for researchers entering the cybersecurity domain regarding these threats and model vulnerabilities.",
+    "rationale": "The paper provides a comprehensive review of adversarial security attacks, vulnerabilities, and data perturbations targeting machine learning and deep learning models, placing it squarely within the AI system security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -633,7 +933,13 @@
     "year": 2018,
     "source": "openalex",
     "link": "https://doi.org/10.1201/9781351251389-8",
+    "abstract": "Most existing machine learning classifiers are highly vulnerable to adversarial examples. An adversarial example is a sample of input data which has been modified very slightly in a way that is intended to cause a machine learning classifier to misclassify it. In many cases, these modifications can be so subtle that a human observer does not even notice the modification at all, yet the classifier still makes a mistake. Adversarial examples pose security concerns because they could be used to perform an attack on machine learning systems, even if the adversary has no access to the underlying model. Up to now, all previous work has assumed a threat model in which the adversary can feed data directly into the machine learning classifier. This is not always the case for systems operating in the physical world, for example those which are using signals from cameras and other sensors as input. This paper shows that even in such physical world scenarios, machine learning systems are vulnerable to adversarial examples. We demonstrate this by feeding adversarial images obtained from a cell-phone camera to an ImageNet Inception classifier and measuring the classification accuracy of the system. We find that a large fraction of adversarial examples are classified incorrectly even when perceived through the camera.",
+    "ai_summary": "This paper investigates the vulnerability of machine learning classifiers to adversarial examples in physical-world scenarios, such as when inputs are captured through cameras rather than fed digitally. The authors demonstrate that subtle modifications to real-world objects can cause classifiers to misclassify them, highlighting critical security risks for deployed AI systems.",
+    "rationale": "The paper directly addresses security vulnerabilities in machine learning models through adversarial examples, demonstrating how classifiers can be fooled even when inputs are processed via physical sensors like cameras. This falls squarely under AI system security and adversarial robustness within the Privacy & security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -645,7 +951,13 @@
     "year": 2020,
     "source": "openalex",
     "link": "https://doi.org/10.1016/j.eng.2019.12.012",
+    "abstract": "With the rapid developments of artificial intelligence (AI) and deep learning (DL) techniques, it is critical to ensure the security and robustness of the deployed algorithms. Recently, the security vulnerability of DL algorithms to adversarial samples has been widely recognized. The fabricated samples can lead to various misbehaviors of the DL models while being perceived as benign by humans. Successful implementations of adversarial attacks in real physical-world scenarios further demonstrate their practicality. Hence, adversarial attack and defense techniques have attracted increasing attention from both machine learning and security communities and have become a hot research topic in recent years. In this paper, we first introduce the theoretical foundations, algorithms, and applications of adversarial attack techniques. We then describe a few research efforts on the defense techniques, which cover the broad frontier in the field. Several open problems and challenges are subsequently discussed, which we hope will provoke further research efforts in this critical area.",
+    "ai_summary": "This paper reviews the theoretical foundations, algorithms, and applications of adversarial attacks against deep learning models, alongside current defense techniques and open research challenges. It highlights how fabricated input samples can cause model misbehavior and emphasizes the importance of ensuring the security and robustness of AI systems.",
+    "rationale": "The paper focuses extensively on adversarial attacks and defense mechanisms in deep learning, directly aligning with AI system security vulnerabilities and attacks under the Privacy & security domain.",
     "confidence": 1.0,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -657,7 +969,13 @@
     "year": 2019,
     "source": "openalex",
     "link": "https://doi.org/10.23919/cycon.2019.8756865",
+    "abstract": "Machine-learning solutions are successfully adopted in multiple contexts but the application of these techniques to the cyber security domain is complex and still immature. Among the many open issues that affect security systems based on machine learning, we concentrate on adversarial attacks that aim to affect the detection and prediction capabilities of machine-learning models. We consider realistic types of poisoning and evasion attacks targeting security solutions devoted to malware, spam and network intrusion detection. We explore the possible damages that an attacker can cause to a cyber detector and present some existing and original defensive techniques in the context of intrusion detection systems. This paper contains several performance evaluations that are based on extensive experiments using large traffic datasets. The results highlight that modern adversarial attacks are highly effective against machine-learning classifiers for cyber detection, and that existing solutions require improvements in several directions. The paper paves the way for more robust machine-learning-based techniques that can be integrated into cyber security platforms.",
+    "ai_summary": "This paper examines how adversarial attacks like data poisoning and evasion compromise machine learning models used in cyber security applications, such as network intrusion detection. Through experimental evaluation, the authors demonstrate the effectiveness of these attacks and discuss potential defensive strategies to build more robust security systems.",
+    "rationale": "The paper specifically investigates adversarial attacks such as poisoning and evasion targeting machine-learning-based cyber security systems, which directly aligns with AI system security vulnerabilities and attacks under Domain 2.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -669,7 +987,13 @@
     "year": 2013,
     "source": "openalex",
     "link": "https://doi.org/10.1007/978-3-642-40994-3_25",
+    "abstract": null,
+    "ai_summary": "This paper investigates evasion attacks against machine learning models at test time, analyzing how malicious actors can manipulate inputs to cause classification errors.",
+    "rationale": "The paper title explicitly addresses evasion attacks, which are a classic form of adversarial machine learning falling squarely under AI system security vulnerabilities and attacks.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -681,7 +1005,13 @@
     "year": 2021,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2104.13230v1",
+    "abstract": "Data poisoning is a type of adversarial attack on training data where an attacker manipulates a fraction of data to degrade the performance of machine learning model. Therefore, applications that rely on external data-sources for training data are at a significantly higher risk. There are several known defensive mechanisms that can help in mitigating the threat from such attacks. For example, data sanitization is a popular defensive mechanism wherein the learner rejects those data points that are sufficiently far from the set of training instances. Prior work on data poisoning defense primarily focused on offline setting, wherein all the data is assumed to be available for analysis. Defensive measures for online learning, where data points arrive sequentially, have not garnered similar interest. In this work, we propose a defense mechanism to minimize the degradation caused by the poisoned training data on a learner's model in an online setup. Our proposed method utilizes an influence function which is a classic technique in robust statistics. Further, we supplement it with the existing data sanitization methods for filtering out some of the poisoned data points. We study the effectiveness of our defense mechanism on multiple datasets and across multiple attack strategies against an online learner.",
+    "ai_summary": "This paper investigates data poisoning attacks in online machine learning settings, where attackers manipulate sequential training data to degrade model performance. The authors propose an influence-based defense mechanism combined with data sanitization to filter out malicious data points and protect the online learner.",
+    "rationale": "The paper addresses data poisoning attacks in machine learning systems and proposes a defense mechanism to mitigate these adversarial vulnerabilities, which falls directly under AI system security.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -693,7 +1023,13 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2006.16469v2",
+    "abstract": "In a poisoning attack, an adversary with control over a small fraction of the training data attempts to select that data in a way that induces a corrupted model that misbehaves in favor of the adversary. We consider poisoning attacks against convex machine learning models and propose an efficient poisoning attack designed to induce a specified model. Unlike previous model-targeted poisoning attacks, our attack comes with provable convergence to {\\it any} attainable target classifier. The distance from the induced classifier to the target classifier is inversely proportional to the square root of the number of poisoning points. We also provide a lower bound on the minimum number of poisoning points needed to achieve a given target classifier. Our method uses online convex optimization, so finds poisoning points incrementally. This provides more flexibility than previous attacks which require a priori assumption about the number of poisoning points. Our attack is the first model-targeted poisoning attack that provides provable convergence for convex models, and in our experiments, it either exceeds or matches state-of-the-art attacks in terms of attack success rate and distance to the target model.",
+    "ai_summary": "This paper presents a novel model-targeted data poisoning attack against convex machine learning models that features provable convergence to any attainable target classifier. By utilizing online convex optimization, the method generates poisoning points incrementally without needing a priori assumptions about the number of poisoning points.",
+    "rationale": "The paper focuses on model-targeted data poisoning attacks against machine learning models, which directly falls under the category of AI system security vulnerabilities and attacks.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -705,7 +1041,13 @@
     "year": 2012,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/1206.6389v3",
+    "abstract": "We investigate a family of poisoning attacks against Support Vector Machines (SVM). Such attacks inject specially crafted training data that increases the SVM's test error. Central to the motivation for these attacks is the fact that most learning algorithms assume that their training data comes from a natural or well-behaved distribution. However, this assumption does not generally hold in security-sensitive settings. As we demonstrate, an intelligent adversary can, to some extent, predict the change of the SVM's decision function due to malicious input and use this ability to construct malicious data. The proposed attack uses a gradient ascent strategy in which the gradient is computed based on properties of the SVM's optimal solution. This method can be kernelized and enables the attack to be constructed in the input space even for non-linear kernels. We experimentally demonstrate that our gradient ascent procedure reliably identifies good local maxima of the non-convex validation error surface, which significantly increases the classifier's test error.",
+    "ai_summary": "This paper investigates poisoning attacks against Support Vector Machines, demonstrating how an adversary can inject specially crafted training data to intentionally increase the classifier's test error. The authors propose a gradient ascent strategy to construct these malicious inputs, showing that their method effectively identifies local maxima of the validation error surface in both linear and non-linear settings.",
+    "rationale": "The paper investigates data poisoning attacks against machine learning classifiers (SVMs), which directly falls under AI system security vulnerabilities and attacks within the Privacy & security domain.",
     "confidence": 1.0,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -717,7 +1059,13 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2006.14026v3",
+    "abstract": "Machine learning systems are deployed in critical settings, but they might fail in unexpected ways, impacting the accuracy of their predictions. Poisoning attacks against machine learning induce adversarial modification of data used by a machine learning algorithm to selectively change its output when it is deployed. In this work, we introduce a novel data poisoning attack called a \\emph{subpopulation attack}, which is particularly relevant when datasets are large and diverse. We design a modular framework for subpopulation attacks, instantiate it with different building blocks, and show that the attacks are effective for a variety of datasets and machine learning models. We further optimize the attacks in continuous domains using influence functions and gradient optimization methods. Compared to existing backdoor poisoning attacks, subpopulation attacks have the advantage of inducing misclassification in naturally distributed data points at inference time, making the attacks extremely stealthy. We also show that our attack strategy can be used to improve upon existing targeted attacks. We prove that, under some assumptions, subpopulation attacks are impossible to defend against, and empirically demonstrate the limitations of existing defenses against our attacks, highlighting the difficulty of protecting machine learning against this threat.",
+    "ai_summary": "This paper introduces a novel data poisoning attack called a subpopulation attack, which stealthily induces misclassification in machine learning models during inference without needing artificial triggers. The authors demonstrate the effectiveness and optimization of these attacks across various datasets and models, highlighting the limitations of current defenses.",
+    "rationale": "The paper focuses on subpopulation data poisoning attacks against machine learning systems, which directly falls under AI system security vulnerabilities and attacks within the Privacy & security domain.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -729,7 +1077,13 @@
     "year": 2020,
     "source": "arxiv",
     "link": "http://arxiv.org/abs/2004.10020v1",
+    "abstract": "Federated machine learning which enables resource constrained node devices (e.g., mobile phones and IoT devices) to learn a shared model while keeping the training data local, can provide privacy, security and economic benefits by designing an effective communication protocol. However, the communication protocol amongst different nodes could be exploited by attackers to launch data poisoning attacks, which has been demonstrated as a big threat to most machine learning models. In this paper, we attempt to explore the vulnerability of federated machine learning. More specifically, we focus on attacking a federated multi-task learning framework, which is a federated learning framework via adopting a general multi-task learning framework to handle statistical challenges. We formulate the problem of computing optimal poisoning attacks on federated multi-task learning as a bilevel program that is adaptive to arbitrary choice of target nodes and source attacking nodes. Then we propose a novel systems-aware optimization method, ATTack on Federated Learning (AT2FL), which is efficiency to derive the implicit gradients for poisoned data, and further compute optimal attack strategies in the federated machine learning. Our work is an earlier study that considers issues of data poisoning attack for federated learning. To the end, experimental results on real-world datasets show that federated multi-task learning model is very sensitive to poisoning attacks, when the attackers either directly poison the target nodes or indirectly poison the related nodes by exploiting the communication protocol.",
+    "ai_summary": "This paper investigates the security vulnerabilities of federated machine learning frameworks by exploring data poisoning attacks. The authors formulate these attacks as a bilevel optimization problem and introduce an efficient method to compute optimal attack strategies, demonstrating how vulnerable federated systems can be to malicious manipulation.",
+    "rationale": "The paper directly addresses data poisoning attacks in federated machine learning, focusing on exploring system vulnerabilities and developing an optimal attack strategy, which maps directly to Domain 2 and its subdomain on AI system security vulnerabilities.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -741,7 +1095,13 @@
     "year": 2022,
     "source": "openalex",
     "link": "https://doi.org/10.1109/tpami.2022.3162397",
+    "abstract": "As machine learning systems grow in scale, so do their training data requirements, forcing practitioners to automate and outsource the curation of training data in order to achieve state-of-the-art performance. The absence of trustworthy human supervision over the data collection process exposes organizations to security vulnerabilities; training data can be manipulated to control and degrade the downstream behaviors of learned models. The goal of this work is to systematically categorize and discuss a wide range of dataset vulnerabilities and exploits, approaches for defending against these threats, and an array of open problems in this space.",
+    "ai_summary": "This paper provides a comprehensive overview of dataset security vulnerabilities in machine learning, specifically focusing on data poisoning and backdoor attacks, along with defense mechanisms and open research problems in the field.",
+    "rationale": "The paper directly addresses AI system security vulnerabilities such as data poisoning and backdoor attacks, which falls squarely under Domain 2 (Privacy & security) and specifically subdomain 2.2.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -753,7 +1113,13 @@
     "year": 2018,
     "source": "openalex",
     "link": "https://doi.org/10.1109/sp.2018.00057",
+    "abstract": "As machine learning becomes widely used for automated decisions, attackers have strong incentives to manipulate the results and models generated by machine learning algorithms. In this paper, we perform the first systematic study of poisoning attacks and their countermeasures for linear regression models. In poisoning attacks, attackers deliberately influence the training data to manipulate the results of a predictive model. We propose a theoretically-grounded optimization framework specifically designed for linear regression and demonstrate its effectiveness on a range of datasets and models. We also introduce a fast statistical attack that requires limited knowledge of the training process. Finally, we design a new principled defense method that is highly resilient against all poisoning attacks. We provide formal guarantees about its convergence and an upper bound on the effect of poisoning attacks when the defense is deployed. We evaluate extensively our attacks and defenses on three realistic datasets from health care, loan assessment, and real estate domains.",
+    "ai_summary": "This paper conducts a systematic study on data poisoning attacks and corresponding defenses for linear regression models. The authors propose a principled optimization framework for both executing attacks and securing machine learning models against such adversarial manipulation, validating their methods on healthcare, loan, and real estate datasets.",
+    "rationale": "The paper investigates poisoning attacks and defense mechanisms in linear regression models, which directly falls under AI system security vulnerabilities and attacks within Domain 2.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]
@@ -765,7 +1131,13 @@
     "year": 2022,
     "source": "openalex",
     "link": "https://doi.org/10.1016/j.eswa.2022.118101",
+    "abstract": null,
+    "ai_summary": "This paper investigates data poisoning attacks against machine learning algorithms, examining how malicious actors can manipulate training data to compromise model behavior. It contributes to understanding and mitigating security vulnerabilities in artificial intelligence systems.",
+    "rationale": "The paper focuses on data poisoning attacks, which represent a direct threat to the integrity, robustness, and security of machine learning systems. This maps directly to Domain 2 and specifically the subdomain of AI system security vulnerabilities and attacks.",
     "confidence": 0.95,
+    "domains": [
+      "TD3"
+    ],
     "subdomains": [
       "AI System Security Vulnerabilities and Attacks"
     ]

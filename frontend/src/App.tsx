@@ -5,11 +5,19 @@ import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
 import { TaxonomyPage } from "./pages/TaxonomyPage";
 import { DomainPage } from "./pages/DomainPage";
+import { PaperDetailPage } from "./pages/PaperDetailPage";
 
 function ScrollManager() {
   const location = useLocation();
   useEffect(() => {
-    if (location.hash) return;
+    if (location.hash) {
+      const id = decodeURIComponent(location.hash.slice(1));
+      // wait a tick for the route's content to render before measuring it
+      const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ block: "start" });
+      }, 0);
+      return () => clearTimeout(timer);
+    }
     window.scrollTo({ top: 0 });
   }, [location.pathname, location.hash]);
   return null;
@@ -25,6 +33,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/taxonomy" element={<TaxonomyPage />} />
           <Route path="/taxonomy/:domainId" element={<DomainPage />} />
+          <Route path="/papers/:id" element={<PaperDetailPage />} />
         </Routes>
       </main>
       <Footer />

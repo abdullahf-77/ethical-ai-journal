@@ -6,6 +6,7 @@ import papersData from "../data/papers.json";
 import type { Taxonomy, TopDomain, Paper } from "../types";
 import { DomainCard } from "../components/taxonomy/DomainCard";
 import { SearchFilterBar, type SortMode } from "../components/taxonomy/SearchFilterBar";
+import { TaxonomyTree } from "../components/taxonomy/TaxonomyTree";
 import { Reveal } from "../components/Reveal";
 
 const taxonomy = taxonomyData as Taxonomy;
@@ -62,7 +63,14 @@ export function TaxonomyPage() {
       </div>
 
       <div className="px-6 sm:px-8">
-        <SearchFilterBar query={query} onQueryChange={setQuery} sort={sort} onSortChange={setSort} />
+        <SearchFilterBar
+          query={query}
+          onQueryChange={setQuery}
+          sort={sort}
+          onSortChange={setSort}
+          taxonomy={taxonomy}
+          papers={papers}
+        />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pt-10 sm:px-8">
@@ -88,6 +96,25 @@ export function TaxonomyPage() {
             ))}
           </div>
         )}
+      </div>
+
+      <div className="mx-auto max-w-4xl px-6 pt-16 sm:px-8">
+        <Reveal>
+          <p className="text-sm font-semibold uppercase tracking-wider text-icaire-600 dark:text-icaire-400">
+            Explore as a hierarchy
+          </p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Interactive taxonomy tree
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+            Expand a domain to browse its subdomains, then a subdomain to see the
+            papers indexed under it — or jump straight to a domain or paper page.
+          </p>
+
+          <div className="mt-6 rounded-3xl border border-zinc-200 bg-zinc-50/60 p-4 dark:border-zinc-800 dark:bg-zinc-900/30 sm:p-6">
+            <TaxonomyTree taxonomy={taxonomy} papers={papers} />
+          </div>
+        </Reveal>
       </div>
     </div>
   );
