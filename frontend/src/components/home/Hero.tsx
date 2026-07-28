@@ -1,11 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpenText } from "lucide-react";
-import taxonomyData from "../../data/taxonomy.json";
-import type { Taxonomy } from "../../types";
-
-const taxonomy = taxonomyData as Taxonomy;
-const totalSubdomains = taxonomy.top_domains.reduce((n, d) => n + d.subdomain_count, 0);
+import { ArrowRight, BookOpenText, FilePenLine } from "lucide-react";
 
 function OrbitMotif() {
   const dots = [
@@ -38,7 +33,7 @@ function OrbitMotif() {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
+    <section id="submissions" className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
       <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_30%,transparent_100%)] dark:text-zinc-600" />
       <OrbitMotif />
 
@@ -56,12 +51,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="text-balance mt-3 text-4xl font-semibold leading-[1.1] tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl"
+          className="text-balance mt-3 text-4xl font-bold uppercase tracking-wide text-zinc-900 dark:text-zinc-50 sm:text-5xl"
         >
-          Mapping the ethics of
-          <span className="block font-serif italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-icaire-700 via-icaire-600 to-icaire-400">
-            artificial intelligence
-          </span>
+          Ethical AI Journal
         </motion.h1>
 
         <motion.p
@@ -70,17 +62,36 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-zinc-500 dark:text-zinc-400"
         >
-          Ethical AI Journal curates research, news, and open submissions
-          around a single living taxonomy — {taxonomy.top_domains.length} domains and{" "}
-          {totalSubdomains}+ subdomains charting the risks, rights, and
-          responsibilities of AI systems.
+          Explore research, news, and emerging perspectives on artificial
+          intelligence ethics, governance, safety, fairness, privacy, and
+          responsible innovation.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-8 flex justify-center"
+        >
+          <button
+            type="button"
+            className="group inline-flex items-center gap-3 rounded-2xl border border-icaire-600/30 bg-white/80 px-5 py-3 shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:border-icaire-600 hover:shadow-md dark:border-icaire-400/20 dark:bg-zinc-900/60 dark:hover:border-icaire-400/70"
+          >
+            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-icaire-700 to-icaire-400 text-white">
+              <FilePenLine size={15} />
+            </span>
+            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+              Journal Submission Portal
+            </span>
+            <ArrowRight size={15} className="text-icaire-600 transition-transform group-hover:translate-x-0.5 dark:text-icaire-400" />
+          </button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Link
             to="/taxonomy"
