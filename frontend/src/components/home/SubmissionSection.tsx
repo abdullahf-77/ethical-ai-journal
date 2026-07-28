@@ -10,13 +10,11 @@ export function SubmissionSection() {
             Get involved
           </p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Submit Your Research
+            New Submissions
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-            Ethical AI Journal welcomes original research, case studies, and
-            benchmark proposals across the taxonomy&rsquo;s seven domains. Every
-            submission goes through editorial and peer review before
-            publication.
+            Placeholder submission tracks — no submission workflow is wired up
+            in this prototype.
           </p>
         </Reveal>
 
@@ -31,11 +29,8 @@ export function SubmissionSection() {
             <span className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Journal Submission Portal
             </span>
-            <span className="text-sm text-zinc-500 dark:text-zinc-400">
-              Placeholder — no submission workflow is wired up in this prototype.
-            </span>
             <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-icaire-600 px-5 py-2 text-sm font-semibold text-white transition-transform group-hover:scale-[1.04] dark:bg-icaire-500">
-              Start a Submission
+              Explore
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </span>
           </button>
