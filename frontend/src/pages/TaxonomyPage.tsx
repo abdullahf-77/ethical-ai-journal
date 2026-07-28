@@ -44,15 +44,15 @@ export function TaxonomyPage() {
 
   return (
     <div className="pb-24">
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-14 sm:px-8 sm:pt-20">
+      <div className="mx-auto max-w-7xl px-6 pb-10 pt-14 sm:px-8 sm:pt-20">
         <Reveal>
           <p className="text-sm font-semibold uppercase tracking-wider text-icaire-600 dark:text-icaire-400">
             Taxonomy Hub
           </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
             The full landscape of AI ethics, organized
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
             {taxonomy.top_domains.length} top-level domains, {taxonomy.top_domains.reduce((n, d) => n + d.domain_count, 0)} constituent
             areas, and {taxonomy.top_domains.reduce((n, d) => n + d.subdomain_count, 0)}+ subdomains —
             consolidated from twelve source frameworks. Open a domain to browse
@@ -74,7 +74,7 @@ export function TaxonomyPage() {
             </p>
           </div>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {visibleDomains.map((domain, i) => (
               <motion.div
                 key={domain.id}
