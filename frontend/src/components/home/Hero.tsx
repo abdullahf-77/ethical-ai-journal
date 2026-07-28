@@ -7,34 +7,56 @@ import type { Taxonomy } from "../../types";
 const taxonomy = taxonomyData as Taxonomy;
 const totalSubdomains = taxonomy.top_domains.reduce((n, d) => n + d.subdomain_count, 0);
 
+function OrbitMotif() {
+  const dots = [
+    { angle: -35, r: 1.6 },
+    { angle: 10, r: 2.2 },
+    { angle: 68, r: 1.4 },
+    { angle: 132, r: 1.8 },
+    { angle: 195, r: 1.4 },
+    { angle: 250, r: 2 },
+    { angle: 300, r: 1.6 },
+  ];
+  return (
+    <svg
+      viewBox="0 0 600 600"
+      className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-icaire-900/[0.07] dark:text-icaire-100/[0.06]"
+      aria-hidden="true"
+    >
+      <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
+      <ellipse cx="300" cy="300" rx="260" ry="120" fill="none" stroke="currentColor" strokeWidth="1" />
+      <ellipse cx="300" cy="300" rx="120" ry="260" fill="none" stroke="currentColor" strokeWidth="1" />
+      {dots.map((d, i) => {
+        const rad = (d.angle * Math.PI) / 180;
+        const x = 300 + 260 * Math.cos(rad);
+        const y = 300 + 260 * Math.sin(rad);
+        return <circle key={i} cx={x} cy={y} r={d.r * 2.2} fill="currentColor" />;
+      })}
+    </svg>
+  );
+}
+
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_40%,transparent_100%)] dark:text-zinc-600" />
-      <div
-        className="pointer-events-none absolute left-1/2 top-[-10%] h-[520px] w-[900px] -translate-x-1/2 rounded-full opacity-40 blur-3xl dark:opacity-30"
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(0,122,51,0.30), rgba(107,183,94,0.15), transparent)",
-        }}
-      />
+    <section className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
+      <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_30%,transparent_100%)] dark:text-zinc-600" />
+      <OrbitMotif />
 
-      <div className="relative mx-auto max-w-5xl px-6 pb-20 pt-20 text-center sm:pt-28">
-        <motion.div
+      <div className="relative mx-auto max-w-4xl px-6 pb-24 pt-24 text-center sm:pt-32">
+        <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-zinc-600 shadow-sm backdrop-blur dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-300"
+          className="text-sm font-medium tracking-wide text-zinc-500 dark:text-zinc-400"
         >
-          <span className="flex size-1.5 rounded-full bg-icaire-500" />
-          A UNESCO Centre &middot; ICAIRE initiative
-        </motion.div>
+          Welcome to the
+        </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl"
+          className="text-balance mt-3 text-4xl font-semibold leading-[1.1] tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-6xl"
         >
           Mapping the ethics of
           <span className="block font-serif italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-icaire-700 via-icaire-600 to-icaire-400">

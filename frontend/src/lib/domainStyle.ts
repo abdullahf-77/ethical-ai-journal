@@ -16,58 +16,26 @@ export interface DomainStyle {
   text: string; // standalone text color (light + dark)
 }
 
-const STYLES: Record<string, DomainStyle> = {
-  TD1: {
-    icon: Scale,
-    gradient: "from-rose-500 to-orange-400",
-    chip: "bg-rose-500/10 text-rose-600 dark:text-rose-300",
-    text: "text-rose-600 dark:text-rose-300",
-  },
-  TD2: {
-    icon: Eye,
-    gradient: "from-indigo-500 to-sky-400",
-    chip: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300",
-    text: "text-indigo-600 dark:text-indigo-300",
-  },
-  TD3: {
-    icon: ShieldCheck,
-    gradient: "from-emerald-500 to-teal-400",
-    chip: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300",
-    text: "text-emerald-600 dark:text-emerald-300",
-  },
-  TD4: {
-    icon: Compass,
-    gradient: "from-amber-500 to-yellow-400",
-    chip: "bg-amber-500/10 text-amber-600 dark:text-amber-300",
-    text: "text-amber-600 dark:text-amber-300",
-  },
-  TD5: {
-    icon: Landmark,
-    gradient: "from-violet-500 to-purple-400",
-    chip: "bg-violet-500/10 text-violet-600 dark:text-violet-300",
-    text: "text-violet-600 dark:text-violet-300",
-  },
-  TD6: {
-    icon: Globe,
-    gradient: "from-cyan-500 to-blue-400",
-    chip: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-300",
-    text: "text-cyan-600 dark:text-cyan-300",
-  },
-  TD7: {
-    icon: FileCheck,
-    gradient: "from-fuchsia-500 to-pink-400",
-    chip: "bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-300",
-    text: "text-fuchsia-600 dark:text-fuchsia-300",
-  },
+// One consistent ICAIRE-green identity across every domain — icons still
+// differ per domain for scannability, but color no longer does (previously
+// each of the 7 domains had its own hue; unified per design review so the
+// Taxonomy Hub reads as one coherent system, not a multicolor dashboard).
+const GREEN: Omit<DomainStyle, "icon"> = {
+  gradient: "from-icaire-700 to-icaire-500",
+  chip: "bg-icaire-500/10 text-icaire-700 dark:text-icaire-300",
+  text: "text-icaire-700 dark:text-icaire-300",
 };
 
-const FALLBACK: DomainStyle = {
-  icon: Compass,
-  gradient: "from-zinc-500 to-zinc-400",
-  chip: "bg-zinc-500/10 text-zinc-600 dark:text-zinc-300",
-  text: "text-zinc-600 dark:text-zinc-300",
+const ICONS: Record<string, LucideIcon> = {
+  TD1: Scale,
+  TD2: Eye,
+  TD3: ShieldCheck,
+  TD4: Compass,
+  TD5: Landmark,
+  TD6: Globe,
+  TD7: FileCheck,
 };
 
 export function getDomainStyle(id: string): DomainStyle {
-  return STYLES[id] ?? FALLBACK;
+  return { icon: ICONS[id] ?? Compass, ...GREEN };
 }
