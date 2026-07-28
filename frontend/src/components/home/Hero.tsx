@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpenText, FilePenLine } from "lucide-react";
+import { ArrowRight, BookOpenText } from "lucide-react";
 
 function OrbitMotif() {
   const dots = [
@@ -15,7 +15,7 @@ function OrbitMotif() {
   return (
     <svg
       viewBox="0 0 600 600"
-      className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-icaire-900/[0.07] dark:text-icaire-100/[0.06]"
+      className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-icaire-900/[0.07] dark:text-icaire-400/[0.16]"
       aria-hidden="true"
     >
       <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -33,7 +33,7 @@ function OrbitMotif() {
 
 export function Hero() {
   return (
-    <section id="submissions" className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
+    <section className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
       <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_30%,transparent_100%)] dark:text-zinc-600" />
       <OrbitMotif />
 
@@ -71,27 +71,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-8 flex justify-center"
-        >
-          <button
-            type="button"
-            className="group inline-flex items-center gap-3 rounded-2xl border border-icaire-600/30 bg-white/80 px-5 py-3 shadow-sm backdrop-blur transition-all hover:-translate-y-0.5 hover:border-icaire-600 hover:shadow-md dark:border-icaire-400/20 dark:bg-zinc-900/60 dark:hover:border-icaire-400/70"
-          >
-            <span className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-icaire-700 to-icaire-400 text-white">
-              <FilePenLine size={15} />
-            </span>
-            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-              Journal Submission Portal
-            </span>
-            <ArrowRight size={15} className="text-icaire-600 transition-transform group-hover:translate-x-0.5 dark:text-icaire-400" />
-          </button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Link
             to="/taxonomy"

@@ -27,7 +27,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`relative z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/80 dark:bg-[#0a0a0d]/80 backdrop-blur-lg border-b border-zinc-200/80 dark:border-zinc-800/80"
           : "bg-transparent border-b border-transparent"
