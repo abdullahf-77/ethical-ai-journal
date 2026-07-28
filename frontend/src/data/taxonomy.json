@@ -1,0 +1,1866 @@
+{
+  "taxonomy_version": "v2",
+  "top_domains": [
+    {
+      "id": "TD1",
+      "name": "Human Rights, Fairness & Dignity",
+      "definition": "Whether an AI system respects the fundamental rights, dignity, and equal treatment of the people and groups it affects. Covers both the foundational rights/democratic-values register (non-discrimination, dignity, rule of law as legal and political principles) and its operational counterpart in bias mitigation, accessibility, and inclusive treatment of protected groups.",
+      "domain_count": 2,
+      "subdomain_count": 38,
+      "paper_count": 2,
+      "domains": [
+        {
+          "name": "Human Rights, Dignity & Democratic Values",
+          "subdomains": [
+            {
+              "name": "Human dignity",
+              "slug": "human-dignity",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human Rights",
+              "slug": "human-rights",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human rights and democratic values",
+              "slug": "human-rights-and-democratic-values",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human rights and human dignity",
+              "slug": "human-rights-and-human-dignity",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact on Human Dignity",
+              "slug": "impact-on-human-dignity",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Integrity (bodily or Mental)",
+              "slug": "integrity-bodily-or-mental",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Living in Peaceful, Just and Interconnected Societies",
+              "slug": "living-in-peaceful-just-and-interconnected-societies",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Non-subversion",
+              "slug": "non-subversion",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Peace",
+              "slug": "peace",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Remedy, redress and contestability",
+              "slug": "remedy-redress-and-contestability",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Social security",
+              "slug": "social-security",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            },
+            {
+              "name": "Solidarity and social cohesion",
+              "slug": "solidarity-and-social-cohesion",
+              "scope": "Protection of fundamental rights, human dignity, democratic values, peace, solidarity, and access to remedy.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Fairness, Diversity & Inclusion",
+          "subdomains": [
+            {
+              "name": "Accessibility and equitable access",
+              "slug": "accessibility-and-equitable-access",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Bias prevention and mitigation",
+              "slug": "bias-prevention-and-mitigation",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Biometric Categorisation Systems Inferring Race, Political Opinions, Trade Union Membership, Religious/philosophical Beliefs, Sex Life or Sexual Orientation",
+              "slug": "biometric-categorisation-systems-inferring-race-political-opinions-trade-union-membership-religious-philosophical-beliefs-sex-life-or-sexual-orientation",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Biometrics (remote Biometric Identification; Biometric Categorisation by Sensitive Attributes; Emotion Recognition)",
+              "slug": "biometrics-remote-biometric-identification-biometric-categorisation-by-sensitive-attributes-emotion-recognition",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Computational and Statistical Bias",
+              "slug": "computational-and-statistical-bias",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Consistency",
+              "slug": "consistency",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data bias",
+              "slug": "data-bias",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Decision bias",
+              "slug": "decision-bias",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Discriminatory Actions",
+              "slug": "discriminatory-actions",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Diversity and inclusion",
+              "slug": "diversity-and-inclusion",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Emotion Recognition Systems and Biometric Categorisation Systems",
+              "slug": "emotion-recognition-systems-and-biometric-categorisation-systems",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Equality and equity",
+              "slug": "equality-and-equity",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Fairness and non-discrimination",
+              "slug": "fairness-and-non-discrimination",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Fairness, diversity and inclusion",
+              "slug": "fairness-diversity-and-inclusion",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human-cognitive Bias",
+              "slug": "human-cognitive-bias",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 1
+            },
+            {
+              "name": "Lack of Testing Diversity",
+              "slug": "lack-of-testing-diversity",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Output bias",
+              "slug": "output-bias",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 1
+            },
+            {
+              "name": "Plurality",
+              "slug": "plurality",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Reversibility",
+              "slug": "reversibility",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Social exclusion",
+              "slug": "social-exclusion",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Social Scoring of Natural Persons Based on Social Behaviour or Personal Characteristics, Leading to Detrimental or Unfavourable Treatment",
+              "slug": "social-scoring-of-natural-persons-based-on-social-behaviour-or-personal-characteristics-leading-to-detrimental-or-unfavourable-treatment",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Systemic Bias",
+              "slug": "systemic-bias",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Training data accessibility and transparency",
+              "slug": "training-data-accessibility-and-transparency",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unequal Performance Across Groups",
+              "slug": "unequal-performance-across-groups",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unfair Discrimination and Misrepresentation",
+              "slug": "unfair-discrimination-and-misrepresentation",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            },
+            {
+              "name": "Workforce diversity, equity, inclusion and accessibility",
+              "slug": "workforce-diversity-equity-inclusion-and-accessibility",
+              "scope": "Fair and non-discriminatory AI, bias management, equality, diversity, inclusion, accessibility, and equitable distribution.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TD2",
+      "name": "Privacy, Transparency & Explainability",
+      "definition": "An individual's or the public's ability to know about, understand, and control how an AI system collects and uses their information and reaches its decisions. Spans data protection/confidentiality (what the system knows and how it's obtained) and system legibility (how the system's behaviour and outputs can be explained, traced, and disclosed as AI-generated).",
+      "domain_count": 2,
+      "subdomain_count": 41,
+      "paper_count": 24,
+      "domains": [
+        {
+          "name": "Privacy & Data Protection",
+          "subdomains": [
+            {
+              "name": "Attribute Inference Attack",
+              "slug": "attribute-inference-attack",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information",
+              "slug": "compromise-of-privacy-by-obtaining-leaking-or-correctly-inferring-sensitive-information",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 23
+            },
+            {
+              "name": "Confidential Data in Prompt",
+              "slug": "confidential-data-in-prompt",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Confidential Information in Data",
+              "slug": "confidential-information-in-data",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Privacy Rights Alignment",
+              "slug": "data-privacy-rights-alignment",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Exposure of personal information",
+              "slug": "exposure-of-personal-information",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Membership Inference Attack",
+              "slug": "membership-inference-attack",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Personal information in prompts",
+              "slug": "personal-information-in-prompts",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Personal information in training data",
+              "slug": "personal-information-in-training-data",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Personal information leakage",
+              "slug": "personal-information-leakage",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Privacy and data protection",
+              "slug": "privacy-and-data-protection",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Privacy and personal data protection",
+              "slug": "privacy-and-personal-data-protection",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Reidentification",
+              "slug": "reidentification",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Revealing Confidential Information",
+              "slug": "revealing-confidential-information",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Sensitive business data disclosure",
+              "slug": "sensitive-business-data-disclosure",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Sharing IP/PI/confidential Information with Tools",
+              "slug": "sharing-ip-pi-confidential-information-with-tools",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Sharing IP/PI/confidential Information with User",
+              "slug": "sharing-ip-pi-confidential-information-with-user",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unclear T&Cs and Data Privacy Policies",
+              "slug": "unclear-t-cs-and-data-privacy-policies",
+              "scope": "Protection of personal, confidential, and sensitive information across the AI lifecycle.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Transparency, Explainability & Traceability",
+          "subdomains": [
+            {
+              "name": "AI Systems Generating Synthetic Audio, Image, Video or Text Content",
+              "slug": "ai-systems-generating-synthetic-audio-image-video-or-text-content",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI Systems Intended to Interact Directly with Natural Persons",
+              "slug": "ai-systems-intended-to-interact-directly-with-natural-persons",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Awareness of AI interaction",
+              "slug": "awareness-of-ai-interaction",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Disclosure of data, inputs and system logic",
+              "slug": "disclosure-of-data-inputs-and-system-logic",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Explainability and interpretability",
+              "slug": "explainability-and-interpretability",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "General understanding of AI systems",
+              "slug": "general-understanding-of-ai-systems",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of AI Agent Transparency",
+              "slug": "lack-of-ai-agent-transparency",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of Data Transparency",
+              "slug": "lack-of-data-transparency",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of Model Transparency",
+              "slug": "lack-of-model-transparency",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of System Transparency",
+              "slug": "lack-of-system-transparency",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of Transparency or Interpretability",
+              "slug": "lack-of-transparency-or-interpretability",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lifecycle traceability",
+              "slug": "lifecycle-traceability",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Non-disclosure",
+              "slug": "non-disclosure",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Organizational AI risk culture and communication",
+              "slug": "organizational-ai-risk-culture-and-communication",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Risk treatment, recovery and communication",
+              "slug": "risk-treatment-recovery-and-communication",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 1
+            },
+            {
+              "name": "Sensitive Information Disclosure",
+              "slug": "sensitive-information-disclosure",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Transparency and communication",
+              "slug": "transparency-and-communication",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Transparency and disclosure",
+              "slug": "transparency-and-disclosure",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Transparency and explainability",
+              "slug": "transparency-and-explainability",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unexplainable and untraceable actions",
+              "slug": "unexplainable-and-untraceable-actions",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unexplainable output",
+              "slug": "unexplainable-output",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unreliable source attribution",
+              "slug": "unreliable-source-attribution",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            },
+            {
+              "name": "Untraceable attribution",
+              "slug": "untraceable-attribution",
+              "scope": "Disclosure, intelligibility, interpretability, provenance, traceability, and communication about AI systems and outputs.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TD3",
+      "name": "Security, Resilience & Technical Integrity",
+      "definition": "The technical robustness of AI systems and their supply chains against attack, tampering, and failure. Covers adversarial/security threats (attacks, vulnerabilities, resilience under abuse) together with the integrity of the data, models, and components feeding the system (poisoning, contamination, provenance of training data and model artifacts).",
+      "domain_count": 2,
+      "subdomain_count": 62,
+      "paper_count": 38,
+      "domains": [
+        {
+          "name": "Security, Resilience & Technical Abuse",
+          "subdomains": [
+            {
+              "name": "AI security",
+              "slug": "ai-security",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 1
+            },
+            {
+              "name": "AI System Security Vulnerabilities and Attacks",
+              "slug": "ai-system-security-vulnerabilities-and-attacks",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 37
+            },
+            {
+              "name": "Attack on AI Agents' External Resources",
+              "slug": "attack-on-ai-agents-external-resources",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 1
+            },
+            {
+              "name": "Continuous Input Overflow",
+              "slug": "continuous-input-overflow",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Cyberattacks, Weapon Development or Use, and Mass Harm",
+              "slug": "cyberattacks-weapon-development-or-use-and-mass-harm",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Poisoning Attacks",
+              "slug": "data-poisoning-attacks",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Denial of Wallet (DoW)",
+              "slug": "denial-of-wallet-dow",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Direct prompt injection",
+              "slug": "direct-prompt-injection",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Disclosure of Permissions and User Roles",
+              "slug": "disclosure-of-permissions-and-user-roles",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Embedding Inversion Attacks",
+              "slug": "embedding-inversion-attacks",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Encoded Interactions Attack",
+              "slug": "encoded-interactions-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Excessive functionality and permissions",
+              "slug": "excessive-functionality-and-permissions",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Functional Model Replication",
+              "slug": "functional-model-replication",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "High Impact Capabilities Evaluated Via Technical Tools, Methodologies, Indicators and Benchmarks",
+              "slug": "high-impact-capabilities-evaluated-via-technical-tools-methodologies-indicators-and-benchmarks",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Incomplete AI Agent Evaluation",
+              "slug": "incomplete-ai-agent-evaluation",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Indirect Instructions Attack",
+              "slug": "indirect-instructions-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Indirect prompt injection",
+              "slug": "indirect-prompt-injection",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "JavaScript/Markdown Returned and Rendered (XSS)",
+              "slug": "javascript-markdown-returned-and-rendered-xss",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lifecycle robustness, security and safety",
+              "slug": "lifecycle-robustness-security-and-safety",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "LLM Model on Device Supply-chain Vulnerabilities",
+              "slug": "llm-model-on-device-supply-chain-vulnerabilities",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Model Behavior Manipulation: Evasion Attack",
+              "slug": "model-behavior-manipulation-evasion-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Model Behavior Manipulation: Extraction Attack",
+              "slug": "model-behavior-manipulation-extraction-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Model Behavior Manipulation: Jailbreaking",
+              "slug": "model-behavior-manipulation-jailbreaking",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Model Extraction Via API",
+              "slug": "model-extraction-via-api",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Output Passed to System Shell/exec/eval",
+              "slug": "output-passed-to-system-shell-exec-eval",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prompt Attacks: Context Overload Attack",
+              "slug": "prompt-attacks-context-overload-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prompt Attacks: Direct Instructions Attack",
+              "slug": "prompt-attacks-direct-instructions-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prompt Attacks: Prompt Injection Attack",
+              "slug": "prompt-attacks-prompt-injection-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prompt Attacks: Prompt Leaking",
+              "slug": "prompt-attacks-prompt-leaking",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prompt Attacks: Prompt Priming",
+              "slug": "prompt-attacks-prompt-priming",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prompt Injection",
+              "slug": "prompt-injection",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Resilience",
+              "slug": "resilience",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Safety and security",
+              "slug": "safety-and-security",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Side-Channel Attacks",
+              "slug": "side-channel-attacks",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Social Hacking Attack",
+              "slug": "social-hacking-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Specialized Tokens Attack",
+              "slug": "specialized-tokens-attack",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "System Prompt Leakage",
+              "slug": "system-prompt-leakage",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Traditional Third-party Package Vulnerabilities",
+              "slug": "traditional-third-party-package-vulnerabilities",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Trustworthiness evaluation",
+              "slug": "trustworthiness-evaluation",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 1
+            },
+            {
+              "name": "Unauthorized Access & Data Leakage",
+              "slug": "unauthorized-access-data-leakage",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unauthorized Use",
+              "slug": "unauthorized-use",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unescaped Content in Email Templates",
+              "slug": "unescaped-content-in-email-templates",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unparameterized SQL Generation",
+              "slug": "unparameterized-sql-generation",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unsanitized File Paths",
+              "slug": "unsanitized-file-paths",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Variable-Length Input Flood",
+              "slug": "variable-length-input-flood",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Vulnerable LoRA Adapters",
+              "slug": "vulnerable-lora-adapters",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            },
+            {
+              "name": "Vulnerable Pre-Trained Model",
+              "slug": "vulnerable-pre-trained-model",
+              "scope": "Protection against attacks, unauthorized access, prompt exploitation, insecure output handling, resource abuse, and system compromise.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Data, Model & Supply-Chain Integrity",
+          "subdomains": [
+            {
+              "name": "Data and Model Poisoning",
+              "slug": "data-and-model-poisoning",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Contamination",
+              "slug": "data-contamination",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Poisoning",
+              "slug": "data-poisoning",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Exploit Collaborative Development Processes",
+              "slug": "exploit-collaborative-development-processes",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Improper Data Curation",
+              "slug": "improper-data-curation",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Improper Retraining",
+              "slug": "improper-retraining",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of Training Data Transparency",
+              "slug": "lack-of-training-data-transparency",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Malicious Training-data Injection (e.g., Split-View / Frontrunning Poisoning)",
+              "slug": "malicious-training-data-injection-e-g-split-view-frontrunning-poisoning",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Outdated or Deprecated Models",
+              "slug": "outdated-or-deprecated-models",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Supply Chain",
+              "slug": "supply-chain",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Uncertain Data Provenance",
+              "slug": "uncertain-data-provenance",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unrepresentative Data",
+              "slug": "unrepresentative-data",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unverified Training Data",
+              "slug": "unverified-training-data",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Vector and Embedding Weaknesses",
+              "slug": "vector-and-embedding-weaknesses",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            },
+            {
+              "name": "Weak Model Provenance",
+              "slug": "weak-model-provenance",
+              "scope": "Integrity, quality, provenance, representativeness, and secure sourcing of data, models, dependencies, and development processes.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TD4",
+      "name": "Safety, Alignment & Human Oversight",
+      "definition": "Whether an AI system behaves reliably, stays aligned with the values and intentions of its operators and users, and remains under meaningful human understanding and control. Covers system-level reliability/alignment (accuracy, dangerous capabilities, value alignment) together with the human-agency question of who retains the ability to intervene, consent, and override.",
+      "domain_count": 2,
+      "subdomain_count": 48,
+      "paper_count": 7,
+      "domains": [
+        {
+          "name": "Safety, Reliability & Value Alignment",
+          "subdomains": [
+            {
+              "name": "Accuracy",
+              "slug": "accuracy",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI awareness and literacy",
+              "slug": "ai-awareness-and-literacy",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI Possessing Dangerous Capabilities",
+              "slug": "ai-possessing-dangerous-capabilities",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI Pursuing Its Own Goals in Conflict with Human Goals or Values",
+              "slug": "ai-pursuing-its-own-goals-in-conflict-with-human-goals-or-values",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI safety",
+              "slug": "ai-safety",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Behavior Alteration",
+              "slug": "behavior-alteration",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Benefit maximization and harm minimization strategies",
+              "slug": "benefit-maximization-and-harm-minimization-strategies",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 1
+            },
+            {
+              "name": "Capability, use, benefit and cost assessment",
+              "slug": "capability-use-benefit-and-cost-assessment",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 1
+            },
+            {
+              "name": "Cross-Context Information Leaks and Federation Knowledge Conflict",
+              "slug": "cross-context-information-leaks-and-federation-knowledge-conflict",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Direct Injection Into Training Process",
+              "slug": "direct-injection-into-training-process",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Exposure of Internal Rules",
+              "slug": "exposure-of-internal-rules",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Exposure of Sensitive Functionality",
+              "slug": "exposure-of-sensitive-functionality",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Harm prevention",
+              "slug": "harm-prevention",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Improper Output Handling",
+              "slug": "improper-output-handling",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Incomplete Advice",
+              "slug": "incomplete-advice",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of Capability or Robustness",
+              "slug": "lack-of-capability-or-robustness",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 1
+            },
+            {
+              "name": "Lack of Resource Access Restrictions",
+              "slug": "lack-of-resource-access-restrictions",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Misaligned Actions",
+              "slug": "misaligned-actions",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 1
+            },
+            {
+              "name": "Multi-agent Risks",
+              "slug": "multi-agent-risks",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Non-maleficence and do no harm",
+              "slug": "non-maleficence-and-do-no-harm",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Overfitting",
+              "slug": "overfitting",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Poor Model Accuracy",
+              "slug": "poor-model-accuracy",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 1
+            },
+            {
+              "name": "Precaution and capability caution",
+              "slug": "precaution-and-capability-caution",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Proportionality and harm prevention",
+              "slug": "proportionality-and-harm-prevention",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Proprietary algorithm exposure",
+              "slug": "proprietary-algorithm-exposure",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Reproducibility",
+              "slug": "reproducibility",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Resource-Intensive Queries",
+              "slug": "resource-intensive-queries",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Revealing of Filtering Criteria",
+              "slug": "revealing-of-filtering-criteria",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Risk and harm prevention",
+              "slug": "risk-and-harm-prevention",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Robustness and generalizability",
+              "slug": "robustness-and-generalizability",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 1
+            },
+            {
+              "name": "Safe",
+              "slug": "safe",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Safe intervention and decommissioning",
+              "slug": "safe-intervention-and-decommissioning",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unbounded Consumption",
+              "slug": "unbounded-consumption",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unknowing User Injection of Sensitive Data",
+              "slug": "unknowing-user-injection-of-sensitive-data",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unsafe code generation",
+              "slug": "unsafe-code-generation",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            },
+            {
+              "name": "Untargeted Scraping of Facial Images from the Internet or CCTV Footage to Create or Expand Facial Recognition Databases",
+              "slug": "untargeted-scraping-of-facial-images-from-the-internet-or-cctv-footage-to-create-or-expand-facial-recognition-databases",
+              "scope": "Prevention of harm through safe, accurate, robust, reliable, controllable, and value-aligned AI behavior.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Human Agency, Autonomy & Oversight",
+          "subdomains": [
+            {
+              "name": "Consent",
+              "slug": "consent",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Excessive Agency",
+              "slug": "excessive-agency",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Excessive Autonomy",
+              "slug": "excessive-autonomy",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human agency and oversight",
+              "slug": "human-agency-and-oversight",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 2
+            },
+            {
+              "name": "Human agency safeguards",
+              "slug": "human-agency-safeguards",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human autonomy and self-determination",
+              "slug": "human-autonomy-and-self-determination",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 1
+            },
+            {
+              "name": "Human choice and control",
+              "slug": "human-choice-and-control",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 1
+            },
+            {
+              "name": "Human empowerment",
+              "slug": "human-empowerment",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact on human agency",
+              "slug": "impact-on-human-agency",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Loss of Human Agency and Autonomy",
+              "slug": "loss-of-human-agency-and-autonomy",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 1
+            },
+            {
+              "name": "Overreliance and inappropriate reliance",
+              "slug": "overreliance-and-inappropriate-reliance",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            },
+            {
+              "name": "Overreliance and Unsafe Use",
+              "slug": "overreliance-and-unsafe-use",
+              "scope": "Preservation of human choice, consent, self-determination, meaningful control, and human oversight.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TD5",
+      "name": "Accountability, Governance & Legal Rights",
+      "definition": "The organizational, regulatory, and legal structures that assign responsibility for an AI system's behaviour and outcomes. Covers governance/risk-management process (audits, accountability structures, actor responsibility, risk management) together with the legal-rights regime that governs what may lawfully be done with data, models, and outputs (copyright, data-acquisition and transfer restrictions).",
+      "domain_count": 2,
+      "subdomain_count": 40,
+      "paper_count": 2,
+      "domains": [
+        {
+          "name": "Accountability, Governance & Risk Management",
+          "subdomains": [
+            {
+              "name": "Accountability of AI Agent Actions",
+              "slug": "accountability-of-ai-agent-actions",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 1
+            },
+            {
+              "name": "Accountability structures and responsible workforce",
+              "slug": "accountability-structures-and-responsible-workforce",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI actor accountability",
+              "slug": "ai-actor-accountability",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 1
+            },
+            {
+              "name": "AI Agent Compliance",
+              "slug": "ai-agent-compliance",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI risk governance policies and practices",
+              "slug": "ai-risk-governance-policies-and-practices",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI system categorization",
+              "slug": "ai-system-categorization",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Commission Decision (ex Officio or Via Qualified Alert from the Scientific Panel) Based on Annex XIII Criteria",
+              "slug": "commission-decision-ex-officio-or-via-qualified-alert-from-the-scientific-panel-based-on-annex-xiii-criteria",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Component and third-party risk mapping",
+              "slug": "component-and-third-party-risk-mapping",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Context establishment",
+              "slug": "context-establishment",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Governance Failure",
+              "slug": "governance-failure",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact characterization",
+              "slug": "impact-characterization",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Incomplete Usage Definition",
+              "slug": "incomplete-usage-definition",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Incorrect Risk Testing",
+              "slug": "incorrect-risk-testing",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Integrity in AI practice",
+              "slug": "integrity-in-ai-practice",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Lack of Domain Expertise",
+              "slug": "lack-of-domain-expertise",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Legal Accountability",
+              "slug": "legal-accountability",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Liability",
+              "slug": "liability",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Longitudinal risk tracking",
+              "slug": "longitudinal-risk-tracking",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Measurement feedback and improvement",
+              "slug": "measurement-feedback-and-improvement",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Mitigation and Maintenance",
+              "slug": "mitigation-and-maintenance",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Multi-stakeholder and adaptive governance",
+              "slug": "multi-stakeholder-and-adaptive-governance",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Responsibility and accountability",
+              "slug": "responsibility-and-accountability",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Risk measurement methods and metrics",
+              "slug": "risk-measurement-methods-and-metrics",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Risk prioritization and response",
+              "slug": "risk-prioritization-and-response",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Safety, robustness and reliability",
+              "slug": "safety-robustness-and-reliability",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Stakeholder engagement",
+              "slug": "stakeholder-engagement",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Systematic AI risk management",
+              "slug": "systematic-ai-risk-management",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Temporal Gap",
+              "slug": "temporal-gap",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Third-party AI risk governance",
+              "slug": "third-party-ai-risk-governance",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            },
+            {
+              "name": "Third-party AI risk management",
+              "slug": "third-party-ai-risk-management",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 1
+            },
+            {
+              "name": "Unrepresentative Risk Testing",
+              "slug": "unrepresentative-risk-testing",
+              "scope": "Responsibility, organizational governance, auditability, compliance, stakeholder engagement, and lifecycle risk management.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Intellectual Property & Legal Rights",
+          "subdomains": [
+            {
+              "name": "Copyright Infringement",
+              "slug": "copyright-infringement",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Acquisition Restrictions",
+              "slug": "data-acquisition-restrictions",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Transfer Restrictions",
+              "slug": "data-transfer-restrictions",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Usage Restrictions",
+              "slug": "data-usage-restrictions",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Data Usage Rights Restrictions",
+              "slug": "data-usage-rights-restrictions",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Generated Content Ownership and IP",
+              "slug": "generated-content-ownership-and-ip",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "IP Information in Prompt",
+              "slug": "ip-information-in-prompt",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Licensing Risks",
+              "slug": "licensing-risks",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            },
+            {
+              "name": "Model Usage Rights Restrictions",
+              "slug": "model-usage-rights-restrictions",
+              "scope": "Copyright, licensing, ownership, usage rights, proprietary information, and other legal-rights considerations.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TD6",
+      "name": "Societal, Economic & Environmental Impact",
+      "definition": "AI's broad, often diffuse downstream effects on people, economies, and the planet, beyond the behaviour of any single system. Covers beneficence and well-being (does AI actively promote human flourishing and social good), socioeconomic effects (labour markets, access to essential services, democratic processes), and environmental impact (energy and resource use, environmental harm).",
+      "domain_count": 3,
+      "subdomain_count": 35,
+      "paper_count": 0,
+      "domains": [
+        {
+          "name": "Beneficence, Well-being & Social Good",
+          "subdomains": [
+            {
+              "name": "Beneficial outcomes",
+              "slug": "beneficial-outcomes",
+              "scope": "Use of AI to promote human well-being, prosperity, beneficial outcomes, social cohesion, and the common good.",
+              "paper_count": 0
+            },
+            {
+              "name": "Prioritizing Well-being",
+              "slug": "prioritizing-well-being",
+              "scope": "Use of AI to promote human well-being, prosperity, beneficial outcomes, social cohesion, and the common good.",
+              "paper_count": 0
+            },
+            {
+              "name": "Promoting Prosperity",
+              "slug": "promoting-prosperity",
+              "scope": "Use of AI to promote human well-being, prosperity, beneficial outcomes, social cohesion, and the common good.",
+              "paper_count": 0
+            },
+            {
+              "name": "Social and common good",
+              "slug": "social-and-common-good",
+              "scope": "Use of AI to promote human well-being, prosperity, beneficial outcomes, social cohesion, and the common good.",
+              "paper_count": 0
+            },
+            {
+              "name": "Trust in AI",
+              "slug": "trust-in-ai",
+              "scope": "Use of AI to promote human well-being, prosperity, beneficial outcomes, social cohesion, and the common good.",
+              "paper_count": 0
+            },
+            {
+              "name": "Well-being and human flourishing",
+              "slug": "well-being-and-human-flourishing",
+              "scope": "Use of AI to promote human well-being, prosperity, beneficial outcomes, social cohesion, and the common good.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Socioeconomic & Societal Impact",
+          "subdomains": [
+            {
+              "name": "'Real-time' Remote Biometric Identification in Publicly Accessible Spaces for Law Enforcement Purposes",
+              "slug": "real-time-remote-biometric-identification-in-publicly-accessible-spaces-for-law-enforcement-purposes",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Access to and Enjoyment of Essential Private/public Services and Benefits",
+              "slug": "access-to-and-enjoyment-of-essential-private-public-services-and-benefits",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Administration of Justice and Democratic Processes",
+              "slug": "administration-of-justice-and-democratic-processes",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "AI Welfare and Rights",
+              "slug": "ai-welfare-and-rights",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Competitive Dynamics",
+              "slug": "competitive-dynamics",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Critical Infrastructure",
+              "slug": "critical-infrastructure",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Economic and Cultural Devaluation of Human Effort",
+              "slug": "economic-and-cultural-devaluation-of-human-effort",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Education and Vocational Training",
+              "slug": "education-and-vocational-training",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Employment and job impacts",
+              "slug": "employment-and-job-impacts",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Employment, Workers' Management and Access to Self-employment",
+              "slug": "employment-workers-management-and-access-to-self-employment",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Exploitation of Vulnerabilities Due to Age, Disability, or Social/economic Situation, Materially Distorting Behaviour and Causing/likely to Cause Significant Harm",
+              "slug": "exploitation-of-vulnerabilities-due-to-age-disability-or-social-economic-situation-materially-distorting-behaviour-and-causing-likely-to-cause-significant-harm",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact on Affected Communities",
+              "slug": "impact-on-affected-communities",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact on Cultural Diversity",
+              "slug": "impact-on-cultural-diversity",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact on Education: Bypassing Learning",
+              "slug": "impact-on-education-bypassing-learning",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Impact on Education: Plagiarism",
+              "slug": "impact-on-education-plagiarism",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Increased Inequality and Decline in Employment Quality",
+              "slug": "increased-inequality-and-decline-in-employment-quality",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Inference of Emotions of a Natural Person in Workplace and Education Institutions",
+              "slug": "inference-of-emotions-of-a-natural-person-in-workplace-and-education-institutions",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Law Enforcement",
+              "slug": "law-enforcement",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Migration, Asylum and Border Control Management",
+              "slug": "migration-asylum-and-border-control-management",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            },
+            {
+              "name": "Power Centralization and Unfair Distribution of Benefits",
+              "slug": "power-centralization-and-unfair-distribution-of-benefits",
+              "scope": "Effects on work, education, inequality, communities, culture, public services, institutions, and distribution of power and benefits.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Sustainability & Environmental Impact",
+          "subdomains": [
+            {
+              "name": "Energy and resource efficiency",
+              "slug": "energy-and-resource-efficiency",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Environmental Harm",
+              "slug": "environmental-harm",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Environmental impact of AI",
+              "slug": "environmental-impact-of-ai",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Environmental sustainability",
+              "slug": "environmental-sustainability",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Environmental sustainability and ecosystem flourishing",
+              "slug": "environmental-sustainability-and-ecosystem-flourishing",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Inclusive Growth, Sustainable Development and Well-being",
+              "slug": "inclusive-growth-sustainable-development-and-well-being",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Pollution of Information Ecosystem and Loss of Consensus Reality",
+              "slug": "pollution-of-information-ecosystem-and-loss-of-consensus-reality",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Redundant Actions",
+              "slug": "redundant-actions",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            },
+            {
+              "name": "Societal and Environmental Well-being",
+              "slug": "societal-and-environmental-well-being",
+              "scope": "Environmental flourishing, sustainable development, energy and resource efficiency, and mitigation of AI's ecological impacts.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TD7",
+      "name": "Information & Content Integrity",
+      "definition": "The integrity of information and content that AI systems produce or propagate. Covers unintentional harms to the information ecosystem (disinformation, factual inaccuracy) together with intentional misuse — manipulation, deepfakes, and generation of harmful or dangerous content.",
+      "domain_count": 2,
+      "subdomain_count": 22,
+      "paper_count": 1,
+      "domains": [
+        {
+          "name": "Information Integrity & Misinformation",
+          "subdomains": [
+            {
+              "name": "Disinformation",
+              "slug": "disinformation",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Disinformation, Surveillance, and Influence at Scale",
+              "slug": "disinformation-surveillance-and-influence-at-scale",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Factual inaccuracies",
+              "slug": "factual-inaccuracies",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "False or Misleading Information",
+              "slug": "false-or-misleading-information",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Function Calling Hallucination",
+              "slug": "function-calling-hallucination",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Hallucinations and fabricated output",
+              "slug": "hallucinations-and-fabricated-output",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Information integrity safeguards",
+              "slug": "information-integrity-safeguards",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Misinformation",
+              "slug": "misinformation",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Misrepresentation of Expertise",
+              "slug": "misrepresentation-of-expertise",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            },
+            {
+              "name": "Unsupported claims",
+              "slug": "unsupported-claims",
+              "scope": "Prevention of false, misleading, fabricated, or ecosystem-polluting content and preservation of reliable information.",
+              "paper_count": 0
+            }
+          ]
+        },
+        {
+          "name": "Misuse, Manipulation & Harmful Content",
+          "subdomains": [
+            {
+              "name": "A/IS Technology Misuse and Awareness of It",
+              "slug": "a-is-technology-misuse-and-awareness-of-it",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Dangerous Use",
+              "slug": "dangerous-use",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Deep Fakes and AI-generated/manipulated Text on Matters of Public Interest",
+              "slug": "deep-fakes-and-ai-generated-manipulated-text-on-matters-of-public-interest",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 1
+            },
+            {
+              "name": "Exploit Trust Mismatch",
+              "slug": "exploit-trust-mismatch",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Exposure to Toxic Content",
+              "slug": "exposure-to-toxic-content",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Fraud, Scams, and Targeted Manipulation",
+              "slug": "fraud-scams-and-targeted-manipulation",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Human Exploitation",
+              "slug": "human-exploitation",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Improper Usage",
+              "slug": "improper-usage",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Nonconsensual Use",
+              "slug": "nonconsensual-use",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Risk Assessments Predicting a Natural Person's Likelihood of Committing a Criminal Offence Based Solely on Profiling or Personality Traits",
+              "slug": "risk-assessments-predicting-a-natural-person-s-likelihood-of-committing-a-criminal-offence-based-solely-on-profiling-or-personality-traits",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Subliminal, Manipulative or Deceptive Techniques Materially Distorting Behaviour and Causing/likely to Cause Significant Harm",
+              "slug": "subliminal-manipulative-or-deceptive-techniques-materially-distorting-behaviour-and-causing-likely-to-cause-significant-harm",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            },
+            {
+              "name": "Toxic and harmful content",
+              "slug": "toxic-and-harmful-content",
+              "scope": "Prevention of malicious, deceptive, exploitative, coercive, toxic, fraudulent, weaponized, or non-consensual uses of AI.",
+              "paper_count": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

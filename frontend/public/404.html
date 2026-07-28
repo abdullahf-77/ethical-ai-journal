@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ethical AI Journal</title>
+    <!--
+      GitHub Pages serves this file for any unmatched path (deep links,
+      hard refreshes on client-side routes). It re-encodes the path into a
+      query string and redirects to the app's index.html, which decodes it
+      back on load (see the inline script in index.html). Standard technique:
+      https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      var segmentsToKeep = 1; // "/ethical-ai-journal" base path segment
+      var l = window.location;
+      l.replace(
+        l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") +
+        l.pathname.split("/").slice(0, 1 + segmentsToKeep).join("/") + "/?/" +
+        l.pathname.slice(1).split("/").slice(segmentsToKeep).join("/").replace(/&/g, "~and~") +
+        (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

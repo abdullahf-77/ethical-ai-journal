@@ -1,0 +1,773 @@
+[
+  {
+    "id": "55a5926b5212f162",
+    "title": "Requisite Variety in Ethical Utility Functions for AI Value Alignment",
+    "authors": "Nadisha-Marie Aliman, Leon Kester",
+    "year": 2019,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/1907.00430v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Value alignment and specification",
+      "Benefit maximization and harm minimization strategies"
+    ]
+  },
+  {
+    "id": "efc5aaddc06720ed",
+    "title": "Distinct social-linguistic processing between humans and large audio-language models: Evidence from model-brain alignment",
+    "authors": "Hanlin Wu, Xufeng Duan et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2503.19586v2",
+    "confidence": 0.85,
+    "subdomains": [
+      "Human-cognitive Bias",
+      "Value Alignment",
+      "Poor Model Accuracy"
+    ]
+  },
+  {
+    "id": "76ac34810c54067e",
+    "title": "Expanding External Access To Frontier AI Models For Dangerous Capability Evaluations",
+    "authors": "Jacob Charnock, Alejandro Tlaie et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2601.11916v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI security",
+      "Third-party AI risk management",
+      "Risk treatment, recovery and communication"
+    ]
+  },
+  {
+    "id": "63852aeef34c5d52",
+    "title": "Keeping an Eye on AI: A Framework for Effective Human Oversight of AI Systems",
+    "authors": "Susanne Gaube, Markus Langer et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2605.16278v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Human agency and oversight",
+      "Accountability of AI Agent Actions",
+      "AI actor accountability"
+    ]
+  },
+  {
+    "id": "4a0a94127d7a231e",
+    "title": "The Silent Cost of Artificial Intelligence Assistance: A Theory of Autonomy Surrender, the Recovery Mechanism, and the Restoration of Human Agency",
+    "authors": "Ancuta Margondai, Julie Rader et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2606.13962v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Human agency and oversight",
+      "Loss of Human Agency and Autonomy",
+      "Human autonomy and self-determination",
+      "Human choice and control"
+    ]
+  },
+  {
+    "id": "ec370267315f2f68",
+    "title": "Why Avoid Generative Legal AI Systems? Hallucination, Overreliance, and their Impact on Explainability",
+    "authors": "Gizem Gültekin Varkonyi",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2603.15937v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Transparency, Explainability & Traceability",
+      "Safety, Reliability & Value Alignment",
+      "Accountability & Risk Management"
+    ]
+  },
+  {
+    "id": "82a4b790bf62183f",
+    "title": "Alignment Tampering: How Reinforcement Learning from Human Feedback Is Exploited to Optimize Misaligned Biases",
+    "authors": "Dongyoon Hahm, Dylan Hadfield-Menell et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2605.27355v2",
+    "confidence": 0.95,
+    "subdomains": [
+      "Output bias",
+      "Misaligned Actions",
+      "Deep Fakes and AI-generated/manipulated Text on Matters of Public Interest"
+    ]
+  },
+  {
+    "id": "f36ee66b48f002fa",
+    "title": "Reliability and Robustness analysis of Machine Learning based Phishing URL Detectors",
+    "authors": "Bushra Sabir, M. Ali Babar et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2005.08454v3",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Trustworthiness evaluation"
+    ]
+  },
+  {
+    "id": "149a327d2cd3102a",
+    "title": "SoK: The Attack Surface of Agentic AI -- Tools, and Autonomy",
+    "authors": "Ali Dehghantanha, Sajad Homayoun",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2603.22928v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Attack on AI Agents' External Resources"
+    ]
+  },
+  {
+    "id": "6fa21b46eeb81c49",
+    "title": "Toward AI standardization: A triadic human-ai collaboration framework for multi-level autonomous mobility",
+    "authors": "Gaojian Huang, Wei-Hsiang Lo et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2504.19120v2",
+    "confidence": 0.9,
+    "subdomains": [
+      "Safety, Reliability & Value Alignment :: Capability, use, benefit and cost assessment",
+      "Safety, Reliability & Value Alignment :: Robustness and generalizability"
+    ]
+  },
+  {
+    "id": "62a4dc8cc6e404c6",
+    "title": "Bench-2-CoP: Can We Trust Benchmarking for EU AI Compliance?",
+    "authors": "Matteo Prandi, Vincenzo Suriani et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2508.05464v2",
+    "confidence": 0.95,
+    "subdomains": [
+      "Capability, use, benefit and cost assessment",
+      "Lack of Capability or Robustness",
+      "AI Compliance and Regulatory Frameworks"
+    ]
+  },
+  {
+    "id": "3e2261a4a1cf552d",
+    "title": "Consequences of Misaligned AI",
+    "authors": "Simon Zhuang, Dylan Hadfield-Menell",
+    "year": 2021,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2102.03896v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Value Alignment",
+      "Robustness and generalizability"
+    ]
+  },
+  {
+    "id": "b5cc5cc9abbf9b91",
+    "title": "\"Ghost of the past\": identifying and resolving privacy leakage from LLM's memory through proactive user interaction",
+    "authors": "Shuning Zhang, Lyumanshan Ye et al.",
+    "year": 2024,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2410.14931v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "72d8aea79b428a4d",
+    "title": "SplitAgent: A Privacy-Preserving Distributed Architecture for Enterprise-Cloud Agent Collaboration",
+    "authors": "Jianshu She",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2603.08221v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "5a18f80cac8c52bf",
+    "title": "Privacy-Aware Camera 2.0 Technical Report",
+    "authors": "Huan Song, Shuyu Tian et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2603.04775v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "21a894926c39c07d",
+    "title": "A Real-Time Privacy-Preserving Behavior Recognition System via Edge-Cloud Collaboration",
+    "authors": "Huan Song, Shuyu Tian et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2601.22938v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "254a4967dee6f178",
+    "title": "Privacy-Aware RAG: Secure and Isolated Knowledge Retrieval",
+    "authors": "Pengcheng Zhou, Yinglun Feng et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2503.15548v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "fe5089c29c8b255b",
+    "title": "Secure, privacy-preserving and federated machine learning in medical imaging",
+    "authors": "Georgios Kaissis, Marcus R. Makowski et al.",
+    "year": 2020,
+    "source": "openalex",
+    "link": "https://doi.org/10.1038/s42256-020-0186-1",
+    "confidence": 0.9,
+    "subdomains": [
+      "Privacy",
+      "Security"
+    ]
+  },
+  {
+    "id": "0b6c1a1579d86c45",
+    "title": "Balancing Privacy and Progress: A Review of Privacy Challenges, Systemic Oversight, and Patient Perceptions in AI-Driven Healthcare",
+    "authors": "S. Williamson, Victor R. Prybutok",
+    "year": 2024,
+    "source": "openalex",
+    "link": "https://doi.org/10.3390/app14020675",
+    "confidence": 0.95,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "23f886b251ad135c",
+    "title": "Generative AI in Medical Practice: In-Depth Exploration of Privacy and Security Challenges",
+    "authors": "Yan Chen, Pouyan Esmaeilzadeh",
+    "year": 2024,
+    "source": "openalex",
+    "link": "https://doi.org/10.2196/53008",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "7d003095a8ef5b6e",
+    "title": "The Roadmap to 6G Security and Privacy",
+    "authors": "Pawani Porambage, Gürkan Gür et al.",
+    "year": 2021,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/ojcoms.2021.3078081",
+    "confidence": 0.95,
+    "subdomains": [
+      "Privacy",
+      "Security Vulnerabilities"
+    ]
+  },
+  {
+    "id": "e304c4ed575697cc",
+    "title": "Security and Privacy in Smart Farming: Challenges and Opportunities",
+    "authors": "Maanak Gupta, Mahmoud Abdelsalam et al.",
+    "year": 2020,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/access.2020.2975142",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "f3168cf1897ed620",
+    "title": "Empirical Comparison of Membership Inference Attacks in Deep Transfer Learning",
+    "authors": "Yuxuan Bai, Gauri Pradhan et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2510.05753v2",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "68b6e87ed28c94d6",
+    "title": "Enhanced Membership Inference Attacks against Machine Learning Models",
+    "authors": "Jiayuan Ye, Aadyaa Maddi et al.",
+    "year": 2021,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2111.09679v4",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "1dd05fa593ea9ce5",
+    "title": "Fundamental Limits of Membership Inference Attacks on Machine Learning Models",
+    "authors": "Eric Aubinais, Elisabeth Gassiat et al.",
+    "year": 2023,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2310.13786v6",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "b82e83bd6240ec96",
+    "title": "Privacy for All: Demystify Vulnerability Disparity of Differential Privacy against Membership Inference Attack",
+    "authors": "Bo Zhang, Ruotong Yu et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2001.08855v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "628957bed983757f",
+    "title": "Membership Inference Attacks on Machine Learning: A Survey",
+    "authors": "Hongsheng Hu, Zoran Salčić et al.",
+    "year": 2022,
+    "source": "openalex",
+    "link": "https://doi.org/10.1145/3523273",
+    "confidence": 1.0,
+    "subdomains": [
+      "Privacy & security :: 2.1 Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information",
+      "Privacy & security :: 2.2 AI system security vulnerabilities and attacks"
+    ]
+  },
+  {
+    "id": "7c72c352dc367b7b",
+    "title": "Demystifying Membership Inference Attacks in Machine Learning as a Service",
+    "authors": "Stacey Truex, Ling Liu et al.",
+    "year": 2019,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/tsc.2019.2897554",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "82099a5355693dab",
+    "title": "Detecting Sensitive Personal Information in Japanese Pre-Training Corpora for Large Language Models",
+    "authors": "Rei Minamoto, Yusuke Oda et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2606.12114v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Data Protection",
+      "Privacy"
+    ]
+  },
+  {
+    "id": "4988db69e0363616",
+    "title": "ProPILE: Probing Privacy Leakage in Large Language Models",
+    "authors": "Siwon Kim, Sangdoo Yun et al.",
+    "year": 2023,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2307.01881v1",
+    "confidence": 1.0,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "45fb6c5affc194ef",
+    "title": "DePrompt: Desensitization and Evaluation of Personal Identifiable Information in Large Language Model Prompts",
+    "authors": "Xiongtao Sun, Gan Liu et al.",
+    "year": 2024,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2408.08930v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "03fe419ff6d65d1e",
+    "title": "Understanding and Mitigating Cross-lingual Privacy Leakage via Language-specific and Universal Privacy Neurons",
+    "authors": "Wenshuo Dong, Qingsong Yang et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2506.00759v2",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "7132a33cfc058eeb",
+    "title": "PATCH: Mitigating PII Leakage in Language Models with Privacy-Aware Targeted Circuit PatcHing",
+    "authors": "Anthony Hughes, Vasisht Duddu et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2510.07452v2",
+    "confidence": 1.0,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "b7211b2881936d36",
+    "title": "Can Open Large Language Models Catch Vulnerabilities?",
+    "authors": "DeepSeek-AI, Guo, Daya et al.",
+    "year": 2025,
+    "source": "openalex",
+    "link": "http://arxiv.org/abs/2501.12948",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "a388aa23ca39417e",
+    "title": "On the leakage of personally identifiable information via online social networks",
+    "authors": "Balachander Krishnamurthy, Craig E. Wills",
+    "year": 2009,
+    "source": "openalex",
+    "link": "https://doi.org/10.1145/1592665.1592668",
+    "confidence": 0.95,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "db0fb5f72e23df01",
+    "title": "Leakage-Resilient Public-Key Cryptography in the Bounded-Retrieval Model",
+    "authors": "Joël Alwen, Yevgeniy Dodis et al.",
+    "year": 2009,
+    "source": "openalex",
+    "link": "https://doi.org/10.1007/978-3-642-03356-8_3",
+    "confidence": 0.85,
+    "subdomains": [
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "f8b153b26e30a0cf",
+    "title": "Towards Robust and Secure Embodied AI: A Survey on Vulnerabilities and Attacks",
+    "authors": "Wenpeng Xing, Minghao Li et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2502.13175v2",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "3fc300f7c8e76550",
+    "title": "Caging the Agents: A Zero Trust Security Architecture for Autonomous AI in Healthcare",
+    "authors": "Saikat Maiti",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2603.17419v1",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "be8051e0f7503b16",
+    "title": "Securing AI Systems: A Guide to Known Attacks and Impacts",
+    "authors": "Naoto Kiribuchi, Kengo Zenitani et al.",
+    "year": 2025,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2506.23296v1",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "df7bb41e5efe0017",
+    "title": "Giving AI a Headache: Acoustic Adversarial Attacks to Computer Vision Applications",
+    "authors": "Nicole Villavicencio-Garduño, Maksim Ekin Eren et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2606.14658v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "678329dea870c890",
+    "title": "AVISE: Framework for Evaluating the Security of AI Systems",
+    "authors": "Mikko Lempinen, Joni Kemppainen et al.",
+    "year": 2026,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2604.20833v2",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "8f22ccb08e0503dc",
+    "title": "Review of Artificial Intelligence Adversarial Attack and Defense Technologies",
+    "authors": "Shilin Qiu, Qihe Liu et al.",
+    "year": 2019,
+    "source": "openalex",
+    "link": "https://doi.org/10.3390/app9050909",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "987d345badbbf56f",
+    "title": "A Survey on IoT Security: Application Areas, Security Threats, and Solution Architectures",
+    "authors": "Vikas Hassija, Vinay Chamola et al.",
+    "year": 2019,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/access.2019.2924045",
+    "confidence": 0.9,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "1d37f52dae089215",
+    "title": "Security and Privacy for 6G: A Survey on Prospective Technologies and Challenges",
+    "authors": "Van-Linh Nguyen, Po‐Ching Lin et al.",
+    "year": 2021,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/comst.2021.3108618",
+    "confidence": 0.95,
+    "subdomains": [
+      "Privacy & security :: 2.1 Compromise of privacy by obtaining, leaking, or correctly inferring sensitive information",
+      "Privacy & security :: 2.2 AI system security vulnerabilities and attacks"
+    ]
+  },
+  {
+    "id": "7fb3e9d59cb9a148",
+    "title": "Adversarial Attacks on Machine Learning Cybersecurity Defences in Industrial Control Systems",
+    "authors": "Eirini Anthi, Lowri Williams et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2004.05005v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "c52b87e2f9bdc3c7",
+    "title": "Law and Adversarial Machine Learning",
+    "authors": "Ram Shankar Siva Kumar, David R. O'Brien et al.",
+    "year": 2018,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/1810.10731v3",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks",
+      "Compromise of Privacy by Obtaining, Leaking, or Correctly Inferring Sensitive Information"
+    ]
+  },
+  {
+    "id": "49bd71d141bd817c",
+    "title": "Adversarial Machine Learning Attacks and Defense Methods in the Cyber Security Domain",
+    "authors": "Ihai Rosenberg, Asaf Shabtai et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2007.02407v3",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "3d029f40e88311ea",
+    "title": "Defending Against Adversarial Machine Learning",
+    "authors": "Alison Jenkins",
+    "year": 2019,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/1911.11746v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "e79fb79103f6d143",
+    "title": "Adversarial Security Attacks and Perturbations on Machine Learning and Deep Learning Methods",
+    "authors": "Arif Siddiqi",
+    "year": 2019,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/1907.07291v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "11f74d4746fc177c",
+    "title": "Adversarial Examples in the Physical World",
+    "authors": "Alexey Kurakin, Ian Goodfellow et al.",
+    "year": 2018,
+    "source": "openalex",
+    "link": "https://doi.org/10.1201/9781351251389-8",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "36ff3b6cdab44c71",
+    "title": "Adversarial Attacks and Defenses in Deep Learning",
+    "authors": "Kui Ren, Tianhang Zheng et al.",
+    "year": 2020,
+    "source": "openalex",
+    "link": "https://doi.org/10.1016/j.eng.2019.12.012",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "efd09d9e5e315481",
+    "title": "Addressing Adversarial Attacks Against Security Systems Based on Machine Learning",
+    "authors": "Giovanni Apruzzese, Michele Colajanni et al.",
+    "year": 2019,
+    "source": "openalex",
+    "link": "https://doi.org/10.23919/cycon.2019.8756865",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "79d38b4f8cd32796",
+    "title": "Evasion Attacks against Machine Learning at Test Time",
+    "authors": "Battista Biggio, Igino Corona et al.",
+    "year": 2013,
+    "source": "openalex",
+    "link": "https://doi.org/10.1007/978-3-642-40994-3_25",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "c6e3f59de17c9605",
+    "title": "Influence Based Defense Against Data Poisoning Attacks in Online Learning",
+    "authors": "Sanjay Seetharaman, Shubham Malaviya et al.",
+    "year": 2021,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2104.13230v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "ab08bc7f028fdbe5",
+    "title": "Model-Targeted Poisoning Attacks with Provable Convergence",
+    "authors": "Fnu Suya, Saeed Mahloujifar et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2006.16469v2",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "7a2006adea6775ba",
+    "title": "Poisoning Attacks against Support Vector Machines",
+    "authors": "Battista Biggio, Blaine Nelson et al.",
+    "year": 2012,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/1206.6389v3",
+    "confidence": 1.0,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "98d7a15ffe4c3fe8",
+    "title": "Subpopulation Data Poisoning Attacks",
+    "authors": "Matthew Jagielski, Giorgio Severi et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2006.14026v3",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "0ee5ec1ed0689211",
+    "title": "Data Poisoning Attacks on Federated Machine Learning",
+    "authors": "Gan Sun, Yang Cong et al.",
+    "year": 2020,
+    "source": "arxiv",
+    "link": "http://arxiv.org/abs/2004.10020v1",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "bef14ca1538af101",
+    "title": "Dataset Security for Machine Learning: Data Poisoning, Backdoor Attacks, and Defenses",
+    "authors": "Micah Goldblum, Dimitris Tsipras et al.",
+    "year": 2022,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/tpami.2022.3162397",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "f41ac7f350107611",
+    "title": "Manipulating Machine Learning: Poisoning Attacks and Countermeasures for Regression Learning",
+    "authors": "Matthew Jagielski, Alina Oprea et al.",
+    "year": 2018,
+    "source": "openalex",
+    "link": "https://doi.org/10.1109/sp.2018.00057",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  },
+  {
+    "id": "5e8310bc5f173923",
+    "title": "Data poisoning attacks against machine learning algorithms",
+    "authors": "Fahri Anıl Yerlikaya, Şerif Bahtıyar",
+    "year": 2022,
+    "source": "openalex",
+    "link": "https://doi.org/10.1016/j.eswa.2022.118101",
+    "confidence": 0.95,
+    "subdomains": [
+      "AI System Security Vulnerabilities and Attacks"
+    ]
+  }
+]

@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+
+  /* ICAIRE brand green — anchored to real colors sampled from icaire.org
+     (50/400/600/800 are the site's actual mint/sage/primary/forest greens;
+     the rest of the scale is interpolated to fill it out). */
+  --color-icaire-50: #eaf7f0;
+  --color-icaire-100: #d2eedf;
+  --color-icaire-200: #a8dfc2;
+  --color-icaire-300: #7ecc9f;
+  --color-icaire-400: #6bb75e;
+  --color-icaire-500: #2f9950;
+  --color-icaire-600: #007a33;
+  --color-icaire-700: #026b2c;
+  --color-icaire-800: #003d1f;
+  --color-icaire-900: #002613;
+  --color-icaire-950: #00190c;
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.5s ease both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-white text-zinc-700 dark:bg-[#0a0a0d] dark:text-zinc-300 antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply text-zinc-900 dark:text-zinc-50 tracking-tight;
+  }
+  ::selection {
+    @apply bg-icaire-500/25 text-icaire-950 dark:text-icaire-50;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, currentColor 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, currentColor 6%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}

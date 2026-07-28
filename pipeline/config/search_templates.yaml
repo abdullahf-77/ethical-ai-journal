@@ -1,0 +1,129 @@
+# Per-domain search query templates for paper discovery.
+#
+# Keyed by the 7 consolidated top domains (taxonomy_version: v2, see
+# ../taxonomy/taxonomy_v2_7domains.json). Each domain's queries are built from
+# that domain's actual member-domain / subdomain vocabulary (see
+# taxonomy/taxonomy_v2_7domains.json -> top_domains[].domains[].subdomains[]),
+# NOT a single generic keyword list reused across domains.
+#
+# `queries` are plain keyword strings passed as-is to each discovery source's
+# search parameter (arXiv `search_query`, Semantic Scholar `query`, OpenAlex
+# `search`, Crossref `query`). Sources handle their own query-syntax quirks;
+# this file only owns *what* to search for, not *how* each API wants it
+# formatted.
+
+template_version: v1
+taxonomy_version: v2
+
+domains:
+  TD1:
+    name: "Human Rights, Fairness & Dignity"
+    queries:
+      - "artificial intelligence algorithmic fairness"
+      - "AI bias mitigation machine learning"
+      - "AI human rights"
+      - "AI non-discrimination protected attributes"
+      - "AI human dignity ethics"
+      - "algorithmic bias detection fairness metrics"
+      - "AI diversity inclusion accessibility"
+      - "facial recognition bias demographic disparity"
+      - "biometric categorization discrimination AI"
+      - "AI social scoring democratic values"
+      - "fairness aware machine learning"
+      - "AI remedy redress contestability"
+
+  TD2:
+    name: "Privacy, Transparency & Explainability"
+    queries:
+      - "AI privacy data protection"
+      - "machine learning membership inference attack"
+      - "large language model personal information leakage"
+      - "explainable AI interpretability"
+      - "AI model transparency disclosure"
+      - "differential privacy machine learning"
+      - "AI system traceability lifecycle"
+      - "LLM confidential data prompt leakage"
+      - "attribute inference privacy attack"
+      - "AI explainability trust interpretable models"
+      - "synthetic content disclosure AI generated"
+      - "re-identification privacy risk machine learning"
+
+  TD3:
+    name: "Security, Resilience & Technical Integrity"
+    queries:
+      - "adversarial attack machine learning security"
+      - "prompt injection large language model"
+      - "data poisoning attack machine learning"
+      - "AI model extraction attack"
+      - "jailbreaking large language model safety"
+      - "supply chain security machine learning models"
+      - "training data provenance integrity AI"
+      - "LLM agent security vulnerabilities"
+      - "model robustness adversarial resilience"
+      - "AI system security vulnerabilities benchmark"
+      - "backdoor attack neural network"
+      - "AI red teaming vulnerability assessment"
+
+  TD4:
+    name: "Safety, Alignment & Human Oversight"
+    queries:
+      - "AI safety value alignment"
+      - "large language model alignment human values"
+      - "AI dangerous capabilities evaluation"
+      - "human oversight AI systems"
+      - "human agency autonomy artificial intelligence"
+      - "AI overreliance automation bias"
+      - "reinforcement learning from human feedback alignment"
+      - "AI system reliability robustness generalization"
+      - "AI agent autonomy control safeguards"
+      - "human-AI interaction control intervention"
+      - "AI risk dangerous capability evaluation benchmark"
+      - "misaligned AI goals objective specification"
+
+  TD5:
+    name: "Accountability, Governance & Legal Rights"
+    queries:
+      - "AI governance risk management framework"
+      - "AI accountability liability"
+      - "responsible AI risk assessment"
+      - "AI regulation compliance governance"
+      - "AI copyright intellectual property"
+      - "generative AI training data copyright infringement"
+      - "AI audit third-party risk"
+      - "AI licensing data usage rights"
+      - "algorithmic accountability responsibility"
+      - "AI risk management lifecycle governance"
+      - "generated content ownership intellectual property AI"
+      - "AI stakeholder governance multi-stakeholder"
+
+  TD6:
+    name: "Societal, Economic & Environmental Impact"
+    queries:
+      - "AI societal impact well-being"
+      - "artificial intelligence labor market employment"
+      - "AI environmental impact energy consumption"
+      - "large language model carbon footprint"
+      - "AI economic inequality impact"
+      - "AI social good beneficence"
+      - "AI impact education access services"
+      - "AI sustainability environmental harm"
+      - "AI impact vulnerable populations"
+      - "artificial intelligence democratic institutions impact"
+      - "AI power centralization economic impact"
+      - "machine learning energy efficiency training cost"
+
+  TD7:
+    name: "Information & Content Integrity"
+    queries:
+      - "AI generated misinformation disinformation"
+      - "large language model hallucination"
+      - "deepfake detection generation"
+      - "AI fact-checking factual accuracy"
+      - "AI content manipulation harmful content"
+      - "generative AI fraud scam detection"
+      - "toxic content detection language model"
+      - "AI misuse manipulation deceptive techniques"
+      - "synthetic media detection authenticity"
+      - "information ecosystem AI pollution"
+      - "large language model factuality grounding"
+      - "AI generated content trust source attribution"
