@@ -9,7 +9,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
               <img
-                src="/unesco-icaire-logo.png"
+                src={`${import.meta.env.BASE_URL}unesco-icaire-logo.png`}
                 alt="UNESCO Centre / ICAIRE logo"
                 className="h-10 w-auto"
               />

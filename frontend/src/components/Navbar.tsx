@@ -36,7 +36,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
         <Link to="/" className="flex items-center gap-3 shrink-0">
           <img
-            src="/unesco-icaire-logo.png"
+            src={`${import.meta.env.BASE_URL}unesco-icaire-logo.png`}
             alt="UNESCO Centre / ICAIRE — International Center for AI Research & Ethics"
             className="h-9 w-auto"
           />

@@ -4,8 +4,6 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
 import { TaxonomyPage } from "./pages/TaxonomyPage";
-import { DomainPage } from "./pages/DomainPage";
-import { PaperDetailPage } from "./pages/PaperDetailPage";
 
 function ScrollManager() {
   const location = useLocation();
@@ -32,8 +30,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/taxonomy" element={<TaxonomyPage />} />
-          <Route path="/taxonomy/:domainId" element={<DomainPage />} />
-          <Route path="/papers/:id" element={<PaperDetailPage />} />
         </Routes>
       </main>
       <Footer />
