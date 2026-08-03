@@ -13,21 +13,23 @@ function OrbitMotif() {
     { angle: 300, r: 1.6 },
   ];
   return (
-    <svg
-      viewBox="0 0 600 600"
-      className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-icaire-900/[0.07] dark:text-icaire-400/[0.16]"
-      aria-hidden="true"
-    >
-      <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
-      <ellipse cx="300" cy="300" rx="260" ry="120" fill="none" stroke="currentColor" strokeWidth="1" />
-      <ellipse cx="300" cy="300" rx="120" ry="260" fill="none" stroke="currentColor" strokeWidth="1" />
-      {dots.map((d, i) => {
-        const rad = (d.angle * Math.PI) / 180;
-        const x = 300 + 260 * Math.cos(rad);
-        const y = 300 + 260 * Math.sin(rad);
-        return <circle key={i} cx={x} cy={y} r={d.r * 2.2} fill="currentColor" />;
-      })}
-    </svg>
+    <div className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow">
+      <svg
+        viewBox="0 0 600 600"
+        className="h-full w-full text-icaire-700/[0.14] dark:text-icaire-400/[0.28]"
+        aria-hidden="true"
+      >
+        <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
+        <ellipse cx="300" cy="300" rx="260" ry="120" fill="none" stroke="currentColor" strokeWidth="1" />
+        <ellipse cx="300" cy="300" rx="120" ry="260" fill="none" stroke="currentColor" strokeWidth="1" />
+        {dots.map((d, i) => {
+          const rad = (d.angle * Math.PI) / 180;
+          const x = 300 + 260 * Math.cos(rad);
+          const y = 300 + 260 * Math.sin(rad);
+          return <circle key={i} cx={x} cy={y} r={d.r * 2.2} fill="currentColor" />;
+        })}
+      </svg>
+    </div>
   );
 }
 
@@ -35,6 +37,11 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
       <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_30%,transparent_100%)] dark:text-zinc-600" />
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/3 opacity-70 blur-3xl dark:opacity-50"
+        style={{ background: "radial-gradient(closest-side, rgba(0,122,51,0.22), transparent)" }}
+        aria-hidden="true"
+      />
       <OrbitMotif />
 
       <div className="relative mx-auto max-w-4xl px-6 pb-24 pt-24 text-center sm:pt-32">

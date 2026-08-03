@@ -13,25 +13,25 @@ export function TaxonomyHubPreview() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
       <Reveal>
-        <div className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-gradient-to-br from-zinc-50 via-white to-icaire-50/50 p-8 shadow-sm dark:border-zinc-800 dark:from-zinc-900 dark:via-zinc-950 dark:to-icaire-950/30 sm:p-14">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-icaire-700 via-icaire-800 to-icaire-900 p-8 shadow-xl shadow-icaire-900/20 sm:p-14">
           <div
-            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-50 blur-3xl"
-            style={{ background: "radial-gradient(closest-side, rgba(0,122,51,0.30), transparent)" }}
+            className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-70 blur-3xl"
+            style={{ background: "radial-gradient(closest-side, rgba(107,183,94,0.45), transparent)" }}
           />
           <div
-            className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full opacity-40 blur-3xl"
-            style={{ background: "radial-gradient(closest-side, rgba(107,183,94,0.28), transparent)" }}
+            className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full opacity-50 blur-3xl"
+            style={{ background: "radial-gradient(closest-side, rgba(234,247,240,0.25), transparent)" }}
           />
 
           <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wider text-icaire-600 dark:text-icaire-400">
+              <p className="text-sm font-semibold uppercase tracking-wider text-icaire-200">
                 The core of Ethical AI Journal
               </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 A living Taxonomy Hub for AI ethics
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-icaire-100/80">
                 Every paper in the journal is mapped against a single
                 consolidated taxonomy — {taxonomy.top_domains.length} top-level domains built
                 from twelve source frameworks, down to {totalSubdomains}+ granular
@@ -46,7 +46,7 @@ export function TaxonomyHubPreview() {
                   return (
                     <span
                       key={td.id}
-                      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ${style.chip}`}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm"
                     >
                       <Icon size={13} />
                       {td.name}
@@ -57,7 +57,7 @@ export function TaxonomyHubPreview() {
 
               <Link
                 to="/taxonomy"
-                className="group mt-9 inline-flex items-center gap-2 rounded-full bg-icaire-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-icaire-600/20 transition-all hover:bg-icaire-700 hover:shadow-xl active:scale-[0.98] dark:bg-icaire-500 dark:hover:bg-icaire-400"
+                className="group mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-icaire-800 shadow-lg shadow-black/10 transition-all hover:bg-icaire-50 hover:shadow-xl active:scale-[0.98]"
               >
                 Explore Taxonomy
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
@@ -89,11 +89,11 @@ function StatCard({
 }) {
   return (
     <div
-      className={`rounded-2xl border border-zinc-200/80 bg-white/70 p-5 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/60 ${className}`}
+      className={`rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-sm ${className}`}
     >
-      <Icon size={18} className="text-icaire-600 dark:text-icaire-400" />
-      <p className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">{value}</p>
-      <p className="text-xs text-zinc-500 dark:text-zinc-400">{label}</p>
+      <Icon size={18} className="text-icaire-200" />
+      <p className="mt-3 text-2xl font-semibold tracking-tight text-white">{value}</p>
+      <p className="text-xs text-icaire-100/70">{label}</p>
     </div>
   );
 }

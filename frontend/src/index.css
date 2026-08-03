@@ -23,6 +23,7 @@
 
   --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fade-in: fade-in 0.5s ease both;
+  --animate-spin-slow: spin-slow 90s linear infinite;
 
   @keyframes fade-up {
     from {
@@ -42,6 +43,14 @@
       opacity: 1;
     }
   }
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @layer base {
@@ -58,7 +67,7 @@
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4 {
-    @apply text-zinc-900 dark:text-zinc-50 tracking-tight;
+    @apply font-serif text-zinc-900 dark:text-zinc-50 tracking-tight;
   }
   ::selection {
     @apply bg-icaire-500/25 text-icaire-950 dark:text-icaire-50;
