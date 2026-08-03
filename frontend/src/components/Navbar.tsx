@@ -3,11 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { Moon, Sun, Menu, X, Sparkles } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
+// "Taxonomy Hub" is intentionally not in this list — the green "Explore"
+// button below already links to /taxonomy and sits right next to these
+// links, so listing it twice in the same header was a duplicate CTA.
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "News", to: "/#news" },
   { label: "Submissions", to: "/#submissions" },
-  { label: "Taxonomy Hub", to: "/taxonomy" },
 ];
 
 export function Navbar() {
