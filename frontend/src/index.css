@@ -23,7 +23,7 @@
 
   --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fade-in: fade-in 0.5s ease both;
-  --animate-spin-3d: spin-3d 16s linear infinite;
+  --animate-spin-slow: spin-slow 45s linear infinite;
 
   @keyframes fade-up {
     from {
@@ -43,12 +43,12 @@
       opacity: 1;
     }
   }
-  @keyframes spin-3d {
+  @keyframes spin-slow {
     from {
-      transform: rotateX(14deg) rotateY(0deg);
+      transform: rotate(0deg);
     }
     to {
-      transform: rotateX(14deg) rotateY(360deg);
+      transform: rotate(360deg);
     }
   }
 }

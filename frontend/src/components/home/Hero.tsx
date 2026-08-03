@@ -13,14 +13,10 @@ function OrbitMotif() {
     { angle: 300, r: 1.6 },
   ];
   return (
-    <div
-      className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2"
-      style={{ perspective: "1400px" }}
-    >
+    <div className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 animate-spin-slow">
       <svg
         viewBox="0 0 600 600"
-        className="h-full w-full animate-spin-3d text-icaire-700/[0.14] dark:text-icaire-400/[0.28]"
-        style={{ transformStyle: "preserve-3d" }}
+        className="h-full w-full text-icaire-700/[0.14] dark:text-icaire-400/[0.28]"
         aria-hidden="true"
       >
         <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
@@ -48,7 +44,7 @@ export function Hero() {
       />
       <OrbitMotif />
 
-      <div className="relative mx-auto max-w-4xl px-6 pb-28 pt-28 text-center sm:pb-32 sm:pt-36">
+      <div className="relative mx-auto max-w-4xl px-6 pb-24 pt-24 text-center sm:pt-32">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
