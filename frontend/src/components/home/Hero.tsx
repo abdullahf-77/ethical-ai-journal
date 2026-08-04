@@ -80,7 +80,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row lg:absolute lg:inset-x-6 lg:top-[calc(50%+258px)] lg:mt-0"
         >
           <Link
             to="/about"
