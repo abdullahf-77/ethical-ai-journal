@@ -74,9 +74,6 @@ export function DomainTreePanel({
             {subdomains.length} subdomains &middot; {paperCount} paper{paperCount === 1 ? "" : "s"}
           </p>
         </div>
-        <span className={`hidden rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold tracking-wide sm:inline ${style.chip}`}>
-          {domain.id}
-        </span>
         <button
           type="button"
           onClick={onClose}
