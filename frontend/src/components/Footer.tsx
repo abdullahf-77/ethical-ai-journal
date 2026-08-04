@@ -31,6 +31,7 @@ export function Footer() {
             <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Explore</p>
             <ul className="mt-4 space-y-2.5 text-sm text-zinc-500 dark:text-zinc-400">
               <li><Link to="/" className="hover:text-icaire-700 dark:hover:text-icaire-400">Home</Link></li>
+              <li><Link to="/about" className="hover:text-icaire-700 dark:hover:text-icaire-400">About</Link></li>
               <li><a href="/#news" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest News</a></li>
               <li><a href="/#submissions" className="hover:text-icaire-700 dark:hover:text-icaire-400">Submissions</a></li>
               <li><Link to="/taxonomy" className="hover:text-icaire-700 dark:hover:text-icaire-400">Taxonomy Hub</Link></li>

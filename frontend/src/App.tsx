@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
 import { TaxonomyPage } from "./pages/TaxonomyPage";
+import { AboutPage } from "./pages/AboutPage";
 
 function ScrollManager() {
   const location = useLocation();
@@ -30,6 +31,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/taxonomy" element={<TaxonomyPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
       <Footer />

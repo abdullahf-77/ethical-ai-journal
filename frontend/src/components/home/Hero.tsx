@@ -87,13 +87,13 @@ export function Hero() {
             Explore the Taxonomy
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
-          <a
-            href="#about"
+          <Link
+            to="/about"
             className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-transparent dark:text-zinc-200 dark:hover:bg-zinc-800/50"
           >
             <Info size={16} />
             About the Journal
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
