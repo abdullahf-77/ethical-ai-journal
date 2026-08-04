@@ -38,8 +38,8 @@ export function NewsSection() {
           </h2>
         </div>
         <p className="max-w-sm text-sm text-zinc-500 dark:text-zinc-400">
-          Placeholder articles for demonstration — this feed will connect to
-          the journal&rsquo;s publishing backend.
+          A curated, read-only feed of policy updates and scholarship — the
+          journal does not accept submissions.
         </p>
       </Reveal>
 

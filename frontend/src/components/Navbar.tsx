@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "News", to: "/#news" },
-  { label: "Submissions", to: "/#submissions" },
+  { label: "Research", to: "/#research" },
   { label: "Taxonomy Hub", to: "/taxonomy" },
 ];
 

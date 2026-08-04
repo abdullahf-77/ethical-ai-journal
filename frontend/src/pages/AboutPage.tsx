@@ -15,8 +15,8 @@ const pillars = [
   },
   {
     icon: Users,
-    title: "Open submissions",
-    text: "Researchers and practitioners can contribute case studies, special issues, and reproducibility work.",
+    title: "Curated, not crowdsourced",
+    text: "The journal indexes and organizes existing published research; it does not run an open call for papers.",
   },
 ];
 
@@ -37,9 +37,8 @@ export function AboutPage() {
             the ethical, legal, and societal dimensions of artificial
             intelligence. Rather than scattering that work across
             disconnected sources, everything here is anchored to one living
-            taxonomy — so a paper, a policy update, and an open call for
-            submissions all map back to the same shared vocabulary of AI
-            ethics.
+            taxonomy — so a paper and a policy update both map back to the
+            same shared vocabulary of AI ethics.
           </p>
         </Reveal>
       </div>
@@ -68,23 +67,17 @@ export function AboutPage() {
                 Ready to explore?
               </h2>
               <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                Browse the taxonomy or submit your own research to the journal.
+                Browse the taxonomy to find the research behind each concept.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                to="/taxonomy"
+                to="/"
                 className="group inline-flex items-center gap-2 rounded-full bg-icaire-600 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-icaire-700 active:scale-[0.98] dark:bg-icaire-500 dark:hover:bg-icaire-400"
               >
-                Explore the Taxonomy
+                Back to home
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <a
-                href="/#submissions"
-                className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-transparent dark:text-zinc-200 dark:hover:bg-zinc-800/50"
-              >
-                Submit research
-              </a>
             </div>
           </div>
         </Reveal>

@@ -74,7 +74,49 @@
   }
 }
 
+@keyframes flow {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+@keyframes ride {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 0.55;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
 @layer utilities {
+  .hero-glow {
+    background: radial-gradient(closest-side, rgba(0, 122, 51, 0.34), transparent);
+  }
+  .dark .hero-glow {
+    background: radial-gradient(closest-side, rgba(47, 153, 80, 0.5), transparent);
+  }
+  .hero-veil {
+    background: radial-gradient(ellipse 32% 42% at 50% 50%, rgba(234, 247, 240, 0.85), transparent 70%);
+  }
+  .dark .hero-veil {
+    background: radial-gradient(ellipse 32% 42% at 50% 50%, rgba(0, 25, 12, 0.55), transparent 70%);
+  }
+  .hero-art {
+    color: rgba(2, 107, 44, 0.6);
+    --art-fill: rgba(255, 255, 255, 0.95);
+  }
+  .dark .hero-art {
+    color: rgba(126, 204, 159, 0.6);
+    --art-fill: #101a13;
+  }
   .scrollbar-thin::-webkit-scrollbar {
     height: 6px;
     width: 6px;

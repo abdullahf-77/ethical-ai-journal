@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Info } from "lucide-react";
+import { HeroArt } from "./HeroArt";
 
 function OrbitMotif() {
   const dots = [
@@ -36,12 +37,13 @@ function OrbitMotif() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-zinc-100 dark:border-zinc-900">
-      <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_30%,transparent_100%)] dark:text-zinc-600" />
+      <div className="bg-grid pointer-events-none absolute inset-0 text-zinc-400 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_100%)] dark:text-zinc-600" />
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/3 opacity-70 blur-3xl dark:opacity-50"
-        style={{ background: "radial-gradient(closest-side, rgba(0,122,51,0.22), transparent)" }}
+        className="hero-glow pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 opacity-70 blur-3xl"
         aria-hidden="true"
       />
+      <div className="hero-veil pointer-events-none absolute inset-0" aria-hidden="true" />
+      <HeroArt />
       <OrbitMotif />
 
       <div className="relative mx-auto max-w-4xl px-6 pb-24 pt-24 text-center sm:pt-32">
