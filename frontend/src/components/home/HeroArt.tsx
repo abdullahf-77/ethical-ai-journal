@@ -1,6 +1,7 @@
 // Decorative hero artwork ported from the Claude Design source: papers riding
-// flow lines from the left, converging into the journal's "index" frame on the
-// right. Desktop-only — hidden below lg to keep the responsive hero clean.
+// flow lines from the left, converging into a fan of indexed document clusters
+// on the right (the design's "fan" hero-illustration variant). Desktop-only —
+// hidden below lg to keep the responsive hero clean.
 
 const flowPaths = [
   { d: "M 136 101 C 273.6 151.2, 400.5 160.2, 561.5 115.8", dash: "7.3 9.0", dur: 7.3 },
@@ -47,20 +48,44 @@ const ridingDocs = [
   { rotate: 4, dur: 7.9 },
 ];
 
-const indexPaths = [
-  { d: "M 189 147.2 C 267.8 215.5, 319.5 200.5, 406 224.4", dash: "7.3 6.7", dur: 7.7 },
-  { d: "M 219.9 196.5 C 299.8 177.1, 342.1 344.9, 406 303.7", dash: "8.9 7.5", dur: 5.4 },
-  { d: "M 238.2 251.7 C 292.7 190.7, 366.3 367.0, 406 358.2", dash: "5.8 8.0", dur: 5.3 },
-  { d: "M 242.6 314.6 C 325.8 332.6, 368.9 234.0, 406 220.6", dash: "7.6 9.3", dur: 8.6 },
-  { d: "M 232.1 371.8 C 301.4 335.9, 368.8 358.9, 406 323.1", dash: "7.0 7.1", dur: 8.3 },
-  { d: "M 205.9 429.1 C 284.9 434.9, 334.3 293.6, 406 276.1", dash: "7.6 8.8", dur: 7.9 },
-  { d: "M 205.9 170.9 C 310.2 191.3, 326.8 272.8, 406 242.7", dash: "7.1 6.2", dur: 5.6 },
-  { d: "M 219.9 403.5 C 289.7 412.8, 356.0 259.5, 406 265.9", dash: "9.0 6.6", dur: 8.2 },
+// Fan motif: one trunk line feeds a hub that fans out into six branches, each
+// ending in a cluster of three archived documents.
+const fanTrunk = "M 242.8 290.3 C 276.8 278.3, 276 308, 316 300";
+
+const fanBranches = [
+  { d: "M 316 300 C 390 268.8, 363.1 88, 459.1 88", end: [459.1, 88], dash: "4.1 6.1", flowDur: 11.0, breatheDur: 24 },
+  { d: "M 316 300 C 390 281.3, 375.9 173, 471.9 173", end: [471.9, 173], dash: "5.8 7.4", flowDur: 12.6, breatheDur: 26 },
+  { d: "M 316 300 C 390 293.8, 388.7 258, 484.7 258", end: [484.7, 258], dash: "4.2 7.7", flowDur: 14.2, breatheDur: 28 },
+  { d: "M 316 300 C 390 306.5, 388.4 344, 484.4 344", end: [484.4, 344], dash: "5.0 7.8", flowDur: 15.8, breatheDur: 30 },
+  { d: "M 316 300 C 390 319.0, 375.6 429, 471.6 429", end: [471.6, 429], dash: "4.9 7.1", flowDur: 17.4, breatheDur: 32 },
+  { d: "M 316 300 C 390 331.5, 362.8 514, 458.8 514", end: [458.8, 514], dash: "4.0 7.3", flowDur: 19.0, breatheDur: 34 },
 ];
 
-const indexDocPositions = [174, 242, 310, 378].flatMap((y) =>
-  [428, 484, 540].map((x) => ({ x, y })),
-);
+const floatDots = [
+  { x: 453.1, y: 359.8, r: 1.5, dur: 28.2 },
+  { x: 588.5, y: 368.2, r: 2.1, dur: 28.4 },
+  { x: 580.4, y: 305.1, r: 1.8, dur: 24.1 },
+  { x: 454, y: 363.8, r: 1.3, dur: 22.2 },
+  { x: 567.2, y: 529.2, r: 2.3, dur: 31.7 },
+  { x: 508.4, y: 408.3, r: 1.5, dur: 28.9 },
+  { x: 435.3, y: 532.4, r: 1.2, dur: 31.3 },
+  { x: 385.7, y: 504.9, r: 1.2, dur: 31.4 },
+  { x: 331.8, y: 373, r: 2.3, dur: 35.6 },
+  { x: 518, y: 133.1, r: 2.1, dur: 31.0 },
+  { x: 497.3, y: 208.7, r: 1.7, dur: 34.5 },
+  { x: 501.8, y: 452.8, r: 1.7, dur: 30.2 },
+  { x: 467.7, y: 324.1, r: 1.3, dur: 28.1 },
+  { x: 499.5, y: 132.6, r: 1.1, dur: 23.4 },
+  { x: 588.8, y: 510.1, r: 2.0, dur: 24.7 },
+  { x: 523.5, y: 195.8, r: 1.7, dur: 28.0 },
+  { x: 590.5, y: 76.8, r: 2.0, dur: 33.2 },
+  { x: 575.6, y: 101.1, r: 2.0, dur: 29.1 },
+  { x: 504.4, y: 523.3, r: 2.4, dur: 32.9 },
+  { x: 374.9, y: 445.7, r: 1.9, dur: 33.2 },
+];
+
+// Journey docs travel the trunk, then branches 1/3/5, into the first cluster slot.
+const journeyBranchIndexes = [0, 2, 4];
 
 function RidingDoc() {
   return (
@@ -73,16 +98,30 @@ function RidingDoc() {
   );
 }
 
-function IndexedDoc({ x, y }: { x: number; y: number }) {
-  return (
-    <g transform={`translate(${x} ${y})`}>
-      <rect x="0" y="0" width="34" height="44" rx="3.5" fill="var(--art-fill)" stroke="currentColor" strokeWidth="1.2" />
-      <rect x="6" y="9" width="22" height="1.8" rx="0.9" fill="currentColor" opacity="0.6" />
-      <rect x="6" y="16" width="16" height="1.8" rx="0.9" fill="currentColor" opacity="0.45" />
-      <rect x="6" y="23" width="20" height="1.8" rx="0.9" fill="currentColor" opacity="0.45" />
-      <rect x="6" y="30" width="13" height="1.8" rx="0.9" fill="currentColor" opacity="0.45" />
-    </g>
+function ClusterDoc({ x, y, faded }: { x?: number; y?: number; faded: boolean }) {
+  const rectOpacity = faded ? 0.55 : 0.95;
+  const line1 = faded ? 0.43 : 0.74;
+  const line2 = faded ? 0.34 : 0.59;
+  const doc = (
+    <>
+      <rect
+        x="-13"
+        y="-17"
+        width="26"
+        height="34"
+        rx="3.5"
+        fill="var(--art-fill)"
+        stroke="currentColor"
+        strokeWidth={faded ? 1.25 : 1.35}
+        opacity={rectOpacity}
+      />
+      <rect x="-8" y="-10" width="16" height="1.6" rx="0.8" fill="currentColor" opacity={line1} />
+      <rect x="-8" y="-4" width="12" height="1.6" rx="0.8" fill="currentColor" opacity={line2} />
+      <rect x="-8" y="2" width="15" height="1.6" rx="0.8" fill="currentColor" opacity={line2} />
+    </>
   );
+  if (x === undefined || y === undefined) return doc;
+  return <g transform={`translate(${x} ${y})`}>{doc}</g>;
 }
 
 export function HeroArt() {
@@ -90,7 +129,7 @@ export function HeroArt() {
     <>
       <div
         aria-hidden="true"
-        className="hero-art pointer-events-none absolute left-[calc(50%-720px)] top-1/2 hidden h-[600px] w-[720px] -translate-y-1/2 opacity-80 lg:block"
+        className="hero-art pointer-events-none absolute left-[calc(50%-720px)] top-1/2 hidden h-[600px] w-[720px] -translate-y-1/2 opacity-85 lg:block"
       >
         <svg viewBox="0 0 720 600" className="h-full w-full">
           {flowPaths.map((p, i) => (
@@ -99,6 +138,7 @@ export function HeroArt() {
               d={p.d}
               fill="none"
               stroke="currentColor"
+              strokeLinecap="round"
               strokeWidth="1.1"
               opacity="0.28"
               strokeDasharray={p.dash}
@@ -139,36 +179,98 @@ export function HeroArt() {
 
       <div
         aria-hidden="true"
-        className="hero-art pointer-events-none absolute left-1/2 top-1/2 hidden h-[600px] w-[720px] -translate-y-1/2 opacity-80 lg:block"
+        className="hero-art pointer-events-none absolute left-1/2 top-1/2 hidden h-[600px] w-[720px] -translate-y-1/2 opacity-85 lg:block"
+        style={{
+          maskImage: "radial-gradient(ellipse 78% 92% at 64% 50%, black 70%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 78% 92% at 64% 50%, black 70%, transparent 100%)",
+        }}
       >
-        <svg viewBox="0 0 720 600" className="h-full w-full">
-          {indexPaths.map((p, i) => (
-            <path
-              key={i}
-              d={p.d}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.1"
-              opacity="0.4"
-              strokeDasharray={p.dash}
-              style={{ animation: `flow ${p.dur}s linear infinite` }}
-            />
-          ))}
-          <rect
-            x="406"
-            y="148"
-            width="200"
-            height="304"
-            rx="16"
+        <svg
+          viewBox="0 0 720 600"
+          className="h-full w-full"
+          style={{ animation: "float 34s ease-in-out infinite" }}
+        >
+          <path
+            d={fanTrunk}
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.3"
-            opacity="0.6"
-            strokeDasharray="5 6"
+            strokeLinecap="round"
+            strokeWidth="1.35"
+            strokeDasharray="5 8"
+            opacity="0.46"
+            style={{ animation: "flow 16s linear infinite" }}
           />
-          {indexDocPositions.map((pos, i) => (
-            <IndexedDoc key={i} x={pos.x} y={pos.y} />
+          <circle cx="316" cy="300" r="4" fill="currentColor" opacity="0.5" />
+          {fanBranches.map((b, i) => (
+            <g key={i}>
+              <path
+                d={b.d}
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="1.2"
+                strokeDasharray={b.dash}
+                opacity="0.4"
+                style={{
+                  animation: `flow ${b.flowDur}s linear infinite, breathe ${b.breatheDur}s ease-in-out ${(i * 1.7).toFixed(1)}s infinite`,
+                }}
+              />
+              <circle cx={b.end[0]} cy={b.end[1]} r="2.2" fill="currentColor" opacity="0.42" />
+            </g>
           ))}
+          {floatDots.map((d, i) => (
+            <circle
+              key={i}
+              cx={d.x}
+              cy={d.y}
+              r={d.r}
+              fill="currentColor"
+              opacity="0.45"
+              style={{
+                transformBox: "fill-box",
+                transformOrigin: "center",
+                animation: `float ${d.dur}s ease-in-out ${(i * 1.1).toFixed(1)}s infinite`,
+              }}
+            />
+          ))}
+          <circle
+            cx="0"
+            cy="0"
+            r="1.8"
+            fill="currentColor"
+            opacity="0.55"
+            style={{
+              offsetPath: `path('${fanTrunk}')`,
+              offsetRotate: "0deg",
+              animation: "ride 9s linear infinite",
+            }}
+          />
+          {fanBranches.map((b) =>
+            [0, 1, 2].map((j) => (
+              <ClusterDoc
+                key={`${b.end[1]}-${j}`}
+                x={b.end[0] + 26 + 36 * j}
+                y={b.end[1]}
+                faded
+              />
+            )),
+          )}
+          {journeyBranchIndexes.map((branchIdx, i) => {
+            const b = fanBranches[branchIdx];
+            const branchCurve = b.d.slice(b.d.indexOf("C"));
+            return (
+              <g
+                key={branchIdx}
+                style={{
+                  offsetPath: `path('${fanTrunk} ${branchCurve} L ${b.end[0] + 26} ${b.end[1]}')`,
+                  offsetRotate: "0deg",
+                  animation: `journey 13s linear ${(i * 4.3).toFixed(2)}s infinite`,
+                }}
+              >
+                <ClusterDoc faded={false} />
+              </g>
+            );
+          })}
         </svg>
       </div>
     </>

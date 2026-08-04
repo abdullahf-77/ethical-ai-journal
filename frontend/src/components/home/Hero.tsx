@@ -46,7 +46,7 @@ export function Hero() {
       <HeroArt />
       <OrbitMotif />
 
-      <div className="relative mx-auto max-w-4xl px-6 pb-28 pt-28 text-center sm:pb-32 sm:pt-36">
+      <div className="relative mx-auto flex min-h-[560px] max-w-4xl flex-col justify-center px-6 py-16 text-center lg:min-h-[680px] lg:py-0">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,18 +83,18 @@ export function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Link
-            to="/taxonomy"
-            className="group inline-flex items-center gap-2 rounded-full bg-icaire-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-icaire-600/20 transition-all hover:bg-icaire-700 hover:shadow-xl hover:shadow-icaire-600/30 active:scale-[0.98] dark:bg-icaire-500 dark:hover:bg-icaire-400"
-          >
-            Explore the Taxonomy
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </Link>
-          <Link
             to="/about"
             className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-transparent dark:text-zinc-200 dark:hover:bg-zinc-800/50"
           >
             <Info size={16} />
             About the Journal
+          </Link>
+          <Link
+            to="/taxonomy"
+            className="group inline-flex items-center gap-2 rounded-full bg-icaire-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-icaire-600/20 transition-all hover:bg-icaire-700 hover:shadow-xl hover:shadow-icaire-600/30 active:scale-[0.98] dark:bg-icaire-500 dark:hover:bg-icaire-400"
+          >
+            Explore the Taxonomy
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </motion.div>
       </div>
