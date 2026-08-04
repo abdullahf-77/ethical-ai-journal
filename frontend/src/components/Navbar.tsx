@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Moon, Sun, Menu, X, Sparkles } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
 const navLinks = [
@@ -71,12 +71,6 @@ export function Navbar() {
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <Link
-            to="/taxonomy"
-            className="hidden items-center gap-1.5 rounded-full bg-icaire-600 px-4 py-2 text-sm font-medium text-white transition-all hover:scale-[1.03] hover:bg-icaire-700 active:scale-[0.98] dark:bg-icaire-500 dark:hover:bg-icaire-400 sm:inline-flex"
-          >
-            <Sparkles size={14} /> Explore
-          </Link>
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
