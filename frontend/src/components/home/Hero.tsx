@@ -46,7 +46,7 @@ export function Hero() {
       <HeroArt />
       <OrbitMotif />
 
-      <div className="relative mx-auto max-w-4xl px-6 pb-24 pt-24 text-center sm:pt-32">
+      <div className="relative mx-auto max-w-4xl px-6 pb-28 pt-28 text-center sm:pb-32 sm:pt-36">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
