@@ -40,13 +40,8 @@ export function DomainCard({
           : "border-zinc-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-zinc-900/5 dark:border-zinc-800 dark:hover:shadow-black/20"
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className={`flex size-10 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md ${style.gradient}`}>
-          <Icon size={18} />
-        </div>
-        <span className={`rounded-full px-2.5 py-1 font-mono text-[11px] font-semibold tracking-wide ${style.chip}`}>
-          {domain.id}
-        </span>
+      <div className={`flex size-10 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-md ${style.gradient}`}>
+        <Icon size={18} />
       </div>
 
       <h3 className="mt-3 line-clamp-2 min-h-[2.75rem] text-base font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
