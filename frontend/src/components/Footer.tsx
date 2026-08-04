@@ -32,8 +32,8 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-zinc-500 dark:text-zinc-400">
               <li><Link to="/" className="hover:text-icaire-700 dark:hover:text-icaire-400">Home</Link></li>
               <li><Link to="/about" className="hover:text-icaire-700 dark:hover:text-icaire-400">About</Link></li>
-              <li><a href="/#news" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest News</a></li>
-              <li><a href="/#research" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest Research</a></li>
+              <li><Link to="/#news" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest News</Link></li>
+              <li><Link to="/#research" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest Research</Link></li>
               <li><Link to="/taxonomy" className="hover:text-icaire-700 dark:hover:text-icaire-400">Taxonomy Hub</Link></li>
             </ul>
           </div>

@@ -53,13 +53,13 @@ export function Navbar() {
 
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.to}
+              to={link.to}
               className="rounded-full px-4 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-icaire-50 hover:text-icaire-700 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-icaire-400"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -91,13 +91,13 @@ export function Navbar() {
         <div className="border-t border-zinc-200 bg-white px-5 py-3 dark:border-zinc-800 dark:bg-[#0a0a0d] md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.to}
+                to={link.to}
                 className="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800/60"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
