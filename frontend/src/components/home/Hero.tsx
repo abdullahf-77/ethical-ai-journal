@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpenText } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 
 function OrbitMotif() {
   const dots = [
@@ -88,11 +88,11 @@ export function Hero() {
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
           <a
-            href="#news"
+            href="#about"
             className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-transparent dark:text-zinc-200 dark:hover:bg-zinc-800/50"
           >
-            <BookOpenText size={16} />
-            Read the latest
+            <Info size={16} />
+            About the Journal
           </a>
         </motion.div>
       </div>
