@@ -67,7 +67,7 @@ export function TaxonomyPage() {
             Taxonomy Hub
           </p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
-            The full landscape of AI ethics, organized
+            A living Taxonomy Hub for AI ethics
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
             {taxonomy.top_domains.length} top-level domains, {taxonomy.top_domains.reduce((n, d) => n + d.domain_count, 0)} constituent
