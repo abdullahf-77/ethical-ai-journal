@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight, FileText, ArrowUpRight, X } from "lucide-react";
 import type { TopDomain, Paper } from "../../types";
@@ -29,14 +29,30 @@ export function DomainTreePanel({
   domain,
   papers,
   onClose,
+  initialOpenSlug,
 }: {
   domain: TopDomain;
   papers: Paper[];
   onClose: () => void;
+  initialOpenSlug?: string;
 }) {
   const style = getDomainStyle(domain.id);
   const Icon = style.icon;
-  const [openSubdomains, setOpenSubdomains] = useState<Set<string>>(new Set());
+  const [openSubdomains, setOpenSubdomains] = useState<Set<string>>(
+    () => new Set(initialOpenSlug ? [initialOpenSlug] : []),
+  );
+  const highlightRef = useRef<HTMLLIElement>(null);
+
+  // Keep in sync if a new search match arrives while this panel is already
+  // open (same domain, different subdomain match), and scroll it into view.
+  useEffect(() => {
+    if (!initialOpenSlug) return;
+    setOpenSubdomains((prev) => (prev.has(initialOpenSlug) ? prev : new Set(prev).add(initialOpenSlug)));
+    const timer = setTimeout(() => {
+      highlightRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [initialOpenSlug]);
 
   // Flatten the intermediate group level and pair each subdomain with its
   // papers once, so counts stay in sync with the actual paper data.
@@ -89,9 +105,10 @@ export function DomainTreePanel({
           {subdomains.map(({ sub, papers: related }) => {
             const subOpen = openSubdomains.has(sub.slug);
             const hasPapers = related.length > 0;
+            const isMatch = sub.slug === initialOpenSlug;
 
             return (
-              <li key={sub.slug} className="relative">
+              <li key={sub.slug} className="relative" ref={isMatch ? highlightRef : undefined}>
                 <span aria-hidden className="absolute -left-3 top-[15px] h-px w-2.5 bg-zinc-200 dark:bg-zinc-700" />
                 <button
                   type="button"
@@ -99,6 +116,8 @@ export function DomainTreePanel({
                   onClick={() => hasPapers && toggleSubdomain(sub.slug)}
                   aria-expanded={subOpen}
                   className={`flex w-full items-center gap-1.5 rounded-lg px-1.5 py-1.5 text-left text-sm transition-colors ${
+                    isMatch ? "bg-icaire-500/10 text-icaire-700 dark:text-icaire-300" : ""
+                  } ${
                     hasPapers
                       ? "text-zinc-600 hover:bg-zinc-100/80 hover:text-icaire-700 dark:text-zinc-300 dark:hover:bg-zinc-800/60 dark:hover:text-icaire-400"
                       : "cursor-default text-zinc-400 dark:text-zinc-600"

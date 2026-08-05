@@ -34,10 +34,26 @@ function domainMatches(domain: TopDomain, q: string): boolean {
   );
 }
 
+// Finds the first subdomain within a domain whose name or scope matches the
+// query, so a search that lands on a specific subdomain can jump straight to
+// it instead of leaving the user to open the domain card themselves.
+function findSubdomainMatch(domain: TopDomain, q: string): string | undefined {
+  const needle = q.toLowerCase();
+  for (const mid of domain.domains) {
+    for (const s of mid.subdomains) {
+      if (s.name.toLowerCase().includes(needle) || s.scope.toLowerCase().includes(needle)) {
+        return s.slug;
+      }
+    }
+  }
+  return undefined;
+}
+
 export function TaxonomyPage() {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortMode>("default");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [autoOpenSlug, setAutoOpenSlug] = useState<string | undefined>(undefined);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const visibleDomains = useMemo(() => {
@@ -48,6 +64,26 @@ export function TaxonomyPage() {
   }, [query, sort]);
 
   const selected = visibleDomains.find((d) => d.id === selectedId) ?? null;
+
+  // If the search term lands on exactly one subdomain, jump straight to its
+  // parent domain and pre-open that subdomain in the tree panel — no need to
+  // manually open the domain card just to find the thing you searched for.
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) {
+      setAutoOpenSlug(undefined);
+      return;
+    }
+    const matches = taxonomy.top_domains
+      .map((d) => ({ domain: d, slug: findSubdomainMatch(d, q) }))
+      .filter((m): m is { domain: TopDomain; slug: string } => Boolean(m.slug));
+    if (matches.length === 1) {
+      setSelectedId(matches[0].domain.id);
+      setAutoOpenSlug(matches[0].slug);
+    } else {
+      setAutoOpenSlug(undefined);
+    }
+  }, [query]);
 
   // Scroll to the shared panel whenever a domain is selected or switched.
   // scroll-mt on the panel offsets the sticky navbar + search bar stack.
@@ -133,6 +169,7 @@ export function TaxonomyPage() {
                         domain={selected}
                         papers={papers}
                         onClose={() => setSelectedId(null)}
+                        initialOpenSlug={autoOpenSlug}
                       />
                     </div>
                   </motion.div>
