@@ -84,7 +84,7 @@ export function SearchFilterBar({
             </>
           )}
 
-          <div className="flex shrink-0 items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50/70 p-1 dark:border-zinc-700 dark:bg-zinc-900/60">
+          <div className="flex shrink-0 items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50/70 p-1 dark:border-zinc-700 dark:bg-zinc-900/60 sm:ml-auto">
             {viewOptions.map((opt) => (
               <button
                 key={opt.mode}
