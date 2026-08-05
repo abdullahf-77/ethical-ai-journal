@@ -3,11 +3,9 @@ import type { EthicalAiDomain } from "../../data/ethicalAiDomains";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export type LabelPlacement = "top" | "bottom" | "left" | "right";
-
 interface DomainPlanetProps {
   domain: EthicalAiDomain;
-  /** Target offset from the universe's center, in px. */
+  /** Small offset from this planet's fixed row slot, in px (wobble + focus transform). */
   x: number;
   y: number;
   /** Base dot diameter, in px, before hover/focus scaling. */
@@ -15,8 +13,6 @@ interface DomainPlanetProps {
   isFocused: boolean;
   isHovered: boolean;
   isFaded: boolean;
-  showLabel: boolean;
-  labelPlacement: LabelPlacement;
   reducedMotion: boolean;
   onHoverStart: () => void;
   onHoverEnd: () => void;
@@ -31,39 +27,23 @@ export function DomainPlanet({
   isFocused,
   isHovered,
   isFaded,
-  showLabel,
-  labelPlacement,
   reducedMotion,
   onHoverStart,
   onHoverEnd,
   onSelect,
 }: DomainPlanetProps) {
   const groupOpacity = isFaded ? 0.32 : 1;
-  const groupScale = isFocused ? 2.2 : isFaded ? 0.72 : 1;
-
-  const rowLayout = labelPlacement === "left" || labelPlacement === "right";
-  const flexDirection = rowLayout
-    ? labelPlacement === "right"
-      ? "flex-row"
-      : "flex-row-reverse"
-    : labelPlacement === "bottom"
-      ? "flex-col"
-      : "flex-col-reverse";
-  const textAlign = rowLayout ? (labelPlacement === "right" ? "text-left" : "text-right") : "text-center";
-
+  const groupScale = isFocused ? 2.15 : isFaded ? 0.72 : 1;
   const zIndex = isFocused ? 60 : isHovered ? 50 : 20;
 
   return (
-    <div
-      className="absolute left-1/2 top-1/2"
-      style={{ transform: "translate(-50%, -50%)", zIndex }}
-    >
+    <div className="relative" style={{ zIndex }}>
       <motion.div
         animate={{ x, y, opacity: groupOpacity, scale: groupScale }}
-        transition={{ duration: reducedMotion ? 0.25 : 0.8, ease: EASE }}
+        transition={{ duration: reducedMotion ? 0.25 : 0.9, ease: EASE }}
         style={{ willChange: "transform" }}
       >
-        <div className={`relative flex items-center gap-2.5 ${flexDirection}`}>
+        <div className="relative flex flex-col items-center gap-2.5">
           <motion.button
             type="button"
             onClick={onSelect}
@@ -75,35 +55,33 @@ export function DomainPlanet({
             className="relative shrink-0 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-icaire-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0a0a0d]"
             style={{ width: size, height: size }}
             animate={{
-              scale: !isFocused && isHovered ? 1.28 : 1,
+              scale: !isFocused && isHovered ? 1.22 : 1,
             }}
             transition={{ duration: 0.35, ease: EASE }}
           >
+            {/* soft green glow, same family as the Hero's orbit motif */}
             <span
               aria-hidden="true"
-              className="absolute rounded-full blur-md"
+              className="absolute rounded-full bg-icaire-500/35 blur-md dark:bg-icaire-400/40"
               style={{
                 inset: -10,
-                background: `radial-gradient(closest-side, ${domain.color.glow}, transparent)`,
-                opacity: isFocused ? 1 : isHovered ? 0.9 : 0.55,
+                opacity: isFocused ? 1 : isHovered ? 0.9 : 0.5,
               }}
             />
-            {/* sphere body — lit from the upper-left, like the reference planets */}
+            {/* sphere body — plain, unified icaire green, lit from the front/upper-left */}
             <span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: `radial-gradient(circle at 32% 26%, color-mix(in oklab, ${domain.color.from} 55%, white 45%), ${domain.color.from} 42%, ${domain.color.to} 100%)`,
-              }}
+              className="absolute inset-0 rounded-full bg-gradient-to-br from-icaire-200 via-icaire-500 to-icaire-700 dark:from-icaire-300 dark:via-icaire-600 dark:to-icaire-900"
             />
-            {/* rim shadow, opposite the light source, for volume */}
             <span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: `radial-gradient(circle at 72% 78%, color-mix(in oklab, ${domain.color.to} 70%, black 30%), transparent 62%)`,
-                opacity: 0.65,
-              }}
+              className="absolute inset-0 rounded-full opacity-70"
+              style={{ background: "radial-gradient(circle at 33% 28%, rgba(255,255,255,0.65), transparent 55%)" }}
+            />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full opacity-45"
+              style={{ background: "radial-gradient(circle at 72% 80%, rgba(0,0,0,0.35), transparent 60%)" }}
             />
             <span
               aria-hidden="true"
@@ -111,21 +89,10 @@ export function DomainPlanet({
             />
           </motion.button>
 
-          {showLabel && !isFocused && (
-            <div className={`w-max max-w-[150px] leading-tight ${textAlign}`}>
-              <p className="text-[11px] font-semibold tabular-nums tracking-wider text-zinc-400 dark:text-zinc-500">
-                {domain.number}
-              </p>
-              <p className="text-[13px] font-medium leading-snug text-zinc-600 dark:text-zinc-300">
-                {domain.shortLabel[0]}
-                {domain.shortLabel[1] && (
-                  <>
-                    <br />
-                    {domain.shortLabel[1]}
-                  </>
-                )}
-              </p>
-            </div>
+          {!isFocused && (
+            <p className="text-[11px] font-semibold tabular-nums tracking-wider text-icaire-600 dark:text-icaire-400">
+              {domain.number}
+            </p>
           )}
 
           <AnimatePresence>
@@ -137,10 +104,7 @@ export function DomainPlanet({
                 transition={{ duration: 0.18, ease: EASE }}
                 className="pointer-events-none absolute left-1/2 top-full z-40 mt-3 w-48 -translate-x-1/2 rounded-xl border border-zinc-200 bg-white/95 p-3 text-left shadow-lg backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/95"
               >
-                <p
-                  className="text-[10px] font-semibold tabular-nums tracking-wider"
-                  style={{ color: domain.color.to }}
-                >
+                <p className="text-[10px] font-semibold tabular-nums tracking-wider text-icaire-600 dark:text-icaire-400">
                   {domain.number}
                 </p>
                 <p className="mt-0.5 text-xs font-semibold text-zinc-900 dark:text-zinc-50">{domain.title}</p>

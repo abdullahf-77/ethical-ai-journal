@@ -1,33 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { ArrowLeft, ChevronDown, Hand, MousePointerClick } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { TaxonomyOrb } from "./TaxonomyOrb";
-import { DomainPlanet, type LabelPlacement } from "./DomainPlanet";
+import { DomainPlanet } from "./DomainPlanet";
 import { DomainFocus } from "./DomainFocus";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 type Viewport = "mobile" | "tablet" | "desktop";
 
-/** Per-domain orbit shape: starting angle (0 = top, clockwise) and distance
- * from center as a ratio of the available radius. Every domain shares the
- * same very slow period and direction — a rigid, synchronized rotation —
- * so the 36° spacing between domains never drifts and labels never collide
- * as the system turns. Distance-from-center still varies per domain for
- * an organic, non-mechanical feel. */
-const ORBIT_PERIOD = 260;
-const ORBIT_CONFIG: Record<number, { angle: number; radiusRatio: number }> = {
-  1: { angle: 0, radiusRatio: 0.58 },
-  2: { angle: 36, radiusRatio: 0.72 },
-  3: { angle: 72, radiusRatio: 0.64 },
-  4: { angle: 108, radiusRatio: 0.8 },
-  5: { angle: 144, radiusRatio: 0.68 },
-  6: { angle: 180, radiusRatio: 0.86 },
-  7: { angle: 216, radiusRatio: 0.62 },
-  8: { angle: 252, radiusRatio: 0.76 },
-  9: { angle: 288, radiusRatio: 0.7 },
-  10: { angle: 324, radiusRatio: 0.84 },
+/** Each domain sits in a fixed slot in the row and only drifts in a small,
+ * gentle circle around that slot — a "still alive" feel without an orbit.
+ * Period and starting phase vary per domain so they don't all bob in
+ * unison; since the loop radius is tiny and every domain has its own
+ * fixed slot, this variation can never cause two domains to collide. */
+const WOBBLE_CONFIG: Record<number, { period: number; phase: number; radius: number }> = {
+  1: { period: 17, phase: 10, radius: 7 },
+  2: { period: 21, phase: 140, radius: 8 },
+  3: { period: 19, phase: 260, radius: 6 },
+  4: { period: 24, phase: 40, radius: 8 },
+  5: { period: 18, phase: 200, radius: 7 },
+  6: { period: 22, phase: 320, radius: 9 },
+  7: { period: 16, phase: 80, radius: 6 },
+  8: { period: 23, phase: 170, radius: 8 },
+  9: { period: 20, phase: 300, radius: 7 },
+  10: { period: 25, phase: 60, radius: 9 },
 };
 
 function usePrefersReducedMotion() {
@@ -56,10 +54,10 @@ function useViewport(): Viewport {
   return viewport;
 }
 
-/** A slow, pausable clock (in elapsed seconds) driving the orbit animation.
+/** A slow, pausable clock (in elapsed seconds) driving the wobble animation.
  * Re-renders are throttled to ~15fps — the motion is subtle enough that
  * higher frequency updates would be wasted work. */
-function useOrbitClock(paused: boolean) {
+function useSlowClock(paused: boolean) {
   const [elapsed, setElapsed] = useState(0);
   const rafRef = useRef<number | null>(null);
   const lastRef = useRef<number | null>(null);
@@ -91,16 +89,7 @@ function useOrbitClock(paused: boolean) {
   return elapsed;
 }
 
-/** Decide which side a label sits on from its planet's actual pixel offset
- * (post-ellipse scaling), so the choice matches what's really on screen. */
-function labelPlacementFor(px: number, py: number): LabelPlacement {
-  if (Math.abs(px) > Math.abs(py) * 1.4) return px > 0 ? "right" : "left";
-  return py < 0 ? "top" : "bottom";
-}
-
 export function TaxonomyUniverse() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(600);
   const viewport = useViewport();
   const reducedMotion = usePrefersReducedMotion();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -108,20 +97,10 @@ export function TaxonomyUniverse() {
   const frozenElapsedRef = useRef<Record<number, number>>({});
 
   const paused = selectedId !== null || reducedMotion;
-  const elapsed = useOrbitClock(paused);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const ro = new ResizeObserver((entries) => {
-      const w = entries[0]?.contentRect.width;
-      if (w) setContainerWidth(w);
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+  const elapsed = useSlowClock(paused);
 
   const selected = selectedId != null ? ethicalAiDomains.find((d) => d.id === selectedId) ?? null : null;
+  const selectedIndex = selectedId != null ? ethicalAiDomains.findIndex((d) => d.id === selectedId) : -1;
 
   const handleSelect = (id: number | null) => {
     setSelectedId(id);
@@ -132,91 +111,121 @@ export function TaxonomyUniverse() {
     return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} />;
   }
 
-  // A flattened, wide ellipse — a "side view" of the system, like looking
-  // across a solar system diagram rather than straight down on it.
-  const halfW = containerWidth / 2;
-  const halfH = (containerWidth * (10 / 16)) / 2;
-  const rx = halfW * 0.84;
-  const ry = halfH * 0.62;
-  const dotSize = viewport === "desktop" ? 34 : 28;
-  const focusOffsetY = -Math.min(110, halfH * 0.42);
+  const dotSize = viewport === "desktop" ? 46 : 38;
+  const riseAmount = viewport === "desktop" ? 100 : 78;
 
   return (
-    <div className="relative">
-      <div
-        ref={containerRef}
-        className="relative mx-auto aspect-[16/10] w-full max-w-[760px] sm:max-w-[860px] lg:max-w-[1040px]"
-      >
-        <div
-          className="pointer-events-none absolute left-1/2 top-1/2 w-[88%] rounded-full border border-zinc-300/35 dark:border-zinc-700/30"
-          style={{ aspectRatio: "16 / 6.6", transform: "translate(-50%, -50%)" }}
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute left-1/2 top-1/2 w-[68%] rounded-full border border-zinc-300/25 dark:border-zinc-700/20"
-          style={{ aspectRatio: "16 / 6.6", transform: "translate(-50%, -50%)" }}
-          aria-hidden="true"
-        />
-
+    <div className="relative mx-auto max-w-5xl lg:max-w-6xl">
+      <div className="mb-10 sm:mb-14">
         <TaxonomyOrb dimmed={selectedId !== null} />
+      </div>
 
-        {ethicalAiDomains.map((domain) => {
-          const cfg = ORBIT_CONFIG[domain.id];
+      <div className="text-center">
+        <span className="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 rounded-full border border-zinc-200 bg-zinc-50/80 px-4 py-1.5 text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
+          <span className="inline-flex items-center gap-1.5">
+            <Hand size={13} className="text-icaire-600 dark:text-icaire-400" />
+            Hover a planet to explore
+          </span>
+          <span className="text-zinc-300 dark:text-zinc-700">&middot;</span>
+          <span className="inline-flex items-center gap-1.5">
+            <MousePointerClick size={13} className="text-icaire-600 dark:text-icaire-400" />
+            Click a planet to focus
+          </span>
+        </span>
+      </div>
 
-          let domainElapsed = elapsed;
-          if (selectedId === null && hoveredId === domain.id) {
-            if (frozenElapsedRef.current[domain.id] === undefined) {
+      <div className="relative mt-14 sm:mt-16">
+        <div
+          className="pointer-events-none absolute inset-x-2 top-1/2 -translate-y-1/2 opacity-70 dark:hidden"
+          style={{
+            height: 4,
+            backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.16) 1.2px, transparent 1.6px)",
+            backgroundSize: "18px 4px",
+            backgroundRepeat: "repeat-x",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-2 top-1/2 hidden -translate-y-1/2 opacity-70 dark:block"
+          style={{
+            height: 4,
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1.2px, transparent 1.6px)",
+            backgroundSize: "18px 4px",
+            backgroundRepeat: "repeat-x",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="relative flex items-start justify-between gap-2 px-1 sm:gap-3 lg:gap-4">
+          {ethicalAiDomains.map((domain, index) => {
+            const wobble = WOBBLE_CONFIG[domain.id];
+
+            let domainElapsed = elapsed;
+            if (selectedId === null && hoveredId === domain.id) {
+              if (frozenElapsedRef.current[domain.id] === undefined) {
+                frozenElapsedRef.current[domain.id] = elapsed;
+              }
+              domainElapsed = frozenElapsedRef.current[domain.id];
+            } else {
               frozenElapsedRef.current[domain.id] = elapsed;
             }
-            domainElapsed = frozenElapsedRef.current[domain.id];
-          } else {
-            frozenElapsedRef.current[domain.id] = elapsed;
-          }
 
-          const angleDeg = cfg.angle + domainElapsed * (360 / ORBIT_PERIOD);
-          const rad = (angleDeg * Math.PI) / 180;
-
-          let px = Math.sin(rad) * cfg.radiusRatio * rx;
-          let py = -Math.cos(rad) * cfg.radiusRatio * ry;
-
-          const isFocused = selectedId === domain.id;
-          const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
-          const placement = labelPlacementFor(px, py);
-
-          if (selectedId !== null) {
-            if (isFocused) {
-              px = 0;
-              py = focusOffsetY;
-            } else {
-              px *= 1.15;
-              py *= 1.15;
+            let x = 0;
+            let y = 0;
+            if (!reducedMotion) {
+              const angle = ((domainElapsed * (360 / wobble.period) + wobble.phase) * Math.PI) / 180;
+              x = Math.cos(angle) * wobble.radius;
+              y = Math.sin(angle) * wobble.radius * 0.6;
             }
-          }
 
-          return (
-            <DomainPlanet
-              key={domain.id}
-              domain={domain}
-              x={px}
-              y={py}
-              size={dotSize}
-              isFocused={isFocused}
-              isHovered={hoveredId === domain.id}
-              isFaded={isFaded}
-              showLabel
-              labelPlacement={placement}
-              reducedMotion={reducedMotion}
-              onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
-              onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
-              onSelect={() => handleSelect(isFocused ? null : domain.id)}
-            />
-          );
-        })}
+            const isFocused = selectedId === domain.id;
+            const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
 
-        <AnimatePresence>
-          {selected && <DomainFocus key={selected.id} domain={selected} onBack={() => handleSelect(null)} />}
-        </AnimatePresence>
+            if (selectedId !== null) {
+              if (isFocused) {
+                x = 0;
+                y = -riseAmount;
+              } else {
+                const distance = index - selectedIndex;
+                const dir = distance === 0 ? 0 : distance / Math.abs(distance);
+                x += dir * Math.min(64, Math.abs(distance) * 15);
+              }
+            }
+
+            return (
+              <DomainPlanet
+                key={domain.id}
+                domain={domain}
+                x={x}
+                y={y}
+                size={dotSize}
+                isFocused={isFocused}
+                isHovered={hoveredId === domain.id}
+                isFaded={isFaded}
+                reducedMotion={reducedMotion}
+                onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
+                onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
+                onSelect={() => handleSelect(isFocused ? null : domain.id)}
+              />
+            );
+          })}
+        </div>
       </div>
+
+      <AnimatePresence initial={false}>
+        {selected && (
+          <motion.div
+            key="focus"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="overflow-hidden"
+          >
+            <DomainFocus domain={selected} onBack={() => handleSelect(null)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -268,13 +277,15 @@ function MobileDomainList({
               >
                 <span
                   aria-hidden="true"
-                  className="size-6 shrink-0 rounded-full border border-white/40 dark:border-white/10"
-                  style={{
-                    background: `radial-gradient(circle at 32% 28%, color-mix(in oklab, ${domain.color.from} 65%, white 35%), ${domain.color.from} 45%, ${domain.color.to} 100%)`,
-                  }}
-                />
+                  className="relative size-6 shrink-0 overflow-hidden rounded-full border border-white/40 bg-gradient-to-br from-icaire-200 via-icaire-500 to-icaire-700 dark:border-white/10 dark:from-icaire-300 dark:via-icaire-600 dark:to-icaire-900"
+                >
+                  <span
+                    className="absolute inset-0"
+                    style={{ background: "radial-gradient(circle at 33% 28%, rgba(255,255,255,0.65), transparent 55%)" }}
+                  />
+                </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-[10px] font-semibold tracking-wider text-zinc-400 dark:text-zinc-500">
+                  <span className="block text-[10px] font-semibold tracking-wider text-icaire-600 dark:text-icaire-400">
                     {domain.number}
                   </span>
                   <span className="block truncate text-sm font-medium text-zinc-700 dark:text-zinc-200">

@@ -10,9 +10,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export function TaxonomyOrb({ dimmed }: { dimmed: boolean }) {
   return (
     <motion.div
-      className="pointer-events-none absolute left-1/2 top-1/2 z-10"
-      style={{ x: "-50%", y: "-50%" }}
-      animate={{ opacity: dimmed ? 0.1 : 1, scale: dimmed ? 0.82 : 1 }}
+      className="pointer-events-none relative z-10 mx-auto flex justify-center"
+      animate={{ opacity: dimmed ? 0.12 : 1, scale: dimmed ? 0.82 : 1 }}
       transition={{ duration: 0.7, ease: EASE }}
     >
       <div className="relative flex size-[124px] items-center justify-center sm:size-[156px]">
