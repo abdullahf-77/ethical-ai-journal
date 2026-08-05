@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronDown, Hand, MousePointerClick } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
@@ -10,23 +10,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 type Viewport = "mobile" | "tablet" | "desktop";
 
-/** Each domain sits in a fixed slot in the row and only drifts in a small,
- * gentle circle around that slot — a "still alive" feel without an orbit.
- * Period and starting phase vary per domain so they don't all bob in
- * unison; since the loop radius is tiny and every domain has its own
- * fixed slot, this variation can never cause two domains to collide. */
-const WOBBLE_CONFIG: Record<number, { period: number; phase: number; radius: number }> = {
-  1: { period: 17, phase: 10, radius: 7 },
-  2: { period: 21, phase: 140, radius: 8 },
-  3: { period: 19, phase: 260, radius: 6 },
-  4: { period: 24, phase: 40, radius: 8 },
-  5: { period: 18, phase: 200, radius: 7 },
-  6: { period: 22, phase: 320, radius: 9 },
-  7: { period: 16, phase: 80, radius: 6 },
-  8: { period: 23, phase: 170, radius: 8 },
-  9: { period: 20, phase: 300, radius: 7 },
-  10: { period: 25, phase: 60, radius: 9 },
-};
+// The row itself is static — no shared path, no idle circular motion around
+// a center. Planets only move in response to a direct interaction: the
+// small hover scale-up, and the click-to-focus rise/part-sideways below.
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -54,50 +40,11 @@ function useViewport(): Viewport {
   return viewport;
 }
 
-/** A slow, pausable clock (in elapsed seconds) driving the wobble animation.
- * Re-renders are throttled to ~15fps — the motion is subtle enough that
- * higher frequency updates would be wasted work. */
-function useSlowClock(paused: boolean) {
-  const [elapsed, setElapsed] = useState(0);
-  const rafRef = useRef<number | null>(null);
-  const lastRef = useRef<number | null>(null);
-  const accRef = useRef(0);
-
-  useEffect(() => {
-    if (paused) {
-      lastRef.current = null;
-      return;
-    }
-    const tick = (ts: number) => {
-      if (lastRef.current == null) lastRef.current = ts;
-      const dt = (ts - lastRef.current) / 1000;
-      lastRef.current = ts;
-      accRef.current += dt;
-      if (accRef.current >= 1 / 15) {
-        setElapsed((e) => e + accRef.current);
-        accRef.current = 0;
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      lastRef.current = null;
-    };
-  }, [paused]);
-
-  return elapsed;
-}
-
 export function TaxonomyUniverse() {
   const viewport = useViewport();
   const reducedMotion = usePrefersReducedMotion();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const frozenElapsedRef = useRef<Record<number, number>>({});
-
-  const paused = selectedId !== null || reducedMotion;
-  const elapsed = useSlowClock(paused);
 
   const selected = selectedId != null ? ethicalAiDomains.find((d) => d.id === selectedId) ?? null : null;
   const selectedIndex = selectedId != null ? ethicalAiDomains.findIndex((d) => d.id === selectedId) : -1;
@@ -135,48 +82,10 @@ export function TaxonomyUniverse() {
       </div>
 
       <div className="relative mt-14 sm:mt-16">
-        <div
-          className="pointer-events-none absolute inset-x-2 top-1/2 -translate-y-1/2 opacity-70 dark:hidden"
-          style={{
-            height: 4,
-            backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.16) 1.2px, transparent 1.6px)",
-            backgroundSize: "18px 4px",
-            backgroundRepeat: "repeat-x",
-          }}
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute inset-x-2 top-1/2 hidden -translate-y-1/2 opacity-70 dark:block"
-          style={{
-            height: 4,
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1.2px, transparent 1.6px)",
-            backgroundSize: "18px 4px",
-            backgroundRepeat: "repeat-x",
-          }}
-          aria-hidden="true"
-        />
-
         <div className="relative flex items-start justify-between gap-2 px-1 sm:gap-3 lg:gap-4">
           {ethicalAiDomains.map((domain, index) => {
-            const wobble = WOBBLE_CONFIG[domain.id];
-
-            let domainElapsed = elapsed;
-            if (selectedId === null && hoveredId === domain.id) {
-              if (frozenElapsedRef.current[domain.id] === undefined) {
-                frozenElapsedRef.current[domain.id] = elapsed;
-              }
-              domainElapsed = frozenElapsedRef.current[domain.id];
-            } else {
-              frozenElapsedRef.current[domain.id] = elapsed;
-            }
-
             let x = 0;
             let y = 0;
-            if (!reducedMotion) {
-              const angle = ((domainElapsed * (360 / wobble.period) + wobble.phase) * Math.PI) / 180;
-              x = Math.cos(angle) * wobble.radius;
-              y = Math.sin(angle) * wobble.radius * 0.6;
-            }
 
             const isFocused = selectedId === domain.id;
             const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
@@ -188,7 +97,7 @@ export function TaxonomyUniverse() {
               } else {
                 const distance = index - selectedIndex;
                 const dir = distance === 0 ? 0 : distance / Math.abs(distance);
-                x += dir * Math.min(64, Math.abs(distance) * 15);
+                x = dir * Math.min(64, Math.abs(distance) * 15);
               }
             }
 
@@ -277,13 +186,8 @@ function MobileDomainList({
               >
                 <span
                   aria-hidden="true"
-                  className="relative size-6 shrink-0 overflow-hidden rounded-full border border-white/40 bg-gradient-to-br from-icaire-200 via-icaire-500 to-icaire-700 dark:border-white/10 dark:from-icaire-300 dark:via-icaire-600 dark:to-icaire-900"
-                >
-                  <span
-                    className="absolute inset-0"
-                    style={{ background: "radial-gradient(circle at 33% 28%, rgba(255,255,255,0.65), transparent 55%)" }}
-                  />
-                </span>
+                  className="size-6 shrink-0 rounded-full bg-icaire-700 ring-1 ring-inset ring-white/25 dark:bg-icaire-400 dark:ring-black/20"
+                />
                 <span className="min-w-0 flex-1">
                   <span className="block text-[10px] font-semibold tracking-wider text-icaire-600 dark:text-icaire-400">
                     {domain.number}

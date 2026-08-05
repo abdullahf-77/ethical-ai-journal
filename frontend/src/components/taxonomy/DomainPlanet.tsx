@@ -5,7 +5,8 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 interface DomainPlanetProps {
   domain: EthicalAiDomain;
-  /** Small offset from this planet's fixed row slot, in px (wobble + focus transform). */
+  /** Offset from this planet's fixed row slot, in px — 0,0 unless it's
+   * animating into or out of the focused state. */
   x: number;
   y: number;
   /** Base dot diameter, in px, before hover/focus scaling. */
@@ -59,33 +60,16 @@ export function DomainPlanet({
             }}
             transition={{ duration: 0.35, ease: EASE }}
           >
-            {/* soft green glow, same family as the Hero's orbit motif */}
+            {/* flat, constant fill — the same icaire green used for the dots in the
+                Hero's orbit motif, just solid instead of near-transparent so it
+                reads clearly as a clickable element. No gradient, no shading. */}
             <span
               aria-hidden="true"
-              className="absolute rounded-full bg-icaire-500/35 blur-md dark:bg-icaire-400/40"
-              style={{
-                inset: -10,
-                opacity: isFocused ? 1 : isHovered ? 0.9 : 0.5,
-              }}
-            />
-            {/* sphere body — plain, unified icaire green, lit from the front/upper-left */}
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 rounded-full bg-gradient-to-br from-icaire-200 via-icaire-500 to-icaire-700 dark:from-icaire-300 dark:via-icaire-600 dark:to-icaire-900"
+              className="absolute inset-0 rounded-full bg-icaire-700 dark:bg-icaire-400"
             />
             <span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full opacity-70"
-              style={{ background: "radial-gradient(circle at 33% 28%, rgba(255,255,255,0.65), transparent 55%)" }}
-            />
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 rounded-full opacity-45"
-              style={{ background: "radial-gradient(circle at 72% 80%, rgba(0,0,0,0.35), transparent 60%)" }}
-            />
-            <span
-              aria-hidden="true"
-              className="absolute inset-0 rounded-full border border-white/50 dark:border-white/15"
+              className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/25 dark:ring-black/20"
             />
           </motion.button>
 
