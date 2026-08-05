@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1240" width="1240" height="1240" role="img" aria-label="Pale sage-green translucent sphere encircled by thin elliptical orbit lines">
+  <defs>
+    <!-- page background: barely-there off-white -->
+    <radialGradient id="bg" cx="50%" cy="50%" r="72%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f8f6"/>
+    </radialGradient>
+
+    <!-- optional faint grid, faded out toward the edges -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 L 0 40" fill="none" stroke="#6f8c74" stroke-width="1" opacity="0.07"/>
+    </pattern>
+    <radialGradient id="gridFade" cx="50%" cy="50%" r="52%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="gridMask">
+      <rect width="1240" height="1240" fill="url(#gridFade)"/>
+    </mask>
+
+    <!-- the sphere body: near-white core easing out to pale sage -->
+    <radialGradient id="sphere" cx="46%" cy="44%" r="64%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#f4f8f4"/>
+      <stop offset="62%" stop-color="#e7efe8"/>
+      <stop offset="88%" stop-color="#dde8df"/>
+      <stop offset="100%" stop-color="#d8e4da"/>
+    </radialGradient>
+
+    <!-- diffused halo sitting behind the sphere -->
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="55%" stop-color="#cfe0d3" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#cfe0d3" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- soft light gathering along the rim -->
+    <radialGradient id="rim" cx="50%" cy="50%" r="50%">
+      <stop offset="82%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="95%" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="blurLg" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="blurSm" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
+    <filter id="blurDot" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+  </defs>
+
+  <rect width="1240" height="1240" fill="url(#bg)"/>
+  <rect width="1240" height="1240" fill="url(#grid)" mask="url(#gridMask)"/>
+
+  <g transform="translate(620 620)">
+    <!-- halo -->
+    <circle r="530" fill="url(#glow)" filter="url(#blurLg)"/>
+
+    <!-- sphere -->
+    <circle r="432" fill="url(#sphere)"/>
+    <circle r="432" fill="url(#rim)"/>
+    <circle r="432" fill="none" stroke="#ffffff" stroke-width="9" opacity="0.5" filter="url(#blurSm)"/>
+    <circle r="432" fill="none" stroke="#c8d8cb" stroke-width="1" opacity="0.45"/>
+
+    <!-- orbit lines: thin, pale, crossing at different tilts.
+         dots are drawn inside each rotated group so they land exactly
+         on that ellipse's path -->
+    <g stroke="#7f9d85" fill="#8db095" opacity="0.5">
+      <g transform="rotate(-27)">
+        <ellipse rx="472" ry="300" fill="none" stroke-width="1.4"/>
+        <circle cx="-372" cy="-184" r="7" stroke="none" filter="url(#blurDot)"/>
+        <circle cx="447" cy="96" r="5.5" stroke="none" filter="url(#blurDot)"/>
+      </g>
+
+      <g transform="rotate(34)">
+        <ellipse rx="466" ry="258" fill="none" stroke-width="1.4"/>
+        <circle cx="-402" cy="130" r="6" stroke="none" filter="url(#blurDot)"/>
+        <circle cx="326" cy="-184" r="8" stroke="none" filter="url(#blurDot)"/>
+      </g>
+
+      <g transform="rotate(12)">
+        <ellipse rx="292" ry="470" fill="none" stroke-width="1.4"/>
+        <circle cx="-146" cy="-407" r="6.5" stroke="none" filter="url(#blurDot)"/>
+        <circle cx="106" cy="437" r="9" stroke="none" filter="url(#blurDot)"/>
+      </g>
+
+      <g transform="rotate(-62)">
+        <ellipse rx="452" ry="418" fill="none" stroke-width="1.3" opacity="0.8"/>
+        <circle cx="-226" cy="-362" r="5" stroke="none" filter="url(#blurDot)"/>
+        <circle cx="391" cy="209" r="6.5" stroke="none" filter="url(#blurDot)"/>
+      </g>
+    </g>
+  </g>
+</svg>

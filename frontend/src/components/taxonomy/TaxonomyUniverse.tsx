@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronDown, Hand, MousePointerClick } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { DomainPlanet } from "./DomainPlanet";
+import { PlanetOrb } from "./PlanetOrb";
 import { DomainFocus } from "./DomainFocus";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -254,10 +255,9 @@ function MobileDomainList({
                 aria-label={domain.title}
                 className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
               >
-                <span
-                  aria-hidden="true"
-                  className="size-6 shrink-0 rounded-full border border-icaire-700/30 bg-icaire-700/10 dark:border-icaire-300/30 dark:bg-icaire-300/10"
-                />
+                <span aria-hidden="true" className="relative size-7 shrink-0">
+                  <PlanetOrb uid={`m${domain.id}`} />
+                </span>
                 <span className="min-w-0 flex-1 truncate text-sm font-medium text-zinc-700 dark:text-zinc-200">
                   {domain.shortLabel.filter(Boolean).join(" ")}
                 </span>

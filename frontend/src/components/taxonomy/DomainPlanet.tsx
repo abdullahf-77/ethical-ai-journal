@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { EthicalAiDomain } from "../../data/ethicalAiDomains";
+import { PlanetOrb } from "./PlanetOrb";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -59,25 +60,19 @@ export function DomainPlanet({
           animate={{ scale: !isFocused && isHovered ? 1.1 : 1 }}
           transition={{ duration: 0.35, ease: EASE }}
         >
-          {/* Thin, translucent circle — the same restraint as the rings and
-              dots in the Hero's orbit motif, not a solid filled ball. */}
+          {/* the pale sage sphere, shared with public/taxonomy-orb.svg */}
           <motion.span
             aria-hidden="true"
-            className="absolute inset-0 rounded-full border border-icaire-700/30 bg-icaire-700/10 dark:border-icaire-300/30 dark:bg-icaire-300/10"
-            animate={{ opacity: isFocused || isHovered ? 1 : 0.85 }}
+            className="absolute inset-0"
+            animate={{ opacity: isFocused || isHovered ? 1 : 0.9 }}
             transition={{ duration: 0.3, ease: EASE }}
-          />
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 rounded-full opacity-60"
-            style={{
-              background: "radial-gradient(circle at 34% 30%, rgba(255,255,255,0.5), transparent 60%)",
-            }}
-          />
+          >
+            <PlanetOrb uid={domain.id} />
+          </motion.span>
 
           {/* label lives inside the planet */}
           <span
-            className="relative px-2 text-center font-medium leading-[1.25] tracking-tight text-icaire-900/85 dark:text-icaire-50/90"
+            className="relative px-2 text-center font-medium leading-[1.25] tracking-tight text-icaire-800 dark:text-icaire-50/90"
             style={{ fontSize: Math.max(9, Math.round(size * 0.115)) }}
           >
             {domain.compactLabel.map((line, i) => (
