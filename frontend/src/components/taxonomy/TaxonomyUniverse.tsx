@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ChevronDown, Hand, MousePointerClick } from "lucide-react";
+import { ArrowLeft, ChevronDown } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { DomainPlanet } from "./DomainPlanet";
 import { PlanetOrb } from "./PlanetOrb";
@@ -114,47 +114,33 @@ export function TaxonomyUniverse() {
 
   // Wide, flattened ellipse — a side-on view of the system.
   const halfW = containerWidth / 2;
-  const halfH = (containerWidth * (12 / 16)) / 2;
+  const halfH = (containerWidth * (11 / 16)) / 2;
   const rx = halfW * 0.82;
-  const ry = halfH * 0.7;
+  const ry = halfH * 0.74;
   // Sized to fit the longest principle title inside the orb, against the
   // 72%-of-diameter text box. The binding constraint on shrinking the ring
   // is the closest planet pair, which sits 0.618 * ry apart — flattening
   // the ellipse lowers ry, so the orbs come down with it.
-  const dotSize = viewport === "desktop" ? 140 : 120;
+  const dotSize = viewport === "desktop" ? 128 : 108;
 
   return (
     <div className="relative">
-      <div className="text-center">
-        <span className="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 rounded-full border border-zinc-200 bg-zinc-50/80 px-4 py-1.5 text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
-          <span className="inline-flex items-center gap-1.5">
-            <Hand size={13} className="text-icaire-600 dark:text-icaire-400" />
-            Hover a planet to explore
-          </span>
-          <span className="text-zinc-300 dark:text-zinc-700">&middot;</span>
-          <span className="inline-flex items-center gap-1.5">
-            <MousePointerClick size={13} className="text-icaire-600 dark:text-icaire-400" />
-            Click a planet to focus
-          </span>
-        </span>
-      </div>
-
       <div
         ref={containerRef}
-        className="relative mx-auto mt-8 aspect-[16/12] w-full max-w-[880px] lg:max-w-[1000px]"
+        className="relative mx-auto aspect-[16/11] w-full max-w-[820px] lg:max-w-[940px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
-          viewBox="0 0 1600 1200"
+          viewBox="0 0 1600 1100"
           aria-hidden="true"
         >
           <ellipse
             cx="800"
-            cy="600"
+            cy="550"
             rx={0.82 * 800}
-            ry={0.7 * 600}
+            ry={0.74 * 550}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
