@@ -114,13 +114,13 @@ export function TaxonomyUniverse() {
 
   // Wide, flattened ellipse — a side-on view of the system.
   const halfW = containerWidth / 2;
-  const halfH = (containerWidth * (9 / 16)) / 2;
+  const halfH = (containerWidth * (11 / 16)) / 2;
   const rx = halfW * 0.78;
   const ry = halfH * 0.72;
-  // Big enough to hold the compact label inside. The closest two planets on
-  // this ellipse sit 0.618 * ry apart, which stays comfortably clear of
-  // these diameters at every breakpoint.
-  const dotSize = viewport === "desktop" ? 104 : 84;
+  // The closest two planets on this ellipse sit 0.618 * ry apart — about
+  // 165px on a full-width desktop container and 135px on tablet — so these
+  // diameters stay clear of each other even at the 1.1x hover scale.
+  const dotSize = viewport === "desktop" ? 130 : 104;
 
   return (
     <div className="relative">
@@ -140,20 +140,20 @@ export function TaxonomyUniverse() {
 
       <div
         ref={containerRef}
-        className="relative mx-auto mt-8 aspect-[16/9] w-full max-w-[880px] lg:max-w-[1080px]"
+        className="relative mx-auto mt-8 aspect-[16/11] w-full max-w-[880px] lg:max-w-[1080px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
-          viewBox="0 0 1600 900"
+          viewBox="0 0 1600 1100"
           aria-hidden="true"
         >
           <ellipse
             cx="800"
-            cy="450"
+            cy="550"
             rx={0.78 * 800}
-            ry={0.72 * 450}
+            ry={0.72 * 550}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"

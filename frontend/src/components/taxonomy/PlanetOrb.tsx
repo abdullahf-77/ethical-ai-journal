@@ -21,7 +21,7 @@ const dots = [
 export function PlanetOrb() {
   return (
     <span className="pointer-events-none absolute inset-0 block">
-      <span className="hero-glow absolute inset-[-14%] block rounded-full opacity-70 blur-lg" />
+      <span className="hero-glow absolute inset-[-8%] block rounded-full opacity-[0.32] blur-lg" />
       <span className="hero-veil absolute inset-0 block" />
       <span className="absolute inset-0 block animate-spin-slow">
         <svg
@@ -30,9 +30,9 @@ export function PlanetOrb() {
           aria-hidden="true"
           focusable="false"
         >
-          <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
-          <ellipse cx="300" cy="300" rx="260" ry="120" fill="none" stroke="currentColor" strokeWidth="1" />
-          <ellipse cx="300" cy="300" rx="120" ry="260" fill="none" stroke="currentColor" strokeWidth="1" />
+          <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="4" />
+          <ellipse cx="300" cy="300" rx="260" ry="120" fill="none" stroke="currentColor" strokeWidth="4" />
+          <ellipse cx="300" cy="300" rx="120" ry="260" fill="none" stroke="currentColor" strokeWidth="4" />
           {dots.map((d, i) => {
             const rad = (d.angle * Math.PI) / 180;
             return (
