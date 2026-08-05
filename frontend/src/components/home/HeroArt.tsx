@@ -156,7 +156,7 @@ export function HeroArt() {
               style={{
                 offsetPath: `path('${c.d}')`,
                 offsetRotate: "0deg",
-                animation: `ride ${c.dur}s linear ${(i * 0.47).toFixed(2)}s infinite`,
+                animation: `ride ${c.dur}s linear ${(i * 0.47).toFixed(2)}s infinite backwards`,
               }}
             />
           ))}
@@ -166,7 +166,7 @@ export function HeroArt() {
               style={{
                 offsetPath: `path('${flowPaths[i].d}')`,
                 offsetRotate: "0deg",
-                animation: `ride ${doc.dur}s linear ${(i * 0.66).toFixed(2)}s infinite`,
+                animation: `ride ${doc.dur}s linear ${(i * 0.66).toFixed(2)}s infinite backwards`,
               }}
             >
               <g transform={`rotate(${doc.rotate})`}>
@@ -212,7 +212,7 @@ export function HeroArt() {
                 strokeDasharray={b.dash}
                 opacity="0.4"
                 style={{
-                  animation: `flow ${b.flowDur}s linear infinite, breathe ${b.breatheDur}s ease-in-out ${(i * 1.7).toFixed(1)}s infinite`,
+                  animation: `flow ${b.flowDur}s linear infinite, breathe ${b.breatheDur}s ease-in-out ${(i * 1.7).toFixed(1)}s infinite backwards`,
                 }}
               />
               <circle cx={b.end[0]} cy={b.end[1]} r="2.2" fill="currentColor" opacity="0.42" />
@@ -264,7 +264,7 @@ export function HeroArt() {
                 style={{
                   offsetPath: `path('${fanTrunk} ${branchCurve} L ${b.end[0] + 26} ${b.end[1]}')`,
                   offsetRotate: "0deg",
-                  animation: `journey 13s linear ${(i * 4.3).toFixed(2)}s infinite`,
+                  animation: `journey 13s linear ${(i * 4.3).toFixed(2)}s infinite backwards`,
                 }}
               >
                 <ClusterDoc faded={false} />
