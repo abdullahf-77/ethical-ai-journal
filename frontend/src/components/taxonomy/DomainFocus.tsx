@@ -18,10 +18,7 @@ export function DomainFocus({ domain, onBack }: { domain: EthicalAiDomain; onBac
       transition={{ duration: 0.5, delay: 0.3, ease: EASE }}
       className="pointer-events-none absolute inset-x-0 top-1/2 z-50 mt-12 flex flex-col items-center px-6 text-center sm:mt-16"
     >
-      <p className="text-sm font-semibold tabular-nums tracking-[0.2em] text-icaire-600 dark:text-icaire-400">
-        {domain.number}
-      </p>
-      <h2 className="mt-2 max-w-md text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-2xl">
+      <h2 className="max-w-md text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-2xl">
         {domain.title}
       </h2>
       <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">

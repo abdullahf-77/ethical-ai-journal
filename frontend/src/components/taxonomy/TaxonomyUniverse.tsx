@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronDown, Hand, MousePointerClick } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
-import { DomainPlanet, type LabelPlacement } from "./DomainPlanet";
+import { DomainPlanet } from "./DomainPlanet";
 import { DomainFocus } from "./DomainFocus";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -76,14 +76,6 @@ function useOrbitClock(paused: boolean) {
   return elapsed;
 }
 
-/** Label side is chosen from the planet's real pixel offset so it matches the
- * flattened ellipse: planets out at the wide left/right ends get side
- * labels, ones near the top/bottom of the arc get stacked labels. */
-function labelPlacementFor(px: number, py: number): LabelPlacement {
-  if (Math.abs(px) > Math.abs(py) * 1.2) return px > 0 ? "right" : "left";
-  return py < 0 ? "top" : "bottom";
-}
-
 export function TaxonomyUniverse() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(900);
@@ -122,9 +114,12 @@ export function TaxonomyUniverse() {
   // Wide, flattened ellipse — a side-on view of the system.
   const halfW = containerWidth / 2;
   const halfH = (containerWidth * (9 / 16)) / 2;
-  const rx = halfW * 0.7;
-  const ry = halfH * 0.66;
-  const dotSize = viewport === "desktop" ? 52 : 42;
+  const rx = halfW * 0.78;
+  const ry = halfH * 0.72;
+  // Big enough to hold the compact label inside. The closest two planets on
+  // this ellipse sit 0.618 * ry apart, which stays comfortably clear of
+  // these diameters at every breakpoint.
+  const dotSize = viewport === "desktop" ? 104 : 84;
 
   return (
     <div className="relative">
@@ -156,8 +151,8 @@ export function TaxonomyUniverse() {
           <ellipse
             cx="800"
             cy="450"
-            rx={0.7 * 800}
-            ry={0.66 * 450}
+            rx={0.78 * 800}
+            ry={0.72 * 450}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -172,7 +167,6 @@ export function TaxonomyUniverse() {
 
           let px = Math.sin(rad) * rx;
           let py = -Math.cos(rad) * ry;
-          const placement = labelPlacementFor(px, py);
 
           const isFocused = selectedId === domain.id;
           const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
@@ -199,7 +193,6 @@ export function TaxonomyUniverse() {
               isFocused={isFocused}
               isHovered={hoveredId === domain.id}
               isFaded={isFaded}
-              labelPlacement={placement}
               reducedMotion={reducedMotion}
               onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
               onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
@@ -265,13 +258,8 @@ function MobileDomainList({
                   aria-hidden="true"
                   className="size-6 shrink-0 rounded-full border border-icaire-700/30 bg-icaire-700/10 dark:border-icaire-300/30 dark:bg-icaire-300/10"
                 />
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[10px] font-semibold tracking-wider text-icaire-600 dark:text-icaire-400">
-                    {domain.number}
-                  </span>
-                  <span className="block truncate text-sm font-medium text-zinc-700 dark:text-zinc-200">
-                    {domain.shortLabel.filter(Boolean).join(" ")}
-                  </span>
+                <span className="min-w-0 flex-1 truncate text-sm font-medium text-zinc-700 dark:text-zinc-200">
+                  {domain.shortLabel.filter(Boolean).join(" ")}
                 </span>
                 <ChevronDown
                   size={16}

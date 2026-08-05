@@ -16,8 +16,11 @@ export interface EthicalAiDomain {
   number: string;
   /** Full official domain title */
   title: string;
-  /** Short label, broken into lines for display next to the planet */
+  /** Short label, broken into lines — used in the mobile list */
   shortLabel: [string, string?];
+  /** Very short label, one word per line, rendered INSIDE the planet.
+   * Must stay short enough to fit within the circle. */
+  compactLabel: string[];
   description: string;
 }
 
@@ -27,6 +30,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "01",
     title: "Proportionality and Do No Harm",
     shortLabel: ["Proportionality &", "Do No Harm"],
+    compactLabel: ["Do No", "Harm"],
     description:
       "AI systems should not exceed what is necessary to achieve a legitimate aim, and must avoid causing harm to individuals, societies, and the environment.",
   },
@@ -35,6 +39,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "02",
     title: "Safety and Security",
     shortLabel: ["Safety &", "Security"],
+    compactLabel: ["Safety &", "Security"],
     description:
       "AI systems must operate safely and securely throughout their lifecycle, minimizing risks of unintended harm, misuse, or exploitation.",
   },
@@ -43,6 +48,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "03",
     title: "Right to Privacy and Data Protection",
     shortLabel: ["Right to Privacy &", "Data Protection"],
+    compactLabel: ["Privacy &", "Data"],
     description:
       "The design and deployment of AI must uphold individuals' privacy, including robust data protection safeguards and meaningful consent.",
   },
@@ -51,6 +57,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "04",
     title: "Multi-stakeholder and Adaptive Governance and Collaboration",
     shortLabel: ["Adaptive Governance &", "Collaboration"],
+    compactLabel: ["Adaptive", "Governance"],
     description:
       "Effective AI governance requires inclusive participation from governments, industry, academia, and civil society, adapting as the technology evolves.",
   },
@@ -59,6 +66,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "05",
     title: "Responsibility and Accountability",
     shortLabel: ["Responsibility &", "Accountability"],
+    compactLabel: ["Account-", "ability"],
     description:
       "Clear lines of responsibility must exist for the outcomes of AI systems, with mechanisms to hold developers, deployers, and operators to account.",
   },
@@ -67,6 +75,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "06",
     title: "Transparency and Explainability",
     shortLabel: ["Transparency &", "Explainability"],
+    compactLabel: ["Trans-", "parency"],
     description:
       "The workings and decisions of AI systems should be understandable and open to scrutiny by those they affect.",
   },
@@ -75,6 +84,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "07",
     title: "Human Oversight and Determination",
     shortLabel: ["Human Oversight &", "Determination"],
+    compactLabel: ["Human", "Oversight"],
     description:
       "People should retain the ability to oversee, intervene in, and ultimately decide on the use of AI systems, especially in consequential decisions.",
   },
@@ -83,6 +93,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "08",
     title: "Sustainability",
     shortLabel: ["Sustainability"],
+    compactLabel: ["Sustain-", "ability"],
     description:
       "The development and use of AI should be assessed for its social, economic, and environmental impact in support of long-term sustainability.",
   },
@@ -91,6 +102,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "09",
     title: "Awareness and Literacy",
     shortLabel: ["Awareness &", "Literacy"],
+    compactLabel: ["Awareness", "& Literacy"],
     description:
       "Public understanding of AI — its capabilities, limitations, and implications — is essential to informed participation in its governance.",
   },
@@ -99,6 +111,7 @@ export const ethicalAiDomains: EthicalAiDomain[] = [
     number: "10",
     title: "Fairness and Non-discrimination",
     shortLabel: ["Fairness &", "Non-discrimination"],
+    compactLabel: ["Fairness"],
     description:
       "AI systems must promote social justice and avoid perpetuating bias or discrimination against individuals or groups.",
   },
