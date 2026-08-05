@@ -1,17 +1,12 @@
-// The orb used for every domain planet, taken directly from the Hero's
-// artwork: the same .hero-glow / .hero-veil utilities (defined in index.css)
-// behind the same OrbitMotif geometry — one circle, two perpendicular
-// ellipses, and seven dots at the Hero's angles, all on the same 600x600
-// viewBox and rotating on the same animate-spin-slow.
+// The orb used for every domain planet — a verbatim copy of the Hero's
+// artwork, with no adaptations at all: the same .hero-glow / .hero-veil
+// utilities (index.css) behind the same OrbitMotif geometry, colors, dot
+// radii, stroke widths, viewBox, and animate-spin-slow rotation.
 //
-// Colors are the Hero's, unchanged: the same icaire-700/14% light and
-// icaire-400/28% dark line color, and the same glow/veil gradients.
-//
-// The only deviations are forced by scale. The Hero renders this at 560px;
-// a planet renders it near 104px, where the Hero's 1px stroke would compute
-// to about 0.17px and its dot radii to well under a pixel — both would
-// disappear. So strokes are pinned with non-scaling-stroke and the dot
-// radii are multiplied up.
+// Because nothing here is rescaled, the orb is a true proportional
+// reduction of the Hero's: at a small planet size the 1px stroke and the
+// dot radii shrink with everything else and render very faintly. Raising
+// the planet size is what makes it read more like the Hero's version.
 
 const dots = [
   { angle: -35, r: 1.6 },
@@ -26,7 +21,7 @@ const dots = [
 export function PlanetOrb() {
   return (
     <span className="pointer-events-none absolute inset-0 block">
-      <span className="hero-glow absolute inset-[-14%] block rounded-full opacity-80 blur-lg" />
+      <span className="hero-glow absolute inset-[-14%] block rounded-full opacity-70 blur-lg" />
       <span className="hero-veil absolute inset-0 block" />
       <span className="absolute inset-0 block animate-spin-slow">
         <svg
@@ -35,35 +30,9 @@ export function PlanetOrb() {
           aria-hidden="true"
           focusable="false"
         >
-          <circle
-            cx="300"
-            cy="300"
-            r="260"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            vectorEffect="non-scaling-stroke"
-          />
-          <ellipse
-            cx="300"
-            cy="300"
-            rx="260"
-            ry="120"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            vectorEffect="non-scaling-stroke"
-          />
-          <ellipse
-            cx="300"
-            cy="300"
-            rx="120"
-            ry="260"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            vectorEffect="non-scaling-stroke"
-          />
+          <circle cx="300" cy="300" r="260" fill="none" stroke="currentColor" strokeWidth="1" />
+          <ellipse cx="300" cy="300" rx="260" ry="120" fill="none" stroke="currentColor" strokeWidth="1" />
+          <ellipse cx="300" cy="300" rx="120" ry="260" fill="none" stroke="currentColor" strokeWidth="1" />
           {dots.map((d, i) => {
             const rad = (d.angle * Math.PI) / 180;
             return (
@@ -71,7 +40,7 @@ export function PlanetOrb() {
                 key={i}
                 cx={300 + 260 * Math.cos(rad)}
                 cy={300 + 260 * Math.sin(rad)}
-                r={d.r * 5.5}
+                r={d.r * 2.2}
                 fill="currentColor"
               />
             );
