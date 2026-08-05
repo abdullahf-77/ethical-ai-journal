@@ -35,7 +35,11 @@ export function DomainPlanet({
   onSelect,
 }: DomainPlanetProps) {
   const groupOpacity = isFaded ? 0.3 : 1;
-  const groupScale = isFocused ? 1.9 : isFaded ? 0.72 : 1;
+  // 2.2 is the smallest focus scale that fits the longest title together
+  // with its description inside the circle: solving text height against the
+  // chord at a 74%-of-diameter box needs a focused diameter around 265px,
+  // and 2.2 clears that at the orb sizes this renders at.
+  const groupScale = isFocused ? 2.2 : isFaded ? 0.72 : 1;
   const zIndex = isFocused ? 60 : isHovered ? 50 : 20;
 
   return (
@@ -69,8 +73,30 @@ export function DomainPlanet({
           {/* Type scales with the orb rather than being clamped to a floor.
               The longest word comes to 0.663 * size and the box is 0.72 *
               size, so the fit holds at any diameter; clamping the font
-              would let the box shrink past the word and overflow. */}
-          {!isFocused && (
+              would let the box shrink past the word and overflow.
+
+              Every ratio below is a fraction of `size`, so these all hold
+              at any container width. */}
+          {isFocused ? (
+            <span
+              className="relative block hyphens-auto break-words text-center"
+              lang="en"
+              style={{ width: size * 0.74 }}
+            >
+              <span
+                className="block font-serif font-semibold leading-[1.2] tracking-tight text-zinc-900 dark:text-zinc-50"
+                style={{ fontSize: size * 0.071 }}
+              >
+                {domain.title}
+              </span>
+              <span
+                className="block leading-[1.35] text-zinc-500 dark:text-zinc-400"
+                style={{ fontSize: size * 0.046, marginTop: size * 0.036 }}
+              >
+                {domain.description}
+              </span>
+            </span>
+          ) : (
             <span
               className="relative block hyphens-auto break-words text-center font-medium leading-[1.25] text-zinc-600 dark:text-zinc-300"
               lang="en"

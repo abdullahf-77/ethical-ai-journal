@@ -197,7 +197,13 @@ export function TaxonomyUniverse() {
         })}
 
         <AnimatePresence>
-          {selected && <DomainFocus key={selected.id} domain={selected} onBack={() => handleSelect(null)} />}
+          {selected && (
+            <DomainFocus
+              key={selected.id}
+              onBack={() => handleSelect(null)}
+              topOffset={(dotSize * 2.2) / 2 + 18}
+            />
+          )}
         </AnimatePresence>
       </div>
     </div>
