@@ -10,21 +10,24 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 type Viewport = "mobile" | "tablet" | "desktop";
 
-/** Per-domain orbit shape: starting angle (0 = top, clockwise), distance
- * from center as a ratio of the available radius, revolution period in
- * seconds, and rotation direction. Deliberately varied so the system
- * doesn't read as one mechanical ring. */
-const ORBIT_CONFIG: Record<number, { angle: number; radiusRatio: number; period: number; dir: 1 | -1 }> = {
-  1: { angle: 0, radiusRatio: 0.94, period: 92, dir: 1 },
-  2: { angle: 36, radiusRatio: 0.8, period: 108, dir: -1 },
-  3: { angle: 72, radiusRatio: 0.97, period: 84, dir: 1 },
-  4: { angle: 108, radiusRatio: 0.82, period: 118, dir: -1 },
-  5: { angle: 144, radiusRatio: 0.92, period: 98, dir: 1 },
-  6: { angle: 180, radiusRatio: 0.8, period: 104, dir: -1 },
-  7: { angle: 216, radiusRatio: 0.97, period: 88, dir: 1 },
-  8: { angle: 252, radiusRatio: 0.8, period: 112, dir: -1 },
-  9: { angle: 288, radiusRatio: 0.94, period: 94, dir: 1 },
-  10: { angle: 324, radiusRatio: 0.82, period: 106, dir: -1 },
+/** Per-domain orbit shape: starting angle (0 = top, clockwise) and distance
+ * from center as a ratio of the available radius. Every domain shares the
+ * same very slow period and direction — a rigid, synchronized rotation —
+ * so the 36° spacing between domains never drifts and labels never collide
+ * as the system turns. Distance-from-center still varies per domain for
+ * an organic, non-mechanical feel. */
+const ORBIT_PERIOD = 260;
+const ORBIT_CONFIG: Record<number, { angle: number; radiusRatio: number }> = {
+  1: { angle: 0, radiusRatio: 0.58 },
+  2: { angle: 36, radiusRatio: 0.72 },
+  3: { angle: 72, radiusRatio: 0.64 },
+  4: { angle: 108, radiusRatio: 0.8 },
+  5: { angle: 144, radiusRatio: 0.68 },
+  6: { angle: 180, radiusRatio: 0.86 },
+  7: { angle: 216, radiusRatio: 0.62 },
+  8: { angle: 252, radiusRatio: 0.76 },
+  9: { angle: 288, radiusRatio: 0.7 },
+  10: { angle: 324, radiusRatio: 0.84 },
 };
 
 function usePrefersReducedMotion() {
@@ -88,9 +91,11 @@ function useOrbitClock(paused: boolean) {
   return elapsed;
 }
 
-function labelPlacementFor(nx: number, ny: number): LabelPlacement {
-  if (Math.abs(nx) > 0.55) return nx > 0 ? "right" : "left";
-  return ny < 0 ? "top" : "bottom";
+/** Decide which side a label sits on from its planet's actual pixel offset
+ * (post-ellipse scaling), so the choice matches what's really on screen. */
+function labelPlacementFor(px: number, py: number): LabelPlacement {
+  if (Math.abs(px) > Math.abs(py) * 1.4) return px > 0 ? "right" : "left";
+  return py < 0 ? "top" : "bottom";
 }
 
 export function TaxonomyUniverse() {
@@ -127,23 +132,29 @@ export function TaxonomyUniverse() {
     return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} />;
   }
 
-  const half = containerWidth / 2;
-  const maxRadius = half * 0.78;
-  const dotSize = viewport === "desktop" ? 26 : 22;
-  const focusOffsetY = -Math.min(92, half * 0.3);
+  // A flattened, wide ellipse — a "side view" of the system, like looking
+  // across a solar system diagram rather than straight down on it.
+  const halfW = containerWidth / 2;
+  const halfH = (containerWidth * (10 / 16)) / 2;
+  const rx = halfW * 0.84;
+  const ry = halfH * 0.62;
+  const dotSize = viewport === "desktop" ? 34 : 28;
+  const focusOffsetY = -Math.min(110, halfH * 0.42);
 
   return (
     <div className="relative">
       <div
         ref={containerRef}
-        className="relative mx-auto aspect-square w-full max-w-[460px] sm:max-w-[560px] lg:max-w-[660px]"
+        className="relative mx-auto aspect-[16/10] w-full max-w-[760px] sm:max-w-[860px] lg:max-w-[1040px]"
       >
         <div
-          className="pointer-events-none absolute inset-[9%] rounded-full border border-zinc-300/35 dark:border-zinc-700/30"
+          className="pointer-events-none absolute left-1/2 top-1/2 w-[88%] rounded-full border border-zinc-300/35 dark:border-zinc-700/30"
+          style={{ aspectRatio: "16 / 6.6", transform: "translate(-50%, -50%)" }}
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute inset-[24%] rounded-full border border-zinc-300/25 dark:border-zinc-700/20"
+          className="pointer-events-none absolute left-1/2 top-1/2 w-[68%] rounded-full border border-zinc-300/25 dark:border-zinc-700/20"
+          style={{ aspectRatio: "16 / 6.6", transform: "translate(-50%, -50%)" }}
           aria-hidden="true"
         />
 
@@ -162,28 +173,23 @@ export function TaxonomyUniverse() {
             frozenElapsedRef.current[domain.id] = elapsed;
           }
 
-          const angleDeg = cfg.angle + domainElapsed * cfg.dir * (360 / cfg.period);
+          const angleDeg = cfg.angle + domainElapsed * (360 / ORBIT_PERIOD);
           const rad = (angleDeg * Math.PI) / 180;
-          const nx = Math.sin(rad);
-          const ny = -Math.cos(rad);
-          const radiusPx = cfg.radiusRatio * maxRadius;
 
-          let px = nx * radiusPx;
-          let py = ny * radiusPx;
+          let px = Math.sin(rad) * cfg.radiusRatio * rx;
+          let py = -Math.cos(rad) * cfg.radiusRatio * ry;
 
           const isFocused = selectedId === domain.id;
           const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
+          const placement = labelPlacementFor(px, py);
 
           if (selectedId !== null) {
             if (isFocused) {
               px = 0;
               py = focusOffsetY;
             } else {
-              const cap = half * 0.92;
-              const mag = Math.hypot(px, py) || 1;
-              const pushed = Math.min(mag * 1.24, cap);
-              px = (px / mag) * pushed;
-              py = (py / mag) * pushed;
+              px *= 1.15;
+              py *= 1.15;
             }
           }
 
@@ -198,7 +204,7 @@ export function TaxonomyUniverse() {
               isHovered={hoveredId === domain.id}
               isFaded={isFaded}
               showLabel
-              labelPlacement={labelPlacementFor(nx, ny)}
+              labelPlacement={placement}
               reducedMotion={reducedMotion}
               onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
               onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
@@ -263,7 +269,9 @@ function MobileDomainList({
                 <span
                   aria-hidden="true"
                   className="size-6 shrink-0 rounded-full border border-white/40 dark:border-white/10"
-                  style={{ background: `linear-gradient(145deg, ${domain.color.from}, ${domain.color.to})` }}
+                  style={{
+                    background: `radial-gradient(circle at 32% 28%, color-mix(in oklab, ${domain.color.from} 65%, white 35%), ${domain.color.from} 45%, ${domain.color.to} 100%)`,
+                  }}
                 />
                 <span className="min-w-0 flex-1">
                   <span className="block text-[10px] font-semibold tracking-wider text-zinc-400 dark:text-zinc-500">

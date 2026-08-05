@@ -88,21 +88,35 @@ export function DomainPlanet({
                 opacity: isFocused ? 1 : isHovered ? 0.9 : 0.55,
               }}
             />
+            {/* sphere body — lit from the upper-left, like the reference planets */}
             <span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full border border-white/40 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] dark:border-white/10"
+              className="absolute inset-0 rounded-full"
               style={{
-                background: `linear-gradient(145deg, ${domain.color.from}, ${domain.color.to})`,
+                background: `radial-gradient(circle at 32% 26%, color-mix(in oklab, ${domain.color.from} 55%, white 45%), ${domain.color.from} 42%, ${domain.color.to} 100%)`,
               }}
+            />
+            {/* rim shadow, opposite the light source, for volume */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: `radial-gradient(circle at 72% 78%, color-mix(in oklab, ${domain.color.to} 70%, black 30%), transparent 62%)`,
+                opacity: 0.65,
+              }}
+            />
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 rounded-full border border-white/50 dark:border-white/15"
             />
           </motion.button>
 
           {showLabel && !isFocused && (
-            <div className={`w-max max-w-[128px] leading-tight ${textAlign}`}>
-              <p className="text-[10px] font-semibold tabular-nums tracking-wider text-zinc-400 dark:text-zinc-500">
+            <div className={`w-max max-w-[150px] leading-tight ${textAlign}`}>
+              <p className="text-[11px] font-semibold tabular-nums tracking-wider text-zinc-400 dark:text-zinc-500">
                 {domain.number}
               </p>
-              <p className="text-[12px] font-medium leading-snug text-zinc-600 dark:text-zinc-300">
+              <p className="text-[13px] font-medium leading-snug text-zinc-600 dark:text-zinc-300">
                 {domain.shortLabel[0]}
                 {domain.shortLabel[1] && (
                   <>
