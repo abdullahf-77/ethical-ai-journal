@@ -66,10 +66,15 @@ export function DomainPlanet({
               The text box is 72% of the diameter — a square inscribed in a
               circle is 70.7% of it, so this keeps the longest line clear of
               the curve while leaving room for four lines of type. */}
+          {/* Type scales with the orb rather than being clamped to a floor.
+              The longest word comes to 0.663 * size and the box is 0.72 *
+              size, so the fit holds at any diameter; clamping the font
+              would let the box shrink past the word and overflow. */}
           {!isFocused && (
             <span
-              className="relative block text-center font-medium leading-[1.25] text-zinc-600 dark:text-zinc-300"
-              style={{ width: size * 0.72, fontSize: Math.round(size * 0.075) }}
+              className="relative block hyphens-auto break-words text-center font-medium leading-[1.25] text-zinc-600 dark:text-zinc-300"
+              lang="en"
+              style={{ width: size * 0.72, fontSize: size * 0.075 }}
             >
               {domain.title}
             </span>

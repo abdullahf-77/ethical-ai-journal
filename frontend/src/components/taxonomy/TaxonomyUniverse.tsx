@@ -117,17 +117,24 @@ export function TaxonomyUniverse() {
   const halfH = (containerWidth * (11 / 16)) / 2;
   const rx = halfW * 0.82;
   const ry = halfH * 0.74;
-  // Sized to fit the longest principle title inside the orb, against the
-  // 72%-of-diameter text box. The binding constraint on shrinking the ring
-  // is the closest planet pair, which sits 0.618 * ry apart — flattening
-  // the ellipse lowers ry, so the orbs come down with it.
-  const dotSize = viewport === "desktop" ? 128 : 108;
+  // The orb diameter has to scale with the container, not sit at a fixed
+  // pixel size: the ellipse is derived from containerWidth, so a fixed
+  // diameter would keep its size while the ring shrank around it, and the
+  // orbs would overlap each other and spill past the frame on any viewport
+  // narrower than the max width.
+  //
+  // The two limits, both linear in containerWidth:
+  //   closest pair   0.618 * ry            = 0.1572 * W  -> size < 0.1429 * W
+  //   vertical edge  halfH - ry            = 0.0894 * W  -> size < 0.1788 * W
+  // 0.136 clears both, and the cap keeps the orbs from growing past the
+  // point where the title no longer needs the extra room.
+  const dotSize = Math.min(128, containerWidth * 0.136);
 
   return (
     <div className="relative">
       <div
         ref={containerRef}
-        className="relative mx-auto aspect-[16/11] w-full max-w-[820px] lg:max-w-[940px]"
+        className="relative mx-auto mt-4 aspect-[16/11] w-full max-w-[820px] lg:max-w-[940px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
