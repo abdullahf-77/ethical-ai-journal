@@ -43,24 +43,6 @@ export function SearchFilterBar({
     <div className="sticky top-[64px] z-30 -mx-6 border-b border-zinc-200/70 bg-white/80 px-6 py-4 backdrop-blur-lg dark:border-zinc-800/70 dark:bg-[#0a0a0d]/80 sm:-mx-8 sm:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <div className="flex shrink-0 items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50/70 p-1 dark:border-zinc-700 dark:bg-zinc-900/60">
-            {viewOptions.map((opt) => (
-              <button
-                key={opt.mode}
-                type="button"
-                onClick={() => onViewModeChange(opt.mode)}
-                aria-pressed={viewMode === opt.mode}
-                className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
-                  viewMode === opt.mode
-                    ? "bg-icaire-600 text-white dark:bg-icaire-500"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-
           {viewMode === "cards" && (
             <>
               <div className="relative flex-1">
@@ -101,6 +83,24 @@ export function SearchFilterBar({
               </div>
             </>
           )}
+
+          <div className="flex shrink-0 items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50/70 p-1 dark:border-zinc-700 dark:bg-zinc-900/60">
+            {viewOptions.map((opt) => (
+              <button
+                key={opt.mode}
+                type="button"
+                onClick={() => onViewModeChange(opt.mode)}
+                aria-pressed={viewMode === opt.mode}
+                className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
+                  viewMode === opt.mode
+                    ? "bg-icaire-600 text-white dark:bg-icaire-500"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {viewMode === "cards" && (
