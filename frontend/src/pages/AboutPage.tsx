@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Newspaper, Network, Users } from "lucide-react";
+import { ArrowRight, Library, Network, Users } from "lucide-react";
 import { Reveal } from "../components/Reveal";
 
 const pillars = [
   {
-    icon: Newspaper,
-    title: "Research & News",
-    text: "Curated updates on policy, governance, and emerging scholarship, refreshed as the field moves.",
+    icon: Library,
+    title: "One indexed library",
+    text: "Every paper lives in the Taxonomy Hub — browse by domain, or search across all of them in one place.",
   },
   {
     icon: Network,
@@ -33,12 +33,11 @@ export function AboutPage() {
           </h1>
           <p className="mt-5 text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
             Ethical AI Journal is a UNESCO Centre &middot; ICAIRE initiative
-            that curates research, policy news, and community perspectives on
-            the ethical, legal, and societal dimensions of artificial
-            intelligence. Rather than scattering that work across
-            disconnected sources, everything here is anchored to one living
-            taxonomy — so a paper and a policy update both map back to the
-            same shared vocabulary of AI ethics.
+            that maps the ethical, legal, and societal dimensions of
+            artificial intelligence through one living taxonomy. Rather than
+            scattering research across disconnected sources, every indexed
+            paper is anchored to the same shared vocabulary of AI ethics — so
+            you can explore by idea instead of hunting by date.
           </p>
         </Reveal>
       </div>

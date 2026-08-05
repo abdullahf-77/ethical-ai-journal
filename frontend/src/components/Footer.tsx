@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Globe, Rss, Mail } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -21,9 +21,9 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-              A UNESCO-affiliated initiative curating research, news, and a
-              living taxonomy of the ethical, legal, and societal dimensions
-              of artificial intelligence.
+              A UNESCO-affiliated initiative mapping the ethical, legal, and
+              societal dimensions of artificial intelligence through a living
+              taxonomy of indexed research.
             </p>
           </div>
 
@@ -32,8 +32,6 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-zinc-500 dark:text-zinc-400">
               <li><Link to="/" className="hover:text-icaire-700 dark:hover:text-icaire-400">Home</Link></li>
               <li><Link to="/about" className="hover:text-icaire-700 dark:hover:text-icaire-400">About</Link></li>
-              <li><Link to="/#news" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest News</Link></li>
-              <li><Link to="/#research" className="hover:text-icaire-700 dark:hover:text-icaire-400">Latest Research</Link></li>
               <li><Link to="/taxonomy" className="hover:text-icaire-700 dark:hover:text-icaire-400">Taxonomy Hub</Link></li>
             </ul>
           </div>
@@ -41,7 +39,7 @@ export function Footer() {
           <div>
             <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Connect</p>
             <div className="mt-4 flex gap-2">
-              {[Globe, Rss, Mail].map((Icon, i) => (
+              {[Globe, Mail].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"

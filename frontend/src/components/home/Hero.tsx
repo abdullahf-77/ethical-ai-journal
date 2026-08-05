@@ -71,7 +71,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-zinc-500 dark:text-zinc-400"
         >
-          Explore research, news, and emerging perspectives on artificial
+          Explore research and emerging perspectives on artificial
           intelligence ethics, governance, safety, fairness, privacy, and
           responsible innovation.
         </motion.p>
