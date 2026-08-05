@@ -9,6 +9,7 @@ import { DomainTreePanel } from "../components/taxonomy/DomainTreePanel";
 import { SearchFilterBar, type SortMode } from "../components/taxonomy/SearchFilterBar";
 import { ExplorerView } from "../components/taxonomy/ExplorerView";
 import { Reveal } from "../components/Reveal";
+import { domainMatches, findSubdomainMatch } from "../lib/taxonomySearch";
 
 type ViewMode = "cards" | "explorer";
 
@@ -16,41 +17,6 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const taxonomy = taxonomyData as Taxonomy;
 const papers = papersData as Paper[];
-
-function domainMatches(domain: TopDomain, q: string): boolean {
-  if (!q) return true;
-  const needle = q.toLowerCase();
-  if (domain.name.toLowerCase().includes(needle) || domain.definition.toLowerCase().includes(needle)) {
-    return true;
-  }
-  const subdomainNames = new Set<string>();
-  const hasSubdomainMatch = domain.domains.some((mid) =>
-    mid.subdomains.some((s) => {
-      subdomainNames.add(s.name);
-      return s.name.toLowerCase().includes(needle) || s.scope.toLowerCase().includes(needle);
-    }),
-  );
-  if (hasSubdomainMatch) return true;
-
-  return papers.some(
-    (p) => p.subdomains.some((sd) => subdomainNames.has(sd)) && p.title.toLowerCase().includes(needle),
-  );
-}
-
-// Finds the first subdomain within a domain whose name or scope matches the
-// query, so a search that lands on a specific subdomain can jump straight to
-// it instead of leaving the user to open the domain card themselves.
-function findSubdomainMatch(domain: TopDomain, q: string): string | undefined {
-  const needle = q.toLowerCase();
-  for (const mid of domain.domains) {
-    for (const s of mid.subdomains) {
-      if (s.name.toLowerCase().includes(needle) || s.scope.toLowerCase().includes(needle)) {
-        return s.slug;
-      }
-    }
-  }
-  return undefined;
-}
 
 export function TaxonomyPage() {
   const [viewMode, setViewMode] = useState<ViewMode>("cards");
@@ -61,7 +27,7 @@ export function TaxonomyPage() {
   const panelRef = useRef<HTMLDivElement>(null);
 
   const visibleDomains = useMemo(() => {
-    let list = taxonomy.top_domains.filter((d) => domainMatches(d, query));
+    let list = taxonomy.top_domains.filter((d) => domainMatches(d, papers, query));
     if (sort === "papers") list = [...list].sort((a, b) => b.paper_count - a.paper_count);
     return list;
   }, [query, sort]);
@@ -203,7 +169,7 @@ export function TaxonomyPage() {
             transition={{ duration: 0.2, ease: EASE }}
             className="mx-auto max-w-7xl px-6 pt-6 sm:px-8"
           >
-            <ExplorerView domains={taxonomy.top_domains} papers={papers} />
+            <ExplorerView domains={visibleDomains} papers={papers} query={query} />
           </motion.div>
         )}
       </AnimatePresence>

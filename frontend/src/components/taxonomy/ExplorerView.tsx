@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronRight, FileText, ArrowUpRight } from "lucide-react";
+import { ChevronRight, FileText, ArrowUpRight, SearchX } from "lucide-react";
 import type { TopDomain, Paper } from "../../types";
 import { papersForSubdomain } from "../../lib/papersFor";
 
@@ -11,10 +11,14 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 // never navigates or reflows the page — only the right panel content
 // crossfades in place. Reuses the same taxonomy/papers data and paper-row
 // treatment as DomainTreePanel so both views always agree with each other.
-export function ExplorerView({ domains, papers }: { domains: TopDomain[]; papers: Paper[] }) {
+// `domains` is expected to already be filtered/sorted by the shared search
+// bar (same list Cards View shows), so both views always match.
+export function ExplorerView({ domains, papers, query }: { domains: TopDomain[]; papers: Paper[]; query: string }) {
   const [activeId, setActiveId] = useState<string | null>(domains[0]?.id ?? null);
   const [openSlug, setOpenSlug] = useState<string | null>(null);
 
+  // Falls back to the first (visible) domain automatically whenever the
+  // active one drops out of a filtered list — no stale-selection effect needed.
   const active = domains.find((d) => d.id === activeId) ?? domains[0] ?? null;
 
   const subdomains = useMemo(() => {
@@ -34,7 +38,16 @@ export function ExplorerView({ domains, papers }: { domains: TopDomain[]; papers
     setOpenSlug(null);
   };
 
-  if (!active) return null;
+  if (!active) {
+    return (
+      <div className="flex flex-col items-center gap-3 rounded-3xl border border-dashed border-zinc-300 py-24 text-center dark:border-zinc-700">
+        <SearchX size={28} className="text-zinc-400" />
+        <p className="text-zinc-500 dark:text-zinc-400">
+          No domains, subdomains, or papers match &ldquo;{query}&rdquo;. Try a different search term.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid gap-8 lg:grid-cols-[220px_1fr] lg:gap-12">
