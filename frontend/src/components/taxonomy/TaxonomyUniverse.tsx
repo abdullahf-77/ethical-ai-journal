@@ -256,7 +256,7 @@ function MobileDomainList({
                 className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
               >
                 <span aria-hidden="true" className="relative size-7 shrink-0">
-                  <PlanetOrb uid={`m${domain.id}`} />
+                  <PlanetOrb />
                 </span>
                 <span className="min-w-0 flex-1 truncate text-sm font-medium text-zinc-700 dark:text-zinc-200">
                   {domain.shortLabel.filter(Boolean).join(" ")}

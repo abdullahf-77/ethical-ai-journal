@@ -67,7 +67,7 @@ export function DomainPlanet({
             animate={{ opacity: isFocused || isHovered ? 1 : 0.9 }}
             transition={{ duration: 0.3, ease: EASE }}
           >
-            <PlanetOrb uid={domain.id} />
+            <PlanetOrb />
           </motion.span>
 
           {/* label lives inside the planet */}

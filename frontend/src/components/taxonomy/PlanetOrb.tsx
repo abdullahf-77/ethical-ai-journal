@@ -1,86 +1,81 @@
-/**
- * The pale sage-green translucent sphere used for every domain planet — the
- * same composition as public/taxonomy-orb.svg (radial sage gradient, soft
- * rim light, diffused halo, thin crossing orbit rings with small dots),
- * minus that file's opaque background and grid so it can sit on the page.
- *
- * The whole composition is scaled to fill the box: at the source's own
- * scale the rings reach r≈481 out of a 620 half-viewBox, so scaling by
- * 620/481 puts the outermost ring just inside the edge.
- *
- * Ring strokes use non-scaling-stroke — at a ~104px render the source's
- * 1.4-unit stroke would otherwise compute to well under a tenth of a pixel
- * and disappear entirely.
- *
- * Gradient ids are suffixed per instance because several of these render on
- * the same page and SVG defs share a document-wide id namespace.
- */
-export function PlanetOrb({ uid }: { uid: string | number }) {
-  const sphere = `orb-sphere-${uid}`;
-  const glow = `orb-glow-${uid}`;
-  const rim = `orb-rim-${uid}`;
-  const blur = `orb-blur-${uid}`;
+// The orb used for every domain planet, taken directly from the Hero's
+// artwork: the same .hero-glow / .hero-veil utilities (defined in index.css)
+// behind the same OrbitMotif geometry — one circle, two perpendicular
+// ellipses, and seven dots at the Hero's angles, all on the same 600x600
+// viewBox and rotating on the same animate-spin-slow.
+//
+// The only deviations are forced by scale. The Hero renders this at 560px;
+// a planet renders it near 104px, where the Hero's 1px stroke would compute
+// to about 0.17px and its dot radii to well under a pixel — both would
+// disappear. So strokes are pinned with non-scaling-stroke, the dot radii
+// are multiplied up, and the line color is carried at a higher alpha than
+// the Hero's 14%, which is far too faint at this size.
 
+const dots = [
+  { angle: -35, r: 1.6 },
+  { angle: 10, r: 2.2 },
+  { angle: 68, r: 1.4 },
+  { angle: 132, r: 1.8 },
+  { angle: 195, r: 1.4 },
+  { angle: 250, r: 2 },
+  { angle: 300, r: 1.6 },
+];
+
+export function PlanetOrb() {
   return (
-    // The sphere is very pale by design, so it's knocked back in dark mode
-    // to keep it from glaring against the near-black page background.
-    <svg
-      viewBox="0 0 1240 1240"
-      className="absolute inset-0 h-full w-full dark:opacity-[0.55]"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <defs>
-        <radialGradient id={sphere} cx="46%" cy="44%" r="64%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="30%" stopColor="#f4f8f4" />
-          <stop offset="62%" stopColor="#e7efe8" />
-          <stop offset="88%" stopColor="#dde8df" />
-          <stop offset="100%" stopColor="#d8e4da" />
-        </radialGradient>
-
-        <radialGradient id={glow} cx="50%" cy="50%" r="50%">
-          <stop offset="55%" stopColor="#cfe0d3" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#cfe0d3" stopOpacity="0" />
-        </radialGradient>
-
-        <radialGradient id={rim} cx="50%" cy="50%" r="50%">
-          <stop offset="82%" stopColor="#ffffff" stopOpacity="0" />
-          <stop offset="95%" stopColor="#ffffff" stopOpacity="0.75" />
-          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-        </radialGradient>
-
-        <filter id={blur} x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="9" />
-        </filter>
-      </defs>
-
-      <g transform="translate(620 620) scale(1.288)">
-        <circle r="470" fill={`url(#${glow})`} />
-
-        <circle r="432" fill={`url(#${sphere})`} />
-        <circle r="432" fill={`url(#${rim})`} />
-        <circle r="432" fill="none" stroke="#ffffff" strokeWidth="11" opacity="0.5" filter={`url(#${blur})`} />
-        <circle r="432" fill="none" stroke="#c8d8cb" strokeWidth="1.5" opacity="0.45" />
-
-        {/* Two thin crossing orbit rings — one flat, one upright. The
-            reference artwork uses four, but at this size they read as
-            clutter, so this keeps just enough to suggest the motif. Each
-            dot sits inside its ring's rotated group so it lands exactly on
-            that ellipse's path. */}
-        <g stroke="#7f9d85" fill="#8db095" opacity="0.45">
-          <g transform="rotate(-27)">
-            <ellipse rx="472" ry="300" fill="none" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-            <circle cx="-372" cy="-184" r="17" stroke="none" />
-            <circle cx="447" cy="96" r="13" stroke="none" />
-          </g>
-
-          <g transform="rotate(12)">
-            <ellipse rx="292" ry="470" fill="none" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-            <circle cx="106" cy="437" r="19" stroke="none" />
-          </g>
-        </g>
-      </g>
-    </svg>
+    <span className="pointer-events-none absolute inset-0 block">
+      <span className="hero-glow absolute inset-[-14%] block rounded-full opacity-80 blur-lg" />
+      <span className="hero-veil absolute inset-0 block" />
+      <span className="absolute inset-0 block animate-spin-slow">
+        <svg
+          viewBox="0 0 600 600"
+          className="h-full w-full text-icaire-700/40 dark:text-icaire-400/50"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle
+            cx="300"
+            cy="300"
+            r="260"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+          <ellipse
+            cx="300"
+            cy="300"
+            rx="260"
+            ry="120"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+          <ellipse
+            cx="300"
+            cy="300"
+            rx="120"
+            ry="260"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+          />
+          {dots.map((d, i) => {
+            const rad = (d.angle * Math.PI) / 180;
+            return (
+              <circle
+                key={i}
+                cx={300 + 260 * Math.cos(rad)}
+                cy={300 + 260 * Math.sin(rad)}
+                r={d.r * 5.5}
+                fill="currentColor"
+              />
+            );
+          })}
+        </svg>
+      </span>
+    </span>
   );
 }
