@@ -122,9 +122,9 @@ export function TaxonomyUniverse() {
   // Wide, flattened ellipse — a side-on view of the system.
   const halfW = containerWidth / 2;
   const halfH = (containerWidth * (9 / 16)) / 2;
-  const rx = halfW * 0.82;
-  const ry = halfH * 0.7;
-  const dotSize = viewport === "desktop" ? 30 : 24;
+  const rx = halfW * 0.7;
+  const ry = halfH * 0.66;
+  const dotSize = viewport === "desktop" ? 52 : 42;
 
   return (
     <div className="relative">
@@ -146,22 +146,23 @@ export function TaxonomyUniverse() {
         ref={containerRef}
         className="relative mx-auto mt-8 aspect-[16/9] w-full max-w-[880px] lg:max-w-[1080px]"
       >
-        {/* the shared path itself, drawn as one faint ellipse */}
+        {/* the shared path itself — one faint dashed ellipse, using the same
+            broken-line treatment as the flow lines in the Hero artwork */}
         <svg
-          className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.18] dark:text-icaire-400/[0.28]"
+          className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
           viewBox="0 0 1600 900"
-          preserveAspectRatio="none"
           aria-hidden="true"
         >
           <ellipse
             cx="800"
             cy="450"
-            rx={0.82 * 800}
-            ry={0.7 * 450}
+            rx={0.7 * 800}
+            ry={0.66 * 450}
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.5"
-            vectorEffect="non-scaling-stroke"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeDasharray="9 13"
           />
         </svg>
 
