@@ -63,38 +63,21 @@ export function PlanetOrb({ uid }: { uid: string | number }) {
         <circle r="432" fill="none" stroke="#ffffff" strokeWidth="11" opacity="0.5" filter={`url(#${blur})`} />
         <circle r="432" fill="none" stroke="#c8d8cb" strokeWidth="1.5" opacity="0.45" />
 
-        {/* thin crossing orbit rings; each dot is inside its ring's rotated
-            group so it lands exactly on that ellipse's path */}
-        <g stroke="#7f9d85" fill="#8db095" opacity="0.5">
+        {/* Two thin crossing orbit rings — one flat, one upright. The
+            reference artwork uses four, but at this size they read as
+            clutter, so this keeps just enough to suggest the motif. Each
+            dot sits inside its ring's rotated group so it lands exactly on
+            that ellipse's path. */}
+        <g stroke="#7f9d85" fill="#8db095" opacity="0.45">
           <g transform="rotate(-27)">
             <ellipse rx="472" ry="300" fill="none" strokeWidth="1" vectorEffect="non-scaling-stroke" />
             <circle cx="-372" cy="-184" r="17" stroke="none" />
             <circle cx="447" cy="96" r="13" stroke="none" />
           </g>
 
-          <g transform="rotate(34)">
-            <ellipse rx="466" ry="258" fill="none" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-            <circle cx="-402" cy="130" r="14" stroke="none" />
-            <circle cx="326" cy="-184" r="19" stroke="none" />
-          </g>
-
           <g transform="rotate(12)">
             <ellipse rx="292" ry="470" fill="none" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-            <circle cx="-146" cy="-407" r="15" stroke="none" />
-            <circle cx="106" cy="437" r="21" stroke="none" />
-          </g>
-
-          <g transform="rotate(-62)">
-            <ellipse
-              rx="452"
-              ry="418"
-              fill="none"
-              strokeWidth="1"
-              opacity="0.8"
-              vectorEffect="non-scaling-stroke"
-            />
-            <circle cx="-226" cy="-362" r="12" stroke="none" />
-            <circle cx="391" cy="209" r="15" stroke="none" />
+            <circle cx="106" cy="437" r="19" stroke="none" />
           </g>
         </g>
       </g>
