@@ -13,7 +13,7 @@ export function TaxonomyHubPreview() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
       <Reveal>
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-icaire-700 via-icaire-800 to-icaire-900 p-8 shadow-xl shadow-icaire-900/20 sm:p-14">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-icaire-600 via-icaire-700 to-icaire-800 p-8 shadow-xl shadow-icaire-900/15 sm:p-14">
           <div
             className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-70 blur-3xl"
             style={{ background: "radial-gradient(closest-side, rgba(107,183,94,0.45), transparent)" }}
