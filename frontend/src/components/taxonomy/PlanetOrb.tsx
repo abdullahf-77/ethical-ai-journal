@@ -4,12 +4,14 @@
 // ellipses, and seven dots at the Hero's angles, all on the same 600x600
 // viewBox and rotating on the same animate-spin-slow.
 //
+// Colors are the Hero's, unchanged: the same icaire-700/14% light and
+// icaire-400/28% dark line color, and the same glow/veil gradients.
+//
 // The only deviations are forced by scale. The Hero renders this at 560px;
 // a planet renders it near 104px, where the Hero's 1px stroke would compute
 // to about 0.17px and its dot radii to well under a pixel — both would
-// disappear. So strokes are pinned with non-scaling-stroke, the dot radii
-// are multiplied up, and the line color is carried at a higher alpha than
-// the Hero's 14%, which is far too faint at this size.
+// disappear. So strokes are pinned with non-scaling-stroke and the dot
+// radii are multiplied up.
 
 const dots = [
   { angle: -35, r: 1.6 },
@@ -29,7 +31,7 @@ export function PlanetOrb() {
       <span className="absolute inset-0 block animate-spin-slow">
         <svg
           viewBox="0 0 600 600"
-          className="h-full w-full text-icaire-700/40 dark:text-icaire-400/50"
+          className="h-full w-full text-icaire-700/[0.14] dark:text-icaire-400/[0.28]"
           aria-hidden="true"
           focusable="false"
         >
