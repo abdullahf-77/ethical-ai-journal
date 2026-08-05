@@ -3,17 +3,19 @@ import type { EthicalAiDomain } from "../../data/ethicalAiDomains";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+export type LabelPlacement = "top" | "bottom" | "left" | "right";
+
 interface DomainPlanetProps {
   domain: EthicalAiDomain;
-  /** Offset from this planet's fixed row slot, in px — 0,0 unless it's
-   * animating into or out of the focused state. */
+  /** Offset from the center of the universe, in px. */
   x: number;
   y: number;
-  /** Base dot diameter, in px, before hover/focus scaling. */
+  /** Circle diameter, in px, before hover/focus scaling. */
   size: number;
   isFocused: boolean;
   isHovered: boolean;
   isFaded: boolean;
+  labelPlacement: LabelPlacement;
   reducedMotion: boolean;
   onHoverStart: () => void;
   onHoverEnd: () => void;
@@ -28,23 +30,34 @@ export function DomainPlanet({
   isFocused,
   isHovered,
   isFaded,
+  labelPlacement,
   reducedMotion,
   onHoverStart,
   onHoverEnd,
   onSelect,
 }: DomainPlanetProps) {
-  const groupOpacity = isFaded ? 0.32 : 1;
-  const groupScale = isFocused ? 2.15 : isFaded ? 0.72 : 1;
+  const groupOpacity = isFaded ? 0.3 : 1;
+  const groupScale = isFocused ? 2.1 : isFaded ? 0.75 : 1;
   const zIndex = isFocused ? 60 : isHovered ? 50 : 20;
 
+  const rowLayout = labelPlacement === "left" || labelPlacement === "right";
+  const flexDirection = rowLayout
+    ? labelPlacement === "right"
+      ? "flex-row"
+      : "flex-row-reverse"
+    : labelPlacement === "bottom"
+      ? "flex-col"
+      : "flex-col-reverse";
+  const textAlign = rowLayout ? (labelPlacement === "right" ? "text-left" : "text-right") : "text-center";
+
   return (
-    <div className="relative" style={{ zIndex }}>
+    <div className="absolute left-1/2 top-1/2" style={{ transform: "translate(-50%, -50%)", zIndex }}>
       <motion.div
         animate={{ x, y, opacity: groupOpacity, scale: groupScale }}
-        transition={{ duration: reducedMotion ? 0.25 : 0.9, ease: EASE }}
+        transition={{ duration: reducedMotion ? 0.25 : 0.85, ease: EASE }}
         style={{ willChange: "transform" }}
       >
-        <div className="relative flex flex-col items-center gap-2.5">
+        <div className={`relative flex items-center gap-2.5 ${flexDirection}`}>
           <motion.button
             type="button"
             onClick={onSelect}
@@ -55,28 +68,45 @@ export function DomainPlanet({
             aria-label={domain.title}
             className="relative shrink-0 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-icaire-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0a0a0d]"
             style={{ width: size, height: size }}
-            animate={{
-              scale: !isFocused && isHovered ? 1.22 : 1,
-            }}
+            animate={{ scale: !isFocused && isHovered ? 1.25 : 1 }}
             transition={{ duration: 0.35, ease: EASE }}
           >
-            {/* flat, constant fill — the same icaire green used for the dots in the
-                Hero's orbit motif, just solid instead of near-transparent so it
-                reads clearly as a clickable element. No gradient, no shading. */}
-            <span
+            {/* Thin, translucent circle — the same restraint as the dots and
+                rings in the Hero's orbit motif: a soft icaire wash with a
+                hairline edge, not a solid filled ball. */}
+            <motion.span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full bg-icaire-700 dark:bg-icaire-400"
+              className="absolute inset-0 rounded-full border border-icaire-700/30 bg-icaire-700/10 dark:border-icaire-300/30 dark:bg-icaire-300/10"
+              animate={{ opacity: isFocused || isHovered ? 1 : 0.85 }}
+              transition={{ duration: 0.3, ease: EASE }}
             />
+            {/* barely-there inner wash, so the circle reads as a sphere
+                without becoming opaque */}
             <span
               aria-hidden="true"
-              className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/25 dark:ring-black/20"
+              className="absolute inset-0 rounded-full opacity-60"
+              style={{
+                background:
+                  "radial-gradient(circle at 34% 30%, rgba(255,255,255,0.5), transparent 60%)",
+              }}
             />
           </motion.button>
 
           {!isFocused && (
-            <p className="text-[11px] font-semibold tabular-nums tracking-wider text-icaire-600 dark:text-icaire-400">
-              {domain.number}
-            </p>
+            <div className={`w-max max-w-[140px] leading-tight ${textAlign}`}>
+              <p className="text-[11px] font-semibold tabular-nums tracking-wider text-icaire-600/90 dark:text-icaire-400/90">
+                {domain.number}
+              </p>
+              <p className="text-[12.5px] font-medium leading-snug text-zinc-500 dark:text-zinc-400">
+                {domain.shortLabel[0]}
+                {domain.shortLabel[1] && (
+                  <>
+                    <br />
+                    {domain.shortLabel[1]}
+                  </>
+                )}
+              </p>
+            </div>
           )}
 
           <AnimatePresence>

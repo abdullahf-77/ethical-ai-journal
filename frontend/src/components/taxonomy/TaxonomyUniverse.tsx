@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronDown, Hand, MousePointerClick } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
-import { TaxonomyOrb } from "./TaxonomyOrb";
-import { DomainPlanet } from "./DomainPlanet";
+import { DomainPlanet, type LabelPlacement } from "./DomainPlanet";
 import { DomainFocus } from "./DomainFocus";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 type Viewport = "mobile" | "tablet" | "desktop";
 
-// The row itself is static — no shared path, no idle circular motion around
-// a center. Planets only move in response to a direct interaction: the
-// small hover scale-up, and the click-to-focus rise/part-sideways below.
+/** One shared elliptical path for all ten domains. They are spaced evenly
+ * (360/10 = 36 degrees apart) and advance together at a single slow speed,
+ * so their relative spacing is fixed forever and they can never collide or
+ * overlap each other's labels. */
+const ORBIT_PERIOD_SECONDS = 240;
+const STEP_DEGREES = 360 / ethicalAiDomains.length;
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -40,14 +42,73 @@ function useViewport(): Viewport {
   return viewport;
 }
 
+/** A slow, pausable clock in elapsed seconds. Throttled to ~15fps — at this
+ * orbit speed anything faster is wasted work. */
+function useOrbitClock(paused: boolean) {
+  const [elapsed, setElapsed] = useState(0);
+  const rafRef = useRef<number | null>(null);
+  const lastRef = useRef<number | null>(null);
+  const accRef = useRef(0);
+
+  useEffect(() => {
+    if (paused) {
+      lastRef.current = null;
+      return;
+    }
+    const tick = (ts: number) => {
+      if (lastRef.current == null) lastRef.current = ts;
+      const dt = (ts - lastRef.current) / 1000;
+      lastRef.current = ts;
+      accRef.current += dt;
+      if (accRef.current >= 1 / 15) {
+        setElapsed((e) => e + accRef.current);
+        accRef.current = 0;
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lastRef.current = null;
+    };
+  }, [paused]);
+
+  return elapsed;
+}
+
+/** Label side is chosen from the planet's real pixel offset so it matches the
+ * flattened ellipse: planets out at the wide left/right ends get side
+ * labels, ones near the top/bottom of the arc get stacked labels. */
+function labelPlacementFor(px: number, py: number): LabelPlacement {
+  if (Math.abs(px) > Math.abs(py) * 1.2) return px > 0 ? "right" : "left";
+  return py < 0 ? "top" : "bottom";
+}
+
 export function TaxonomyUniverse() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(900);
   const viewport = useViewport();
   const reducedMotion = usePrefersReducedMotion();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
+  // The whole system pauses while a domain is hovered or focused. The clock
+  // holds its last value while paused, so positions simply freeze in place.
+  const paused = selectedId !== null || hoveredId !== null || reducedMotion;
+  const elapsed = useOrbitClock(paused);
+
   const selected = selectedId != null ? ethicalAiDomains.find((d) => d.id === selectedId) ?? null : null;
-  const selectedIndex = selectedId != null ? ethicalAiDomains.findIndex((d) => d.id === selectedId) : -1;
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width;
+      if (w) setContainerWidth(w);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const handleSelect = (id: number | null) => {
     setSelectedId(id);
@@ -58,15 +119,15 @@ export function TaxonomyUniverse() {
     return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} />;
   }
 
-  const dotSize = viewport === "desktop" ? 46 : 38;
-  const riseAmount = viewport === "desktop" ? 100 : 78;
+  // Wide, flattened ellipse — a side-on view of the system.
+  const halfW = containerWidth / 2;
+  const halfH = (containerWidth * (9 / 16)) / 2;
+  const rx = halfW * 0.82;
+  const ry = halfH * 0.7;
+  const dotSize = viewport === "desktop" ? 30 : 24;
 
   return (
-    <div className="relative mx-auto max-w-5xl lg:max-w-6xl">
-      <div className="mb-10 sm:mb-14">
-        <TaxonomyOrb dimmed={selectedId !== null} />
-      </div>
-
+    <div className="relative">
       <div className="text-center">
         <span className="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 rounded-full border border-zinc-200 bg-zinc-50/80 px-4 py-1.5 text-xs text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
           <span className="inline-flex items-center gap-1.5">
@@ -81,60 +142,75 @@ export function TaxonomyUniverse() {
         </span>
       </div>
 
-      <div className="relative mt-14 sm:mt-16">
-        <div className="relative flex items-start justify-between gap-2 px-1 sm:gap-3 lg:gap-4">
-          {ethicalAiDomains.map((domain, index) => {
-            let x = 0;
-            let y = 0;
+      <div
+        ref={containerRef}
+        className="relative mx-auto mt-8 aspect-[16/9] w-full max-w-[880px] lg:max-w-[1080px]"
+      >
+        {/* the shared path itself, drawn as one faint ellipse */}
+        <svg
+          className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.18] dark:text-icaire-400/[0.28]"
+          viewBox="0 0 1600 900"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <ellipse
+            cx="800"
+            cy="450"
+            rx={0.82 * 800}
+            ry={0.7 * 450}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
 
-            const isFocused = selectedId === domain.id;
-            const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
+        {ethicalAiDomains.map((domain, index) => {
+          const angleDeg = index * STEP_DEGREES + elapsed * (360 / ORBIT_PERIOD_SECONDS);
+          const rad = (angleDeg * Math.PI) / 180;
 
-            if (selectedId !== null) {
-              if (isFocused) {
-                x = 0;
-                y = -riseAmount;
-              } else {
-                const distance = index - selectedIndex;
-                const dir = distance === 0 ? 0 : distance / Math.abs(distance);
-                x = dir * Math.min(64, Math.abs(distance) * 15);
-              }
+          let px = Math.sin(rad) * rx;
+          let py = -Math.cos(rad) * ry;
+          const placement = labelPlacementFor(px, py);
+
+          const isFocused = selectedId === domain.id;
+          const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
+
+          if (selectedId !== null) {
+            if (isFocused) {
+              // into the empty center
+              px = 0;
+              py = 0;
+            } else {
+              // pushed outward toward the edges
+              px *= 1.2;
+              py *= 1.2;
             }
+          }
 
-            return (
-              <DomainPlanet
-                key={domain.id}
-                domain={domain}
-                x={x}
-                y={y}
-                size={dotSize}
-                isFocused={isFocused}
-                isHovered={hoveredId === domain.id}
-                isFaded={isFaded}
-                reducedMotion={reducedMotion}
-                onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
-                onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
-                onSelect={() => handleSelect(isFocused ? null : domain.id)}
-              />
-            );
-          })}
-        </div>
+          return (
+            <DomainPlanet
+              key={domain.id}
+              domain={domain}
+              x={px}
+              y={py}
+              size={dotSize}
+              isFocused={isFocused}
+              isHovered={hoveredId === domain.id}
+              isFaded={isFaded}
+              labelPlacement={placement}
+              reducedMotion={reducedMotion}
+              onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
+              onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
+              onSelect={() => handleSelect(isFocused ? null : domain.id)}
+            />
+          );
+        })}
+
+        <AnimatePresence>
+          {selected && <DomainFocus key={selected.id} domain={selected} onBack={() => handleSelect(null)} />}
+        </AnimatePresence>
       </div>
-
-      <AnimatePresence initial={false}>
-        {selected && (
-          <motion.div
-            key="focus"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: EASE }}
-            className="overflow-hidden"
-          >
-            <DomainFocus domain={selected} onBack={() => handleSelect(null)} />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
@@ -186,7 +262,7 @@ function MobileDomainList({
               >
                 <span
                   aria-hidden="true"
-                  className="size-6 shrink-0 rounded-full bg-icaire-700 ring-1 ring-inset ring-white/25 dark:bg-icaire-400 dark:ring-black/20"
+                  className="size-6 shrink-0 rounded-full border border-icaire-700/30 bg-icaire-700/10 dark:border-icaire-300/30 dark:bg-icaire-300/10"
                 />
                 <span className="min-w-0 flex-1">
                   <span className="block text-[10px] font-semibold tracking-wider text-icaire-600 dark:text-icaire-400">
