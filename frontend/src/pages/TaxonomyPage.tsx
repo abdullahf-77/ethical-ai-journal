@@ -63,7 +63,6 @@ export function TaxonomyPage() {
   const visibleDomains = useMemo(() => {
     let list = taxonomy.top_domains.filter((d) => domainMatches(d, query));
     if (sort === "papers") list = [...list].sort((a, b) => b.paper_count - a.paper_count);
-    if (sort === "subdomains") list = [...list].sort((a, b) => b.subdomain_count - a.subdomain_count);
     return list;
   }, [query, sort]);
 
@@ -115,28 +114,18 @@ export function TaxonomyPage() {
             consolidated from twelve source frameworks. Select a domain card to
             browse its subdomains and the papers indexed under each one.
           </p>
-
-          <div className="mt-6 inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50/70 p-1 dark:border-zinc-700 dark:bg-zinc-900/60">
-            {([
-              { mode: "cards", label: "Cards" },
-              { mode: "explorer", label: "Explorer" },
-            ] as const).map((opt) => (
-              <button
-                key={opt.mode}
-                type="button"
-                onClick={() => setViewMode(opt.mode)}
-                aria-pressed={viewMode === opt.mode}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                  viewMode === opt.mode
-                    ? "bg-icaire-600 text-white dark:bg-icaire-500"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
         </Reveal>
+      </div>
+
+      <div className="px-6 sm:px-8">
+        <SearchFilterBar
+          query={query}
+          onQueryChange={setQuery}
+          sort={sort}
+          onSortChange={setSort}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+        />
       </div>
 
       <AnimatePresence mode="wait">
@@ -148,15 +137,6 @@ export function TaxonomyPage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: EASE }}
           >
-            <div className="px-6 sm:px-8">
-              <SearchFilterBar
-                query={query}
-                onQueryChange={setQuery}
-                sort={sort}
-                onSortChange={setSort}
-              />
-            </div>
-
             <div className="mx-auto max-w-7xl px-6 pt-10 sm:px-8">
               {visibleDomains.length === 0 ? (
                 <div className="flex flex-col items-center gap-3 rounded-3xl border border-dashed border-zinc-300 py-24 text-center dark:border-zinc-700">
