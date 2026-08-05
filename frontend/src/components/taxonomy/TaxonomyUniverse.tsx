@@ -114,13 +114,15 @@ export function TaxonomyUniverse() {
 
   // Wide, flattened ellipse — a side-on view of the system.
   const halfW = containerWidth / 2;
-  const halfH = (containerWidth * (11 / 16)) / 2;
+  const halfH = (containerWidth * (14 / 16)) / 2;
   const rx = halfW * 0.78;
   const ry = halfH * 0.72;
-  // The closest two planets on this ellipse sit 0.618 * ry apart — about
-  // 165px on a full-width desktop container and 135px on tablet — so these
-  // diameters stay clear of each other even at the 1.1x hover scale.
-  const dotSize = viewport === "desktop" ? 130 : 104;
+  // Sized to fit the longest principle title inside the orb: "Multi-
+  // stakeholder and Adaptive Governance and Collaboration" needs roughly a
+  // 115px text box at 12px type, and the inscribed box is 72% of the
+  // diameter. The closest two planets sit 0.618 * ry apart — 210px desktop,
+  // 171px tablet — which clears these diameters at the 1.1x hover scale.
+  const dotSize = viewport === "desktop" ? 160 : 132;
 
   return (
     <div className="relative">
@@ -140,20 +142,20 @@ export function TaxonomyUniverse() {
 
       <div
         ref={containerRef}
-        className="relative mx-auto mt-8 aspect-[16/11] w-full max-w-[880px] lg:max-w-[1080px]"
+        className="relative mx-auto mt-8 aspect-[16/14] w-full max-w-[880px] lg:max-w-[1080px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
-          viewBox="0 0 1600 1100"
+          viewBox="0 0 1600 1400"
           aria-hidden="true"
         >
           <ellipse
             cx="800"
-            cy="550"
+            cy="700"
             rx={0.78 * 800}
-            ry={0.72 * 550}
+            ry={0.72 * 700}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -258,8 +260,8 @@ function MobileDomainList({
                 <span aria-hidden="true" className="relative size-7 shrink-0">
                   <PlanetOrb />
                 </span>
-                <span className="min-w-0 flex-1 truncate text-sm font-medium text-zinc-700 dark:text-zinc-200">
-                  {domain.shortLabel.filter(Boolean).join(" ")}
+                <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-zinc-700 dark:text-zinc-200">
+                  {domain.title}
                 </span>
                 <ChevronDown
                   size={16}

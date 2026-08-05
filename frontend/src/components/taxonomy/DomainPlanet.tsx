@@ -7,10 +7,10 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 interface DomainPlanetProps {
   domain: EthicalAiDomain;
   /** Offset from the center of the universe, in px. This is the point on the
-   * orbit path — the circle is centered exactly here. */
+   * orbit path — the orb is centered exactly here. */
   x: number;
   y: number;
-  /** Circle diameter, in px, before hover/focus scaling. */
+  /** Orb diameter, in px, before hover/focus scaling. */
   size: number;
   isFocused: boolean;
   isHovered: boolean;
@@ -46,7 +46,7 @@ export function DomainPlanet({
         transition={{ duration: reducedMotion ? 0.25 : 0.85, ease: EASE }}
         style={{ willChange: "transform" }}
       >
-        {/* The circle is centered on the orbit point itself. */}
+        {/* The orb is centered on the orbit point itself. */}
         <motion.button
           type="button"
           onClick={onSelect}
@@ -60,27 +60,20 @@ export function DomainPlanet({
           animate={{ scale: !isFocused && isHovered ? 1.1 : 1 }}
           transition={{ duration: 0.35, ease: EASE }}
         >
-          {/* the pale sage sphere, shared with public/taxonomy-orb.svg */}
-          <motion.span
-            aria-hidden="true"
-            className="absolute inset-0"
-            animate={{ opacity: isFocused || isHovered ? 1 : 0.9 }}
-            transition={{ duration: 0.3, ease: EASE }}
-          >
-            <PlanetOrb />
-          </motion.span>
+          <PlanetOrb />
 
-          {/* label lives inside the planet */}
-          <span
-            className="relative px-2 text-center font-medium leading-[1.25] tracking-tight text-icaire-800 dark:text-icaire-50/90"
-            style={{ fontSize: Math.max(9, Math.round(size * 0.115)) }}
-          >
-            {domain.compactLabel.map((line, i) => (
-              <span key={i} className="block">
-                {line}
-              </span>
-            ))}
-          </span>
+          {/* The full official principle title, verbatim, inside the orb.
+              The text box is 72% of the diameter — a square inscribed in a
+              circle is 70.7% of it, so this keeps the longest line clear of
+              the curve while leaving room for four lines of type. */}
+          {!isFocused && (
+            <span
+              className="relative block text-center font-medium leading-[1.25] text-zinc-600 dark:text-zinc-300"
+              style={{ width: size * 0.72, fontSize: Math.round(size * 0.075) }}
+            >
+              {domain.title}
+            </span>
+          )}
         </motion.button>
 
         <AnimatePresence>
@@ -90,8 +83,8 @@ export function DomainPlanet({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 4, scale: 0.96 }}
               transition={{ duration: 0.18, ease: EASE }}
-              className="pointer-events-none absolute left-1/2 z-40 w-52 -translate-x-1/2 rounded-xl border border-zinc-200 bg-white/95 p-3 text-left shadow-lg backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/95"
-              style={{ top: size / 2 + 14 }}
+              className="pointer-events-none absolute left-1/2 z-40 w-56 -translate-x-1/2 rounded-xl border border-zinc-200 bg-white/95 p-3 text-left shadow-lg backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-900/95"
+              style={{ top: size / 2 + 8 }}
             >
               <p className="text-xs font-semibold text-zinc-900 dark:text-zinc-50">{domain.title}</p>
               <p className="mt-1 line-clamp-3 text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
