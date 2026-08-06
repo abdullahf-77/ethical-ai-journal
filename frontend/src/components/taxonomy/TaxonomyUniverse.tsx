@@ -1,12 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
+import type { EthicalAiDomain } from "../../data/ethicalAiDomains";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { DomainPlanet } from "./DomainPlanet";
 import { PlanetOrb } from "./PlanetOrb";
 import { DomainFocus } from "./DomainFocus";
 import { PaperAttractionField } from "./PaperAttractionField";
+import { PrinciplePapersPanel } from "./PrinciplePapersPanel";
 import { angleAtArc, ellipseTable } from "../../lib/orbitMath";
+import { getPapersForPrinciple } from "../../data/principlePapers";
+
+/** A domain's `number` field ("01".."10") is exactly its UNESCO principle's
+ * numeric suffix, so this is a direct string join, not a lookup table. */
+function principleIdFor(domain: { number: string }): string {
+  return `P${domain.number}`;
+}
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -132,6 +141,10 @@ export function TaxonomyUniverse() {
   const reducedMotion = usePrefersReducedMotion();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  // Whether the user has clicked "Enter" on the currently-selected planet.
+  // Selecting a planet only focuses it (existing behavior); this is the
+  // extra step that opens the papers view.
+  const [entered, setEntered] = useState(false);
 
   // The whole system pauses while a domain is hovered or focused. The clock
   // holds its last value while paused, so positions simply freeze in place.
@@ -139,6 +152,7 @@ export function TaxonomyUniverse() {
   const elapsed = useOrbitClock(paused);
 
   const selected = selectedId != null ? ethicalAiDomains.find((d) => d.id === selectedId) ?? null : null;
+  const papers = useMemo(() => (selected ? getPapersForPrinciple(principleIdFor(selected)) : []), [selected]);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -155,10 +169,12 @@ export function TaxonomyUniverse() {
   const handleSelect = (id: number | null) => {
     setSelectedId(id);
     setHoveredId(null);
+    setEntered(false);
   };
+  const handleEnter = () => setEntered(true);
 
   if (viewport === "mobile") {
-    return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} />;
+    return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} entered={entered} onEnter={handleEnter} />;
   }
 
   // Wide, flattened ellipse seen almost edge-on, with depth: the bottom of
@@ -187,6 +203,17 @@ export function TaxonomyUniverse() {
   const sFocus = selectedIndex >= 0 ? selectedIndex * gap + (elapsed / ORBIT_PERIOD_SECONDS) * table.total : 0;
   const focusClear = table.total * 0.11;
   const focusStep = (table.total - 2 * focusClear) / (count - 2);
+
+  // Once "Enter" is clicked the focused planet moves from dead center to
+  // this top-right anchor, clearing room on the left for the paper list.
+  // Its on-screen radius doesn't change (DomainPlanet's focus scale is a
+  // constant 2.6 in both states — see the isFocused branch below), so the
+  // anchor only needs to keep that same-sized orb clear of the container's
+  // top and right edges.
+  const focusedRadius = (dotSize * 2.6) / 2;
+  const EDGE_PAD = 20;
+  const topRightX = containerWidth / 2 - focusedRadius - EDGE_PAD;
+  const topRightY = -(containerHeight / 2 - focusedRadius - EDGE_PAD);
 
   return (
     <div className="relative">
@@ -262,9 +289,16 @@ export function TaxonomyUniverse() {
 
             if (selectedId !== null) {
               if (isFocused) {
-                // into the empty center
-                px = 0;
-                py = 0;
+                if (entered) {
+                  // Enter clicked: slide from the empty center out to the
+                  // top-right, clearing the left side for the paper list.
+                  px = topRightX;
+                  py = topRightY;
+                } else {
+                  // Selected but not yet entered: into the empty center.
+                  px = 0;
+                  py = 0;
+                }
               } else {
                 // The remaining nine are laid back out EVENLY, by arc length,
                 // across the whole ring minus a clearance gap either side of
@@ -327,9 +361,19 @@ export function TaxonomyUniverse() {
           {selected && (
             <DomainFocus
               key={selected.id}
+              x={entered ? topRightX : 0}
+              y={entered ? topRightY : 0}
+              radius={focusedRadius}
+              entered={entered}
+              onEnter={handleEnter}
               onBack={() => handleSelect(null)}
-              topOffset={(dotSize * 2.6) / 2 + 20}
             />
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {selected && entered && (
+            <PrinciplePapersPanel key={selected.id} papers={papers} maxHeight={containerHeight} />
           )}
         </AnimatePresence>
       </div>
@@ -340,9 +384,13 @@ export function TaxonomyUniverse() {
 function MobileDomainList({
   selectedId,
   onSelect,
+  entered,
+  onEnter,
 }: {
   selectedId: number | null;
   onSelect: (id: number | null) => void;
+  entered: boolean;
+  onEnter: () => void;
 }) {
   return (
     <div className="mx-auto max-w-md">
@@ -407,6 +455,19 @@ function MobileDomainList({
                       <p className="mt-1.5 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
                         {domain.description}
                       </p>
+
+                      {!entered ? (
+                        <button
+                          type="button"
+                          onClick={onEnter}
+                          className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-icaire-600 px-4 py-1.5 text-xs font-semibold text-white dark:bg-icaire-500"
+                        >
+                          Enter
+                          <ChevronRight size={13} />
+                        </button>
+                      ) : (
+                        <MobilePapersList domain={domain} />
+                      )}
                     </div>
                   </motion.div>
                 )}
@@ -416,5 +477,32 @@ function MobileDomainList({
         })}
       </ul>
     </div>
+  );
+}
+
+/** Mobile equivalent of PrinciplePapersPanel — same title-only, link-only
+ * list, just inline within the accordion panel instead of a floating
+ * left-hand column. */
+function MobilePapersList({ domain }: { domain: EthicalAiDomain }) {
+  const papers = getPapersForPrinciple(`P${domain.number}`);
+  if (papers.length === 0) {
+    return <p className="mt-3 text-sm text-zinc-400 dark:text-zinc-500">No papers indexed under this principle yet.</p>;
+  }
+  return (
+    <ul className="mt-3 space-y-1 border-t border-zinc-100 pt-3 dark:border-zinc-800">
+      {papers.map((paper, i) => (
+        <li key={i}>
+          <a
+            href={paper.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-start gap-1.5 py-0.5 text-sm leading-snug text-zinc-600 dark:text-zinc-300"
+          >
+            <ExternalLink size={12} className="mt-1 shrink-0 opacity-40 group-hover:opacity-100" />
+            <span>{paper.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }
