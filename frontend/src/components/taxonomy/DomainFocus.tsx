@@ -18,7 +18,12 @@ export function DomainFocus({ onBack, topOffset }: { onBack: () => void; topOffs
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.45, delay: 0.35, ease: EASE }}
-      className="absolute inset-x-0 top-1/2 z-50 flex justify-center px-6"
+      // Above every non-focused planet's max depth z-index (100, see
+      // DomainPlanet's zIndex formula) but below the focused planet itself
+      // (200) — the focused orb's own title/description render inside the
+      // orb, so this "back" control only ever needs to clear pushed-out
+      // background planets, never the focused one.
+      className="absolute inset-x-0 top-1/2 z-[110] flex justify-center px-6"
       style={{ marginTop: topOffset }}
     >
       <button

@@ -5,6 +5,7 @@ import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { DomainPlanet } from "./DomainPlanet";
 import { PlanetOrb } from "./PlanetOrb";
 import { DomainFocus } from "./DomainFocus";
+import { PaperAttractionField } from "./PaperAttractionField";
 import { angleAtArc, ellipseTable } from "../../lib/orbitMath";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -16,9 +17,51 @@ type Viewport = "mobile" | "tablet" | "desktop";
  * arc length rather than equal angle steps — see ../../lib/orbitMath — so
  * the gap between neighbours stays constant even though the ellipse is
  * strongly flattened. */
-const ORBIT_PERIOD_SECONDS = 240;
-/** Ellipse half-width as a fraction of the container's half-width. */
-const RING_WIDTH = 0.97;
+const ORBIT_PERIOD_SECONDS = 140;
+/** Ellipse half-width as a fraction of the container's half-width. Brought
+ * in from 0.97 — the whole ring reads as too large/dominant at full width;
+ * this shrinks the ring itself (both rx and the ry derived from it) while
+ * keeping the oval's proportions (see RING_HEIGHT_RATIO) untouched. */
+const RING_WIDTH = 0.82;
+/** Ellipse half-height as a fraction of half-width — how flat the oval is.
+ * Also drives the dashed guide line's SVG ellipse below, so the drawn path
+ * and the planets' real orbit can never drift apart again the way they just
+ * did (the SVG had its own hardcoded rx/ry that stopped matching this). */
+const RING_HEIGHT_RATIO = 0.3;
+/** How much the whole ring (planets AND the drawn dashed line together)
+ * grows while a principle is focused, to clear the enlarged focused orb in
+ * the middle. */
+const FOCUS_RING_SCALE = 1.5;
+
+/** The SVG's viewBox must keep the SAME aspect ratio as the container
+ * (see the aspect-[16/7.2] class below), otherwise preserveAspectRatio
+ * letterboxes the drawing and the dashed line stops matching the orbit the
+ * planets actually travel. Changing one means changing the other. */
+const VIEWBOX_W = 1600;
+const VIEWBOX_H = 720;
+
+/** How strongly planet spacing is biased toward the front of the ring.
+ * 0 = perfectly even spacing all the way round; higher values open the
+ * front out and let the crowding fall to the back instead. Front spacing
+ * ends up (1 + n)x normal and back spacing (1 - n)x, so this must stay
+ * below 1 to keep the ordering monotonic. */
+const FRONT_SPREAD = 0.5;
+
+/** Redistributes an arc-length position so that neighbours sit further
+ * apart across the front of the ring and closer together across the back.
+ *
+ * Planets are laid out by arc length (see ../../lib/orbitMath), which gives
+ * perfectly even spacing — but the front planets are also drawn much larger
+ * by the depth scale, so even spacing reads as crowded down there and
+ * over-airy up the back. This warps the position by a smooth sine so the
+ * local spacing is stretched at the front (u = 0.5, the near point) and
+ * squeezed at the back (u = 0, the far point), while staying continuous and
+ * periodic — so planets simply glide slightly faster through the back of
+ * the orbit and slower across the front, and never reorder or jump. */
+function frontBiasedArc(s: number, total: number) {
+  const u = (((s / total) % 1) + 1) % 1;
+  return (u - (FRONT_SPREAD * Math.sin(2 * Math.PI * u)) / (2 * Math.PI)) * total;
+}
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -46,8 +89,9 @@ function useViewport(): Viewport {
   return viewport;
 }
 
-/** A slow, pausable clock in elapsed seconds. Throttled to ~15fps — at this
- * orbit speed anything faster is wasted work. */
+/** A slow, pausable clock in elapsed seconds. Throttled to ~30fps — the
+ * orbit and papers both move fast enough now that the previous 15fps tick
+ * would read as a visible stutter rather than as smooth drift. */
 function useOrbitClock(paused: boolean) {
   const [elapsed, setElapsed] = useState(0);
   const rafRef = useRef<number | null>(null);
@@ -64,7 +108,7 @@ function useOrbitClock(paused: boolean) {
       const dt = (ts - lastRef.current) / 1000;
       lastRef.current = ts;
       accRef.current += dt;
-      if (accRef.current >= 1 / 15) {
+      if (accRef.current >= 1 / 30) {
         setElapsed((e) => e + accRef.current);
         accRef.current = 0;
       }
@@ -83,6 +127,7 @@ function useOrbitClock(paused: boolean) {
 export function TaxonomyUniverse() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(900);
+  const [containerHeight, setContainerHeight] = useState(900 * (VIEWBOX_H / VIEWBOX_W));
   const viewport = useViewport();
   const reducedMotion = usePrefersReducedMotion();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -99,8 +144,9 @@ export function TaxonomyUniverse() {
     const el = containerRef.current;
     if (!el) return;
     const ro = new ResizeObserver((entries) => {
-      const w = entries[0]?.contentRect.width;
-      if (w) setContainerWidth(w);
+      const rect = entries[0]?.contentRect;
+      if (rect?.width) setContainerWidth(rect.width);
+      if (rect?.height) setContainerHeight(rect.height);
     });
     ro.observe(el);
     return () => ro.disconnect();
@@ -119,30 +165,58 @@ export function TaxonomyUniverse() {
   // the path is the near side (larger, fully opaque), the top is the far
   // side (smaller, dimmer, passing behind the orbit line).
   const rx = (containerWidth / 2) * RING_WIDTH;
-  const ry = rx * 0.38;
-  const dotSize = containerWidth * 0.155;
+  const ry = rx * RING_HEIGHT_RATIO;
+  const dotSize = containerWidth * 0.15;
 
   const table = useMemo(() => ellipseTable(rx, ry), [rx, ry]);
   const gap = table.total / ethicalAiDomains.length;
 
+  // During focus the whole ring grows. A UNIFORM scale of the ellipse is
+  // still an ellipse of the same proportions, so arc-length spacing (and
+  // therefore every angle the table returns) is unchanged — the planets
+  // just sit on a bigger copy of the same curve. The drawn dashed line
+  // below is animated to exactly the same scale, so they stay on it.
+  const ringScale = selectedId !== null ? FOCUS_RING_SCALE : 1;
+  const rxEff = rx * ringScale;
+  const ryEff = ry * ringScale;
+
+  const count = ethicalAiDomains.length;
+  const selectedIndex = selectedId != null ? ethicalAiDomains.findIndex((d) => d.id === selectedId) : -1;
+  // Arc position of the focused planet, and the even spacing used to lay the
+  // remaining nine back out around the ring (see the push-out block below).
+  const sFocus = selectedIndex >= 0 ? selectedIndex * gap + (elapsed / ORBIT_PERIOD_SECONDS) * table.total : 0;
+  const focusClear = table.total * 0.11;
+  const focusStep = (table.total - 2 * focusClear) / (count - 2);
+
   return (
     <div className="relative">
+      {/* aspect-[16/7.2] matches VIEWBOX_W / VIEWBOX_H exactly — keep them in
+          sync. The ring is only as tall as 2 * ry, so the old 16/8.8 box left
+          a wide empty band above (and below) it; trimming the box's height
+          lifts the whole orbit up under the copy without touching rx, ry or
+          the planet size, all of which derive from the container's WIDTH. */}
       <div
         ref={containerRef}
-        className="relative mx-auto mt-4 aspect-[16/8.8] w-full max-w-[820px] lg:max-w-[1180px]"
+        className="relative mx-auto mt-1 aspect-[16/7.2] w-full max-w-[820px] lg:max-w-[1180px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
         <svg
-          className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
-          viewBox="0 0 1600 880"
+          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
+          viewBox={`0 0 ${VIEWBOX_W} ${VIEWBOX_H}`}
           aria-hidden="true"
         >
-          <ellipse
-            cx="800"
-            cy="440"
-            rx="776"
-            ry="295"
+          {/* Animated to exactly the same ringScale the planets use, so the
+              drawn path and the orbit they actually travel stay identical in
+              focus mode too. */}
+          <motion.ellipse
+            cx={VIEWBOX_W / 2}
+            cy={VIEWBOX_H / 2}
+            animate={{
+              rx: (VIEWBOX_W / 2) * RING_WIDTH * ringScale,
+              ry: (VIEWBOX_W / 2) * RING_WIDTH * RING_HEIGHT_RATIO * ringScale,
+            }}
+            transition={{ duration: reducedMotion ? 0.25 : 0.85, ease: EASE }}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -151,48 +225,103 @@ export function TaxonomyUniverse() {
           />
         </svg>
 
-        {ethicalAiDomains.map((domain, index) => {
-          // Spaced by arc length rather than angle, so the gap between
-          // neighbours stays constant all the way around the flattened path.
-          const ang = angleAtArc(table, index * gap + (elapsed / ORBIT_PERIOD_SECONDS) * table.total);
+        {/* Populated as a side effect of the domain map just below, with each
+            planet's natural (pre-focus-override) orbit position — this is
+            what the paper field's flight targets track, so an in-flight
+            paper never gets yanked by the focus mode's push-out/zoom
+            repositioning (the field just fades out during focus instead;
+            see the `hidden` prop below). */}
+        {(() => {
+          const naturalPositions: { id: number; x: number; y: number; radius: number }[] = [];
 
-          let px = Math.sin(ang) * rx;
-          let py = -Math.cos(ang) * ry;
-          const depth = (py + ry) / (2 * ry);
+          const planetElements = ethicalAiDomains.map((domain, index) => {
+            // Spaced by arc length rather than angle, so the gap between
+            // neighbours stays constant all the way around the flattened path.
+            const ang = angleAtArc(
+              table,
+              frontBiasedArc(index * gap + (elapsed / ORBIT_PERIOD_SECONDS) * table.total, table.total),
+            );
 
-          const isFocused = selectedId === domain.id;
-          const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
+            let px = Math.sin(ang) * rxEff;
+            let py = -Math.cos(ang) * ryEff;
+            const depth = (py + ryEff) / (2 * ryEff);
 
-          if (selectedId !== null) {
-            if (isFocused) {
-              // into the empty center
-              px = 0;
-              py = 0;
-            } else {
-              // pushed outward toward the edges
-              px *= 1.18;
-              py *= 1.9;
+            // Radius must mirror DomainPlanet's own depth scale, otherwise
+            // papers judge a large front planet by a small flat radius and
+            // sail well inside it before vanishing.
+            const depthScale = 0.52 + 0.73 * Math.pow(depth, 1.6);
+            naturalPositions.push({
+              id: domain.id,
+              x: px,
+              y: py,
+              radius: (dotSize / 2) * depthScale,
+            });
+
+            const isFocused = selectedId === domain.id;
+            const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
+
+            if (selectedId !== null) {
+              if (isFocused) {
+                // into the empty center
+                px = 0;
+                py = 0;
+              } else {
+                // The remaining nine are laid back out EVENLY, by arc length,
+                // across the whole ring minus a clearance gap either side of
+                // where the focused planet was. Redistributing by *angle*
+                // (the previous attempt) is what made them pile up on top of
+                // each other: on a ring this flat, equal angle steps are very
+                // unequal distances — points bunch hard near the left/right
+                // extremes. Working in arc length is the same reason the
+                // normal layout uses angleAtArc, and it guarantees identical
+                // spacing between every neighbour here too.
+                const order = (index - selectedIndex + count) % count; // 1..count-1
+                const pushedAng = angleAtArc(
+                  table,
+                  frontBiasedArc(sFocus + focusClear + (order - 1) * focusStep, table.total),
+                );
+                px = Math.sin(pushedAng) * rxEff;
+                py = -Math.cos(pushedAng) * ryEff;
+              }
             }
-          }
+
+            return (
+              <DomainPlanet
+                key={domain.id}
+                domain={domain}
+                x={px}
+                y={py}
+                size={dotSize}
+                depth={depth}
+                isFocused={isFocused}
+                isHovered={hoveredId === domain.id}
+                isFaded={isFaded}
+                reducedMotion={reducedMotion}
+                onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
+                onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
+                onSelect={() => handleSelect(isFocused ? null : domain.id)}
+              />
+            );
+          });
 
           return (
-            <DomainPlanet
-              key={domain.id}
-              domain={domain}
-              x={px}
-              y={py}
-              size={dotSize}
-              depth={depth}
-              isFocused={isFocused}
-              isHovered={hoveredId === domain.id}
-              isFaded={isFaded}
-              reducedMotion={reducedMotion}
-              onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
-              onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
-              onSelect={() => handleSelect(isFocused ? null : domain.id)}
-            />
+            <>
+              {/* Behind every planet (z-index 3 vs. 10+): papers drifting in
+                  from the edges and being pulled into their assigned
+                  planet, tracking its live position as it orbits. */}
+              {!reducedMotion && (
+                <PaperAttractionField
+                  planets={naturalPositions}
+                  elapsed={elapsed}
+                  containerWidth={containerWidth}
+                  containerHeight={containerHeight}
+                  hidden={selectedId !== null}
+                />
+              )}
+              {planetElements}
+            </>
           );
-        })}
+        })()}
 
         <AnimatePresence>
           {selected && (

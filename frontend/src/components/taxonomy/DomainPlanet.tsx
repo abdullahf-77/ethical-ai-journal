@@ -39,15 +39,34 @@ export function DomainPlanet({
   onHoverEnd,
   onSelect,
 }: DomainPlanetProps) {
-  const depthScale = 0.86 + 0.3 * depth;
-  const depthOpacity = 0.58 + 0.42 * depth;
+  // A stronger, nonlinear front/back curve — the camera reads as sitting
+  // close to the near side of the ring, so the front planet grows and
+  // sharpens quickly while the back ones stay small and hazy for most of
+  // their pass. `depthCurve` is depth reshaped through an easing power
+  // rather than depth itself, which is what gives the exaggerated
+  // near-vs-far contrast without touching the ellipse's actual flatness.
+  const depthCurve = Math.pow(depth, 1.6);
+  // Front-planet cap pulled down from 1.5x — it read as too large. Far side
+  // is untouched; only how big the near side is allowed to grow changes.
+  const depthScale = 0.52 + 0.73 * depthCurve; // ~0.52 (far) .. 1.25 (near)
+  // Opacity floor raised again — 0.55 still read as too faint on the far
+  // side; 0.7 keeps back planets clearly legible while the near side stays
+  // fully present and a (now subtler) front-vs-back cue survives.
+  const depthOpacity = 0.7 + 0.3 * Math.pow(depth, 1.25); // ~0.7 (far) .. 1 (near)
+  // A faint depth-of-field blur on the far side reads as "sharper up close" —
+  // cleared entirely on hover/focus so inspecting a distant planet is never
+  // hampered by its own orbital depth.
+  const depthBlur = (1 - depth) * 1.3;
   const groupOpacity = isFocused ? 1 : isFaded ? depthOpacity * 0.34 : depthOpacity;
   // 2.6 is the focus scale that fits the longest title together with its
   // description inside the circle: solving text height against the chord at
   // a 74%-of-diameter box needs a focused diameter around 265px, which 2.6
   // clears comfortably at the orb sizes this renders at.
   const groupScale = isFocused ? 2.6 : isFaded ? depthScale * 0.8 : depthScale;
-  const zIndex = isFocused ? 60 : isHovered ? 55 : 10 + Math.round(depth * 40);
+  // Wider spread (10-100) than the old 10-40 range so ten planets at
+  // continuously varying depth still resolve into a clean front-to-back
+  // stack; hover/focus tiers are bumped up to match.
+  const zIndex = isFocused ? 200 : isHovered ? 120 : 10 + Math.round(depth * 90);
 
   return (
     <div className="absolute left-1/2 top-1/2" style={{ zIndex }}>
@@ -55,7 +74,11 @@ export function DomainPlanet({
         className="relative"
         animate={{ x, y, opacity: groupOpacity, scale: groupScale }}
         transition={{ duration: reducedMotion ? 0.25 : 0.85, ease: EASE }}
-        style={{ willChange: "transform" }}
+        style={{
+          willChange: "transform",
+          filter: isFocused || isHovered || reducedMotion ? "none" : `blur(${depthBlur.toFixed(2)}px)`,
+          transition: "filter 0.4s ease",
+        }}
       >
         {/* The orb is centered on the orbit point itself. */}
         <motion.button

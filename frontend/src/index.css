@@ -180,8 +180,23 @@
     transform: scaleX(1.05);
   }
 }
+/* Slow diagonal drift for the Taxonomy Hub's floating background papers —
+   translate only; each element supplies --dx/--dy and rotation lives on a
+   nested wrapper so the two never fight over one transform. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--dx, 6px), var(--dy, -8px));
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   svg[data-orb] * {
+    animation: none !important;
+  }
+  [data-space-bg] * {
     animation: none !important;
   }
 }
