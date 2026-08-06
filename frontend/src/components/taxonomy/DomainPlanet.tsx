@@ -12,6 +12,10 @@ interface DomainPlanetProps {
   y: number;
   /** Orb diameter, in px, before hover/focus scaling. */
   size: number;
+  /** Position along the flattened orbit, 0 (far/top) to 1 (near/bottom).
+   * Drives a depth-of-field scale and opacity so orbs on the near side of
+   * the ellipse read as closer than orbs on the far side. */
+  depth: number;
   isFocused: boolean;
   isHovered: boolean;
   isFaded: boolean;
@@ -26,6 +30,7 @@ export function DomainPlanet({
   x,
   y,
   size,
+  depth,
   isFocused,
   isHovered,
   isFaded,
@@ -34,13 +39,15 @@ export function DomainPlanet({
   onHoverEnd,
   onSelect,
 }: DomainPlanetProps) {
-  const groupOpacity = isFaded ? 0.3 : 1;
-  // 2.2 is the smallest focus scale that fits the longest title together
-  // with its description inside the circle: solving text height against the
-  // chord at a 74%-of-diameter box needs a focused diameter around 265px,
-  // and 2.2 clears that at the orb sizes this renders at.
-  const groupScale = isFocused ? 2.2 : isFaded ? 0.72 : 1;
-  const zIndex = isFocused ? 60 : isHovered ? 50 : 20;
+  const depthScale = 0.86 + 0.3 * depth;
+  const depthOpacity = 0.58 + 0.42 * depth;
+  const groupOpacity = isFocused ? 1 : isFaded ? depthOpacity * 0.34 : depthOpacity;
+  // 2.6 is the focus scale that fits the longest title together with its
+  // description inside the circle: solving text height against the chord at
+  // a 74%-of-diameter box needs a focused diameter around 265px, which 2.6
+  // clears comfortably at the orb sizes this renders at.
+  const groupScale = isFocused ? 2.6 : isFaded ? depthScale * 0.8 : depthScale;
+  const zIndex = isFocused ? 60 : isHovered ? 55 : 10 + Math.round(depth * 40);
 
   return (
     <div className="absolute left-1/2 top-1/2" style={{ zIndex }}>
@@ -64,7 +71,7 @@ export function DomainPlanet({
           animate={{ scale: !isFocused && isHovered ? 1.1 : 1 }}
           transition={{ duration: 0.35, ease: EASE }}
         >
-          <PlanetOrb />
+          <PlanetOrb domainId={domain.id} emphasized={isHovered || isFocused} />
 
           {/* The full official principle title, verbatim, inside the orb.
               The text box is 72% of the diameter — a square inscribed in a

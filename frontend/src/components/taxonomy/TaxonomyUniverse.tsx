@@ -1,21 +1,24 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronDown } from "lucide-react";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { DomainPlanet } from "./DomainPlanet";
 import { PlanetOrb } from "./PlanetOrb";
 import { DomainFocus } from "./DomainFocus";
+import { angleAtArc, ellipseTable } from "../../lib/orbitMath";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 type Viewport = "mobile" | "tablet" | "desktop";
 
-/** One shared elliptical path for all ten domains. They are spaced evenly
- * (360/10 = 36 degrees apart) and advance together at a single slow speed,
- * so their relative spacing is fixed forever and they can never collide or
- * overlap each other's labels. */
+/** One shared elliptical path for all ten domains, advancing together at a
+ * single slow speed so their relative order is fixed forever. Spacing is by
+ * arc length rather than equal angle steps — see ../../lib/orbitMath — so
+ * the gap between neighbours stays constant even though the ellipse is
+ * strongly flattened. */
 const ORBIT_PERIOD_SECONDS = 240;
-const STEP_DEGREES = 360 / ethicalAiDomains.length;
+/** Ellipse half-width as a fraction of the container's half-width. */
+const RING_WIDTH = 0.97;
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -112,42 +115,34 @@ export function TaxonomyUniverse() {
     return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} />;
   }
 
-  // Wide, flattened ellipse — a side-on view of the system.
-  const halfW = containerWidth / 2;
-  const halfH = (containerWidth * (11 / 16)) / 2;
-  const rx = halfW * 0.82;
-  const ry = halfH * 0.74;
-  // The orb diameter has to scale with the container, not sit at a fixed
-  // pixel size: the ellipse is derived from containerWidth, so a fixed
-  // diameter would keep its size while the ring shrank around it, and the
-  // orbs would overlap each other and spill past the frame on any viewport
-  // narrower than the max width.
-  //
-  // The two limits, both linear in containerWidth:
-  //   closest pair   0.618 * ry            = 0.1572 * W  -> size < 0.1429 * W
-  //   vertical edge  halfH - ry            = 0.0894 * W  -> size < 0.1788 * W
-  // 0.136 clears both, and the cap keeps the orbs from growing past the
-  // point where the title no longer needs the extra room.
-  const dotSize = Math.min(128, containerWidth * 0.136);
+  // Wide, flattened ellipse seen almost edge-on, with depth: the bottom of
+  // the path is the near side (larger, fully opaque), the top is the far
+  // side (smaller, dimmer, passing behind the orbit line).
+  const rx = (containerWidth / 2) * RING_WIDTH;
+  const ry = rx * 0.38;
+  const dotSize = containerWidth * 0.155;
+
+  const table = useMemo(() => ellipseTable(rx, ry), [rx, ry]);
+  const gap = table.total / ethicalAiDomains.length;
 
   return (
     <div className="relative">
       <div
         ref={containerRef}
-        className="relative mx-auto mt-4 aspect-[16/11] w-full max-w-[820px] lg:max-w-[940px]"
+        className="relative mx-auto mt-4 aspect-[16/8.8] w-full max-w-[820px] lg:max-w-[1180px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full text-icaire-700/[0.32] dark:text-icaire-400/[0.4]"
-          viewBox="0 0 1600 1100"
+          viewBox="0 0 1600 880"
           aria-hidden="true"
         >
           <ellipse
             cx="800"
-            cy="550"
-            rx={0.82 * 800}
-            ry={0.74 * 550}
+            cy="440"
+            rx="776"
+            ry="295"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -157,11 +152,13 @@ export function TaxonomyUniverse() {
         </svg>
 
         {ethicalAiDomains.map((domain, index) => {
-          const angleDeg = index * STEP_DEGREES + elapsed * (360 / ORBIT_PERIOD_SECONDS);
-          const rad = (angleDeg * Math.PI) / 180;
+          // Spaced by arc length rather than angle, so the gap between
+          // neighbours stays constant all the way around the flattened path.
+          const ang = angleAtArc(table, index * gap + (elapsed / ORBIT_PERIOD_SECONDS) * table.total);
 
-          let px = Math.sin(rad) * rx;
-          let py = -Math.cos(rad) * ry;
+          let px = Math.sin(ang) * rx;
+          let py = -Math.cos(ang) * ry;
+          const depth = (py + ry) / (2 * ry);
 
           const isFocused = selectedId === domain.id;
           const isFaded = selectedId !== null ? !isFocused : hoveredId !== null && hoveredId !== domain.id;
@@ -173,8 +170,8 @@ export function TaxonomyUniverse() {
               py = 0;
             } else {
               // pushed outward toward the edges
-              px *= 1.2;
-              py *= 1.2;
+              px *= 1.18;
+              py *= 1.9;
             }
           }
 
@@ -185,6 +182,7 @@ export function TaxonomyUniverse() {
               x={px}
               y={py}
               size={dotSize}
+              depth={depth}
               isFocused={isFocused}
               isHovered={hoveredId === domain.id}
               isFaded={isFaded}
@@ -201,7 +199,7 @@ export function TaxonomyUniverse() {
             <DomainFocus
               key={selected.id}
               onBack={() => handleSelect(null)}
-              topOffset={(dotSize * 2.2) / 2 + 18}
+              topOffset={(dotSize * 2.6) / 2 + 20}
             />
           )}
         </AnimatePresence>
@@ -256,7 +254,7 @@ function MobileDomainList({
                 className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
               >
                 <span aria-hidden="true" className="relative size-7 shrink-0">
-                  <PlanetOrb />
+                  <PlanetOrb domainId={domain.id} emphasized={isOpen} />
                 </span>
                 <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-zinc-700 dark:text-zinc-200">
                   {domain.title}

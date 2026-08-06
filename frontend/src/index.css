@@ -133,6 +133,58 @@
     transform: translateY(4px);
   }
 }
+@keyframes spin-rev {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes nodepulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+@keyframes wave {
+  0% {
+    transform: scale(0.06);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+}
+@keyframes orbit {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  svg[data-orb] * {
+    animation: none !important;
+  }
+}
 
 @layer utilities {
   .hero-glow {
