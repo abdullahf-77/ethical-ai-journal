@@ -1,6 +1,6 @@
 // Purely decorative "knowledge universe" backdrop for the Taxonomy Hub page.
 // Sits behind the heading and the domain orbit as three loose depth layers —
-// far (grid + huge static arcs + tiny faint papers), mid (papers + particle
+// far (grid + huge static arcs + small papers), mid (papers + particle
 // dots), near (a few larger papers close to the edges). Nothing here is
 // interactive: pointer-events are disabled throughout, and every animated
 // element lives under [data-space-bg], which index.css silences entirely
@@ -8,8 +8,8 @@
 //
 // Deliberately framework-light — same raw SVG/CSS-animation approach as
 // HeroArt.tsx, just with CSS custom properties (--dx/--dy) driving the
-// `drift` keyframe so each paper can have its own wander distance without a
-// bespoke keyframe per element.
+// `paper-drift-bg` keyframe so each paper can have its own wander distance
+// without a bespoke keyframe per element.
 
 import type { CSSProperties } from "react";
 
@@ -51,34 +51,49 @@ interface OrbitSpec {
 // paper is drawn at one scale, so wildly different sizes here were a large part
 // of why these read as a separate layer; depth is now carried mostly by opacity
 // (as the hero does with its faded cluster docs) and only gently by size.
+// Positions/sizes/rotations are hand-nudged off any exact left/right or
+// top/bottom mirroring (a mirrored pair reads as a placed decoration; an
+// uneven scatter reads as organic) while keeping each paper anchored near
+// where its mirrored counterpart used to be, so the overall balance across
+// the page is unchanged.
+//
+// Per-paper `opacity` is anchored to the hero's own three ink strengths
+// (HeroArt.tsx: RidingDoc ~1, ClusterDoc faded=false 0.95, ClusterDoc
+// faded=true 0.72) rather than the arbitrary, much fainter 0.15-0.5 range
+// this used before — that gap in strength was the main reason these papers
+// read as a washed-out background layer instead of the hero's own paper
+// motif. far = hero's faded tier, mid/near = hero's full tier, with size
+// still doing most of the depth work between the three layers.
 const farPapers: PaperSpec[] = [
-  { x: 7, y: 7, size: 15, rotate: -10, opacity: 0.2, dur: 26, delay: 0, dx: 6, dy: -8, lines: 3 },
-  { x: 92, y: 6, size: 16, rotate: 12, opacity: 0.18, dur: 30, delay: 3, dx: -7, dy: 9, lines: 2, hide: "md" },
-  { x: 4, y: 89, size: 15, rotate: 8, opacity: 0.19, dur: 28, delay: 6, dx: 8, dy: 6, lines: 3, hide: "md" },
-  { x: 95, y: 92, size: 14, rotate: -14, opacity: 0.17, dur: 24, delay: 2, dx: -6, dy: -7, lines: 2 },
-  { x: 74, y: 3, size: 14, rotate: 6, opacity: 0.16, dur: 32, delay: 8, dx: 5, dy: 5, lines: 3, hide: "md" },
+  { x: 9, y: 8, size: 14, rotate: -13, opacity: 0.75, dur: 27, delay: 0, dx: 6, dy: -7, lines: 3 },
+  { x: 90, y: 4, size: 17, rotate: 8, opacity: 0.69, dur: 33, delay: 4.5, dx: -8, dy: 9, lines: 2, hide: "md" },
+  { x: 2, y: 86, size: 13, rotate: 15, opacity: 0.73, dur: 24, delay: 7, dx: 7, dy: 6, lines: 3, hide: "md" },
+  { x: 97, y: 95, size: 16, rotate: -6, opacity: 0.68, dur: 29, delay: 2, dx: -5, dy: -8, lines: 2 },
+  { x: 68, y: 2, size: 13, rotate: 5, opacity: 0.71, dur: 35, delay: 9, dx: 6, dy: 5, lines: 3, hide: "md" },
+  { x: 38, y: 96, size: 15, rotate: -9, opacity: 0.67, dur: 26, delay: 5.5, dx: 5, dy: -6, lines: 2, hide: "md" },
 ];
 
-// Mid layer: the bulk of the papers — still light and ambient, not objects
-// that compete with the planets for attention.
+// Mid layer: the bulk of the papers — full hero strength, same as near;
+// depth from here down reads through size and count, not fade.
 const midPapers: PaperSpec[] = [
-  { x: 10, y: 23, size: 20, rotate: -8, opacity: 0.34, dur: 22, delay: 1, dx: 10, dy: -10, lines: 3 },
-  { x: 88, y: 19, size: 21, rotate: 10, opacity: 0.32, dur: 24, delay: 4, dx: -9, dy: 8, lines: 3 },
-  { x: 6, y: 55, size: 22, rotate: 6, opacity: 0.36, dur: 20, delay: 2, dx: 8, dy: 9, lines: 2 },
-  { x: 93, y: 58, size: 21, rotate: -11, opacity: 0.34, dur: 26, delay: 5, dx: -8, dy: -6, lines: 3, hide: "sm" },
-  { x: 14, y: 83, size: 20, rotate: 9, opacity: 0.3, dur: 23, delay: 3, dx: 7, dy: -8, lines: 3 },
-  { x: 85, y: 86, size: 20, rotate: -6, opacity: 0.32, dur: 25, delay: 7, dx: -7, dy: 7, lines: 2, hide: "sm" },
-  { x: 79, y: 6, size: 19, rotate: 13, opacity: 0.26, dur: 21, delay: 1.5, dx: 6, dy: 6, lines: 3, hide: "md" },
+  { x: 11, y: 21, size: 21, rotate: -9, opacity: 0.92, dur: 22, delay: 1, dx: 10, dy: -10, lines: 3 },
+  { x: 86, y: 16, size: 19, rotate: 11, opacity: 0.88, dur: 25, delay: 4, dx: -9, dy: 8, lines: 3 },
+  { x: 5, y: 52, size: 23, rotate: 7, opacity: 0.95, dur: 20, delay: 2, dx: 8, dy: 9, lines: 2 },
+  { x: 94, y: 61, size: 20, rotate: -13, opacity: 0.9, dur: 27, delay: 5, dx: -8, dy: -6, lines: 3, hide: "sm" },
+  { x: 16, y: 80, size: 19, rotate: 10, opacity: 0.86, dur: 23, delay: 3, dx: 7, dy: -8, lines: 3 },
+  { x: 83, y: 89, size: 22, rotate: -7, opacity: 0.93, dur: 25, delay: 7, dx: -7, dy: 7, lines: 2, hide: "sm" },
+  { x: 76, y: 8, size: 18, rotate: 14, opacity: 0.85, dur: 21, delay: 1.5, dx: 6, dy: 6, lines: 3, hide: "md" },
+  { x: 20, y: 5, size: 19, rotate: -5, opacity: 0.87, dur: 24, delay: 6.5, dx: 6, dy: -7, lines: 2, hide: "md" },
 ];
 
-// Near layer: the largest papers here, but still modest — light, ambient
-// research paper silhouettes, not prominent foreground objects. A couple are
-// deliberately clipped by the viewport edge (x below 0 or above 100).
+// Near layer: the largest papers here, closest to the hero's RidingDoc
+// strength. A couple are deliberately clipped by the viewport edge (x below
+// 0 or above 100).
 const nearPapers: PaperSpec[] = [
-  { x: -1, y: 39, size: 27, rotate: -9, opacity: 0.5, dur: 28, delay: 0, dx: 10, dy: -9, lines: 3 },
-  { x: 99, y: 43, size: 26, rotate: 8, opacity: 0.46, dur: 30, delay: 3, dx: -9, dy: 8, lines: 3 },
-  { x: -2, y: 71, size: 25, rotate: 7, opacity: 0.42, dur: 26, delay: 6, dx: 9, dy: 7, lines: 2, hide: "sm" },
-  { x: 100, y: 76, size: 27, rotate: -12, opacity: 0.48, dur: 32, delay: 2, dx: -10, dy: -8, lines: 3, hide: "sm" },
+  { x: -2, y: 35, size: 26, rotate: -11, opacity: 1, dur: 29, delay: 0, dx: 10, dy: -9, lines: 3 },
+  { x: 99, y: 47, size: 28, rotate: 7, opacity: 0.96, dur: 31, delay: 3, dx: -9, dy: 8, lines: 3 },
+  { x: -1, y: 74, size: 24, rotate: 9, opacity: 0.94, dur: 27, delay: 6, dx: 9, dy: 7, lines: 2, hide: "sm" },
+  { x: 100, y: 68, size: 27, rotate: -14, opacity: 0.98, dur: 33, delay: 2, dx: -10, dy: -8, lines: 3, hide: "sm" },
 ];
 
 // A calm "knowledge-universe" star field: a stratified grid of cells, each
@@ -195,8 +210,10 @@ function Paper({ spec }: { spec: PaperSpec }) {
     // The fade multiplies with the inner div's fixed opacity below (nested
     // opacity is visually multiplicative), so this fades 0 -> spec.opacity
     // rather than needing to know that value itself. Reuses spec.delay so
-    // papers still fade in staggered rather than all at once.
-    animation: `fade-in-paper 0.5s ease-out ${spec.delay}s both, drift ${spec.dur}s ease-in-out ${spec.delay}s infinite`,
+    // papers still fade in staggered rather than all at once. `paper-drift-bg`
+    // (not the shared `drift`) so this component's timing can move
+    // independently of DomainPlanet/PaperAttractionField, which also drift.
+    animation: `fade-in-paper 0.5s ease-out ${spec.delay}s both, paper-drift-bg ${spec.dur}s ease-in-out ${spec.delay}s infinite`,
   };
   return (
     <div className={`absolute ${hideClass(spec.hide)}`} style={outerStyle}>
@@ -236,11 +253,14 @@ export function TaxonomySpaceBackground() {
     // a sticker layer over the page rather than part of the hero's world.
     // paper-art-veil softens the outer edge so papers drift out of frame
     // instead of being sliced by the container, the same trick the hero uses
-    // on its fan cluster.
+    // on its fan cluster. opacity-85 matches the hero's own art layer, which
+    // is dimmed the same amount — per-paper opacity below is set to the
+    // hero's own RidingDoc/ClusterDoc values (1 / 0.95 / 0.55) so the two
+    // scenes read as the same strength of ink, not a fainter background copy.
     <div
       data-space-bg=""
       aria-hidden="true"
-      className="paper-art paper-art-veil pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      className="paper-art paper-art-veil pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-85"
     >
       {/* layer 1 (far): grid + huge static orbital rings */}
       <div className="bg-grid absolute inset-0 opacity-70" />

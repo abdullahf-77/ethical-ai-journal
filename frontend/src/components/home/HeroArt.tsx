@@ -87,6 +87,24 @@ const floatDots = [
 // Journey docs travel the trunk, then branches 1/3/5, into the first cluster slot.
 const journeyBranchIndexes = [0, 2, 4];
 
+// 5 slots per branch (was 3) — a fuller-looking archive at each branch end.
+// The mask on the second HeroArt layer already fades anything past ~70% of
+// its radius, so the extra, farther-out slots recede on their own rather
+// than needing to be dimmed by hand.
+const clusterSlots = [0, 1, 2, 3, 4];
+
+// Small independent wander per static cluster doc, cycled across slots/
+// branches by index so neighbouring docs don't drift in lockstep — see the
+// `float` prop on ClusterDoc for how this composes with the outer SVG's own
+// shared 34s bob.
+const clusterFloat: ClusterFloat[] = [
+  { dx: 3, dy: -4, dur: 17, delay: 0 },
+  { dx: -3, dy: 4, dur: 21, delay: 1.4 },
+  { dx: 4, dy: 3, dur: 19, delay: 2.6 },
+  { dx: -4, dy: -3, dur: 23, delay: 0.8 },
+  { dx: 3, dy: 4, dur: 20, delay: 3.2 },
+];
+
 function RidingDoc() {
   return (
     <>
@@ -98,10 +116,33 @@ function RidingDoc() {
   );
 }
 
-function ClusterDoc({ x, y, faded }: { x?: number; y?: number; faded: boolean }) {
-  const rectOpacity = faded ? 0.55 : 0.95;
-  const line1 = faded ? 0.43 : 0.74;
-  const line2 = faded ? 0.34 : 0.59;
+interface ClusterFloat {
+  dx: number;
+  dy: number;
+  dur: number;
+  delay: number;
+}
+
+function ClusterDoc({
+  x,
+  y,
+  faded,
+  float,
+}: {
+  x?: number;
+  y?: number;
+  faded: boolean;
+  /** Small independent wander for the static cluster docs, on top of
+   * whatever positioning transform is passed via x/y — see the comment
+   * where these are laid out below for why. */
+  float?: ClusterFloat;
+}) {
+  // faded was 0.55/0.43/0.34 — visibly dimmer than the hero's own non-faded
+  // tier, which read as weak/washed out once these clusters became the
+  // reference other decorative papers in the product are matched against.
+  const rectOpacity = faded ? 0.72 : 0.95;
+  const line1 = faded ? 0.56 : 0.74;
+  const line2 = faded ? 0.46 : 0.59;
   const doc = (
     <>
       <rect
@@ -121,7 +162,27 @@ function ClusterDoc({ x, y, faded }: { x?: number; y?: number; faded: boolean })
     </>
   );
   if (x === undefined || y === undefined) return doc;
-  return <g transform={`translate(${x} ${y})`}>{doc}</g>;
+  if (!float) return <g transform={`translate(${x} ${y})`}>{doc}</g>;
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      {/* Nested so the outer translate (fixed slot position) and the inner
+          drift (independent wander) don't fight over one `transform`. Reuses
+          the shared `drift` keyframe — same one the Taxonomy Hub's
+          background papers use — so a static cluster no longer reads as one
+          rigid block bobbing together (that's still the outer SVG's own
+          slow `float`); each doc now also wanders a little on its own. */}
+      <g
+        style={{
+          ["--dx" as string]: `${float.dx}px`,
+          ["--dy" as string]: `${float.dy}px`,
+          transformBox: "fill-box",
+          animation: `drift ${float.dur}s ease-in-out ${float.delay}s infinite`,
+        }}
+      >
+        {doc}
+      </g>
+    </g>
+  );
 }
 
 export function HeroArt() {
@@ -245,13 +306,14 @@ export function HeroArt() {
               animation: "ride 9s linear infinite",
             }}
           />
-          {fanBranches.map((b) =>
-            [0, 1, 2].map((j) => (
+          {fanBranches.map((b, i) =>
+            clusterSlots.map((j) => (
               <ClusterDoc
                 key={`${b.end[1]}-${j}`}
                 x={b.end[0] + 26 + 36 * j}
                 y={b.end[1]}
                 faded
+                float={clusterFloat[(i + j) % clusterFloat.length]}
               />
             )),
           )}

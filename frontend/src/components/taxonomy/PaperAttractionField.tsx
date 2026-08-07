@@ -294,10 +294,20 @@ export function PaperAttractionField({
         // A fresh spawn is far from any planet, so `approach` alone starts
         // at ~1 — full opacity the instant a paper respawns, which reads as
         // popping into existence rather than drifting in. Ramping a second
-        // multiplier over just the first 8% of the journey (well under a
-        // second, even on the longest 12s flights) gives it a quick, smooth
+        // multiplier in over the start of the flight gives it a quick, smooth
         // fade-in without slowing the respawn down.
-        const spawnFade = clamp01(t / 0.08);
+        //
+        // Keyed to distance travelled from the spawn point, not to a fixed
+        // fraction of `duration`: spawn points sit only `margin` (26px, see
+        // randomEdgePoint) outside the clip box, so on a short/slow leg a
+        // fixed time fraction could reach full opacity before the paper has
+        // actually crossed that 26px gap — rendering a few frames of the
+        // shape sliced by the overflow-hidden edge (half in, half clipped)
+        // before it "completes". Fading over a fixed pixel distance instead
+        // guarantees the paper is well clear of the clip edge by the time
+        // it's opaque, regardless of how fast that particular leg is.
+        const travelled = Math.hypot(raw.x - p.spawnX, raw.y - p.spawnY);
+        const spawnFade = clamp01(travelled / 48);
         const scaleMul = 0.32 + 0.68 * approach;
         const opacityMul = approach * spawnFade;
 

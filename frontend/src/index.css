@@ -210,6 +210,24 @@
     transform: translate(var(--dx, 6px), var(--dy, -8px));
   }
 }
+/* Same idea as `drift` above, scoped to the Taxonomy Hub's ambient
+   background papers only (not the shared one, which DomainPlanet and
+   PaperAttractionField also rely on). A straight 0/50/100 back-and-forth
+   reads as a metronome once the papers are fully opaque; an uneven
+   intermediate stop breaks that even ping-pong into a wander that still
+   returns cleanly to (0,0) for a seamless loop. */
+@keyframes paper-drift-bg {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  38% {
+    transform: translate(calc(var(--dx, 6px) * 0.55), calc(var(--dy, -8px) * 0.85));
+  }
+  72% {
+    transform: translate(var(--dx, 6px), var(--dy, -8px));
+  }
+}
 /* Quick, one-shot fade-in for paper glyphs — Taxonomy Hub's background
    papers on first mount, and PaperAttractionField's papers each time one
    respawns. Without this they simply appear at full opacity, which reads as
