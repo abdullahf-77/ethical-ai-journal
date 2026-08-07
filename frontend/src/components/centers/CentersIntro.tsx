@@ -47,7 +47,10 @@ export function CentersIntro({ stage, reducedMotion }: { stage: IntroStage; redu
         transition={{ duration: reducedMotion ? 0.2 : 0.9, ease: EASE }}
         style={{ width: 260, height: 260 }}
       >
-        <PlanetOrb />
+        {/* domainId is purely decorative here — the centers intro isn't tied
+            to any one taxonomy domain, so it reuses the first domain's
+            geometry (id 1) just for the shared wireframe-planet artwork. */}
+        <PlanetOrb domainId={1} emphasized />
       </motion.div>
 
       {PAPERS.map((p) => (
