@@ -42,6 +42,16 @@ const RING_HEIGHT_RATIO = 0.3;
  * the middle. */
 const FOCUS_RING_SCALE = 1.5;
 
+/** How large the focused orb grows, as a multiple of its normal size.
+ * Brought down from 2.6 — at that size the focused circle dwarfed the rest
+ * of the scene once the container was made tall enough to actually show all
+ * of it (previously it was large enough to overflow the short container and
+ * get visually clipped, which is why it hadn't read as oversized before).
+ * 1.9 still clears the longest title + description comfortably (see the
+ * scale-invariant note in DomainPlanet) while reading as far less
+ * dominant. */
+const FOCUS_SCALE = 1.9;
+
 /** The SVG's viewBox must keep the SAME aspect ratio as the container
  * (see the aspect-[16/7.2] class below), otherwise preserveAspectRatio
  * letterboxes the drawing and the dashed line stops matching the orbit the
@@ -98,14 +108,19 @@ function useViewport(): Viewport {
   return viewport;
 }
 
-/** A slow, pausable clock in elapsed seconds. Throttled to ~30fps — the
- * orbit and papers both move fast enough now that the previous 15fps tick
- * would read as a visible stutter rather than as smooth drift. */
+/** A slow, pausable clock in elapsed seconds. Ticks every animation frame
+ * (was throttled to 30fps) — the planets' own long eased framer-motion
+ * tween hid the coarser sampling well, but the papers in
+ * PaperAttractionField interpolate with a much shorter, near-linear CSS
+ * transition to preserve their constant-speed motion, and at 30fps that
+ * transition window was wide enough relative to the gap between samples to
+ * read as a visible stutter rather than smooth drift. Full frame-rate
+ * sampling is cheap (a handful of trig calls for 10 planets + 30 papers)
+ * and removes the stutter without changing either's motion model. */
 function useOrbitClock(paused: boolean) {
   const [elapsed, setElapsed] = useState(0);
   const rafRef = useRef<number | null>(null);
   const lastRef = useRef<number | null>(null);
-  const accRef = useRef(0);
 
   useEffect(() => {
     if (paused) {
@@ -116,11 +131,7 @@ function useOrbitClock(paused: boolean) {
       if (lastRef.current == null) lastRef.current = ts;
       const dt = (ts - lastRef.current) / 1000;
       lastRef.current = ts;
-      accRef.current += dt;
-      if (accRef.current >= 1 / 30) {
-        setElapsed((e) => e + accRef.current);
-        accRef.current = 0;
-      }
+      setElapsed((e) => e + dt);
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
@@ -206,11 +217,11 @@ export function TaxonomyUniverse() {
 
   // Once "Enter" is clicked the focused planet moves from dead center to
   // this top-right anchor, clearing room on the left for the paper list.
-  // Its on-screen radius doesn't change (DomainPlanet's focus scale is a
-  // constant 2.6 in both states — see the isFocused branch below), so the
-  // anchor only needs to keep that same-sized orb clear of the container's
-  // top and right edges.
-  const focusedRadius = (dotSize * 2.6) / 2;
+  // Its on-screen radius doesn't change (DomainPlanet's focus scale is the
+  // same FOCUS_SCALE in both states — see the isFocused branch below), so
+  // the anchor only needs to keep that same-sized orb clear of the
+  // container's top and right edges.
+  const focusedRadius = (dotSize * FOCUS_SCALE) / 2;
   const EDGE_PAD = 20;
   const topRightX = containerWidth / 2 - focusedRadius - EDGE_PAD;
   const topRightY = -(containerHeight / 2 - focusedRadius - EDGE_PAD);
@@ -347,6 +358,7 @@ export function TaxonomyUniverse() {
                 isHovered={hoveredId === domain.id}
                 isFaded={isFaded}
                 reducedMotion={reducedMotion}
+                focusScale={FOCUS_SCALE}
                 onHoverStart={() => selectedId === null && setHoveredId(domain.id)}
                 onHoverEnd={() => setHoveredId((cur) => (cur === domain.id ? null : cur))}
                 onSelect={() => handleSelect(isFocused ? null : domain.id)}

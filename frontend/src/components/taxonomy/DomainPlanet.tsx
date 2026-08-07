@@ -20,6 +20,11 @@ interface DomainPlanetProps {
   isHovered: boolean;
   isFaded: boolean;
   reducedMotion: boolean;
+  /** How large the focused orb grows, as a multiple of `size`. Passed in
+   * (rather than hardcoded here) so TaxonomyUniverse's anchor/backdrop math
+   * — which needs this same number to size the space it clears for the
+   * focused orb — can never drift out of sync with it. */
+  focusScale: number;
   onHoverStart: () => void;
   onHoverEnd: () => void;
   onSelect: () => void;
@@ -35,6 +40,7 @@ export function DomainPlanet({
   isHovered,
   isFaded,
   reducedMotion,
+  focusScale,
   onHoverStart,
   onHoverEnd,
   onSelect,
@@ -54,11 +60,13 @@ export function DomainPlanet({
   // fully present and a (now subtler) front-vs-back cue survives.
   const depthOpacity = 0.7 + 0.3 * Math.pow(depth, 1.25); // ~0.7 (far) .. 1 (near)
   const groupOpacity = isFocused ? 1 : isFaded ? depthOpacity * 0.34 : depthOpacity;
-  // 2.6 is the focus scale that fits the longest title together with its
-  // description inside the circle: solving text height against the chord at
-  // a 74%-of-diameter box needs a focused diameter around 265px, which 2.6
-  // clears comfortably at the orb sizes this renders at.
-  const groupScale = isFocused ? 2.6 : isFaded ? depthScale * 0.8 : depthScale;
+  // The text box (size * 0.74) and both font sizes (size * 0.071 / 0.046)
+  // are all fractions of the same `size`, and the whole button — box, text,
+  // and all — is what `focusScale` transforms, so the fit between text and
+  // circle is scale-invariant: whatever focusScale TaxonomyUniverse passes
+  // in, the longest title + description already fits, it just renders
+  // bigger or smaller on screen.
+  const groupScale = isFocused ? focusScale : isFaded ? depthScale * 0.8 : depthScale;
   // Wider spread (10-100) than the old 10-40 range so ten planets at
   // continuously varying depth still resolve into a clean front-to-back
   // stack; hover/focus tiers are bumped up to match.

@@ -309,12 +309,12 @@ export function PaperAttractionField({
               opacity: p.opacityBase * opacityMul,
               transform: `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${p.rotate}deg) scale(${scaleMul.toFixed(3)})`,
               // Interpolates between position updates. Kept just above the
-              // shared clock's tick interval (~33ms at 30fps) — much longer
-              // and the paper visibly trails its own path instead of simply
-              // being smoothed between ticks.
+              // shared clock's tick interval (now full frame-rate, ~16ms) —
+              // much longer and the paper visibly trails its own path
+              // instead of simply being smoothed between ticks.
               transition: justRespawned.has(p.id)
                 ? "none"
-                : "transform 40ms linear, opacity 200ms linear",
+                : "transform 20ms linear, opacity 120ms linear",
               willChange: "transform, opacity",
             }}
           >
