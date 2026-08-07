@@ -26,7 +26,7 @@ type Viewport = "mobile" | "tablet" | "desktop";
  * arc length rather than equal angle steps — see ../../lib/orbitMath — so
  * the gap between neighbours stays constant even though the ellipse is
  * strongly flattened. */
-const ORBIT_PERIOD_SECONDS = 140;
+const ORBIT_PERIOD_SECONDS = 65;
 /** Ellipse half-width as a fraction of the container's half-width. Brought
  * in from 0.97 — the whole ring reads as too large/dominant at full width;
  * this shrinks the ring itself (both rx and the ry derived from it) while
@@ -224,7 +224,19 @@ export function TaxonomyUniverse() {
           the planet size, all of which derive from the container's WIDTH. */}
       <div
         ref={containerRef}
-        className="relative mx-auto mt-1 aspect-[16/7.2] w-full max-w-[820px] lg:max-w-[1180px]"
+        // The flattened 16/7.2 ring is deliberately short — but that leaves
+        // almost no vertical room for the focused planet (2.6x scale) to
+        // actually travel toward a "top-right" corner once entered: with the
+        // ring's real proportions, half the container's height barely
+        // exceeds the planet's own radius, so the old topRightY came out to
+        // ~1px and the planet just sat in the middle, on top of the paper
+        // panel. Only the entered state gets a taller box (orbit math itself
+        // is driven by width, not height, so this doesn't touch the ring's
+        // shape or spacing at all — see rx/ry below) purely to give the
+        // top-right anchor somewhere real to land.
+        className={`relative mx-auto mt-1 w-full max-w-[820px] transition-[aspect-ratio] duration-300 lg:max-w-[1180px] ${
+          entered ? "aspect-[16/12]" : "aspect-[16/7.2]"
+        }`}
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
@@ -358,15 +370,29 @@ export function TaxonomyUniverse() {
         })()}
 
         <AnimatePresence>
-          {selected && (
-            <DomainFocus
-              key={selected.id}
-              x={entered ? topRightX : 0}
-              y={entered ? topRightY : 0}
-              radius={focusedRadius}
-              entered={entered}
-              onEnter={handleEnter}
-              onBack={() => handleSelect(null)}
+          {selected && !entered && (
+            <DomainFocus key={selected.id} radius={focusedRadius} onEnter={handleEnter} onBack={() => handleSelect(null)} />
+          )}
+        </AnimatePresence>
+
+        {/* Papers view: no button controls — clicking anywhere in the
+            background (this backdrop) exits back to the universe. It sits
+            above every non-focused planet (max z-index 100) and the drawn
+            orbit line, but below the focused planet (200) and the paper
+            panel (105 < 110 here, so raised to clear it too), so those stay
+            directly clickable/scrollable as normal. */}
+        <AnimatePresence>
+          {selected && entered && (
+            <motion.button
+              key="exit-backdrop"
+              type="button"
+              aria-label="Exit principle view"
+              onClick={() => handleSelect(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: EASE }}
+              className="absolute inset-0 z-[104] cursor-pointer"
             />
           )}
         </AnimatePresence>

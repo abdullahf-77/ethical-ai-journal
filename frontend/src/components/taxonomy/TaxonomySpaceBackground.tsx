@@ -145,9 +145,23 @@ function hideClass(hide?: Hide) {
 /** Exported so PaperAttractionField.tsx can draw the same glyph at
  * planet-relative sizes without duplicating the SVG. */
 export function PaperGlyph({ lines }: { lines: 2 | 3 }) {
+  // These render as small as 8-9px on the far layer, and 1.15 viewBox units
+  // of stroke at that size works out to well under 1 real pixel — thin
+  // enough that browsers anti-alias the rounded corner unevenly, which reads
+  // as a stray diagonal fleck jutting off the shape. A heavier stroke and a
+  // tighter corner radius keep every edge (rounded corner included) a solid,
+  // predictable run of pixels at any size this actually renders at, and
+  // geometricPrecision avoids the crispEdges-style jaggies a rotated shape
+  // would otherwise get.
   return (
-    <svg viewBox="0 0 26 34" className="h-full w-full" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="24" height="32" rx="2.5" stroke="currentColor" strokeWidth="1.15" />
+    <svg
+      viewBox="0 0 26 34"
+      className="h-full w-full"
+      fill="none"
+      aria-hidden="true"
+      shapeRendering="geometricPrecision"
+    >
+      <rect x="1.25" y="1.25" width="23.5" height="31.5" rx="1.5" stroke="currentColor" strokeWidth="2.2" />
       <rect x="6" y="9" width="14" height="1.3" rx="0.65" fill="currentColor" />
       <rect x="6" y="14.5" width="10" height="1.3" rx="0.65" fill="currentColor" />
       {lines === 3 && <rect x="6" y="20" width="12" height="1.3" rx="0.65" fill="currentColor" />}

@@ -53,10 +53,6 @@ export function DomainPlanet({
   // side; 0.7 keeps back planets clearly legible while the near side stays
   // fully present and a (now subtler) front-vs-back cue survives.
   const depthOpacity = 0.7 + 0.3 * Math.pow(depth, 1.25); // ~0.7 (far) .. 1 (near)
-  // A faint depth-of-field blur on the far side reads as "sharper up close" —
-  // cleared entirely on hover/focus so inspecting a distant planet is never
-  // hampered by its own orbital depth.
-  const depthBlur = (1 - depth) * 1.3;
   const groupOpacity = isFocused ? 1 : isFaded ? depthOpacity * 0.34 : depthOpacity;
   // 2.6 is the focus scale that fits the longest title together with its
   // description inside the circle: solving text height against the chord at
@@ -74,11 +70,7 @@ export function DomainPlanet({
         className="relative"
         animate={{ x, y, opacity: groupOpacity, scale: groupScale }}
         transition={{ duration: reducedMotion ? 0.25 : 0.85, ease: EASE }}
-        style={{
-          willChange: "transform",
-          filter: isFocused || isHovered || reducedMotion ? "none" : `blur(${depthBlur.toFixed(2)}px)`,
-          transition: "filter 0.4s ease",
-        }}
+        style={{ willChange: "transform" }}
       >
         {/* The orb is centered on the orbit point itself. */}
         <motion.button
