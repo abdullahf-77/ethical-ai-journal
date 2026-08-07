@@ -177,6 +177,37 @@ export function TaxonomyUniverse() {
     return () => ro.disconnect();
   }, []);
 
+  // Bring the focused planet into view instead of leaving it wherever the
+  // page happened to be scrolled — both when a planet is first selected and
+  // again once "Enter" moves it to the top-right, since the container grows
+  // taller for both (see the aspect-ratio class below) and the interesting
+  // part can otherwise land below the fold. Delayed to just past the
+  // container's own 300ms grow transition, so the scroll lands on the
+  // final (tall) layout rather than the short one mid-grow.
+  //
+  // Scrolled to the TOP of the container (with a little breathing room)
+  // rather than centered: at the grown height this box can be taller than
+  // the viewport itself on shorter screens, and in both focused stages the
+  // content that actually matters — the enlarged planet in the center
+  // stage, the top-right planet and the paper list in the entered stage —
+  // all sits in the upper portion of the box. Centering would split that
+  // overflow evenly and risk cropping the top just as often as the bottom;
+  // anchoring the top guarantees the important part is visible and leaves
+  // any overflow to the mostly-empty space below.
+  useEffect(() => {
+    if (selectedId === null) return;
+    const id = window.setTimeout(
+      () => {
+        const el = containerRef.current;
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.scrollY - 24;
+        window.scrollTo({ top, behavior: reducedMotion ? "auto" : "smooth" });
+      },
+      reducedMotion ? 0 : 320,
+    );
+    return () => window.clearTimeout(id);
+  }, [selectedId, entered, reducedMotion]);
+
   const handleSelect = (id: number | null) => {
     setSelectedId(id);
     setHoveredId(null);
