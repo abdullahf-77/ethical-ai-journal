@@ -46,34 +46,39 @@ interface OrbitSpec {
 
 // Far layer: barely-there, mostly hidden below md to keep small screens calm.
 // Sized down so these read as tiny, distant specks rather than objects.
+// Sizes across all three layers are kept close to the hero's constant 26x34
+// document rather than spanning 8px to 30px as they used to. In the hero every
+// paper is drawn at one scale, so wildly different sizes here were a large part
+// of why these read as a separate layer; depth is now carried mostly by opacity
+// (as the hero does with its faded cluster docs) and only gently by size.
 const farPapers: PaperSpec[] = [
-  { x: 7, y: 7, size: 9, rotate: -10, opacity: 0.12, dur: 26, delay: 0, dx: 6, dy: -8, lines: 2 },
-  { x: 92, y: 6, size: 10, rotate: 12, opacity: 0.1, dur: 30, delay: 3, dx: -7, dy: 9, lines: 2, hide: "md" },
-  { x: 4, y: 89, size: 9.5, rotate: 8, opacity: 0.11, dur: 28, delay: 6, dx: 8, dy: 6, lines: 3, hide: "md" },
-  { x: 95, y: 92, size: 8.5, rotate: -14, opacity: 0.09, dur: 24, delay: 2, dx: -6, dy: -7, lines: 2 },
-  { x: 74, y: 3, size: 8, rotate: 6, opacity: 0.08, dur: 32, delay: 8, dx: 5, dy: 5, lines: 2, hide: "md" },
+  { x: 7, y: 7, size: 15, rotate: -10, opacity: 0.2, dur: 26, delay: 0, dx: 6, dy: -8, lines: 3 },
+  { x: 92, y: 6, size: 16, rotate: 12, opacity: 0.18, dur: 30, delay: 3, dx: -7, dy: 9, lines: 2, hide: "md" },
+  { x: 4, y: 89, size: 15, rotate: 8, opacity: 0.19, dur: 28, delay: 6, dx: 8, dy: 6, lines: 3, hide: "md" },
+  { x: 95, y: 92, size: 14, rotate: -14, opacity: 0.17, dur: 24, delay: 2, dx: -6, dy: -7, lines: 2 },
+  { x: 74, y: 3, size: 14, rotate: 6, opacity: 0.16, dur: 32, delay: 8, dx: 5, dy: 5, lines: 3, hide: "md" },
 ];
 
 // Mid layer: the bulk of the papers — still light and ambient, not objects
 // that compete with the planets for attention.
 const midPapers: PaperSpec[] = [
-  { x: 10, y: 23, size: 16, rotate: -8, opacity: 0.26, dur: 18, delay: 1, dx: 10, dy: -10, lines: 2 },
-  { x: 88, y: 19, size: 17, rotate: 10, opacity: 0.24, dur: 20, delay: 4, dx: -9, dy: 8, lines: 3 },
-  { x: 6, y: 55, size: 18, rotate: 6, opacity: 0.28, dur: 16, delay: 2, dx: 8, dy: 9, lines: 2 },
-  { x: 93, y: 58, size: 17, rotate: -11, opacity: 0.26, dur: 22, delay: 5, dx: -8, dy: -6, lines: 2, hide: "sm" },
-  { x: 14, y: 83, size: 15, rotate: 9, opacity: 0.22, dur: 19, delay: 3, dx: 7, dy: -8, lines: 3 },
-  { x: 85, y: 86, size: 16, rotate: -6, opacity: 0.24, dur: 21, delay: 7, dx: -7, dy: 7, lines: 2, hide: "sm" },
-  { x: 79, y: 6, size: 14, rotate: 13, opacity: 0.18, dur: 17, delay: 1.5, dx: 6, dy: 6, lines: 2, hide: "md" },
+  { x: 10, y: 23, size: 20, rotate: -8, opacity: 0.34, dur: 22, delay: 1, dx: 10, dy: -10, lines: 3 },
+  { x: 88, y: 19, size: 21, rotate: 10, opacity: 0.32, dur: 24, delay: 4, dx: -9, dy: 8, lines: 3 },
+  { x: 6, y: 55, size: 22, rotate: 6, opacity: 0.36, dur: 20, delay: 2, dx: 8, dy: 9, lines: 2 },
+  { x: 93, y: 58, size: 21, rotate: -11, opacity: 0.34, dur: 26, delay: 5, dx: -8, dy: -6, lines: 3, hide: "sm" },
+  { x: 14, y: 83, size: 20, rotate: 9, opacity: 0.3, dur: 23, delay: 3, dx: 7, dy: -8, lines: 3 },
+  { x: 85, y: 86, size: 20, rotate: -6, opacity: 0.32, dur: 25, delay: 7, dx: -7, dy: 7, lines: 2, hide: "sm" },
+  { x: 79, y: 6, size: 19, rotate: 13, opacity: 0.26, dur: 21, delay: 1.5, dx: 6, dy: 6, lines: 3, hide: "md" },
 ];
 
 // Near layer: the largest papers here, but still modest — light, ambient
 // research paper silhouettes, not prominent foreground objects. A couple are
 // deliberately clipped by the viewport edge (x below 0 or above 100).
 const nearPapers: PaperSpec[] = [
-  { x: -2, y: 39, size: 30, rotate: -9, opacity: 0.38, dur: 25, delay: 0, dx: 10, dy: -9, lines: 3 },
-  { x: 100, y: 43, size: 28, rotate: 8, opacity: 0.34, dur: 27, delay: 3, dx: -9, dy: 8, lines: 2 },
-  { x: -3, y: 71, size: 26, rotate: 7, opacity: 0.3, dur: 23, delay: 6, dx: 9, dy: 7, lines: 2, hide: "sm" },
-  { x: 101, y: 76, size: 29, rotate: -12, opacity: 0.36, dur: 29, delay: 2, dx: -10, dy: -8, lines: 3, hide: "sm" },
+  { x: -1, y: 39, size: 27, rotate: -9, opacity: 0.5, dur: 28, delay: 0, dx: 10, dy: -9, lines: 3 },
+  { x: 99, y: 43, size: 26, rotate: 8, opacity: 0.46, dur: 30, delay: 3, dx: -9, dy: 8, lines: 3 },
+  { x: -2, y: 71, size: 25, rotate: 7, opacity: 0.42, dur: 26, delay: 6, dx: 9, dy: 7, lines: 2, hide: "sm" },
+  { x: 100, y: 76, size: 27, rotate: -12, opacity: 0.48, dur: 32, delay: 2, dx: -10, dy: -8, lines: 3, hide: "sm" },
 ];
 
 // A calm "knowledge-universe" star field: a stratified grid of cells, each
@@ -153,10 +158,28 @@ function hideClass(hide?: Hide) {
 export function PaperGlyph({ lines }: { lines: 2 | 3 }) {
   return (
     <svg viewBox="0 0 26 34" className="h-full w-full" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="24" height="32" rx="3" fill="var(--art-fill)" stroke="currentColor" strokeWidth="1.3" />
-      <rect x="6" y="9" width="14" height="1.6" rx="0.8" fill="currentColor" opacity="0.75" />
-      <rect x="6" y="14.5" width="10" height="1.6" rx="0.8" fill="currentColor" opacity="0.6" />
-      {lines === 3 && <rect x="6" y="20" width="12" height="1.6" rx="0.8" fill="currentColor" opacity="0.6" />}
+      {/* Geometry, radius, stroke weight and line opacities are copied from
+          HeroArt's RidingDoc/ClusterDoc so the two read as the same object.
+          vectorEffect="non-scaling-stroke" is the piece that actually makes
+          them match on screen: this glyph is drawn at anywhere from ~14px to
+          ~30px wide, and without it the 1.3-unit stroke scaled with the box —
+          rendering as a hairline sub-pixel edge on the small papers and a
+          heavy outline on the large ones. Pinning the stroke to 1.3 device
+          pixels reproduces the hero, where every doc is drawn at one size. */}
+      <rect
+        x="1"
+        y="1"
+        width="24"
+        height="32"
+        rx="3.5"
+        fill="var(--art-fill)"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        vectorEffect="non-scaling-stroke"
+      />
+      <rect x="6" y="9" width="14" height="1.6" rx="0.8" fill="currentColor" opacity="0.74" />
+      <rect x="6" y="14.5" width="10" height="1.6" rx="0.8" fill="currentColor" opacity="0.59" />
+      {lines === 3 && <rect x="6" y="20" width="12" height="1.6" rx="0.8" fill="currentColor" opacity="0.59" />}
     </svg>
   );
 }
@@ -207,10 +230,17 @@ function Orbit({ spec }: { spec: OrbitSpec }) {
 
 export function TaxonomySpaceBackground() {
   return (
+    // paper-art carries the hero's exact ink colour and --art-fill (see
+    // index.css) instead of the flat, fully-opaque icaire-700 this used
+    // before — that opacity mismatch is the main reason these papers read as
+    // a sticker layer over the page rather than part of the hero's world.
+    // paper-art-veil softens the outer edge so papers drift out of frame
+    // instead of being sliced by the container, the same trick the hero uses
+    // on its fan cluster.
     <div
       data-space-bg=""
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden text-icaire-700 dark:text-icaire-400"
+      className="paper-art paper-art-veil pointer-events-none absolute inset-0 z-0 overflow-hidden"
     >
       {/* layer 1 (far): grid + huge static orbital rings */}
       <div className="bg-grid absolute inset-0 opacity-70" />

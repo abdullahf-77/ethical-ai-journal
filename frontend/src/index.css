@@ -69,6 +69,12 @@
   html {
     scroll-behavior: smooth;
     color-scheme: light;
+    /* Reserve the scrollbar's width at all times. Without this, any change in
+       document height that crosses the "does this page scroll?" threshold adds
+       or removes the scrollbar, which changes the viewport width and re-lays
+       out everything — read on the Taxonomy Hub as a sideways twitch when
+       selecting a planet. */
+    scrollbar-gutter: stable;
   }
   html.dark {
     color-scheme: dark;
@@ -220,11 +226,79 @@
     opacity: 1;
   }
 }
+/* Tag-chip tooltip, done entirely in CSS via attr() on a pseudo-element.
+   A principle can carry 200+ papers averaging ~5 tags, so a React-state
+   tooltip meant ~1100 stateful components AND ~1100 extra tooltip nodes per
+   principle — enough to lock the tab up while mounting or swapping a list.
+   A pseudo-element costs zero React components and zero DOM nodes, so the
+   full text stays available on hover/focus for free. */
+.paper-chip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 6px;
+  z-index: 40;
+  width: max-content;
+  max-width: 260px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-zinc-200);
+  background: #fff;
+  color: var(--color-zinc-600);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 8px 20px -6px rgb(0 0 0 / 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+.paper-chip:hover::after,
+.paper-chip:focus-within::after {
+  opacity: 1;
+  visibility: visible;
+}
+.dark .paper-chip::after {
+  border-color: var(--color-zinc-700);
+  background: var(--color-zinc-900);
+  color: var(--color-zinc-300);
+}
+
+/* A principle can carry 200+ papers and the full list is rendered at once (no
+   progressive reveal), so rows opt out of rendering work while off-screen.
+   contain-intrinsic-size gives the browser a height estimate so the scrollbar
+   stays stable instead of resizing as rows are skipped. This is what keeps
+   mounting and scrolling a long list cheap. */
+.paper-row {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 58px;
+}
+
+/* Entry for a Related Research row. Transform + opacity only, so the whole
+   list settles on the compositor rather than triggering layout for each of
+   what can be a few hundred rows. */
+@keyframes paper-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   svg[data-orb] * {
     animation: none !important;
   }
   [data-space-bg] * {
+    animation: none !important;
+  }
+  .paper-row-in {
     animation: none !important;
   }
 }
@@ -242,13 +316,29 @@
   .dark .hero-veil {
     background: radial-gradient(ellipse 32% 42% at 50% 50%, rgba(0, 25, 12, 0.55), transparent 70%);
   }
-  .hero-art {
+  /* One shared treatment for every decorative paper in the product — the
+     hero's flow/fan artwork AND the Taxonomy Hub's drifting background papers
+     and planet-attraction papers. They are literally the same declaration, so
+     the two scenes can't drift apart: the taxonomy papers previously inherited
+     a flat, fully-opaque icaire-700, which is what made them read as a sticker
+     layer pasted over the page rather than objects sitting in the same world
+     as the hero's softer 60%-alpha ink. */
+  .hero-art,
+  .paper-art {
     color: rgba(2, 107, 44, 0.6);
     --art-fill: rgba(255, 255, 255, 0.95);
   }
-  .dark .hero-art {
+  .dark .hero-art,
+  .dark .paper-art {
     color: rgba(126, 204, 159, 0.6);
     --art-fill: #101a13;
+  }
+  /* Softens the outer edge of the taxonomy's decorative layer so papers drift
+     out of view instead of being sliced off by the container bounds — the hero
+     does the same thing with a radial mask on its fan cluster. */
+  .paper-art-veil {
+    -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black 72%, transparent 100%);
+    mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, black 72%, transparent 100%);
   }
   .scrollbar-thin::-webkit-scrollbar {
     height: 6px;

@@ -258,7 +258,11 @@ export function PaperAttractionField({
       className="pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-700 ease-out"
       style={{ zIndex: 3, opacity: hidden ? 0 : 1 }}
     >
-      <div className="absolute left-1/2 top-1/2 text-icaire-700 dark:text-icaire-400">
+      {/* Same shared `paper-art` ink/fill as the drifting background papers
+          and the hero's artwork (see index.css) — these papers used the same
+          flat, fully-opaque icaire-700 and so shared the "pasted-on layer"
+          problem. */}
+      <div className="paper-art absolute left-1/2 top-1/2">
         {papers.map((p) => {
         const target = planetById.get(p.targetId) ?? { x: 0, y: 0, radius: 0 };
         const t = clamp01((elapsed - p.startElapsed) / p.duration);

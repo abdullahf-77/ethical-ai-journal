@@ -1,13 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 import type { EthicalAiDomain } from "../../data/ethicalAiDomains";
 import { ethicalAiDomains } from "../../data/ethicalAiDomains";
 import { DomainPlanet } from "./DomainPlanet";
 import { PlanetOrb } from "./PlanetOrb";
 import { DomainFocus } from "./DomainFocus";
 import { PaperAttractionField } from "./PaperAttractionField";
-import { PrinciplePapersPanel } from "./PrinciplePapersPanel";
+import { PapersExplorer, PrinciplePapersPanel } from "./PrinciplePapersPanel";
 import { angleAtArc, ellipseTable } from "../../lib/orbitMath";
 import { getPapersForPrinciple } from "../../data/principlePapers";
 
@@ -53,11 +53,20 @@ const FOCUS_RING_SCALE = 1.5;
 const FOCUS_SCALE = 1.9;
 
 /** The SVG's viewBox must keep the SAME aspect ratio as the container
- * (see the aspect-[16/7.2] class below), otherwise preserveAspectRatio
+ * (see the aspect-[16/9] class below), otherwise preserveAspectRatio
  * letterboxes the drawing and the dashed line stops matching the orbit the
- * planets actually travel. Changing one means changing the other. */
+ * planets actually travel. Changing one means changing the other.
+ *
+ * This box is now a single FIXED ratio in every state. It used to grow from
+ * 16/7.2 to 16/12 the moment a planet was selected, and because the box is in
+ * normal page flow that height change relayed the whole document — everything
+ * below shifted, the page got taller, and on viewports near the threshold the
+ * window's scrollbar appeared and disappeared, which changed the viewport
+ * width and re-laid-out the scene again. That feedback loop is what read as
+ * the page "shaking" on click. 16/9 is tall enough to hold the focused orb and
+ * the expanded ring without ever resizing. */
 const VIEWBOX_W = 1600;
-const VIEWBOX_H = 720;
+const VIEWBOX_H = 900;
 
 /** How strongly planet spacing is biased toward the front of the ring.
  * 0 = perfectly even spacing all the way round; higher values open the
@@ -194,19 +203,35 @@ export function TaxonomyUniverse() {
   // overflow evenly and risk cropping the top just as often as the bottom;
   // anchoring the top guarantees the important part is visible and leaves
   // any overflow to the mostly-empty space below.
+  // Only `selectedId` is a dependency — NOT `entered`. Previously both were,
+  // so a single click-then-Enter fired two smooth scrolls a few hundred ms
+  // apart, the second interrupting the first mid-flight; combined with the
+  // container's old height animation that was a second, independent source of
+  // the "shaking" on selection. The container no longer changes size at all,
+  // so entering a principle needs no scroll correction — one scroll, on
+  // selection, is enough.
+  //
+  // It's also a no-op when the scene is already comfortably in view, so
+  // clicking a planet on an already-scrolled-to-place page doesn't nudge
+  // everything for no reason.
   useEffect(() => {
     if (selectedId === null) return;
     const id = window.setTimeout(
       () => {
         const el = containerRef.current;
         if (!el) return;
-        const top = el.getBoundingClientRect().top + window.scrollY - 24;
-        window.scrollTo({ top, behavior: reducedMotion ? "auto" : "smooth" });
+        const rect = el.getBoundingClientRect();
+        const alreadyVisible = rect.top >= -8 && rect.top <= 96;
+        if (alreadyVisible) return;
+        window.scrollTo({
+          top: rect.top + window.scrollY - 24,
+          behavior: reducedMotion ? "auto" : "smooth",
+        });
       },
-      reducedMotion ? 0 : 320,
+      reducedMotion ? 0 : 60,
     );
     return () => window.clearTimeout(id);
-  }, [selectedId, entered, reducedMotion]);
+  }, [selectedId, reducedMotion]);
 
   const handleSelect = (id: number | null) => {
     setSelectedId(id);
@@ -216,7 +241,15 @@ export function TaxonomyUniverse() {
   const handleEnter = () => setEntered(true);
 
   if (viewport === "mobile") {
-    return <MobileDomainList selectedId={selectedId} onSelect={handleSelect} entered={entered} onEnter={handleEnter} />;
+    return (
+      <MobileDomainList
+        selectedId={selectedId}
+        onSelect={handleSelect}
+        entered={entered}
+        onEnter={handleEnter}
+        reducedMotion={reducedMotion}
+      />
+    );
   }
 
   // Wide, flattened ellipse seen almost edge-on, with depth: the bottom of
@@ -258,7 +291,14 @@ export function TaxonomyUniverse() {
   const topRightY = -(containerHeight / 2 - focusedRadius - EDGE_PAD);
 
   return (
-    <div className="relative">
+    // overflow-x-clip: while a principle is focused the ring grows by
+    // FOCUS_RING_SCALE and the pushed-out planets extend past this wrapper,
+    // which gave the whole PAGE a horizontal scrollbar — and any horizontal
+    // scroll then slid the absolutely-positioned papers panel partly off the
+    // left edge. Clipping horizontally here contains the overspill without
+    // creating a scroll container (unlike overflow-hidden) and without
+    // touching the ring math or any planet interaction.
+    <div className="relative overflow-x-clip">
       {/* aspect-[16/7.2] matches VIEWBOX_W / VIEWBOX_H exactly — keep them in
           sync. The ring is only as tall as 2 * ry, so the old 16/8.8 box left
           a wide empty band above (and below) it; trimming the box's height
@@ -266,23 +306,15 @@ export function TaxonomyUniverse() {
           the planet size, all of which derive from the container's WIDTH. */}
       <div
         ref={containerRef}
-        // The flattened 16/7.2 ring is deliberately short — but the focused
-        // planet at 2.6x scale visually overflows it well beyond its own
-        // box in EITHER focused stage, not just once entered (it always
-        // has, even before this fix — the box was only ever meant to bound
-        // the orbit ellipse, not the enlarged planet). That overflow is
-        // harmless for the ring/anchor math (driven by width, not height —
-        // see rx/ry below), but the exit-backdrop below is an `inset-0` of
-        // this same box: while the box stayed short during "selected, not
-        // entered" too, most of what a person actually sees as "the
-        // background" around the oversized planet sat outside the box's
-        // real bounds, so clicking it did nothing. Growing the box for any
-        // selection (not just entered) gives the backdrop real coverage in
-        // both stages, and also gives the entered stage's top-right anchor
-        // somewhere real to land (previously computed to ~1px of travel).
-        className={`relative mx-auto mt-1 w-full max-w-[820px] transition-[aspect-ratio] duration-300 lg:max-w-[1180px] ${
-          selectedId !== null ? "aspect-[16/12]" : "aspect-[16/7.2]"
-        }`}
+        // ONE fixed aspect ratio in every state — see the VIEWBOX note above.
+        // The box is sized once for the largest thing it ever has to hold (the
+        // focused orb plus the ring at FOCUS_RING_SCALE) so that selecting,
+        // entering and exiting a principle are pure transform/opacity changes
+        // inside a container whose own geometry never moves. That also keeps
+        // the exit-backdrop's `inset-0` coverage and the entered stage's
+        // top-right anchor valid at all times, which is what the old growing
+        // box was introduced to fix — without the layout shift it caused.
+        className="relative mx-auto mt-1 aspect-[16/9] w-full max-w-[820px] lg:max-w-[1180px]"
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
             broken-line treatment as the flow lines in the Hero artwork */}
@@ -442,11 +474,24 @@ export function TaxonomyUniverse() {
           )}
         </AnimatePresence>
 
-        <AnimatePresence>
-          {selected && entered && (
-            <PrinciplePapersPanel key={selected.id} papers={papers} maxHeight={containerHeight} />
-          )}
-        </AnimatePresence>
+        {/* Rendered plainly rather than through AnimatePresence, and with no
+            exit animation on the panel itself. A principle can hold 200+
+            papers, and keeping an outgoing panel alive to animate it away
+            doubles several thousand DOM nodes mid-switch; worse, exit
+            bookkeeping here proved fragile — the panel would finish its exit
+            transition and then never be removed, leaving a zombie list at
+            opacity 0 that blocked the next principle from ever mounting.
+            Mounting/unmounting outright is both cheaper and deterministic; the
+            panel still animates IN via its own initial/animate, and the rows
+            inside still cross-fade on principle and filter changes. */}
+        {selected && entered && (
+          <PrinciplePapersPanel
+            key={selected.id}
+            papers={papers}
+            maxHeight={containerHeight}
+            reducedMotion={reducedMotion}
+          />
+        )}
       </div>
     </div>
   );
@@ -457,11 +502,13 @@ function MobileDomainList({
   onSelect,
   entered,
   onEnter,
+  reducedMotion,
 }: {
   selectedId: number | null;
   onSelect: (id: number | null) => void;
   entered: boolean;
   onEnter: () => void;
+  reducedMotion: boolean;
 }) {
   return (
     <div className="mx-auto max-w-md">
@@ -537,7 +584,7 @@ function MobileDomainList({
                           <ChevronRight size={13} />
                         </button>
                       ) : (
-                        <MobilePapersList domain={domain} />
+                        <MobilePapersList domain={domain} reducedMotion={reducedMotion} />
                       )}
                     </div>
                   </motion.div>
@@ -551,29 +598,17 @@ function MobileDomainList({
   );
 }
 
-/** Mobile equivalent of PrinciplePapersPanel — same title-only, link-only
- * list, just inline within the accordion panel instead of a floating
- * left-hand column. */
-function MobilePapersList({ domain }: { domain: EthicalAiDomain }) {
+/** Mobile equivalent of PrinciplePapersPanel — the same PapersExplorer
+ * (filters, numbered rows, tag chips, show more) as the desktop panel, just
+ * flowing inline within the accordion instead of floating in a card, since
+ * there's no planet to float alongside on a narrow screen. */
+function MobilePapersList({ domain, reducedMotion }: { domain: EthicalAiDomain; reducedMotion: boolean }) {
   const papers = getPapersForPrinciple(`P${domain.number}`);
-  if (papers.length === 0) {
-    return <p className="mt-3 text-sm text-zinc-400 dark:text-zinc-500">No papers indexed under this principle yet.</p>;
-  }
   return (
-    <ul className="mt-3 space-y-1 border-t border-zinc-100 pt-3 dark:border-zinc-800">
-      {papers.map((paper, i) => (
-        <li key={i}>
-          <a
-            href={paper.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-start gap-1.5 py-0.5 text-sm leading-snug text-zinc-600 dark:text-zinc-300"
-          >
-            <ExternalLink size={12} className="mt-1 shrink-0 opacity-40 group-hover:opacity-100" />
-            <span>{paper.title}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <PapersExplorer
+      papers={papers}
+      reducedMotion={reducedMotion}
+      className="-mx-4 mt-3 border-t border-zinc-100 dark:border-zinc-800"
+    />
   );
 }
