@@ -287,8 +287,15 @@ export function PaperAttractionField({
         const distToPlanet = Math.hypot(raw.x - target.x, raw.y - target.y);
         const fadeBand = Math.max(target.radius, 1) * 0.85;
         const approach = clamp01((distToPlanet - target.radius) / fadeBand);
+        // A fresh spawn is far from any planet, so `approach` alone starts
+        // at ~1 — full opacity the instant a paper respawns, which reads as
+        // popping into existence rather than drifting in. Ramping a second
+        // multiplier over just the first 8% of the journey (well under a
+        // second, even on the longest 12s flights) gives it a quick, smooth
+        // fade-in without slowing the respawn down.
+        const spawnFade = clamp01(t / 0.08);
         const scaleMul = 0.32 + 0.68 * approach;
-        const opacityMul = approach;
+        const opacityMul = approach * spawnFade;
 
         // Fixed base box, positioned/scaled entirely through `transform` —
         // that's what lets a short CSS transition smooth the ~15fps position

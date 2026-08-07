@@ -204,6 +204,22 @@
     transform: translate(var(--dx, 6px), var(--dy, -8px));
   }
 }
+/* Quick, one-shot fade-in for paper glyphs — Taxonomy Hub's background
+   papers on first mount, and PaperAttractionField's papers each time one
+   respawns. Without this they simply appear at full opacity, which reads as
+   popping into existence out of nowhere; a fast fade (well under a second)
+   softens the entrance without slowing anything down. `both` holds opacity
+   0 before the delay elapses and holds the end state after, so it composes
+   cleanly with a second, infinite animation (e.g. drift) on the same
+   element. */
+@keyframes fade-in-paper {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   svg[data-orb] * {
     animation: none !important;

@@ -169,7 +169,11 @@ function Paper({ spec }: { spec: PaperSpec }) {
     height: spec.size * (34 / 26),
     ["--dx" as string]: `${spec.dx}px`,
     ["--dy" as string]: `${spec.dy}px`,
-    animation: `drift ${spec.dur}s ease-in-out ${spec.delay}s infinite`,
+    // The fade multiplies with the inner div's fixed opacity below (nested
+    // opacity is visually multiplicative), so this fades 0 -> spec.opacity
+    // rather than needing to know that value itself. Reuses spec.delay so
+    // papers still fade in staggered rather than all at once.
+    animation: `fade-in-paper 0.5s ease-out ${spec.delay}s both, drift ${spec.dur}s ease-in-out ${spec.delay}s infinite`,
   };
   return (
     <div className={`absolute ${hideClass(spec.hide)}`} style={outerStyle}>
