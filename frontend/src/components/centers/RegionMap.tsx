@@ -61,7 +61,7 @@ export function RegionMap({ group, centers, selectedCenterId, onSelectCenter }: 
                 return (
                   <Geography
                     key={geo.rsmKey}
-                    geo={geo}
+                    geography={geo}
                     fill={hasCenter ? "#3f3f46" : `url(#${patternId})`}
                     stroke="#a1a1aa"
                     strokeWidth={0.5}
