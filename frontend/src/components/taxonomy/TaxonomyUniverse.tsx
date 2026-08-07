@@ -370,19 +370,17 @@ export function TaxonomyUniverse() {
         })()}
 
         <AnimatePresence>
-          {selected && !entered && (
-            <DomainFocus key={selected.id} radius={focusedRadius} onEnter={handleEnter} onBack={() => handleSelect(null)} />
-          )}
+          {selected && !entered && <DomainFocus key={selected.id} radius={focusedRadius} onEnter={handleEnter} />}
         </AnimatePresence>
 
-        {/* Papers view: no button controls — clicking anywhere in the
-            background (this backdrop) exits back to the universe. It sits
-            above every non-focused planet (max z-index 100) and the drawn
-            orbit line, but below the focused planet (200) and the paper
-            panel (105 < 110 here, so raised to clear it too), so those stay
-            directly clickable/scrollable as normal. */}
+        {/* No "back" button in either focused stage — clicking anywhere in
+            the background exits back to the universe instead. Sits above
+            every non-focused planet (max z-index 100) and the drawn orbit
+            line, but below the focused planet (200), the Enter button (110)
+            and the paper panel (105), so those stay directly
+            clickable/scrollable as normal. */}
         <AnimatePresence>
-          {selected && entered && (
+          {selected && (
             <motion.button
               key="exit-backdrop"
               type="button"

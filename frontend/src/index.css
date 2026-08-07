@@ -2,6 +2,18 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Solid document-card fill, shared by the Hero art and the Taxonomy Hub's
+   paper glyphs (background drift + planet-attraction field) so both read as
+   the same filled paper card rather than a hollow outline. Defined globally
+   (not scoped to .hero-art) since the taxonomy papers live in a separate
+   part of the tree. */
+:root {
+  --art-fill: rgba(255, 255, 255, 0.95);
+}
+.dark {
+  --art-fill: #101a13;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: "Lora", ui-serif, Georgia, serif;

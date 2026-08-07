@@ -1,25 +1,18 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * The control(s) anchored below the selected-but-not-yet-entered planet,
- * which always sits centered while this is showing (see TaxonomyUniverse —
- * the focused planet only moves to the top-right once "Enter" is clicked,
- * at which point this component stops rendering entirely: the papers view
- * has no button controls, it exits via a click anywhere in the background
- * instead — see the backdrop in TaxonomyUniverse).
+ * The "Enter" control anchored below the selected-but-not-yet-entered
+ * planet, which always sits centered while this is showing (see
+ * TaxonomyUniverse — the focused planet only moves to the top-right once
+ * "Enter" is clicked, at which point this component stops rendering
+ * entirely). There is no "Back" button in either stage: clicking anywhere in
+ * the background exits back to the universe, both here and in the papers
+ * view — see the backdrop in TaxonomyUniverse.
  */
-export function DomainFocus({
-  radius,
-  onEnter,
-  onBack,
-}: {
-  radius: number;
-  onEnter: () => void;
-  onBack: () => void;
-}) {
+export function DomainFocus({ radius, onEnter }: { radius: number; onEnter: () => void }) {
   const gap = 20;
 
   return (
@@ -40,14 +33,6 @@ export function DomainFocus({
       >
         Enter
         <ChevronRight size={13} />
-      </button>
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white/80 px-4 py-2 text-xs font-semibold text-zinc-600 backdrop-blur-sm transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-300 dark:hover:bg-zinc-800"
-      >
-        <ArrowLeft size={13} />
-        Back to all principles
       </button>
     </motion.div>
   );
