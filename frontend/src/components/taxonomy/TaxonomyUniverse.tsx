@@ -224,18 +224,22 @@ export function TaxonomyUniverse() {
           the planet size, all of which derive from the container's WIDTH. */}
       <div
         ref={containerRef}
-        // The flattened 16/7.2 ring is deliberately short — but that leaves
-        // almost no vertical room for the focused planet (2.6x scale) to
-        // actually travel toward a "top-right" corner once entered: with the
-        // ring's real proportions, half the container's height barely
-        // exceeds the planet's own radius, so the old topRightY came out to
-        // ~1px and the planet just sat in the middle, on top of the paper
-        // panel. Only the entered state gets a taller box (orbit math itself
-        // is driven by width, not height, so this doesn't touch the ring's
-        // shape or spacing at all — see rx/ry below) purely to give the
-        // top-right anchor somewhere real to land.
+        // The flattened 16/7.2 ring is deliberately short — but the focused
+        // planet at 2.6x scale visually overflows it well beyond its own
+        // box in EITHER focused stage, not just once entered (it always
+        // has, even before this fix — the box was only ever meant to bound
+        // the orbit ellipse, not the enlarged planet). That overflow is
+        // harmless for the ring/anchor math (driven by width, not height —
+        // see rx/ry below), but the exit-backdrop below is an `inset-0` of
+        // this same box: while the box stayed short during "selected, not
+        // entered" too, most of what a person actually sees as "the
+        // background" around the oversized planet sat outside the box's
+        // real bounds, so clicking it did nothing. Growing the box for any
+        // selection (not just entered) gives the backdrop real coverage in
+        // both stages, and also gives the entered stage's top-right anchor
+        // somewhere real to land (previously computed to ~1px of travel).
         className={`relative mx-auto mt-1 w-full max-w-[820px] transition-[aspect-ratio] duration-300 lg:max-w-[1180px] ${
-          entered ? "aspect-[16/12]" : "aspect-[16/7.2]"
+          selectedId !== null ? "aspect-[16/12]" : "aspect-[16/7.2]"
         }`}
       >
         {/* the shared path itself — one faint dashed ellipse, using the same
