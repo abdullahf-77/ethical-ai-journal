@@ -415,14 +415,20 @@ export function PapersExplorer({
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={listKey}
-            initial={reducedMotion ? false : { opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
-            transition={{
-              duration: reducedMotion ? 0.1 : 0.24,
-              ease: EASE,
-              exit: { duration: reducedMotion ? 0.08 : 0.14 },
+            variants={{
+              initial: reducedMotion ? { opacity: 1 } : { opacity: 0, y: 6 },
+              animate: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: reducedMotion ? 0.1 : 0.24, ease: EASE },
+              },
+              exit: reducedMotion
+                ? { opacity: 0, transition: { duration: 0.08 } }
+                : { opacity: 0, y: -4, transition: { duration: 0.14 } },
             }}
+            initial="initial"
+            animate="animate"
+            exit="exit"
           >
             {filtered.length === 0 ? (
               <p className="py-10 text-center text-sm text-zinc-400 dark:text-zinc-500">
