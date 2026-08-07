@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
 import { TaxonomyPage } from "./pages/TaxonomyPage";
+import { CentersPage } from "./pages/CentersPage";
 import { AboutPage } from "./pages/AboutPage";
 
 function ScrollManager() {
@@ -31,6 +32,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/taxonomy" element={<TaxonomyPage />} />
+          <Route path="/centers" element={<CentersPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>

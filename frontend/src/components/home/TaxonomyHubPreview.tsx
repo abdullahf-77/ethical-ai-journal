@@ -55,13 +55,22 @@ export function TaxonomyHubPreview() {
                 })}
               </div>
 
-              <Link
-                to="/taxonomy"
-                className="group mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-icaire-800 shadow-lg shadow-black/10 transition-all hover:bg-icaire-50 hover:shadow-xl active:scale-[0.98]"
-              >
-                Explore Taxonomy
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-              </Link>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link
+                  to="/taxonomy"
+                  className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-icaire-800 shadow-lg shadow-black/10 transition-all hover:bg-icaire-50 hover:shadow-xl active:scale-[0.98]"
+                >
+                  Explore Taxonomy
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <Link
+                  to="/centers"
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 active:scale-[0.98]"
+                >
+                  Explore Centers
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">

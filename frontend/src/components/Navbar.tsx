@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Taxonomy Hub", to: "/taxonomy" },
+  { label: "Centers Hub", to: "/centers" },
 ];
 
 export function Navbar() {
