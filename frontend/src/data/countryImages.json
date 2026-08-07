@@ -1,0 +1,352 @@
+{
+  "Canada": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/CN_Tower%2C_Toronto%2C_Canada9.jpg",
+    "title": "CN Tower, Toronto",
+    "credit": "Diego Delso",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:CN_Tower,_Toronto,_Canada9.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Denmark": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1447.jpg",
+    "title": "Nyhavn, Copenhagen",
+    "credit": "Dietmar Rabich",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kopenhagen_(DK),_Nyhavn_--_2017_--_1447.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Finland": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Lutheran_Cathedral_Helsinki.jpg",
+    "title": "Helsinki Cathedral",
+    "credit": "Hans Hillewaert",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Lutheran_Cathedral_Helsinki.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "France": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg",
+    "title": "Eiffel Tower, Paris",
+    "credit": "Benh Lieu Song",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Germany": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Berlin_Brandenburg_Gate.JPG",
+    "title": "Brandenburg Gate, Berlin",
+    "credit": "Joeb07",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Berlin_Brandenburg_Gate.JPG",
+    "license": "CC BY 3.0"
+  },
+  "Ireland": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Cliffs_of_Moher%2C_Ireland_%288577753321%29.jpg",
+    "title": "Cliffs of Moher",
+    "credit": "Michal Osmenda",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Cliffs_of_Moher,_Ireland_(8577753321).jpg",
+    "license": "CC BY 2.0"
+  },
+  "Italy": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Colosseum_in_rome.jpg",
+    "title": "Colosseum, Rome",
+    "credit": "Silviomerci1971",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Colosseum_in_rome.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Netherlands": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Kinderdijk_windmill.jpg",
+    "title": "Windmill, Kinderdijk",
+    "credit": "Michiel1972",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Kinderdijk_windmill.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Norway": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Geirangerfjord_View_from_L%C3%B8sta.JPG",
+    "title": "Geirangerfjord",
+    "credit": "Bloodworx",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Geirangerfjord_View_from_L%C3%B8sta.JPG",
+    "license": "CC0"
+  },
+  "Spain": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/La_Sagrada_Familia_Barcelona.jpg",
+    "title": "Sagrada Família, Barcelona",
+    "credit": "Peter Glyn",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:La_Sagrada_Familia_Barcelona.jpg",
+    "license": "CC0"
+  },
+  "Sweden": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Stockholms_Stadshuset_City_Hall_Stockholm_2016_01.jpg",
+    "title": "Stockholm City Hall",
+    "credit": "Julian Herzog",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Stockholms_Stadshuset_City_Hall_Stockholm_2016_01.jpg",
+    "license": "CC BY 4.0"
+  },
+  "Switzerland": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/0_106_Walliser_Alpen_-_Matterhorn.jpg",
+    "title": "Matterhorn, Zermatt",
+    "credit": "W. Bulach",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:0_106_Walliser_Alpen_-_Matterhorn.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "United Kingdom": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Big_Ben_Elizabeth_Tower_Full_View.JPG",
+    "title": "Big Ben, Elizabeth Tower, London",
+    "credit": "Chitetskoy",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Big_Ben_Elizabeth_Tower_Full_View.JPG",
+    "license": "CC BY 4.0"
+  },
+  "United States of America": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Statue_of_Liberty%2C_NY.jpg",
+    "title": "Statue of Liberty, New York",
+    "credit": "William Warby",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Statue_of_Liberty,_NY.jpg",
+    "license": "CC BY 2.0"
+  },
+  "Austria": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Sch%C3%B6nbrunn_Palace%2C_Vienna.JPG",
+    "title": "Schönbrunn Palace, Vienna",
+    "credit": "Gveret Tered",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sch%C3%B6nbrunn_Palace,_Vienna.JPG",
+    "license": "CC0"
+  },
+  "Belgium": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Bruxelles_-_Grand_Place_02.jpg",
+    "title": "Grand Place, Brussels",
+    "credit": "Diana Popescu",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Bruxelles_-_Grand_Place_02.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Cyprus": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Aphrodites_Rock.jpg",
+    "title": "Aphrodite's Rock, Petra tou Romiou",
+    "credit": "Paul167",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Aphrodites_Rock.jpg",
+    "license": "CC BY-SA 2.5"
+  },
+  "Luxembourg": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Luxembourg%2C_Vieille_ville_04-2021.jpg",
+    "title": "Old Town, Luxembourg City",
+    "credit": "GilPe",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Luxembourg,_Vieille_ville_04-2021.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Iceland": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Gullfoss%2C_an_iconic_waterfall_of_Iceland.jpg",
+    "title": "Gullfoss Waterfall",
+    "credit": "Scoundrelgeo",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Gullfoss,_an_iconic_waterfall_of_Iceland.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Portugal": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Belem_tower.JPG",
+    "title": "Belém Tower, Lisbon",
+    "credit": "Mattias Hill",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Belem_tower.JPG",
+    "license": "CC BY-SA 4.0"
+  },
+  "Slovenia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Lake_Bled%2C_Slovenia.jpg",
+    "title": "Lake Bled",
+    "credit": "Viktar Palstsiuk",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Lake_Bled,_Slovenia.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Czechia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/The_Castle_and_Charles_Bridge%2C_Prague_-_7982.jpg",
+    "title": "Prague Castle and Charles Bridge",
+    "credit": "Jorge Royan",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Castle_and_Charles_Bridge,_Prague_-_7982.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Estonia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Tallinna_vanalinn%2C_Tallinn_Old_Town.jpg",
+    "title": "Tallinn Old Town",
+    "credit": "Hei1972",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Tallinna_vanalinn,_Tallinn_Old_Town.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Poland": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Wawel_Royal_Castle_courtyard_in_Krak%C3%B3w%2C_Poland.jpg",
+    "title": "Wawel Royal Castle, Kraków",
+    "credit": "Tim Adams",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Wawel_Royal_Castle_courtyard_in_Krak%C3%B3w,_Poland.jpg",
+    "license": "CC BY 3.0"
+  },
+  "Romania": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Bran_Castle_%28Dracula%27s_Castle%29_1.jpg",
+    "title": "Bran Castle",
+    "credit": "Cristian Bortes",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Bran_Castle_(Dracula%27s_Castle)_1.jpg",
+    "license": "CC BY 2.0"
+  },
+  "Russian Federation": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Saint_Basil%27s_Cathedral%2C_Red_Square%2C_Moscow%2C_Russia.jpg",
+    "title": "Saint Basil's Cathedral, Moscow",
+    "credit": "Vyacheslav Argenberg",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Saint_Basil's_Cathedral,_Red_Square,_Moscow,_Russia.jpg",
+    "license": "CC BY 4.0"
+  },
+  "Slovakia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Bratislava%2C_Hrad%2C_Slovensko.jpg",
+    "title": "Bratislava Castle",
+    "credit": "LMih",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Bratislava,_Hrad,_Slovensko.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Argentina": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Obelisk_of_Buenos_Aires_%284728856811%29.jpg",
+    "title": "Obelisk of Buenos Aires",
+    "credit": "Jorge Láscar",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Obelisk_of_Buenos_Aires_(4728856811).jpg",
+    "license": "CC BY 2.0"
+  },
+  "Brazil": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg",
+    "title": "Christ the Redeemer, Rio de Janeiro",
+    "credit": "Arne Müseler",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Christ_the_Redeemer_-_Cristo_Redentor.jpg",
+    "license": "CC BY-SA 3.0 DE"
+  },
+  "Chile": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Torres_del_Paine_-_Janvier_2010.jpg",
+    "title": "Torres del Paine",
+    "credit": "Martin St-Amant",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Torres_del_Paine_-_Janvier_2010.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Mexico": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chichen_Itza_3.jpg",
+    "title": "El Castillo, Chichen Itza",
+    "credit": "Daniel Schwen",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Chichen_Itza_3.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Trinidad and Tobago": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/TnT_PoS_M7-1_Queen%27s_Royal_College.jpg",
+    "title": "Queen's Royal College, Queen's Park Savannah, Port of Spain",
+    "credit": "Grueslayer",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:TnT_PoS_M7-1_Queen's_Royal_College.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Australia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Sydney_Opera_House_%2830111403413%29.jpg",
+    "title": "Sydney Opera House",
+    "credit": "Lenny K Photography",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_(30111403413).jpg",
+    "license": "CC BY 2.0"
+  },
+  "China": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
+    "title": "Great Wall of China, Jinshanling",
+    "credit": "Severin.stalder",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Great_Wall_of_China_at_Jinshanling-edit.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "India": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg",
+    "title": "Taj Mahal, Agra",
+    "credit": "Joel Godwin",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Taj-Mahal.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Japan": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Mount_Fuji_from_Lake_Kawaguchi_%282015-10-26%29.jpg",
+    "title": "Mount Fuji from Lake Kawaguchi",
+    "credit": "Alpsdake",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Lake_Kawaguchi_(2015-10-26).jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "New Zealand": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Milford_Sound%2C_New_Zealand_%2813%29.JPG",
+    "title": "Milford Sound",
+    "credit": "Michal Klajban",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Milford_Sound,_New_Zealand_(13).JPG",
+    "license": "CC BY-SA 4.0"
+  },
+  "Republic of Korea": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Gyeongbokgung_Palace%2C_Seoul%2C_1395_%2877%29_%2839321056410%29.jpg",
+    "title": "Gyeongbokgung Palace, Seoul",
+    "credit": "Richard Mortel",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Gyeongbokgung_Palace,_Seoul,_1395_(77)_(39321056410).jpg",
+    "license": "CC BY 2.0"
+  },
+  "Singapore": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Merlion_and_the_Singapore_Skyline.JPG",
+    "title": "Merlion and the Singapore Skyline",
+    "credit": "Merlion444",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Merlion_and_the_Singapore_Skyline.JPG",
+    "license": "Public Domain"
+  },
+  "Cambodia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Angkor_Wat.jpg",
+    "title": "Angkor Wat",
+    "credit": "Bjørn Christian Tørrissen",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Sri Lanka": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Sigiriya_Fortress%2C_Sri_Lanka.jpg",
+    "title": "Sigiriya Rock Fortress",
+    "credit": "Madhawa Dunuwila",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Sigiriya_Fortress,_Sri_Lanka.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Saudi Arabia": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Elephant_rock_Al_Ula%2C_Saudi_Arabia_2011.jpg",
+    "title": "Elephant Rock, AlUla",
+    "credit": "Pteropus conspicillatus",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Elephant_rock_Al_Ula,_Saudi_Arabia_2011.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "United Arab Emirates": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Burj_Khalifa_%2816260269606%29.jpg",
+    "title": "Burj Khalifa, Dubai",
+    "credit": "Laika ac",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Burj_Khalifa_(16260269606).jpg",
+    "license": "CC BY-SA 2.0"
+  },
+  "Egypt": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Great_Pyramid_of_Giza%2C_Giza%2C_Egypt8.jpg",
+    "title": "Great Pyramid of Giza",
+    "credit": "Diego Delso",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Great_Pyramid_of_Giza,_Giza,_Egypt8.jpg",
+    "license": "CC BY-SA 3.0"
+  },
+  "Oman": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Minarets_of_Sultan_Qaboos_Grand_Mosque_in_Muscat%2C_Oman_%2853698184465%29.jpg",
+    "title": "Sultan Qaboos Grand Mosque, Muscat",
+    "credit": "dronepicr",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Minarets_of_Sultan_Qaboos_Grand_Mosque_in_Muscat,_Oman_(53698184465).jpg",
+    "license": "CC BY 2.0"
+  },
+  "South Africa": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Cape_Town_Table_Mountain.jpg",
+    "title": "Table Mountain, Cape Town",
+    "credit": "Matthiasmullie",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Cape_Town_Table_Mountain.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Congo": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Brazzaville_-_Basilique_Sainte-Anne-du-Congo.jpg",
+    "title": "Basilique Sainte-Anne-du-Congo, Brazzaville",
+    "credit": "Henri van der Noot",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Brazzaville_-_Basilique_Sainte-Anne-du-Congo.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Ghana": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Cape_Coast_Castle_-_Courtyard_-_Cape_Coast_-_Ghana_%284714472673%29.jpg",
+    "title": "Cape Coast Castle",
+    "credit": "Adam Jones",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Cape_Coast_Castle_-_Courtyard_-_Cape_Coast_-_Ghana_(4714472673).jpg",
+    "license": "CC BY-SA 2.0"
+  },
+  "Kenya": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Maasai_Mara_National_Reserve_Kenya.jpg",
+    "title": "Maasai Mara National Reserve",
+    "credit": "Svein-Magne Tunli",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Maasai_Mara_National_Reserve_Kenya.jpg",
+    "license": "CC BY-SA 4.0"
+  },
+  "Senegal": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/12/African_Renaissance_Monument_%285502494604%29.jpg",
+    "title": "African Renaissance Monument, Dakar",
+    "credit": "Jeff Attaway",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:African_Renaissance_Monument_(5502494604).jpg",
+    "license": "CC BY 2.0"
+  }
+}
