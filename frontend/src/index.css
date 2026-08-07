@@ -244,47 +244,6 @@
     opacity: 1;
   }
 }
-/* Tag-chip tooltip, done entirely in CSS via attr() on a pseudo-element.
-   A principle can carry 200+ papers averaging ~5 tags, so a React-state
-   tooltip meant ~1100 stateful components AND ~1100 extra tooltip nodes per
-   principle — enough to lock the tab up while mounting or swapping a list.
-   A pseudo-element costs zero React components and zero DOM nodes, so the
-   full text stays available on hover/focus for free. */
-.paper-chip::after {
-  content: attr(data-tip);
-  position: absolute;
-  bottom: 100%;
-  right: 0;
-  margin-bottom: 6px;
-  z-index: 40;
-  width: max-content;
-  max-width: 260px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  border: 1px solid var(--color-zinc-200);
-  background: #fff;
-  color: var(--color-zinc-600);
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.45;
-  text-align: left;
-  white-space: normal;
-  box-shadow: 0 8px 20px -6px rgb(0 0 0 / 0.18);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.12s ease;
-}
-.paper-chip:hover::after,
-.paper-chip:focus-within::after {
-  opacity: 1;
-  visibility: visible;
-}
-.dark .paper-chip::after {
-  border-color: var(--color-zinc-700);
-  background: var(--color-zinc-900);
-  color: var(--color-zinc-300);
-}
 
 /* A principle can carry 200+ papers and the full list is rendered at once (no
    progressive reveal), so rows opt out of rendering work while off-screen.

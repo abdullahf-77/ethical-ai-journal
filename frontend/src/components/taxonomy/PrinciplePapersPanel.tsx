@@ -31,42 +31,31 @@ function toggleInSet(set: Set<string>, value: string): Set<string> {
 /** A compact tag chip: a small taxonomy prefix (MIT / OECD) plus the tag
  * itself, truncated with an ellipsis when it's too long for the row's tag
  * column. The truncation is purely visual — the underlying string is never
- * altered — and hover/focus reveals a tooltip carrying the taxonomy's full
- * name and the complete, verbatim tag text.
+ * altered. Purely a static label, not a control: no tabIndex, no hover/focus
+ * state, nothing to click. It previously revealed the full text via a
+ * hover/focus tooltip, but with four tightly-packed chips per row the
+ * tooltip had nowhere to open without covering the row above it — the full
+ * tag list is still available, unclipped, in the MIT/OECD filter dropdowns
+ * above the list.
  *
  * The chip takes a 50%-minus-half-the-gap flex basis so exactly two sit per
  * line at any panel width. A fixed px cap can't do that: the tag column is a
  * percentage of a panel that changes width across breakpoints, so at some
  * widths two capped chips overflowed the line and dropped to one per line,
- * which made rows tall and ragged.
- *
- * The tooltip is anchored to the chip's RIGHT edge because these chips sit on
- * the right-hand side of the row — growing leftward keeps it inside the panel
- * instead of running off the viewport. */
+ * which made rows tall and ragged. */
 function TagChip({ tag, kind }: { tag: string; kind: TagKind }) {
-  const taxonomy = kind === "mit" ? "MIT AI Risk Repository" : "OECD AI Principles";
   return (
     <span
-      // The tooltip is a CSS pseudo-element fed by data-tip (see .paper-chip in
-      // index.css) rather than React state — deliberately, this component is
-      // instantiated ~1100 times for a large principle. `title` is omitted so
-      // the native tooltip doesn't double up on the styled one.
-      className="paper-chip relative flex min-w-0 basis-[calc(50%-0.125rem)]"
-      data-tip={`${taxonomy} — ${tag}`}
+      className={`inline-flex min-w-0 basis-[calc(50%-0.125rem)] items-center gap-1 rounded-md border px-1.5 py-0.5 text-[10px] font-medium leading-4 ${
+        kind === "mit"
+          ? "border-icaire-200/80 bg-icaire-50/70 text-icaire-700 dark:border-icaire-800/80 dark:bg-icaire-950/30 dark:text-icaire-400"
+          : "border-zinc-200/80 bg-zinc-50/70 text-zinc-500 dark:border-zinc-700/80 dark:bg-zinc-800/50 dark:text-zinc-400"
+      }`}
     >
-      <span
-        tabIndex={0}
-        className={`inline-flex w-full items-center gap-1 rounded-md border px-1.5 py-0.5 text-[10px] font-medium leading-4 outline-none focus-visible:ring-2 focus-visible:ring-icaire-500 ${
-          kind === "mit"
-            ? "border-icaire-200/80 bg-icaire-50/70 text-icaire-700 dark:border-icaire-800/80 dark:bg-icaire-950/30 dark:text-icaire-400"
-            : "border-zinc-200/80 bg-zinc-50/70 text-zinc-500 dark:border-zinc-700/80 dark:bg-zinc-800/50 dark:text-zinc-400"
-        }`}
-      >
-        <span className="shrink-0 text-[9px] font-semibold uppercase tracking-wide opacity-55">
-          {kind === "mit" ? "MIT" : "OECD"}
-        </span>
-        <span className="min-w-0 truncate">{tag}</span>
+      <span className="shrink-0 text-[9px] font-semibold uppercase tracking-wide opacity-55">
+        {kind === "mit" ? "MIT" : "OECD"}
       </span>
+      <span className="min-w-0 truncate">{tag}</span>
     </span>
   );
 }
